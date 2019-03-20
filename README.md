@@ -5,7 +5,7 @@
 > Ebrahim Shafiei 
 
 ## Made For
-### Improve Your WebSite security With Abdal Security Headers
+### Improve Your Wordpress Security With Abdal Security Headers
 
 **Installation**
 > After Install Abdal Security Headers Please Just Active This Plugin And Enjoy!
