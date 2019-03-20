@@ -1,0 +1,42 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Abdal Security Headers\n"
+"POT-Creation-Date: 2019-03-18 20:10+0330\n"
+"PO-Revision-Date: 2019-03-18 20:13+0330\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: fa_IR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n==0 || n==1);\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: abdal-security-headers.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
+"_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#. Plugin Name of the plugin/theme
+msgid "Abdal Security Headers"
+msgstr "سرآیندهای امنیتی ابدال"
+
+#. Plugin URI of the plugin/theme
+msgid "https://hackers.zone/abdal-security-headers"
+msgstr "https://hackers.zone/abdal-security-headers"
+
+#. Description of the plugin/theme
+msgid "Improve Your WebSite security With Abdal Security Headers"
+msgstr "با سرآیندهای امنیتی ابدال امینت وب سایت خود را افزایش دهید"
+
+#. Author of the plugin/theme
+msgid "Ebrahim Shafiei"
+msgstr "ابراهیم شفیعی"
+
+#. Author URI of the plugin/theme
+msgid "https://hackers.zone/ebrahim-shafiei"
+msgstr "https://hackers.zone/ebrahim-shafiei"
