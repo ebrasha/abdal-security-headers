@@ -25,3 +25,11 @@
  - [ ] Auto Set  Expect-CT Header
  - [ ] Hide X Powered By Header 
  - [ ] Auto Set Access-Control-Allow-Origin Header
+
+
+## Reporting Issues
+
+If you are facing a configuration issue or something is not working as you expected to be, please use the **Abdal.Group@Gmail.Com** . Issues on GitHub are also welcomed.
+
+
+
