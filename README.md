@@ -1,14 +1,9 @@
 # Abdal Security Headers
 
 ## Project Programmers
-> Ebrahim S
+> Ebrahim Shafiei 
 
-    Donate link: https://hackers.zone/donate-en 
-    Requires at least: 3.0  
-    Tested up to: 5.1.1 
-    Requires PHP: 5.5 License: GPL v3 License URI:  
-    https://www.gnu.org/licenses/gpl.html
-
+## Made For
 ### Improve Your WebSite security With Abdal Security Headers
 
 **Installation**
@@ -28,7 +23,12 @@
  - [ ] Hide X Powered By Header 
  - [ ] Auto Set Access-Control-Allow-Origin Header
 
-
+    Donate link: https://hackers.zone/donate-en 
+    Requires at least: 3.0  
+    Tested up to: 5.1.1 
+    Requires PHP: 5.5 License: GPL v3 License URI:  
+    https://www.gnu.org/licenses/gpl.html
+    
 ## Reporting Issues
 
 If you are facing a configuration issue or something is not working as you expected to be, please use the **Abdal.Group@Gmail.Com** . Issues on GitHub are also welcomed.
