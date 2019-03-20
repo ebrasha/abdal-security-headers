@@ -10,5 +10,4 @@
 ### Improve Your WebSite security With Abdal Security Headers
 
 **Installation**
-
-    After Install Abdal Security Headers Please Just Active This Plugin And Enjoy!
+> After Install Abdal Security Headers Please Just Active This Plugin And Enjoy!
