@@ -1,5 +1,7 @@
 # Abdal Security Headers
-## Contributors: profshafiei
+
+## Project Programmers
+> Ebrahim S
 
     Donate link: https://hackers.zone/donate-en 
     Requires at least: 3.0  
