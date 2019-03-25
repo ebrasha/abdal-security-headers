@@ -3,34 +3,24 @@
 /*
 Plugin Name: Abdal Security Headers
 Plugin URI: https://hackers.zone/abdal-security-headers
-Description:  Improve Your Website Security With Abdal Security Headers
-Version: 1.0
+Description:  Improve Your WordPress Security With Abdal Security Headers
+Version: 1.1.0
 Author: Ebrahim Shafiei
-Author URI: https://hackers.zone/ebrahim-shafiei
+Author URI: https://hackers.zone/ebrahim-shafiei-en
 License: GPL v3
 Domain Path: /languages/
 Text Domain: abdal-security-headers
 */
 
-// Secure Access For This File
-if ( ! function_exists( 'add_action' ) ) {
-    echo "Powered By Abdal Security Group";
-    exit;
+
+// Prevent Direct Access
+if (!function_exists('add_filter')) {
+    header('Status: 403 Forbidden');
+    header('HTTP/1.1 403 Forbidden');
+    die("Protected By Abdal Security Group");
 }
 
-require_once 'engine/core.php';
 
-
-$AbdalSecurityHeaders_SecObj->AbdalSecurityHeaders_xFrameOptions();
-$AbdalSecurityHeaders_SecObj->AbdalSecurityHeaders_XssProtection();
-$AbdalSecurityHeaders_SecObj->AbdalSecurityHeaders_xContentTypeOptions();
-$AbdalSecurityHeaders_SecObj->AbdalSecurityHeaders_ReferrerPolicy();
-$AbdalSecurityHeaders_SecObj->AbdalSecurityHeaders_FeaturePolicy();
-$AbdalSecurityHeaders_SecObj->AbdalSecurityHeaders_PublicKeyPins();
-$AbdalSecurityHeaders_SecObj->AbdalSecurityHeaders_ExpectCT();
-$AbdalSecurityHeaders_SecObj->AbdalSecurityHeaders_StrictTransportSecurity();
-$AbdalSecurityHeaders_SecObj->AbdalSecurityHeaders_ContentSecurityPolicy();
-$AbdalSecurityHeaders_SecObj->AbdalSecurityHeaders_xPoweredByHider();
-
-
+// Load The Abdal Security Headers Plugin
+require_once plugin_dir_path(__FILE__) . 'abdal-security-headers-master.php';
 

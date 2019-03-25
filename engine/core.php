@@ -10,14 +10,24 @@
  */
 
 
-// Secure Access For This File
-if ( ! function_exists( 'add_action' ) ) {
-    echo "Powered By Abdal Security Group";
-    exit;
+// Prevent Direct Access
+if (!function_exists('add_filter')) {
+    header('Status: 403 Forbidden');
+    header('HTTP/1.1 403 Forbidden');
+    die("Protected By Abdal Security Group");
 }
 
-require_once 'includes/class-security.php';
 
-$AbdalSecurityHeaders_SecObj = new ABDAL_SECURITY_HEADERS_SECURITY();
+if (!defined('ABDAL_SECURITY_HEADERS_FILE')) {
+    define('ABDAL_SECURITY_HEADERS_FILE', __FILE__);
+}
+
+
+require_once plugin_dir_path(ABDAL_SECURITY_HEADERS_FILE) . 'includes/class-security.php';
+require_once plugin_dir_path(ABDAL_SECURITY_HEADERS_FILE) . 'includes/class-dashboard-widgets.php';
+
+
+$AbdalSecurityHeaders_SecObj = new ABDAL_SECURITY_HEADERS_SECURITY;
+$AbdalSecurityHeaders_DashboardWidgetsObj = new ABDAL_SECURITY_HEADERS_DASHBOARD_WIDGETS;
 
 

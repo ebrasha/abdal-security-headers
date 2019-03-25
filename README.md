@@ -1,7 +1,7 @@
 
 # Abdal Security Headers
 
-## Project Programmers
+## Project Programmer
 > Ebrahim Shafiei 
 
 ## Made For
