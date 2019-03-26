@@ -24,10 +24,8 @@ if (!defined('ABDAL_SECURITY_HEADERS_FILE')) {
 
 
 require_once plugin_dir_path(ABDAL_SECURITY_HEADERS_FILE) . 'includes/class-security.php';
-require_once plugin_dir_path(ABDAL_SECURITY_HEADERS_FILE) . 'includes/class-dashboard-widgets.php';
 
 
 $AbdalSecurityHeaders_SecObj = new ABDAL_SECURITY_HEADERS_SECURITY;
-$AbdalSecurityHeaders_DashboardWidgetsObj = new ABDAL_SECURITY_HEADERS_DASHBOARD_WIDGETS;
 
 

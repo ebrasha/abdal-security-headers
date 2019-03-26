@@ -1,10 +1,10 @@
 === Abdal Security Headers ===
 Contributors: profshafiei
-Tags: abdal,security headers,ebrahim shafiei,hackers,secure wordpress,profshafiei,prof shafiei,ebrasha,improve security,anti hack,hsh,x frame options,xss protection,x content type options,hsts,referrer policy,feature policy,strict transport security,content security policy,x powered by,abdal security group,abdal team
+Tags: abdal,security headers,ebrahim shafiei,سرآیندهای امنیتی,secure wordpress,profshafiei,prof shafiei,ebrasha,improve security,anti hack,hsh,x frame options,xss protection,x content type options,hsts,referrer policy,feature policy,strict transport security,content security policy,x powered by,abdal security group,abdal team
 Donate link: https://hackers.zone/donate-en
 Requires at least: 3.0
 Tested up to: 5.1.1
-Stable tag: 1.1.0
+Stable tag: 1.2.0
 Requires PHP: 5.5
 License: GPL v3
 License URI: https://www.gnu.org/licenses/gpl.html
@@ -40,6 +40,13 @@ Disable then enable the plugin.  You may also want to try removing and re-instal
 
 
 == Changelog ==
+
+= 1.2.0 =
+Release Date: March 24th, 2019
+* Fix Content-Security-Policy Issue
+* Remove Widget
+
+
 = 1.1.0 =
 Release Date: March 24th, 2019
 * Fix OOP Issue (For Better Performance)

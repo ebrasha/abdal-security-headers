@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Abdal Security Headers\n"
-"POT-Creation-Date: 2019-03-18 20:09+0330\n"
-"PO-Revision-Date: 2019-03-18 20:10+0330\n"
+"POT-Creation-Date: 2019-03-24 17:25+0430\n"
+"PO-Revision-Date: 2019-03-24 17:25+0430\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -21,6 +21,14 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
+#: engine/includes/class-dashboard-widgets.php:21
+msgid "Abdal Security Headers Running Successfully"
+msgstr ""
+
+#: engine/includes/class-dashboard-widgets.php:21
+msgid "Thank's For Using Our Plugin"
+msgstr ""
+
 #. Plugin Name of the plugin/theme
 msgid "Abdal Security Headers"
 msgstr ""
@@ -30,7 +38,7 @@ msgid "https://hackers.zone/abdal-security-headers"
 msgstr ""
 
 #. Description of the plugin/theme
-msgid "Improve Your WebSite security With Abdal Security Headers"
+msgid "Improve Your WordPress Security With Abdal Security Headers"
 msgstr ""
 
 #. Author of the plugin/theme
@@ -38,5 +46,5 @@ msgid "Ebrahim Shafiei"
 msgstr ""
 
 #. Author URI of the plugin/theme
-msgid "https://hackers.zone/ebrahim-shafiei"
+msgid "https://hackers.zone/ebrahim-shafiei-en"
 msgstr ""

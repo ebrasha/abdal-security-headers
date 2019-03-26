@@ -36,4 +36,3 @@ $AbdalSecurityHeaders_SecObj->xPoweredByHider();
 
 
 
-$AbdalSecurityHeaders_DashboardWidgetsObj->AbdalSecurityHeadersActiveDashboardWidget();

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Abdal Security Headers\n"
-"POT-Creation-Date: 2019-03-25 02:42+0430\n"
-"PO-Revision-Date: 2019-03-25 02:42+0430\n"
+"POT-Creation-Date: 2019-03-26 23:07+0430\n"
+"PO-Revision-Date: 2019-03-26 23:07+0430\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fa_IR\n"
@@ -21,19 +21,7 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: engine/includes/class-dashboard-widgets.php:21
-#, fuzzy
-#| msgid ""
-#| "Abdal Security Headers Running Successfully , Thanks For Using Our Plugin"
-msgid "Abdal Security Headers Running Successfully"
-msgstr "سرآیندهای امنیتی ابدال با موفقیت فعال و در حال کار است"
-
-#: engine/includes/class-dashboard-widgets.php:21
-msgid "Thanks For Using Our Plugin"
-msgstr "بابت استفاده از این افزونه متشکریم"
-
 #. Plugin Name of the plugin/theme
-#: engine/includes/class-dashboard-widgets.php:27
 msgid "Abdal Security Headers"
 msgstr "سرآیندهای امنیتی ابدال"
 
@@ -52,3 +40,13 @@ msgstr "ابراهیم شفیعی"
 #. Author URI of the plugin/theme
 msgid "https://hackers.zone/ebrahim-shafiei-en"
 msgstr "https://hackers.zone/ebrahim-shafiei-en"
+
+#~ msgid ""
+#~ "Abdal Security Headers Running Successfully<br><strong>Thanks For Using "
+#~ "Our Plugin<br>"
+#~ msgstr ""
+#~ "سرآیندهای امنیتی ابدال با موفقیت فعال و در حال کار است<br><strong>بابت "
+#~ "استفاده از این افزونه متشکریم<br>"
+
+#~ msgid "Thanks For Using Our Plugin"
+#~ msgstr "بابت استفاده از این افزونه متشکریم"

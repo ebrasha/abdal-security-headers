@@ -4,7 +4,7 @@
 Plugin Name: Abdal Security Headers
 Plugin URI: https://hackers.zone/abdal-security-headers
 Description:  Improve Your WordPress Security With Abdal Security Headers
-Version: 1.1.0
+Version: 1.2.0
 Author: Ebrahim Shafiei
 Author URI: https://hackers.zone/ebrahim-shafiei-en
 License: GPL v3
