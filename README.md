@@ -92,4 +92,4 @@ Handcrafted with Passion by **Ebrahim Shafiei (EbraSha)**
 - **Telegram**: [@ProfShafiei](https://t.me/ProfShafiei)
 
 ## 📜 License
-This project is licensed under the GPL v3 License. 
+This project is licensed under the GPLv2 or later License. 
