@@ -1,7 +1,7 @@
 === Abdal Security Headers ===
 Contributors: profshafiei
 Donate link: https://ebrasha.com/abdal-donation
-Tags: security, security-headers, x-frame-options, content-security-policy, hsts, ebrasha, abdal
+Tags: security, security-headers, x-frame-options, content-security-policy, hsts
 Requires at least: 5.0
 Tested up to: 6.7.2
 Stable tag: 5.1.1
