@@ -4,7 +4,7 @@ Tags: abdal,security headers,ebrahim shafiei,سرآیندهای امنیتی,sec
 Donate link: https://ebrasha.com/abdal-donation
 Requires at least: 5.0
 Tested up to: 6.7.2
-Stable tag: 2.0.0
+Stable tag: 5.1.0
 Requires PHP: 7.2
 License: GPL v3
 License URI: https://www.gnu.org/licenses/gpl.html
