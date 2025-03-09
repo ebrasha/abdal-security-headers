@@ -1,6 +1,6 @@
 === Abdal Security Headers ===
 Contributors: profshafiei
-Tags: abdal,security headers,ebrahim shafiei,سرآیندهای امنیتی,secure wordpress,profshafiei,prof shafiei,ebrasha,improve security,anti hack,hsh,x frame options,xss protection,x content type options,hsts,referrer policy,feature policy,strict transport security,content security policy,x powered by,abdal security group,abdal team
+Tags: security, security-headers, x-frame-options, content-security-policy, hsts, ebrasha, abdal
 Donate link: https://ebrasha.com/abdal-donation
 Requires at least: 5.0
 Tested up to: 6.7.2
@@ -9,7 +9,8 @@ Requires PHP: 7.2
 License: GPL v3
 License URI: https://www.gnu.org/licenses/gpl.html
 
-Improve Your WordPress security With Abdal Security Headers
+Enhance WordPress security with Abdal Security Headers and HTTP security policies.
+
 
 **Plugin Features**
 
