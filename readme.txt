@@ -4,7 +4,7 @@ Donate link: https://ebrasha.com/abdal-donation
 Tags: security, security-headers, x-frame-options, content-security-policy, hsts
 Requires at least: 5.0
 Tested up to: 6.7.2
-Stable tag: 5.1.1
+Stable tag: 5.1.2
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -67,6 +67,9 @@ No, the interface is user-friendly with helpful tooltips.
 
 == Changelog ==
 
+= 5.1.2 =
+* Fixed UI/UX issues
+
 = 5.1.1 =
 * Fixed UI/UX issues
 * Improved mobile responsiveness
@@ -97,6 +100,9 @@ No, the interface is user-friendly with helpful tooltips.
 * Basic security headers implementation
 
 == Upgrade Notice ==
+
+= 5.1.2 =
+This version includes important UI fixes and improved mobile support. Update recommended for all users.
 
 = 5.1.1 =
 This version includes important UI fixes and improved mobile support. Update recommended for all users.
