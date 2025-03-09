@@ -11,42 +11,66 @@ License URI: https://www.gnu.org/licenses/gpl.html
 
 Enhance WordPress security with Abdal Security Headers and HTTP security policies.
 
+== Description ==
 
-**Plugin Features**
+**Abdal Security Headers** is a powerful WordPress plugin designed to enhance your website's security by implementing critical security headers. It protects against various attacks, including:
 
- - Modern UI with iOS-style switches
- - Real-time CSP Header Preview
- - Automatic And Easy Setup Security Headers
- - Auto Set X-Frame-Options Header 
- - Auto Set X-XSS-Protection Header
- - Auto Set X-Content-Type-Options Header
- - Auto Set Referrer-Policy Header
- - Auto Set Feature-Policy Header
- - Auto Set Strict-Transport-Security Header
- - Auto Set Content-Security-Policy Header
- - Hide X Powered By Header
- - Auto Set Access-Control-Allow-Origin Header
- - Full RTL Support
- - Mobile-responsive Admin Interface
+- 🔒 Cross-site scripting (XSS)
+- 🛡️ Clickjacking attempts
+- 🔐 MIME-type sniffing
+- 🌐 Enforcing HTTPS connections
+- 🚫 Controlling information sharing
+- 🛑 Restricting resource loading
+
+With a user-friendly interface, real-time previews, and easy configuration, this plugin makes securing your website effortless.
+
+
+== Features ==
+
+### 🔰 Security Protection:
+- Protects against common web security threats.
+- Prevents unauthorized content loading with Content Security Policy (CSP).
+- Ensures HTTPS connections using Strict-Transport-Security (HSTS).
+- Disables unnecessary headers for better security.
+
+### 🎛️ User-Friendly Interface:
+- Easy-to-toggle security settings.
+- Real-time preview of applied security rules.
+- Organized settings with tooltips for guidance.
+
+### ⚡ WordPress-Specific Enhancements:
+- Hides WordPress version for security.
+- Removes unnecessary headers.
+- Provides better privacy controls.
+
+### 📊 Extra Features:
+- Works seamlessly with caching plugins.
+- No technical knowledge required.
+- Backup and restore settings.
 
 == Installation ==
-1. Upload the plugin files to `/wp-content/plugins/abdal-security-headers`
-2. Activate the plugin through the WordPress plugins screen
-3. Use `Settings -> Security Headers` to configure the plugin
+
+1. Download the plugin from the WordPress repository or upload it manually.
+2. Activate the plugin via the **Plugins** menu in WordPress.
+3. Navigate to **Settings > Security Headers** and configure your security settings.
+ 
 
 == Frequently Asked Questions ==
-= Is this plugin compatible with caching? =
-Yes, works with all major caching plugins.
 
-= Will this break my website? =
-No, the default settings are safe for most websites.
+**1. Is this plugin compatible with caching plugins?**
+   Yes, it works with all major caching plugins.
 
-= Do I need technical knowledge? =
-No, the interface is user-friendly with helpful tooltips.
+**2. Can this plugin break my website?**
+   No, the default settings are optimized for safety.
+
+**3. Do I need coding knowledge to use it?**
+   No, it's beginner-friendly and includes helpful explanations.
+
+
 
 == Changelog ==
 
-= 2.0.0 =
+= 5.1.0 =
 Release Date: March 15th, 2024
 * Complete UI/UX Redesign with Modern Interface
 * Added Real-time CSP Header Preview
@@ -56,6 +80,12 @@ Release Date: March 15th, 2024
 * Improved Performance and Code Optimization
 * Updated Security Headers Implementation
 * Added Detailed Documentation
+
+
+= 2.0.0 =
+Release Date: March 15th, 2024
+* Updated Security Headers Implementation
+
 
 = 1.2.0 =
 Release Date: March 24th, 2019
