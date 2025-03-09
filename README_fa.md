@@ -4,9 +4,8 @@
   <img src="abdal-security-headers.png" alt="تصویر افزونه هدرهای امنیتی ابدال">
 </div>
 
-[English Guide](README.md)
 
-[English User Guide](README_User_en.md) | [English Developer Guide](README_Developer_en.md) | [Persian Developer Guide](README_Developer_fa.md)
+[English User Guide](README_User_en.md) | [English Developer Guide](docs/README_Developer_en.md) | [Persian Developer Guide](docs/README_Developer_fa.md)
 
 <div dir="rtl">
 

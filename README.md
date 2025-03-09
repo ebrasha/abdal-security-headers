@@ -4,9 +4,9 @@
   <img src="abdal-security-headers.png" alt="Abdal Security Headers Plugin Screenshot">
 </div>
 
-[Persian Guide](README_fa.md)
+ 
 
-[Persian User Guide](README_User_fa.md) | [English Developer Guide](README_Developer_en.md) | [Persian Developer Guide](README_Developer_fa.md)
+[Persian User Guide](README_fa.md) | [English Developer Guide](docs/README_Developer_en.md) | [Persian Developer Guide](docs/README_Developer_fa.md)
 
 ## 📝 Introduction
 Welcome to Abdal Security Headers! This WordPress plugin helps protect your website by adding essential security headers. This guide will help you get started with the plugin and make the most of its features.

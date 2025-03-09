@@ -4,7 +4,7 @@
   <img src="../abdal-security-headers.png" alt="Abdal Security Headers Plugin Screenshot">
 </div>
 
-[Persian Developer Guide](README_Developer_fa.md) | [English User Guide](README_User_en.md) | [Persian User Guide](README_User_fa.md)
+[Persian Developer Guide](README_Developer_fa.md) | [English User Guide](../README.md) | [Persian User Guide](../README_fa.md)
 
 ## 📝 Description
 Abdal Security Headers is a WordPress plugin that enhances your website's security by implementing and managing various HTTP security headers. It provides a user-friendly interface to configure security headers and Content Security Policy (CSP) directives.
