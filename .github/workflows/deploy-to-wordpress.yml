@@ -37,10 +37,12 @@ jobs:
 
       - name: Tag the new release
         run: |
-          PLUGIN_VERSION=$(grep "Version:" wordpress-plugin/abdal-security-headers.php | awk '{print $2}')
+          PLUGIN_VERSION=$(grep -Eo "Version: [0-9]+\.[0-9]+\.[0-9]+" wordpress-plugin/abdal-security-headers.php | cut -d " " -f2)
+          echo "Detected Plugin Version: $PLUGIN_VERSION"
           cd svn-wordpress
           svn cp trunk tags/$PLUGIN_VERSION
           svn commit -m "Tagging version $PLUGIN_VERSION" --username "$SVN_USERNAME" --password "$SVN_PASSWORD"
+          svn update
 
     env:
       SVN_USERNAME: ${{ secrets.WP_SVN_USERNAME }}
