@@ -1,51 +1,65 @@
 === Abdal Security Headers ===
 Contributors: profshafiei
 Tags: abdal,security headers,ebrahim shafiei,سرآیندهای امنیتی,secure wordpress,profshafiei,prof shafiei,ebrasha,improve security,anti hack,hsh,x frame options,xss protection,x content type options,hsts,referrer policy,feature policy,strict transport security,content security policy,x powered by,abdal security group,abdal team
-Donate link: https://hackers.zone/donate-en
-Requires at least: 3.0
-Tested up to: 5.1.1
-Stable tag: 1.2.0
-Requires PHP: 5.5
+Donate link: https://ebrasha.com/abdal-donation
+Requires at least: 5.0
+Tested up to: 6.7.2
+Stable tag: 2.0.0
+Requires PHP: 7.2
 License: GPL v3
 License URI: https://www.gnu.org/licenses/gpl.html
 
-Improve Your Wordpress security With Abdal Security Headers
+Improve Your WordPress security With Abdal Security Headers
 
-**Plugin Feature**
+**Plugin Features**
 
- - Automatic And Easy Setup Security Header 
+ - Modern UI with iOS-style switches
+ - Real-time CSP Header Preview
+ - Automatic And Easy Setup Security Headers
  - Auto Set X-Frame-Options Header 
  - Auto Set X-XSS-Protection Header
  - Auto Set X-Content-Type-Options Header
  - Auto Set Referrer-Policy Header
  - Auto Set Feature-Policy Header
- - Auto Set Public-Key-Pins Header
  - Auto Set Strict-Transport-Security Header
  - Auto Set Content-Security-Policy Header
- - Auto Set Expect-CT Header
  - Hide X Powered By Header
  - Auto Set Access-Control-Allow-Origin Header
+ - Full RTL Support
+ - Mobile-responsive Admin Interface
 
-	
 == Installation ==
-After Install Abdal Security Headers Please Just Active This Plugin And Enjoy!
-
-
-
+1. Upload the plugin files to `/wp-content/plugins/abdal-security-headers`
+2. Activate the plugin through the WordPress plugins screen
+3. Use `Settings -> Security Headers` to configure the plugin
 
 == Frequently Asked Questions ==
-= What do I do if the plug does not work? =
-Disable then enable the plugin.  You may also want to try removing and re-installing it as well.  If it is still not working, please open a new support thread on the [WordPress support forums](https://wordpress.org/support/plugin/abdal-security-headers).
+= Is this plugin compatible with caching? =
+Yes, works with all major caching plugins.
 
+= Will this break my website? =
+No, the default settings are safe for most websites.
 
+= Do I need technical knowledge? =
+No, the interface is user-friendly with helpful tooltips.
 
 == Changelog ==
+
+= 2.0.0 =
+Release Date: March 15th, 2024
+* Complete UI/UX Redesign with Modern Interface
+* Added Real-time CSP Header Preview
+* Added iOS-style Switches
+* Added Full RTL Support
+* Added Mobile-responsive Admin Interface
+* Improved Performance and Code Optimization
+* Updated Security Headers Implementation
+* Added Detailed Documentation
 
 = 1.2.0 =
 Release Date: March 24th, 2019
 * Fix Content-Security-Policy Issue
 * Remove Widget
-
 
 = 1.1.0 =
 Release Date: March 24th, 2019
@@ -71,5 +85,7 @@ Release Date: March 24th, 2019
 For the changelog of earlier versions, please refer to https://wordpress.org/plugins/abdal-security-headers/
 
 == Screenshots ==
-1. Before using the plugin
-2. After using the plugin
+1. Plugin Settings Interface
+2. CSP Header Configuration
+3. Security Headers Overview
+4. Mobile View

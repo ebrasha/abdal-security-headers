@@ -1,0 +1,393 @@
+/*
+ **********************************************************************
+ * -------------------------------------------------------------------
+ * Project Name : Abdal Security Headers
+ * File Name    : admin.css
+ * Author       : Ebrahim Shafiei (EbraSha)
+ * Email        : Prof.Shafiei@Gmail.com
+ * Created On   : 2024-03-19 12:00:00
+ * Description  : Admin interface styles for security headers plugin
+ * -------------------------------------------------------------------
+ *
+ * "Coding is an engaging and beloved hobby for me. I passionately and insatiably pursue knowledge in cybersecurity and programming."
+ * – Ebrahim Shafiei
+ *
+ **********************************************************************
+ */
+
+.ash-container {
+    max-width: 1200px;
+    margin: 20px 0;
+}
+
+.ash-section {
+    background: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 0.25rem;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,.075);
+}
+
+.ash-section h2 {
+    margin-top: 0;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid #dee2e6;
+    color: #212529;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.ash-field {
+    margin: 1rem 0;
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 0;
+}
+
+.ash-field-label {
+    flex: 1;
+    margin-right: 1rem;
+    font-weight: 500;
+    color: #212529;
+}
+
+.ash-field-control {
+    flex: 0 0 auto;
+}
+
+/* Bootstrap-style Switch */
+.form-switch {
+    padding-left: 2.5em;
+}
+
+.form-switch .form-check-input {
+    width: 2em;
+    margin-left: -2.5em;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgba%280, 0, 0, 0.25%29'/%3e%3c/svg%3e");
+    background-position: left center;
+    border-radius: 2em;
+    transition: background-position .15s ease-in-out;
+}
+
+.form-switch .form-check-input:checked {
+    background-position: right center;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
+}
+
+/* iOS Style Switch */
+.ios-switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 28px;
+}
+
+.ios-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.ios-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.ios-slider:before {
+    position: absolute;
+    content: "";
+    height: 24px;
+    width: 24px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.ios-switch input:checked + .ios-slider {
+    background-color: #2196F3;
+}
+
+.ios-switch input:checked + .ios-slider:before {
+    transform: translateX(22px);
+}
+
+/* Accordion Style */
+.csp-accordion {
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    margin-top: 1rem;
+}
+
+.csp-accordion-header {
+    background-color: #f8f9fa;
+    color: #212529;
+    padding: 1rem 1.5rem;
+    font-weight: 500;
+    border-bottom: 1px solid #dee2e6;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.csp-accordion-header:hover {
+    background-color: #e9ecef;
+}
+
+.csp-accordion-content {
+    background-color: #fff;
+    border-top: 1px solid #dee2e6;
+    padding: 1.5rem;
+    display: none;
+}
+
+.csp-accordion-content.active {
+    display: block;
+}
+
+.csp-preview {
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 0.25rem;
+    padding: 1.5rem;
+    margin-top: 1rem;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-size: 14px;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    max-height: 400px;
+    overflow-y: auto;
+    color: #212529;
+}
+
+.csp-preview pre {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    border: none;
+}
+
+/* CSP Preview Comments */
+.csp-preview-content {
+    position: relative;
+}
+
+#csp-preview-content {
+    width: 100%;
+    overflow-x: auto;
+}
+
+/* Style for comments in preview */
+#csp-preview-content::before {
+    content: attr(data-comment);
+    display: block;
+    color: #6a9955;
+    margin-bottom: 1rem;
+}
+
+/* Highlight different parts of the CSP header */
+.csp-header-name {
+    color: #569cd6;
+}
+
+.csp-directive-name {
+    color: #9cdcfe;
+}
+
+.csp-directive-value {
+    color: #ce9178;
+}
+
+/* Add a subtle scrollbar */
+.csp-preview::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.csp-preview::-webkit-scrollbar-track {
+    background: #2d2d2d;
+    border-radius: 4px;
+}
+
+.csp-preview::-webkit-scrollbar-thumb {
+    background: #666;
+    border-radius: 4px;
+}
+
+.csp-preview::-webkit-scrollbar-thumb:hover {
+    background: #888;
+}
+
+/* Copy button */
+.csp-copy-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #333;
+    border: 1px solid #666;
+    color: #d4d4d4;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: all 0.3s ease;
+}
+
+.csp-copy-button:hover {
+    background: #444;
+    border-color: #888;
+}
+
+/* Arrow icon for accordion */
+.accordion-arrow {
+    width: 20px;
+    height: 20px;
+    position: relative;
+    transition: transform 0.3s ease;
+}
+
+.accordion-arrow::before,
+.accordion-arrow::after {
+    content: '';
+    position: absolute;
+    background-color: #212529;
+    width: 2px;
+    height: 10px;
+    top: 50%;
+    left: 50%;
+}
+
+.accordion-arrow::before {
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.accordion-arrow::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.accordion-arrow.active::before {
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.accordion-arrow.active::after {
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+/* CSP Section */
+.csp-directives {
+    margin-top: 1.5rem;
+}
+
+.csp-field {
+    margin-bottom: 1rem;
+}
+
+.csp-field label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.csp-field input[type="text"] {
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+}
+
+/* RTL Support */
+.rtl .ash-field-label {
+    margin-right: 0;
+    margin-left: 1rem;
+}
+
+.rtl .form-switch {
+    padding-left: 0;
+    padding-right: 2.5em;
+}
+
+.rtl .form-switch .form-check-input {
+    margin-left: 0;
+    margin-right: -2.5em;
+}
+
+/* Description text */
+.ash-description {
+    color: #6c757d;
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 782px) {
+    .ash-field {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .ash-field-label {
+        margin-bottom: 0.5rem;
+    }
+    
+    .csp-field input[type="text"] {
+        max-width: 100%;
+    }
+}
+
+/* SweetAlert2 RTL Styles */
+.rtl-alert {
+    direction: rtl;
+    font-family: inherit;
+}
+
+.rtl-alert .swal2-title {
+    font-family: inherit;
+}
+
+.rtl-alert .swal2-html-container {
+    font-family: inherit;
+}
+
+.rtl-alert .swal2-confirm,
+.rtl-alert .swal2-cancel {
+    font-family: inherit;
+    font-size: 1rem;
+    padding: 0.5rem 1.5rem;
+}
+
+/* Loading Spinner */
+.ash-spinner {
+    display: none;
+    margin-left: 10px;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    vertical-align: middle;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Submit button container */
+.ash-submit-container {
+    display: flex;
+    align-items: center;
+} 

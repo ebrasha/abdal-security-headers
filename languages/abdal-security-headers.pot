@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: Abdal Security Headers\n"
-"POT-Creation-Date: 2019-03-25 02:42+0430\n"
-"PO-Revision-Date: 2019-03-25 02:38+0430\n"
+"POT-Creation-Date: 2025-03-09 04:16+0330\n"
+"PO-Revision-Date: 2025-03-09 04:16+0330\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,36 +16,210 @@ msgstr ""
 "X-Poedit-WPHeader: abdal-security-headers.php\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
-"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
-"_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: engine/includes/class-dashboard-widgets.php:21
-msgid "Abdal Security Headers Running Successfully"
+#: includes/class-ash-admin.php:54
+msgid "Are you sure you want to save these settings?"
 msgstr ""
 
-#: engine/includes/class-dashboard-widgets.php:21
-msgid "Thanks For Using Our Plugin"
+#: includes/class-ash-admin.php:55
+msgid "Yes"
+msgstr ""
+
+#: includes/class-ash-admin.php:56
+msgid "No"
+msgstr ""
+
+#: includes/class-ash-admin.php:57
+msgid "Settings saved successfully"
+msgstr ""
+
+#: includes/class-ash-admin.php:58
+msgid "OK"
+msgstr ""
+
+#: includes/class-ash-admin.php:59
+msgid "Error"
+msgstr ""
+
+#: includes/class-ash-admin.php:60
+msgid "An error occurred while saving the settings. Please try again."
 msgstr ""
 
 #. Plugin Name of the plugin/theme
-#: engine/includes/class-dashboard-widgets.php:27
+#: includes/class-ash-admin.php:66 includes/class-ash-admin.php:77
 msgid "Abdal Security Headers"
 msgstr ""
 
+#: includes/class-ash-admin.php:67
+msgid "Security Headers"
+msgstr ""
+
+#: includes/class-ash-admin.php:83 includes/class-ash-admin.php:144
+msgid "Basic Security Headers"
+msgstr ""
+
+#: includes/class-ash-admin.php:84 includes/class-ash-admin.php:260
+msgid "Configure basic security headers for your website."
+msgstr ""
+
+#: includes/class-ash-admin.php:89 includes/class-ash-admin.php:160
+msgid "Additional Security Features"
+msgstr ""
+
+#: includes/class-ash-admin.php:90 includes/class-ash-admin.php:264
+msgid "Enable additional security features to enhance your website protection."
+msgstr ""
+
+#: includes/class-ash-admin.php:95 includes/class-ash-admin.php:176
+msgid "Content Security Policy"
+msgstr ""
+
+#: includes/class-ash-admin.php:97
+msgid "Enable Content Security Policy"
+msgstr ""
+
+#: includes/class-ash-admin.php:109 includes/class-ash-admin.php:268
+msgid "Configure Content Security Policy (CSP) directives"
+msgstr ""
+
+#: includes/class-ash-admin.php:114
+msgid "CSP Header Preview"
+msgstr ""
+
+#: includes/class-ash-admin.php:150
+msgid "X-XSS-Protection"
+msgstr ""
+
+#: includes/class-ash-admin.php:151
+msgid "X-Content-Type-Options"
+msgstr ""
+
+#: includes/class-ash-admin.php:152
+msgid "Strict-Transport-Security"
+msgstr ""
+
+#: includes/class-ash-admin.php:153
+msgid "Permissions-Policy"
+msgstr ""
+
+#: includes/class-ash-admin.php:154
+msgid "X-Frame-Options"
+msgstr ""
+
+#: includes/class-ash-admin.php:155
+msgid "Referrer-Policy"
+msgstr ""
+
+#: includes/class-ash-admin.php:166
+msgid "Remove X-Powered-By Header"
+msgstr ""
+
+#: includes/class-ash-admin.php:167
+msgid "Hide WordPress Version"
+msgstr ""
+
+#: includes/class-ash-admin.php:168
+msgid "Remove Login Error Messages"
+msgstr ""
+
+#: includes/class-ash-admin.php:169
+msgid "Disable XML-RPC"
+msgstr ""
+
+#: includes/class-ash-admin.php:170
+msgid "Remove X-Pingback Header"
+msgstr ""
+
+#: includes/class-ash-admin.php:171
+msgid "Restrict REST API Access"
+msgstr ""
+
+#: includes/class-ash-admin.php:183
+msgid "Default Source"
+msgstr ""
+
+#: includes/class-ash-admin.php:184
+msgid "Script Source"
+msgstr ""
+
+#: includes/class-ash-admin.php:185
+msgid "Style Source"
+msgstr ""
+
+#: includes/class-ash-admin.php:186
+msgid "Image Source"
+msgstr ""
+
+#: includes/class-ash-admin.php:187
+msgid "Connect Source"
+msgstr ""
+
+#: includes/class-ash-admin.php:188
+msgid "Font Source"
+msgstr ""
+
+#: includes/class-ash-admin.php:189
+msgid "Object Source"
+msgstr ""
+
+#: includes/class-ash-admin.php:190
+msgid "Media Source"
+msgstr ""
+
+#: includes/class-ash-admin.php:191
+msgid "Frame Source"
+msgstr ""
+
+#: includes/class-ash-admin.php:192
+msgid "Worker Source"
+msgstr ""
+
+#: includes/class-ash-admin.php:193
+msgid "Form Action"
+msgstr ""
+
+#: includes/class-ash-admin.php:194
+msgid "Base URI"
+msgstr ""
+
+#: includes/class-ash-admin.php:195
+msgid "Sandbox"
+msgstr ""
+
+#: includes/class-ash-admin.php:196
+msgid "Report URI"
+msgstr ""
+
+#: includes/class-ash-admin.php:197
+msgid "Report To"
+msgstr ""
+
+#: includes/class-ash-headers.php:194
+msgid "Invalid login credentials."
+msgstr ""
+
+#: includes/class-ash-headers.php:225
+msgid "REST API is disabled."
+msgstr ""
+
 #. Plugin URI of the plugin/theme
-msgid "https://hackers.zone/abdal-security-headers"
+msgid "https://github.com/ebrasha/abdal-security-headers"
 msgstr ""
 
 #. Description of the plugin/theme
-msgid "Improve Your WordPress Security With Abdal Security Headers"
+msgid ""
+"WordPress Security Headers Manager plugin, featuring full security headers "
+"control, advanced security features, and Content Security Policy (CSP)."
 msgstr ""
 
 #. Author of the plugin/theme
-msgid "Ebrahim Shafiei"
+msgid "Ebrahim Shafiei (EbraSha)"
 msgstr ""
 
 #. Author URI of the plugin/theme
-msgid "https://hackers.zone/ebrahim-shafiei-en"
+msgid "https://github.com/ebrasha"
 msgstr ""

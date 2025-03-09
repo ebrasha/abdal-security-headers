@@ -2,16 +2,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Abdal Security Headers\n"
 "POT-Creation-Date: 2025-03-09 04:16+0330\n"
-"PO-Revision-Date: 2025-03-09 04:18+0330\n"
+"PO-Revision-Date: 2025-03-09 04:16+0330\n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"Language: fa_IR\n"
+"Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.2\n"
 "X-Poedit-Basepath: ..\n"
-"Plural-Forms: nplurals=2; plural=(n==0 || n==1);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: abdal-security-headers.php\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -23,213 +23,203 @@ msgstr ""
 
 #: includes/class-ash-admin.php:54
 msgid "Are you sure you want to save these settings?"
-msgstr "آیا می خواهید این تنظیمات را ذخیره کنید ؟"
+msgstr ""
 
 #: includes/class-ash-admin.php:55
 msgid "Yes"
-msgstr "بله"
+msgstr ""
 
 #: includes/class-ash-admin.php:56
 msgid "No"
-msgstr "خیر"
+msgstr ""
 
 #: includes/class-ash-admin.php:57
 msgid "Settings saved successfully"
-msgstr "تنظیمات با موفقیت ذخیره شد"
+msgstr ""
 
 #: includes/class-ash-admin.php:58
 msgid "OK"
-msgstr "متوجه شدم"
+msgstr ""
 
 #: includes/class-ash-admin.php:59
 msgid "Error"
-msgstr "خطا"
+msgstr ""
 
 #: includes/class-ash-admin.php:60
 msgid "An error occurred while saving the settings. Please try again."
-msgstr "خطایی در هنگام ذخیره تنظیمات رخ داد. لطفاً دوباره تلاش کنید."
+msgstr ""
 
 #. Plugin Name of the plugin/theme
 #: includes/class-ash-admin.php:66 includes/class-ash-admin.php:77
 msgid "Abdal Security Headers"
-msgstr "هدرهای امنیتی ابدال"
+msgstr ""
 
 #: includes/class-ash-admin.php:67
 msgid "Security Headers"
-msgstr "هدرهای امنیتی"
+msgstr ""
 
 #: includes/class-ash-admin.php:83 includes/class-ash-admin.php:144
 msgid "Basic Security Headers"
-msgstr "هدرهای امنیتی پایه"
+msgstr ""
 
 #: includes/class-ash-admin.php:84 includes/class-ash-admin.php:260
 msgid "Configure basic security headers for your website."
-msgstr "پیکربندی هدرهای امنیتی پایه برای وب‌سایت شما."
+msgstr ""
 
 #: includes/class-ash-admin.php:89 includes/class-ash-admin.php:160
 msgid "Additional Security Features"
-msgstr "ویژگی‌های امنیتی اضافی"
+msgstr ""
 
 #: includes/class-ash-admin.php:90 includes/class-ash-admin.php:264
 msgid "Enable additional security features to enhance your website protection."
-msgstr "فعال‌سازی ویژگی‌های امنیتی اضافی برای افزایش حفاظت از وب‌سایت شما."
+msgstr ""
 
 #: includes/class-ash-admin.php:95 includes/class-ash-admin.php:176
 msgid "Content Security Policy"
-msgstr "سیاست امنیتی محتوا"
+msgstr ""
 
 #: includes/class-ash-admin.php:97
 msgid "Enable Content Security Policy"
-msgstr "فعال‌سازی سیاست امنیتی محتوا (CSP)"
+msgstr ""
 
 #: includes/class-ash-admin.php:109 includes/class-ash-admin.php:268
 msgid "Configure Content Security Policy (CSP) directives"
-msgstr "پیکربندی دستورات سیاست امنیتی محتوا (CSP)"
+msgstr ""
 
 #: includes/class-ash-admin.php:114
 msgid "CSP Header Preview"
-msgstr "پیش‌نمایش هدر CSP"
+msgstr ""
 
 #: includes/class-ash-admin.php:150
 msgid "X-XSS-Protection"
-msgstr "هدر امنیتی X-XSS"
+msgstr ""
 
 #: includes/class-ash-admin.php:151
 msgid "X-Content-Type-Options"
-msgstr "هدر امنیتی X-Content-Type-Options"
+msgstr ""
 
 #: includes/class-ash-admin.php:152
 msgid "Strict-Transport-Security"
-msgstr "هدر امنیتی Strict-Transport-Security"
+msgstr ""
 
 #: includes/class-ash-admin.php:153
 msgid "Permissions-Policy"
-msgstr "هدر امنیتی Permissions-Policy"
+msgstr ""
 
 #: includes/class-ash-admin.php:154
 msgid "X-Frame-Options"
-msgstr "هدر امنیتی X-Frame-Options"
+msgstr ""
 
 #: includes/class-ash-admin.php:155
 msgid "Referrer-Policy"
-msgstr "هدر امنیتی Referrer-Policy"
+msgstr ""
 
 #: includes/class-ash-admin.php:166
 msgid "Remove X-Powered-By Header"
-msgstr "حذف هدر X-Powered-By"
+msgstr ""
 
 #: includes/class-ash-admin.php:167
 msgid "Hide WordPress Version"
-msgstr "مخفی کردن نسخه وردپرس"
+msgstr ""
 
 #: includes/class-ash-admin.php:168
 msgid "Remove Login Error Messages"
-msgstr "حذف پیام‌های خطای ورود"
+msgstr ""
 
 #: includes/class-ash-admin.php:169
 msgid "Disable XML-RPC"
-msgstr "غیرفعال‌سازی XML-RPC"
+msgstr ""
 
 #: includes/class-ash-admin.php:170
 msgid "Remove X-Pingback Header"
-msgstr "حذف هدر X-Pingback"
+msgstr ""
 
 #: includes/class-ash-admin.php:171
 msgid "Restrict REST API Access"
-msgstr "محدود کردن دسترسی به REST API"
+msgstr ""
 
 #: includes/class-ash-admin.php:183
 msgid "Default Source"
-msgstr "منبع پیش‌فرض"
+msgstr ""
 
 #: includes/class-ash-admin.php:184
 msgid "Script Source"
-msgstr "منبع اسکریپت"
+msgstr ""
 
 #: includes/class-ash-admin.php:185
 msgid "Style Source"
-msgstr "منبع استایل"
+msgstr ""
 
 #: includes/class-ash-admin.php:186
 msgid "Image Source"
-msgstr "منبع تصویر"
+msgstr ""
 
 #: includes/class-ash-admin.php:187
 msgid "Connect Source"
-msgstr "منبع اتصال"
+msgstr ""
 
 #: includes/class-ash-admin.php:188
 msgid "Font Source"
-msgstr "منبع فونت"
+msgstr ""
 
 #: includes/class-ash-admin.php:189
 msgid "Object Source"
-msgstr "منبع شیء"
+msgstr ""
 
 #: includes/class-ash-admin.php:190
 msgid "Media Source"
-msgstr "منبع رسانه"
+msgstr ""
 
 #: includes/class-ash-admin.php:191
 msgid "Frame Source"
-msgstr "منبع فریم"
+msgstr ""
 
 #: includes/class-ash-admin.php:192
 msgid "Worker Source"
-msgstr "منبع کارگر"
+msgstr ""
 
 #: includes/class-ash-admin.php:193
 msgid "Form Action"
-msgstr "عملیات فرم"
+msgstr ""
 
 #: includes/class-ash-admin.php:194
 msgid "Base URI"
-msgstr "URI پایه"
+msgstr ""
 
 #: includes/class-ash-admin.php:195
 msgid "Sandbox"
-msgstr "محیط امن"
+msgstr ""
 
 #: includes/class-ash-admin.php:196
 msgid "Report URI"
-msgstr "URI گزارش"
+msgstr ""
 
 #: includes/class-ash-admin.php:197
 msgid "Report To"
-msgstr "گزارش به"
+msgstr ""
 
 #: includes/class-ash-headers.php:194
 msgid "Invalid login credentials."
-msgstr "اطلاعات ورود نامعتبر است."
+msgstr ""
 
 #: includes/class-ash-headers.php:225
 msgid "REST API is disabled."
-msgstr "REST API غیرفعال شده است."
+msgstr ""
 
 #. Plugin URI of the plugin/theme
 msgid "https://github.com/ebrasha/abdal-security-headers"
-msgstr "https://github.com/ebrasha/abdal-security-headers"
+msgstr ""
 
 #. Description of the plugin/theme
 msgid ""
 "WordPress Security Headers Manager plugin, featuring full security headers "
 "control, advanced security features, and Content Security Policy (CSP)."
 msgstr ""
-"افزونه مدیریت هدرهای امنیتی وردپرس، شامل کنترل کامل هدرهای امنیتی، ویژگی‌های "
-"امنیتی اضافی و سیاست امنیتی محتوا (CSP)."
 
 #. Author of the plugin/theme
 msgid "Ebrahim Shafiei (EbraSha)"
-msgstr "ابراهیم شفیعی (ابراشا)"
+msgstr ""
 
 #. Author URI of the plugin/theme
 msgid "https://github.com/ebrasha"
-msgstr "https://github.com/ebrasha"
-
-#~ msgid ""
-#~ "Manage security headers for your WordPress site with Persian and English "
-#~ "language support"
-#~ msgstr "افزونه وردپرس برای مدیریت هدرهای امنیتی"
-
-#~ msgid "Error saving settings."
-#~ msgstr "خطا در ذخیره تنظیمات."
+msgstr ""
