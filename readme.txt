@@ -103,3 +103,12 @@ This version includes important UI fixes and improved mobile support. Update rec
 
 = 5.1.0 =
 Major update with new interface and enhanced security features. Backup your settings before updating.
+
+== Languages ==
+This plugin is available in the following languages:
+- English (en_US)
+- Persian (fa_IR)
+
+== License ==
+This plugin is released under the **GPLv2 or later** License.
+License details: [http://www.gnu.org/licenses/gpl-2.0.html](http://www.gnu.org/licenses/gpl-2.0.html)
