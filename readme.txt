@@ -4,7 +4,7 @@ Tags: security, security-headers, x-frame-options, content-security-policy, hsts
 Donate link: https://ebrasha.com/abdal-donation
 Requires at least: 5.0
 Tested up to: 6.7.2
-Stable tag: 5.1.0
+Stable tag: 5.1.1
 Requires PHP: 7.2
 License: GPL v3
 License URI: https://www.gnu.org/licenses/gpl.html
@@ -70,8 +70,12 @@ With a user-friendly interface, real-time previews, and easy configuration, this
 
 == Changelog ==
 
+= 5.1.1 =
+Release Date: March 9th, 2025
+* fix UI/UX
+
 = 5.1.0 =
-Release Date: March 15th, 2024
+Release Date: March 9th, 2025
 * Complete UI/UX Redesign with Modern Interface
 * Added Real-time CSP Header Preview
 * Added iOS-style Switches

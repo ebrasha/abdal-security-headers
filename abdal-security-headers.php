@@ -20,7 +20,7 @@
  * Plugin Name: Abdal Security Headers
  * Plugin URI: https://github.com/ebrasha/abdal-security-headers
  * Description:  WordPress Security Headers Manager plugin, featuring full security headers control, advanced security features, and Content Security Policy (CSP).
- * Version: 5.1.0
+ * Version: 5.1.1
  * Author: Ebrahim Shafiei (EbraSha)
  * Author URI: https://github.com/ebrasha
  * Text Domain: abdal-security-headers
