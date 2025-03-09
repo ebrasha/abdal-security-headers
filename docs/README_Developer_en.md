@@ -1,7 +1,7 @@
 # 🛡️ Abdal Security Headers
 
 <div align="center">
-  <img src="../assets/images/abdal-security-headers.png" alt="Abdal Security Headers Plugin Screenshot">
+  <img src="../abdal-security-headers.png" alt="Abdal Security Headers Plugin Screenshot">
 </div>
 
 [Persian Developer Guide](README_Developer_fa.md) | [English User Guide](README_User_en.md) | [Persian User Guide](README_User_fa.md)

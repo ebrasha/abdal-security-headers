@@ -1,7 +1,7 @@
 # 🛡️ هدرهای امنیتی ابدال
 
 <div align="center">
-  <img src="../assets/images/abdal-security-headers.png" alt="تصویر افزونه هدرهای امنیتی ابدال">
+  <img src="../abdal-security-headers.png" alt="تصویر افزونه هدرهای امنیتی ابدال">
 </div>
 
 [English Developer Guide](README_Developer_en.md) | [English User Guide](README_User_en.md) | [Persian User Guide](README_User_fa.md)
