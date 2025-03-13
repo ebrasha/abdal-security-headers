@@ -20,7 +20,7 @@
  * Plugin Name: Abdal Security Headers
  * Plugin URI: https://github.com/ebrasha/abdal-security-headers
  * Description:  WordPress Security Headers Manager plugin, featuring full security headers control, advanced security features, and Content Security Policy (CSP).
- * Version: 5.1.2
+ * Version: 5.1.3
  * Author: Ebrahim Shafiei (EbraSha)
  * Author URI: https://github.com/ebrasha
  * Text Domain: abdal-security-headers
@@ -28,13 +28,14 @@
  * License: GPLv2 or later
  */
 
+
 // Prevent direct access to this file
 if (!defined('ABSPATH')) {
     exit;
 }
 
 // Define plugin constants
-define('ASH_VERSION', '3.5.0');
+define('ASH_VERSION', '5.1.3');
 define('ASH_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('ASH_PLUGIN_URL', plugin_dir_url(__FILE__));
 
@@ -80,23 +81,23 @@ function ash_activate() {
         'permissions_policy' => '1',
         'x_frame_options' => '1',
         'referrer_policy' => '1',
-        'content_security_policy' => '1',
-        'remove_x_powered_by' => '0',
-        'hide_wp_version' => '0',
-        'remove_login_errors' => '0',
-        'disable_xmlrpc' => '0',
-        'remove_x_pingback' => '0',
-        'restrict_rest_api' => '0',
+        'content_security_policy' => '0',
+        'remove_x_powered_by' => '1',
+        'hide_wp_version' => '1',
+        'remove_login_errors' => '1',
+        'disable_xmlrpc' => '1',
+        'remove_x_pingback' => '1',
+        'restrict_rest_api' => '1',
         'csp_default_src' => "'self' ".$site_url,
-        'csp_script_src' => "'self' ".$site_url,
-        'csp_style_src' => "'self' ".$site_url,
-        'csp_img_src' => "'self' ".$site_url,
-        'csp_connect_src' => "'self' ".$site_url,
-        'csp_font_src' => "'self' ".$site_url,
+        'csp_script_src' => "'self' blob:  'unsafe-inline' 'unsafe-eval'  *.google.com *.gstatic.com *.googletagmanager.com *.google-analytics.com *.facebook.net *.twitter.com *.youtube.com *.vimeo.com *.cloudflare.com *.bootstrapcdn.com *.jsdelivr.net *.fontawesome.com  ".$site_url,
+        'csp_style_src' => "'self' 'unsafe-inline'   *.googleapis.com *.bootstrapcdn.com *.jsdelivr.net *.fontawesome.com  ".$site_url,
+        'csp_img_src' => "'self' data: blob:  *.gravatar.com *.google.com *.gstatic.com *.wp.com *.cloudflare.com *.facebook.com *.twitter.com  *.x.com  *.youtube.com *.vimeo.com  ".$site_url,
+        'csp_connect_src' => "'self'   *.google-analytics.com *.googletagmanager.com *.facebook.net *.twitter.com  *.x.com  *.paypal.com *.stripe.com *.woocommerce.com  ".$site_url,
+        'csp_font_src' => "'self' data:  *.googleapis.com *.gstatic.com *.fontawesome.com  ".$site_url,
         'csp_object_src' => "'self' ".$site_url,
         'csp_media_src' => "'self' ".$site_url,
-        'csp_frame_src' => "'self' ".$site_url,
-        'csp_worker_src' => "'self' ".$site_url,
+        'csp_frame_src' => "'self' *.google.com *.youtube.com *.vimeo.com *.facebook.com *.twitter.com  *.x.com  ".$site_url,
+        'csp_worker_src' => '',
         'csp_form_action' => " * ",
         'csp_base_uri' => '',
         'csp_sandbox' => '',
@@ -116,6 +117,9 @@ function ash_activate() {
 register_deactivation_hook(__FILE__, 'ash_deactivate');
 function ash_deactivate() {
     // No need to do anything here
+    // Remove all plugin options and any other plugin-related data
+    //delete_option('ash_options');   
+    
 }
 
 // Uninstall hook for complete cleanup

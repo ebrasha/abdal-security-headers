@@ -3,7 +3,12 @@ name: Deploy to WordPress.org
 on:
   release:
     types: [published]
-    workflow_dispatch:
+  workflow_dispatch:
+    inputs:
+      plugin_version:
+        description: 'Plugin Version (Optional, leave empty to auto-detect)'
+        required: false
+        default: ''
 
 jobs:
   deploy:
@@ -29,17 +34,26 @@ jobs:
           svn update --set-depth infinity trunk
           svn update --set-depth infinity tags
 
+      - name: Determine Plugin Version
+        id: get_version
+        run: |
+          if [[ -n "${{ github.event.inputs.plugin_version }}" ]]; then
+            PLUGIN_VERSION="${{ github.event.inputs.plugin_version }}"
+          else
+            PLUGIN_VERSION=$(grep -Eo "Version: [0-9]+\.[0-9]+\.[0-9]+" wordpress-plugin/abdal-security-headers.php | cut -d " " -f2)
+          fi
+          echo "PLUGIN_VERSION=$PLUGIN_VERSION" >> $GITHUB_ENV
+          echo "Detected Plugin Version: $PLUGIN_VERSION"
+
       - name: Copy new version to trunk
         run: |
           rsync -r --delete wordpress-plugin/ svn-wordpress/trunk/
           cd svn-wordpress
           svn add --force trunk
-          svn commit -m "Updating to latest release" --username "$SVN_USERNAME" --password "$SVN_PASSWORD"
+          svn commit -m "Updating to latest release ($PLUGIN_VERSION)" --username "$SVN_USERNAME" --password "$SVN_PASSWORD"
 
       - name: Tag the new release
         run: |
-          PLUGIN_VERSION=$(grep -Eo "Version: [0-9]+\.[0-9]+\.[0-9]+" wordpress-plugin/abdal-security-headers.php | cut -d " " -f2)
-          echo "Detected Plugin Version: $PLUGIN_VERSION"
           cd svn-wordpress
           svn cp trunk tags/$PLUGIN_VERSION
           svn commit -m "Tagging version $PLUGIN_VERSION" --username "$SVN_USERNAME" --password "$SVN_PASSWORD"

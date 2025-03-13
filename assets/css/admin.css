@@ -18,6 +18,7 @@
 .ash-container {
     max-width: 1200px;
     margin: 20px 0;
+    direction: rtl;
 }
 
 .ash-section {
@@ -150,6 +151,7 @@
     border-top: 1px solid #dee2e6;
     padding: 1.5rem;
     display: none;
+    direction: ltr;
 }
 
 .csp-accordion-content.active {
@@ -186,6 +188,9 @@
 #csp-preview-content {
     width: 100%;
     overflow-x: auto;
+    direction: ltr;
+    text-align: left;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
 }
 
 /* Style for comments in preview */
@@ -287,6 +292,7 @@
 /* CSP Section */
 .csp-directives {
     margin-top: 1.5rem;
+    direction: ltr;
 }
 
 .csp-field {
@@ -297,6 +303,8 @@
     display: block;
     margin-bottom: 0.5rem;
     font-weight: 500;
+    direction: ltr;
+    text-align: left;
 }
 
 .csp-field input[type="text"] {
@@ -306,6 +314,8 @@
     line-height: 1.5;
     border: 1px solid #ced4da;
     border-radius: 0.25rem;
+    direction: ltr;
+    text-align: left;
 }
 
 /* RTL Support */
@@ -390,4 +400,31 @@
 .ash-submit-container {
     display: flex;
     align-items: center;
+}
+
+/* Keep tooltips LTR */
+.csp-directives label[title] {
+    direction: ltr;
+}
+
+/* Ensure quick select buttons are LTR */
+.quick-select-buttons {
+    direction: ltr;
+}
+
+/* Ensure CSP accordion content is LTR */
+.csp-accordion-content {
+    direction: ltr;
+}
+
+/* Ensure CSP field labels are LTR */
+.csp-field label {
+    direction: ltr;
+    text-align: left;
+}
+
+/* Keep CSP input fields LTR */
+.csp-field input[type="text"] {
+    direction: ltr;
+    text-align: left;
 } 

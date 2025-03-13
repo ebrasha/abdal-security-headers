@@ -4,7 +4,7 @@ Donate link: https://ebrasha.com/abdal-donation
 Tags: security, security-headers, x-frame-options, content-security-policy, hsts
 Requires at least: 5.0
 Tested up to: 6.7.2
-Stable tag: 5.1.2
+Stable tag: 5.1.3
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -67,6 +67,14 @@ No, the interface is user-friendly with helpful tooltips.
 
 == Changelog ==
 
+
+= 5.1.3 =
+* Fixed CSP preview formatting issues
+* Resolved RTL/LTR conflicts in the interface
+* Fixed header removal functionality
+* Improved compatibility with various WordPress themes
+
+
 = 5.1.2 =
 * Fixed UI/UX issues
 
@@ -100,6 +108,11 @@ No, the interface is user-friendly with helpful tooltips.
 * Basic security headers implementation
 
 == Upgrade Notice ==
+
+ 
+= 5.1.3 =
+Critical update: Fixes important CSP preview formatting and header removal issues. Resolves RTL/LTR interface conflicts and improves WordPress theme compatibility. All users should upgrade immediately for better functionality and stability.
+
 
 = 5.1.2 =
 This version includes important UI fixes and improved mobile support. Update recommended for all users.

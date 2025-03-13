@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Abdal Security Headers\n"
-"POT-Creation-Date: 2025-03-09 04:16+0330\n"
-"PO-Revision-Date: 2025-03-09 04:18+0330\n"
+"POT-Creation-Date: 2025-03-13 17:07+0330\n"
+"PO-Revision-Date: 2025-03-13 17:08+0330\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fa_IR\n"
@@ -176,7 +176,7 @@ msgstr "منبع فریم"
 
 #: includes/class-ash-admin.php:192
 msgid "Worker Source"
-msgstr "منبع کارگر"
+msgstr "منبع مجاز برای پردازش‌گرهای وب"
 
 #: includes/class-ash-admin.php:193
 msgid "Form Action"
@@ -188,7 +188,7 @@ msgstr "URI پایه"
 
 #: includes/class-ash-admin.php:195
 msgid "Sandbox"
-msgstr "محیط امن"
+msgstr "محدوده ایزوله اجرای کد"
 
 #: includes/class-ash-admin.php:196
 msgid "Report URI"
