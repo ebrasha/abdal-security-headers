@@ -2,8 +2,8 @@
 Contributors: profshafiei
 Donate link: https://ebrasha.com/abdal-donation
 Tags: security, security-headers, x-frame-options, content-security-policy, hsts
-Requires at least: 5.0
-Tested up to: 6.7.2
+Requires at least: 6.7.2
+Tested up to: 7.1
 Stable tag: 5.3.0
 Requires PHP: 7.2
 License: GPLv2 or later

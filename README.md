@@ -39,6 +39,23 @@ The assistant **observes** the site. It does **not** auto-whitelist anything.
 4. Start a Smart Scan, browse the site, then review detections and apply selected sources.
 5. Save changes.
 
+## 🌐 Languages
+
+The plugin is fully translated into:
+
+- 🇺🇸 English (`en_US`)
+- 🇮🇷 Persian (`fa_IR`)
+- 🇪🇸 Spanish (`es_ES`)
+- 🇯🇵 Japanese (`ja`)
+- 🇩🇪 German (`de_DE`)
+- 🇫🇷 French (`fr_FR`)
+- 🇧🇷 Portuguese — Brazil (`pt_BR`)
+- 🇷🇺 Russian (`ru_RU`)
+- 🇮🇹 Italian (`it_IT`)
+- 🇹🇷 Turkish (`tr_TR`)
+- 🇨🇳 Chinese Simplified (`zh_CN`)
+- 🇸🇦 Arabic (`ar`)
+
 ## 🐛 Reporting Issues
 
 If you encounter any issues or have configuration problems, please reach out via email at Prof.Shafiei@Gmail.com. You can also report issues on GitLab or GitHub.
