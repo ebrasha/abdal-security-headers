@@ -68,10 +68,10 @@ No. Start a Smart Scan, browse the site, then apply the sources you accept. You 
 
 == Screenshots ==
 
-1. Settings dashboard with Smart CSP Assistant
-2. CSP directive editor and live header preview
-3. Security headers and hardening toggles
-4. Mobile-responsive admin layout
+1. Dashboard with Security Headers and Additional Security Features
+2. Smart CSP Assistant
+3. Content Security Policy
+4. securityheaders.com score before and after enabling the plugin
 
 == Changelog ==
 
