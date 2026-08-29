@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Abdal Security Headers 5.3.0\n"
+"Project-Id-Version: Abdal Security Headers 5.4.2\n"
 "Report-Msgid-Bugs-To: Prof.Shafiei@Gmail.com\n"
-"POT-Creation-Date: 2026-08-29 06:30+0330\n"
-"PO-Revision-Date: 2026-08-29 06:30+0330\n"
+"POT-Creation-Date: 2026-08-29 10:30+0330\n"
+"PO-Revision-Date: 2026-08-29 10:30+0330\n"
 "Last-Translator: Ebrahim Shafiei (EbraSha) <Prof.Shafiei@Gmail.com>\n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
@@ -620,6 +620,134 @@ msgstr "источников обнаружено"
 #: includes/class-ash-csp-assistant.php
 msgid "Keep watching for new sources after learning completes."
 msgstr "Продолжать искать новые источники после завершения обучения."
+
+#: includes/class-ash-csp-assistant.php
+msgid "Watch for new sources"
+msgstr "Следить за новыми источниками"
+
+#: includes/class-ash-csp-assistant.php
+msgid "Deep file scan"
+msgstr "Глубокое сканирование файлов"
+
+#: includes/class-ash-csp-assistant.php
+msgid "Also scan plugin and theme files on disk for CSP origins that are not loaded yet. Learning duration switches to Manual so a timer cannot stop this scan."
+msgstr "Также сканирует файлы плагинов и тем на диске в поисках источников CSP, которые ещё не загружаются. Длительность обучения переключается на ручной режим, чтобы таймер не остановил сканирование."
+
+#: includes/class-ash-csp-assistant.php
+msgid "Counting plugin and theme files…"
+msgstr "Подсчёт файлов плагинов и тем…"
+
+#. translators: 1: files processed, 2: total files
+#: includes/class-ash-csp-assistant.php
+#, php-format
+msgid "Scanning files: %1$d of %2$d"
+msgstr "Сканирование файлов: %1$d из %2$d"
+
+#. translators: %d: number of sources found on disk
+#: includes/class-ash-csp-assistant.php
+#, php-format
+msgid "%d sources found on disk"
+msgstr "На диске найдено источников: %d"
+
+#: includes/class-ash-csp-assistant.php
+msgid "File scan complete"
+msgstr "Сканирование файлов завершено"
+
+#: includes/class-ash-csp-assistant.php
+msgid "File scan cancelled"
+msgstr "Сканирование файлов отменено"
+
+#: includes/class-ash-csp-assistant.php
+msgid "Cancel file scan"
+msgstr "Отменить сканирование файлов"
+
+#: includes/class-ash-csp-assistant.php
+msgid "File scan failed. Please try again."
+msgstr "Не удалось просканировать файлы. Попробуйте ещё раз."
+
+#: includes/class-ash-csp-assistant.php
+msgid "No plugin or theme files were found to scan."
+msgstr "Файлы плагинов или тем для сканирования не найдены."
+
+#: includes/class-ash-csp-assistant.php
+msgid "Learning duration is locked to Manual while Deep file scan is on."
+msgstr "Пока включено глубокое сканирование, длительность обучения зафиксирована в ручном режиме."
+
+#: includes/class-ash-csp-assistant.php
+msgid "Deep file scan is turned off."
+msgstr "Глубокое сканирование файлов выключено."
+
+#: includes/class-ash-csp-assistant.php
+msgid "Excluded paths"
+msgstr "Исключённые пути"
+
+#: includes/class-ash-csp-assistant.php
+msgid "Folder or file names skipped during Deep file scan. Use a name such as node_modules or a relative path such as vendor/cache."
+msgstr "Имена папок или файлов, которые пропускаются при глубоком сканировании. Например, node_modules или относительный путь вроде vendor/cache."
+
+#: includes/class-ash-csp-assistant.php
+msgid "Restore defaults"
+msgstr "Восстановить значения по умолчанию"
+
+#: includes/class-ash-csp-assistant.php
+msgid "No exclusions. Every plugin and theme file will be scanned."
+msgstr "Исключений нет. Будут просканированы все файлы плагинов и тем."
+
+#: includes/class-ash-csp-assistant.php
+msgid "Folder or path to skip"
+msgstr "Папка или путь для пропуска"
+
+#: includes/class-ash-csp-assistant.php
+msgid "That path is already in the list."
+msgstr "Этот путь уже есть в списке."
+
+#: includes/class-ash-csp-assistant.php
+msgid "Enter a folder name or relative path. Do not use .."
+msgstr "Введите имя папки или относительный путь. Не используйте .."
+
+#: includes/class-ash-csp-assistant.php
+msgid "Remove excluded path"
+msgstr "Удалить исключённый путь"
+
+#: includes/class-ash-csp-assistant.php
+msgid "Excluded paths cannot be changed while a file scan is running."
+msgstr "Исключённые пути нельзя менять, пока идёт сканирование файлов."
+
+#: includes/class-ash-csp-assistant.php
+msgid "Scan selected items"
+msgstr "Сканировать выбранные элементы"
+
+#: includes/class-ash-csp-assistant.php
+msgid "When this is on, Deep file scan only covers the plugins and themes you turn on below. Leave it off to scan all installed items."
+msgstr "Если включено, глубокое сканирование охватывает только плагины и темы, которые вы включите ниже. Оставьте выключенным, чтобы сканировать все установленные элементы."
+
+#: includes/class-ash-csp-assistant.php
+msgid "Plugins and themes"
+msgstr "Плагины и темы"
+
+#: includes/class-ash-csp-assistant.php
+msgid "Turn on a plugin or theme to include its files in the disk scan. All switches start off."
+msgstr "Включите плагин или тему, чтобы включить её файлы в сканирование диска. Все переключатели по умолчанию выключены."
+
+#: includes/class-ash-csp-assistant.php
+msgid "Plugins"
+msgstr "Плагины"
+
+#: includes/class-ash-csp-assistant.php
+msgid "Themes"
+msgstr "Темы"
+
+#: includes/class-ash-csp-assistant.php
+msgid "Turn on at least one plugin or theme. With none selected, Deep file scan skips the disk pass."
+msgstr "Включите хотя бы один плагин или тему. Если ничего не выбрано, глубокое сканирование пропускает проход по диску."
+
+#: includes/class-ash-csp-assistant.php
+msgid "The scan scope cannot be changed while a file scan is running."
+msgstr "Область сканирования нельзя менять, пока идёт сканирование файлов."
+
+#: includes/class-ash-csp-assistant.php
+msgid "Disk"
+msgstr "Диск"
 
 #: includes/class-ash-csp-assistant.php
 msgid "New CSP Source Detected"

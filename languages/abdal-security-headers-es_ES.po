@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Abdal Security Headers 5.3.0\n"
+"Project-Id-Version: Abdal Security Headers 5.4.2\n"
 "Report-Msgid-Bugs-To: Prof.Shafiei@Gmail.com\n"
-"POT-Creation-Date: 2026-08-29 06:30+0330\n"
-"PO-Revision-Date: 2026-08-29 06:30+0330\n"
+"POT-Creation-Date: 2026-08-29 10:30+0330\n"
+"PO-Revision-Date: 2026-08-29 10:30+0330\n"
 "Last-Translator: Ebrahim Shafiei (EbraSha) <Prof.Shafiei@Gmail.com>\n"
 "Language-Team: Spanish\n"
 "Language: es_ES\n"
@@ -620,6 +620,134 @@ msgstr "orígenes observados"
 #: includes/class-ash-csp-assistant.php
 msgid "Keep watching for new sources after learning completes."
 msgstr "Seguir buscando orígenes nuevos cuando termine el aprendizaje."
+
+#: includes/class-ash-csp-assistant.php
+msgid "Watch for new sources"
+msgstr "Vigilar orígenes nuevos"
+
+#: includes/class-ash-csp-assistant.php
+msgid "Deep file scan"
+msgstr "Análisis profundo de archivos"
+
+#: includes/class-ash-csp-assistant.php
+msgid "Also scan plugin and theme files on disk for CSP origins that are not loaded yet. Learning duration switches to Manual so a timer cannot stop this scan."
+msgstr "También analiza los archivos de plugins y temas en disco para orígenes CSP que aún no se cargan. La duración de aprendizaje pasa a Manual para que un temporizador no detenga este análisis."
+
+#: includes/class-ash-csp-assistant.php
+msgid "Counting plugin and theme files…"
+msgstr "Contando archivos de plugins y temas…"
+
+#. translators: 1: files processed, 2: total files
+#: includes/class-ash-csp-assistant.php
+#, php-format
+msgid "Scanning files: %1$d of %2$d"
+msgstr "Analizando archivos: %1$d de %2$d"
+
+#. translators: %d: number of sources found on disk
+#: includes/class-ash-csp-assistant.php
+#, php-format
+msgid "%d sources found on disk"
+msgstr "%d orígenes encontrados en disco"
+
+#: includes/class-ash-csp-assistant.php
+msgid "File scan complete"
+msgstr "Análisis de archivos completado"
+
+#: includes/class-ash-csp-assistant.php
+msgid "File scan cancelled"
+msgstr "Análisis de archivos cancelado"
+
+#: includes/class-ash-csp-assistant.php
+msgid "Cancel file scan"
+msgstr "Cancelar análisis de archivos"
+
+#: includes/class-ash-csp-assistant.php
+msgid "File scan failed. Please try again."
+msgstr "El análisis de archivos falló. Inténtalo de nuevo."
+
+#: includes/class-ash-csp-assistant.php
+msgid "No plugin or theme files were found to scan."
+msgstr "No se encontraron archivos de plugins o temas para analizar."
+
+#: includes/class-ash-csp-assistant.php
+msgid "Learning duration is locked to Manual while Deep file scan is on."
+msgstr "La duración de aprendizaje queda en Manual mientras el análisis profundo está activo."
+
+#: includes/class-ash-csp-assistant.php
+msgid "Deep file scan is turned off."
+msgstr "El análisis profundo de archivos está desactivado."
+
+#: includes/class-ash-csp-assistant.php
+msgid "Excluded paths"
+msgstr "Rutas excluidas"
+
+#: includes/class-ash-csp-assistant.php
+msgid "Folder or file names skipped during Deep file scan. Use a name such as node_modules or a relative path such as vendor/cache."
+msgstr "Nombres de carpeta o archivo omitidos en el análisis profundo. Usa un nombre como node_modules o una ruta relativa como vendor/cache."
+
+#: includes/class-ash-csp-assistant.php
+msgid "Restore defaults"
+msgstr "Restaurar valores predeterminados"
+
+#: includes/class-ash-csp-assistant.php
+msgid "No exclusions. Every plugin and theme file will be scanned."
+msgstr "No hay exclusiones. Se analizarán todos los archivos de plugins y temas."
+
+#: includes/class-ash-csp-assistant.php
+msgid "Folder or path to skip"
+msgstr "Carpeta o ruta a omitir"
+
+#: includes/class-ash-csp-assistant.php
+msgid "That path is already in the list."
+msgstr "Esa ruta ya está en la lista."
+
+#: includes/class-ash-csp-assistant.php
+msgid "Enter a folder name or relative path. Do not use .."
+msgstr "Introduce un nombre de carpeta o una ruta relativa. No uses .."
+
+#: includes/class-ash-csp-assistant.php
+msgid "Remove excluded path"
+msgstr "Quitar ruta excluida"
+
+#: includes/class-ash-csp-assistant.php
+msgid "Excluded paths cannot be changed while a file scan is running."
+msgstr "No se pueden cambiar las rutas excluidas mientras se ejecuta un análisis de archivos."
+
+#: includes/class-ash-csp-assistant.php
+msgid "Scan selected items"
+msgstr "Analizar elementos seleccionados"
+
+#: includes/class-ash-csp-assistant.php
+msgid "When this is on, Deep file scan only covers the plugins and themes you turn on below. Leave it off to scan all installed items."
+msgstr "Si está activo, el análisis profundo solo cubre los plugins y temas que actives abajo. Déjalo apagado para analizar todos los instalados."
+
+#: includes/class-ash-csp-assistant.php
+msgid "Plugins and themes"
+msgstr "Plugins y temas"
+
+#: includes/class-ash-csp-assistant.php
+msgid "Turn on a plugin or theme to include its files in the disk scan. All switches start off."
+msgstr "Activa un plugin o tema para incluir sus archivos en el análisis de disco. Todos los interruptores empiezan apagados."
+
+#: includes/class-ash-csp-assistant.php
+msgid "Plugins"
+msgstr "Plugins"
+
+#: includes/class-ash-csp-assistant.php
+msgid "Themes"
+msgstr "Temas"
+
+#: includes/class-ash-csp-assistant.php
+msgid "Turn on at least one plugin or theme. With none selected, Deep file scan skips the disk pass."
+msgstr "Activa al menos un plugin o tema. Si no hay ninguno, el análisis profundo omite el paso de disco."
+
+#: includes/class-ash-csp-assistant.php
+msgid "The scan scope cannot be changed while a file scan is running."
+msgstr "No se puede cambiar el alcance del análisis mientras se ejecuta un análisis de archivos."
+
+#: includes/class-ash-csp-assistant.php
+msgid "Disk"
+msgstr "Disco"
 
 #: includes/class-ash-csp-assistant.php
 msgid "New CSP Source Detected"

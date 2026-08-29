@@ -80,6 +80,12 @@ class ASH_CSP_Assistant {
         add_action('wp_ajax_ash_csp_assistant_clear', array($this, 'ajax_clear'));
         add_action('wp_ajax_ash_csp_assistant_details', array($this, 'ajax_details'));
         add_action('wp_ajax_ash_csp_assistant_continuous', array($this, 'ajax_continuous'));
+        add_action('wp_ajax_ash_csp_assistant_disk_toggle', array($this, 'ajax_disk_toggle'));
+        add_action('wp_ajax_ash_csp_assistant_disk_prepare', array($this, 'ajax_disk_prepare'));
+        add_action('wp_ajax_ash_csp_assistant_disk_tick', array($this, 'ajax_disk_tick'));
+        add_action('wp_ajax_ash_csp_assistant_disk_cancel', array($this, 'ajax_disk_cancel'));
+        add_action('wp_ajax_ash_csp_assistant_disk_exclusions', array($this, 'ajax_disk_exclusions'));
+        add_action('wp_ajax_ash_csp_assistant_disk_scope', array($this, 'ajax_disk_scope'));
 
         add_action('wp_ajax_ash_csp_report', array($this, 'ajax_report'));
         add_action('wp_ajax_nopriv_ash_csp_report', array($this, 'ajax_report'));
@@ -98,6 +104,7 @@ class ASH_CSP_Assistant {
             'ends_at' => '',
             'token' => '',
             'continuous_monitoring' => 0,
+            'disk_scan_enabled' => 0,
             'last_review_at' => '',
         );
     }
@@ -149,6 +156,9 @@ class ASH_CSP_Assistant {
     public function maybe_expire_learning() {
         $state = self::get_state();
         if ($state['status'] !== 'learning' || $state['duration'] === 'manual' || $state['ends_at'] === '') {
+            return;
+        }
+        if (!empty($state['disk_scan_enabled']) || ASH_CSP_Disk_Scanner::is_active()) {
             return;
         }
         if (time() >= (int) $state['ends_at']) {
@@ -246,6 +256,11 @@ class ASH_CSP_Assistant {
             $duration = '1hour';
         }
 
+        $disk_enabled = !empty($_POST['disk_scan']) || !empty(self::get_state()['disk_scan_enabled']);
+        if ($disk_enabled) {
+            $duration = 'manual';
+        }
+
         $now = time();
         $ends = 0;
         if ($duration === '15min') {
@@ -264,7 +279,12 @@ class ASH_CSP_Assistant {
             'started_at' => (string) $now,
             'ends_at' => $ends ? (string) $ends : '',
             'token' => wp_generate_password(32, false, false),
+            'disk_scan_enabled' => $disk_enabled ? 1 : 0,
         ));
+
+        if ($disk_enabled) {
+            ASH_CSP_Disk_Scanner::reset();
+        }
 
         ASH_CSP_Static_Detector::collect('/', false);
         wp_send_json_success($this->payload());
@@ -411,6 +431,7 @@ class ASH_CSP_Assistant {
      */
     public function ajax_clear() {
         $this->require_admin();
+        ASH_CSP_Disk_Scanner::reset();
         ASH_CSP_Repository::clear_all();
         self::save_state(self::default_state());
         wp_send_json_success($this->payload());
@@ -430,6 +451,112 @@ class ASH_CSP_Assistant {
             $state['status'] = 'monitoring';
         }
         self::save_state($state);
+        wp_send_json_success($this->payload());
+    }
+
+    /**
+     * Persist the deep file scan switch and lock learning duration to Manual.
+     *
+     * @return void
+     */
+    public function ajax_disk_toggle() {
+        $this->require_admin();
+        $enabled = !empty($_POST['enabled']) ? 1 : 0;
+        $state = array('disk_scan_enabled' => $enabled);
+        if ($enabled) {
+            $state['duration'] = 'manual';
+            $state['ends_at'] = '';
+        }
+        self::save_state($state);
+
+        if (!$enabled && ASH_CSP_Disk_Scanner::is_active()) {
+            ASH_CSP_Disk_Scanner::cancel();
+        }
+
+        wp_send_json_success($this->payload());
+    }
+
+    /**
+     * Count plugin and theme files before the progress loop.
+     *
+     * @return void
+     */
+    public function ajax_disk_prepare() {
+        $this->require_admin();
+        if (empty(self::get_state()['disk_scan_enabled'])) {
+            wp_send_json_error(array('message' => __('Deep file scan is turned off.', 'abdal-security-headers')));
+        }
+        ASH_CSP_Disk_Scanner::prepare();
+        wp_send_json_success($this->payload());
+    }
+
+    /**
+     * Process the next batch of on-disk files.
+     *
+     * @return void
+     */
+    public function ajax_disk_tick() {
+        $this->require_admin();
+        if (empty(self::get_state()['disk_scan_enabled']) && !ASH_CSP_Disk_Scanner::is_active()) {
+            wp_send_json_error(array('message' => __('Deep file scan is turned off.', 'abdal-security-headers')));
+        }
+        ASH_CSP_Disk_Scanner::tick();
+        wp_send_json_success($this->payload());
+    }
+
+    /**
+     * Stop an in-progress on-disk scan without ending learning mode.
+     *
+     * @return void
+     */
+    public function ajax_disk_cancel() {
+        $this->require_admin();
+        ASH_CSP_Disk_Scanner::cancel();
+        wp_send_json_success($this->payload());
+    }
+
+    /**
+     * Save or restore the Deep file scan skip list.
+     *
+     * @return void
+     */
+    public function ajax_disk_exclusions() {
+        $this->require_admin();
+        if (ASH_CSP_Disk_Scanner::is_active()) {
+            wp_send_json_error(array('message' => __('Excluded paths cannot be changed while a file scan is running.', 'abdal-security-headers')));
+        }
+        if (!empty($_POST['reset'])) {
+            ASH_CSP_Disk_Scanner::restore_default_exclusions();
+        } else {
+            $raw = isset($_POST['exclusions']) ? wp_unslash($_POST['exclusions']) : array();
+            if (!is_array($raw)) {
+                $raw = array();
+            }
+            ASH_CSP_Disk_Scanner::save_exclusions($raw);
+        }
+        wp_send_json_success($this->payload());
+    }
+
+    /**
+     * Save the selected-plugin/theme allow-list for Deep file scan.
+     *
+     * @return void
+     */
+    public function ajax_disk_scope() {
+        $this->require_admin();
+        if (ASH_CSP_Disk_Scanner::is_active()) {
+            wp_send_json_error(array('message' => __('The scan scope cannot be changed while a file scan is running.', 'abdal-security-headers')));
+        }
+
+        $current = ASH_CSP_Disk_Scanner::get_scope();
+        $enabled = array_key_exists('enabled', $_POST) ? !empty($_POST['enabled']) : !empty($current['enabled']);
+        $targets = $current['targets'];
+        if (!empty($_POST['replace_targets'])) {
+            $raw = isset($_POST['targets']) ? wp_unslash($_POST['targets']) : array();
+            $targets = is_array($raw) ? $raw : array();
+        }
+
+        ASH_CSP_Disk_Scanner::save_scope($enabled, $targets);
         wp_send_json_success($this->payload());
     }
 
@@ -600,17 +727,25 @@ class ASH_CSP_Assistant {
                     <div class="ash-assistant__controls">
                         <div class="ash-assistant__duration">
                             <span id="ash-assistant-duration-label" class="ash-assistant__duration-label"><?php echo esc_html($strings['duration']); ?></span>
-                            <div class="ash-segmented" role="radiogroup" aria-labelledby="ash-assistant-duration-label">
-                                <?php
-                                $current_duration = !empty($payload['state']['duration']) ? $payload['state']['duration'] : '1hour';
-                                foreach ($durations as $value => $label) :
-                                    ?>
+                            <?php
+                            $current_duration = !empty($payload['state']['duration']) ? $payload['state']['duration'] : '1hour';
+                            $disk_enabled = !empty($payload['state']['disk_scan_enabled']);
+                            if ($disk_enabled) {
+                                $current_duration = 'manual';
+                            }
+                            ?>
+                            <div class="ash-segmented<?php echo $disk_enabled ? ' is-locked-manual' : ''; ?>"
+                                 role="radiogroup"
+                                 aria-labelledby="ash-assistant-duration-label"
+                                 <?php echo $disk_enabled ? 'title="' . esc_attr($strings['diskManualLock']) . '"' : ''; ?>>
+                                <?php foreach ($durations as $value => $label) : ?>
                                     <label class="ash-segmented__item">
                                         <input type="radio"
                                                name="ash_csp_assistant_duration"
                                                value="<?php echo esc_attr($value); ?>"
                                                data-ash-assistant-duration
-                                               <?php checked($current_duration, $value); ?>>
+                                               <?php checked($current_duration, $value); ?>
+                                               <?php disabled($disk_enabled && $value !== 'manual'); ?>>
                                         <span class="ash-segmented__text"><?php echo esc_html($label); ?></span>
                                     </label>
                                 <?php endforeach; ?>
@@ -635,10 +770,122 @@ class ASH_CSP_Assistant {
                     <?php echo esc_html($strings['sourcesObserved']); ?>
                 </p>
 
-                <label class="ash-assistant__continuous">
-                    <input type="checkbox" data-ash-assistant-continuous <?php checked(!empty($payload['state']['continuous_monitoring'])); ?>>
-                    <span><?php echo esc_html($strings['continuous']); ?></span>
-                </label>
+                <div class="ash-assistant__toggles">
+                    <div class="ash-toggle-row">
+                        <div class="ash-toggle-row__info">
+                            <label class="ash-toggle-row__label" for="ash-assistant-disk-scan"><?php echo esc_html($strings['diskScan']); ?></label>
+                            <span class="ash-info" tabindex="0" role="img" aria-label="<?php echo esc_attr($strings['diskScanHint']); ?>" title="<?php echo esc_attr($strings['diskScanHint']); ?>">
+                                <span class="dashicons dashicons-info" aria-hidden="true"></span>
+                            </span>
+                        </div>
+                        <label class="ash-switch">
+                            <input type="checkbox"
+                                   id="ash-assistant-disk-scan"
+                                   data-ash-assistant-disk
+                                   value="1"
+                                   <?php checked(!empty($payload['state']['disk_scan_enabled'])); ?>>
+                            <span class="ash-switch__ui" aria-hidden="true"></span>
+                        </label>
+                    </div>
+                    <div class="ash-toggle-row" data-ash-disk-scope-row <?php echo !empty($payload['state']['disk_scan_enabled']) ? '' : 'hidden'; ?>>
+                        <div class="ash-toggle-row__info">
+                            <label class="ash-toggle-row__label" for="ash-assistant-disk-scope"><?php echo esc_html($strings['diskScope']); ?></label>
+                            <span class="ash-info" tabindex="0" role="img" aria-label="<?php echo esc_attr($strings['diskScopeHint']); ?>" title="<?php echo esc_attr($strings['diskScopeHint']); ?>">
+                                <span class="dashicons dashicons-info" aria-hidden="true"></span>
+                            </span>
+                        </div>
+                        <label class="ash-switch">
+                            <input type="checkbox"
+                                   id="ash-assistant-disk-scope"
+                                   data-ash-assistant-disk-scope
+                                   value="1"
+                                   <?php checked(!empty($payload['disk_scope']['enabled'])); ?>>
+                            <span class="ash-switch__ui" aria-hidden="true"></span>
+                        </label>
+                    </div>
+                    <div class="ash-toggle-row">
+                        <div class="ash-toggle-row__info">
+                            <label class="ash-toggle-row__label" for="ash-assistant-continuous"><?php echo esc_html($strings['continuous']); ?></label>
+                            <span class="ash-info" tabindex="0" role="img" aria-label="<?php echo esc_attr($strings['continuousHint']); ?>" title="<?php echo esc_attr($strings['continuousHint']); ?>">
+                                <span class="dashicons dashicons-info" aria-hidden="true"></span>
+                            </span>
+                        </div>
+                        <label class="ash-switch">
+                            <input type="checkbox"
+                                   id="ash-assistant-continuous"
+                                   data-ash-assistant-continuous
+                                   value="1"
+                                   <?php checked(!empty($payload['state']['continuous_monitoring'])); ?>>
+                            <span class="ash-switch__ui" aria-hidden="true"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="ash-disk-scope" data-ash-disk-scope <?php echo (!empty($payload['state']['disk_scan_enabled']) && !empty($payload['disk_scope']['enabled'])) ? '' : 'hidden'; ?>>
+                    <div class="ash-disk-exclusions__head">
+                        <div class="ash-toggle-row__info">
+                            <span class="ash-toggle-row__label"><?php echo esc_html($strings['diskScopeList']); ?></span>
+                            <span class="ash-info" tabindex="0" role="img" aria-label="<?php echo esc_attr($strings['diskScopeListHint']); ?>" title="<?php echo esc_attr($strings['diskScopeListHint']); ?>">
+                                <span class="dashicons dashicons-info" aria-hidden="true"></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="ash-disk-scope__groups" data-ash-disk-scope-list></div>
+                    <p class="ash-disk-exclusions__empty" data-ash-disk-scope-empty hidden><?php echo esc_html($strings['diskScopeEmpty']); ?></p>
+                </div>
+
+                <div class="ash-disk-exclusions" data-ash-disk-exclusions hidden>
+                    <div class="ash-disk-exclusions__head">
+                        <div class="ash-toggle-row__info">
+                            <span class="ash-toggle-row__label"><?php echo esc_html($strings['diskExclusions']); ?></span>
+                            <span class="ash-info" tabindex="0" role="img" aria-label="<?php echo esc_attr($strings['diskExclusionsHint']); ?>" title="<?php echo esc_attr($strings['diskExclusionsHint']); ?>">
+                                <span class="dashicons dashicons-info" aria-hidden="true"></span>
+                            </span>
+                        </div>
+                        <button type="button" class="ash-btn ash-btn--secondary" data-ash-disk-exclusion-reset>
+                            <?php echo esc_html($strings['diskExclusionReset']); ?>
+                            <span class="ash-spinner" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                    <ul class="ash-disk-exclusions__list" data-ash-disk-exclusions-list></ul>
+                    <p class="ash-disk-exclusions__empty" data-ash-disk-exclusions-empty hidden><?php echo esc_html($strings['diskExclusionEmpty']); ?></p>
+                    <div class="ash-disk-exclusions__add">
+                        <input type="text"
+                               class="ash-disk-exclusions__input"
+                               data-ash-disk-exclusion-input
+                               maxlength="180"
+                               autocomplete="off"
+                               spellcheck="false"
+                               dir="ltr"
+                               placeholder="<?php echo esc_attr($strings['diskExclusionPlaceholder']); ?>"
+                               aria-label="<?php echo esc_attr($strings['diskExclusionPlaceholder']); ?>">
+                        <button type="button" class="ash-btn ash-btn--secondary" data-ash-disk-exclusion-add>
+                            <?php echo esc_html($strings['add']); ?>
+                            <span class="ash-spinner" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                    <p class="ash-disk-exclusions__message" data-ash-disk-exclusion-message hidden></p>
+                </div>
+
+                <div class="ash-disk-scan" data-ash-disk-scan hidden>
+                    <div class="ash-disk-scan__head">
+                        <strong data-ash-disk-scan-title><?php echo esc_html($strings['diskScan']); ?></strong>
+                        <button type="button" class="ash-btn ash-btn--secondary" data-ash-disk-scan-cancel>
+                            <span class="dashicons dashicons-no" aria-hidden="true"></span>
+                            <?php echo esc_html($strings['diskCancel']); ?>
+                            <span class="ash-spinner" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                    <div class="ash-progress is-counting"
+                         role="progressbar"
+                         aria-valuemin="0"
+                         aria-valuemax="100"
+                         aria-valuenow="0"
+                         data-ash-disk-progress>
+                        <div class="ash-progress__bar" data-ash-disk-progress-bar></div>
+                    </div>
+                    <p class="ash-disk-scan__meta" data-ash-disk-scan-label></p>
+                </div>
 
                 <div class="ash-assistant__banner" data-ash-assistant-new hidden>
                     <strong><?php echo esc_html($strings['newDetected']); ?></strong>
@@ -727,7 +974,39 @@ class ASH_CSP_Assistant {
             'duration24h' => __('24 Hours', 'abdal-security-headers'),
             'durationManual' => __('Manual', 'abdal-security-headers'),
             'sourcesObserved' => __('sources observed', 'abdal-security-headers'),
-            'continuous' => __('Keep watching for new sources after learning completes.', 'abdal-security-headers'),
+            'continuous' => __('Watch for new sources', 'abdal-security-headers'),
+            'continuousHint' => __('Keep watching for new sources after learning completes.', 'abdal-security-headers'),
+            'diskScan' => __('Deep file scan', 'abdal-security-headers'),
+            'diskScanHint' => __('Also scan plugin and theme files on disk for CSP origins that are not loaded yet. Learning duration switches to Manual so a timer cannot stop this scan.', 'abdal-security-headers'),
+            'diskCounting' => __('Counting plugin and theme files…', 'abdal-security-headers'),
+            /* translators: 1: files processed, 2: total files */
+            'diskScanning' => __('Scanning files: %1$d of %2$d', 'abdal-security-headers'),
+            /* translators: %d: number of sources found on disk */
+            'diskFound' => __('%d sources found on disk', 'abdal-security-headers'),
+            'diskComplete' => __('File scan complete', 'abdal-security-headers'),
+            'diskCancelled' => __('File scan cancelled', 'abdal-security-headers'),
+            'diskCancel' => __('Cancel file scan', 'abdal-security-headers'),
+            'diskError' => __('File scan failed. Please try again.', 'abdal-security-headers'),
+            'diskEmpty' => __('No plugin or theme files were found to scan.', 'abdal-security-headers'),
+            'diskManualLock' => __('Learning duration is locked to Manual while Deep file scan is on.', 'abdal-security-headers'),
+            'diskOff' => __('Deep file scan is turned off.', 'abdal-security-headers'),
+            'diskExclusions' => __('Excluded paths', 'abdal-security-headers'),
+            'diskExclusionsHint' => __('Folder or file names skipped during Deep file scan. Use a name such as node_modules or a relative path such as vendor/cache.', 'abdal-security-headers'),
+            'diskExclusionReset' => __('Restore defaults', 'abdal-security-headers'),
+            'diskExclusionEmpty' => __('No exclusions. Every plugin and theme file will be scanned.', 'abdal-security-headers'),
+            'diskExclusionPlaceholder' => __('Folder or path to skip', 'abdal-security-headers'),
+            'diskExclusionExists' => __('That path is already in the list.', 'abdal-security-headers'),
+            'diskExclusionInvalid' => __('Enter a folder name or relative path. Do not use ..', 'abdal-security-headers'),
+            'diskExclusionRemove' => __('Remove excluded path', 'abdal-security-headers'),
+            'diskExclusionLocked' => __('Excluded paths cannot be changed while a file scan is running.', 'abdal-security-headers'),
+            'diskScope' => __('Scan selected items', 'abdal-security-headers'),
+            'diskScopeHint' => __('When this is on, Deep file scan only covers the plugins and themes you turn on below. Leave it off to scan all installed items.', 'abdal-security-headers'),
+            'diskScopeList' => __('Plugins and themes', 'abdal-security-headers'),
+            'diskScopeListHint' => __('Turn on a plugin or theme to include its files in the disk scan. All switches start off.', 'abdal-security-headers'),
+            'diskScopePlugins' => __('Plugins', 'abdal-security-headers'),
+            'diskScopeThemes' => __('Themes', 'abdal-security-headers'),
+            'diskScopeEmpty' => __('Turn on at least one plugin or theme. With none selected, Deep file scan skips the disk pass.', 'abdal-security-headers'),
+            'diskScopeLocked' => __('The scan scope cannot be changed while a file scan is running.', 'abdal-security-headers'),
             'newDetected' => __('New CSP Source Detected', 'abdal-security-headers'),
             'review' => __('Review Suggestions', 'abdal-security-headers'),
             'applySelected' => __('Apply Selected Sources', 'abdal-security-headers'),
@@ -747,6 +1026,7 @@ class ASH_CSP_Assistant {
             'methodStatic' => __('Static', 'abdal-security-headers'),
             'methodReport' => __('Report-Only', 'abdal-security-headers'),
             'methodRuntime' => __('Runtime', 'abdal-security-headers'),
+            'methodDisk' => __('Disk', 'abdal-security-headers'),
             'trusted' => __('Trusted', 'abdal-security-headers'),
             'likelySafe' => __('Likely Safe', 'abdal-security-headers'),
             'unknown' => __('Unknown', 'abdal-security-headers'),
@@ -840,6 +1120,9 @@ class ASH_CSP_Assistant {
             'summary' => $summary,
             'sources' => $sources,
             'count' => $summary['total'],
+            'disk_scan' => ASH_CSP_Disk_Scanner::snapshot(),
+            'disk_exclusions' => ASH_CSP_Disk_Scanner::get_exclusions(),
+            'disk_scope' => ASH_CSP_Disk_Scanner::scope_payload(),
         );
     }
 

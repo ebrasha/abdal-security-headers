@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Abdal Security Headers 5.3.0\n"
+"Project-Id-Version: Abdal Security Headers 5.4.2\n"
 "Report-Msgid-Bugs-To: Prof.Shafiei@Gmail.com\n"
-"POT-Creation-Date: 2026-08-29 06:30+0330\n"
-"PO-Revision-Date: 2026-08-29 06:30+0330\n"
+"POT-Creation-Date: 2026-08-29 10:30+0330\n"
+"PO-Revision-Date: 2026-08-29 10:30+0330\n"
 "Last-Translator: Ebrahim Shafiei (EbraSha) <Prof.Shafiei@Gmail.com>\n"
 "Language-Team: Portuguese (Brazil)\n"
 "Language: pt_BR\n"
@@ -620,6 +620,134 @@ msgstr "origens observadas"
 #: includes/class-ash-csp-assistant.php
 msgid "Keep watching for new sources after learning completes."
 msgstr "Continuar observando novas origens após o aprendizado."
+
+#: includes/class-ash-csp-assistant.php
+msgid "Watch for new sources"
+msgstr "Observar novas origens"
+
+#: includes/class-ash-csp-assistant.php
+msgid "Deep file scan"
+msgstr "Varredura profunda de arquivos"
+
+#: includes/class-ash-csp-assistant.php
+msgid "Also scan plugin and theme files on disk for CSP origins that are not loaded yet. Learning duration switches to Manual so a timer cannot stop this scan."
+msgstr "Também analisa arquivos de plugins e temas no disco em busca de origens CSP ainda não carregadas. A duração do aprendizado muda para Manual para que um temporizador não interrompa esta varredura."
+
+#: includes/class-ash-csp-assistant.php
+msgid "Counting plugin and theme files…"
+msgstr "Contando arquivos de plugins e temas…"
+
+#. translators: 1: files processed, 2: total files
+#: includes/class-ash-csp-assistant.php
+#, php-format
+msgid "Scanning files: %1$d of %2$d"
+msgstr "Analisando arquivos: %1$d de %2$d"
+
+#. translators: %d: number of sources found on disk
+#: includes/class-ash-csp-assistant.php
+#, php-format
+msgid "%d sources found on disk"
+msgstr "%d origens encontradas no disco"
+
+#: includes/class-ash-csp-assistant.php
+msgid "File scan complete"
+msgstr "Varredura de arquivos concluída"
+
+#: includes/class-ash-csp-assistant.php
+msgid "File scan cancelled"
+msgstr "Varredura de arquivos cancelada"
+
+#: includes/class-ash-csp-assistant.php
+msgid "Cancel file scan"
+msgstr "Cancelar varredura de arquivos"
+
+#: includes/class-ash-csp-assistant.php
+msgid "File scan failed. Please try again."
+msgstr "A varredura de arquivos falhou. Tente novamente."
+
+#: includes/class-ash-csp-assistant.php
+msgid "No plugin or theme files were found to scan."
+msgstr "Nenhum arquivo de plugin ou tema foi encontrado para analisar."
+
+#: includes/class-ash-csp-assistant.php
+msgid "Learning duration is locked to Manual while Deep file scan is on."
+msgstr "A duração do aprendizado fica em Manual enquanto a varredura profunda estiver ligada."
+
+#: includes/class-ash-csp-assistant.php
+msgid "Deep file scan is turned off."
+msgstr "A varredura profunda de arquivos está desligada."
+
+#: includes/class-ash-csp-assistant.php
+msgid "Excluded paths"
+msgstr "Caminhos excluídos"
+
+#: includes/class-ash-csp-assistant.php
+msgid "Folder or file names skipped during Deep file scan. Use a name such as node_modules or a relative path such as vendor/cache."
+msgstr "Nomes de pasta ou arquivo ignorados na varredura profunda. Use um nome como node_modules ou um caminho relativo como vendor/cache."
+
+#: includes/class-ash-csp-assistant.php
+msgid "Restore defaults"
+msgstr "Restaurar padrões"
+
+#: includes/class-ash-csp-assistant.php
+msgid "No exclusions. Every plugin and theme file will be scanned."
+msgstr "Nenhuma exclusão. Todos os arquivos de plugins e temas serão analisados."
+
+#: includes/class-ash-csp-assistant.php
+msgid "Folder or path to skip"
+msgstr "Pasta ou caminho a ignorar"
+
+#: includes/class-ash-csp-assistant.php
+msgid "That path is already in the list."
+msgstr "Esse caminho já está na lista."
+
+#: includes/class-ash-csp-assistant.php
+msgid "Enter a folder name or relative path. Do not use .."
+msgstr "Digite um nome de pasta ou caminho relativo. Não use .."
+
+#: includes/class-ash-csp-assistant.php
+msgid "Remove excluded path"
+msgstr "Remover caminho excluído"
+
+#: includes/class-ash-csp-assistant.php
+msgid "Excluded paths cannot be changed while a file scan is running."
+msgstr "Os caminhos excluídos não podem ser alterados enquanto uma varredura de arquivos estiver em andamento."
+
+#: includes/class-ash-csp-assistant.php
+msgid "Scan selected items"
+msgstr "Analisar itens selecionados"
+
+#: includes/class-ash-csp-assistant.php
+msgid "When this is on, Deep file scan only covers the plugins and themes you turn on below. Leave it off to scan all installed items."
+msgstr "Quando estiver ligado, a varredura profunda cobre só os plugins e temas que você ligar abaixo. Deixe desligado para analisar todos os instalados."
+
+#: includes/class-ash-csp-assistant.php
+msgid "Plugins and themes"
+msgstr "Plugins e temas"
+
+#: includes/class-ash-csp-assistant.php
+msgid "Turn on a plugin or theme to include its files in the disk scan. All switches start off."
+msgstr "Ligue um plugin ou tema para incluir os arquivos dele na varredura em disco. Todos os interruptores começam desligados."
+
+#: includes/class-ash-csp-assistant.php
+msgid "Plugins"
+msgstr "Plugins"
+
+#: includes/class-ash-csp-assistant.php
+msgid "Themes"
+msgstr "Temas"
+
+#: includes/class-ash-csp-assistant.php
+msgid "Turn on at least one plugin or theme. With none selected, Deep file scan skips the disk pass."
+msgstr "Ligue pelo menos um plugin ou tema. Sem seleção, a varredura profunda pula a etapa de disco."
+
+#: includes/class-ash-csp-assistant.php
+msgid "The scan scope cannot be changed while a file scan is running."
+msgstr "O escopo da varredura não pode ser alterado enquanto uma varredura de arquivos estiver em andamento."
+
+#: includes/class-ash-csp-assistant.php
+msgid "Disk"
+msgstr "Disco"
 
 #: includes/class-ash-csp-assistant.php
 msgid "New CSP Source Detected"

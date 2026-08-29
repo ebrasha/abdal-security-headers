@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Abdal Security Headers 5.3.0\n"
+"Project-Id-Version: Abdal Security Headers 5.4.2\n"
 "Report-Msgid-Bugs-To: Prof.Shafiei@Gmail.com\n"
-"POT-Creation-Date: 2026-08-29 06:30+0330\n"
-"PO-Revision-Date: 2026-08-29 06:30+0330\n"
+"POT-Creation-Date: 2026-08-29 10:30+0330\n"
+"PO-Revision-Date: 2026-08-29 10:30+0330\n"
 "Last-Translator: Ebrahim Shafiei (EbraSha) <Prof.Shafiei@Gmail.com>\n"
 "Language-Team: Chinese (Simplified)\n"
 "Language: zh_CN\n"
@@ -620,6 +620,134 @@ msgstr "个来源已观察"
 #: includes/class-ash-csp-assistant.php
 msgid "Keep watching for new sources after learning completes."
 msgstr "学习结束后继续监视新来源。"
+
+#: includes/class-ash-csp-assistant.php
+msgid "Watch for new sources"
+msgstr "监视新来源"
+
+#: includes/class-ash-csp-assistant.php
+msgid "Deep file scan"
+msgstr "深度文件扫描"
+
+#: includes/class-ash-csp-assistant.php
+msgid "Also scan plugin and theme files on disk for CSP origins that are not loaded yet. Learning duration switches to Manual so a timer cannot stop this scan."
+msgstr "还会扫描磁盘上的插件和主题文件，找出尚未加载的 CSP 来源。学习时长会切到手动，以免计时器中断此次扫描。"
+
+#: includes/class-ash-csp-assistant.php
+msgid "Counting plugin and theme files…"
+msgstr "正在统计插件和主题文件…"
+
+#. translators: 1: files processed, 2: total files
+#: includes/class-ash-csp-assistant.php
+#, php-format
+msgid "Scanning files: %1$d of %2$d"
+msgstr "正在扫描文件：%1$d / %2$d"
+
+#. translators: %d: number of sources found on disk
+#: includes/class-ash-csp-assistant.php
+#, php-format
+msgid "%d sources found on disk"
+msgstr "在磁盘上找到 %d 个来源"
+
+#: includes/class-ash-csp-assistant.php
+msgid "File scan complete"
+msgstr "文件扫描完成"
+
+#: includes/class-ash-csp-assistant.php
+msgid "File scan cancelled"
+msgstr "文件扫描已取消"
+
+#: includes/class-ash-csp-assistant.php
+msgid "Cancel file scan"
+msgstr "取消文件扫描"
+
+#: includes/class-ash-csp-assistant.php
+msgid "File scan failed. Please try again."
+msgstr "文件扫描失败。请重试。"
+
+#: includes/class-ash-csp-assistant.php
+msgid "No plugin or theme files were found to scan."
+msgstr "未找到可扫描的插件或主题文件。"
+
+#: includes/class-ash-csp-assistant.php
+msgid "Learning duration is locked to Manual while Deep file scan is on."
+msgstr "开启深度文件扫描时，学习时长会锁定为手动。"
+
+#: includes/class-ash-csp-assistant.php
+msgid "Deep file scan is turned off."
+msgstr "深度文件扫描已关闭。"
+
+#: includes/class-ash-csp-assistant.php
+msgid "Excluded paths"
+msgstr "排除路径"
+
+#: includes/class-ash-csp-assistant.php
+msgid "Folder or file names skipped during Deep file scan. Use a name such as node_modules or a relative path such as vendor/cache."
+msgstr "深度文件扫描时跳过的文件夹或文件名。可使用 node_modules 这样的名称，或 vendor/cache 这样的相对路径。"
+
+#: includes/class-ash-csp-assistant.php
+msgid "Restore defaults"
+msgstr "恢复默认值"
+
+#: includes/class-ash-csp-assistant.php
+msgid "No exclusions. Every plugin and theme file will be scanned."
+msgstr "没有排除项。将扫描所有插件和主题文件。"
+
+#: includes/class-ash-csp-assistant.php
+msgid "Folder or path to skip"
+msgstr "要跳过的文件夹或路径"
+
+#: includes/class-ash-csp-assistant.php
+msgid "That path is already in the list."
+msgstr "该路径已在列表中。"
+
+#: includes/class-ash-csp-assistant.php
+msgid "Enter a folder name or relative path. Do not use .."
+msgstr "请输入文件夹名或相对路径。不要使用 .."
+
+#: includes/class-ash-csp-assistant.php
+msgid "Remove excluded path"
+msgstr "移除排除路径"
+
+#: includes/class-ash-csp-assistant.php
+msgid "Excluded paths cannot be changed while a file scan is running."
+msgstr "文件扫描进行中时无法更改排除路径。"
+
+#: includes/class-ash-csp-assistant.php
+msgid "Scan selected items"
+msgstr "仅扫描所选项目"
+
+#: includes/class-ash-csp-assistant.php
+msgid "When this is on, Deep file scan only covers the plugins and themes you turn on below. Leave it off to scan all installed items."
+msgstr "开启后，深度文件扫描只覆盖你在下方打开的插件和主题。保持关闭则可扫描所有已安装项目。"
+
+#: includes/class-ash-csp-assistant.php
+msgid "Plugins and themes"
+msgstr "插件和主题"
+
+#: includes/class-ash-csp-assistant.php
+msgid "Turn on a plugin or theme to include its files in the disk scan. All switches start off."
+msgstr "打开某个插件或主题，才会把它的文件纳入磁盘扫描。所有开关默认关闭。"
+
+#: includes/class-ash-csp-assistant.php
+msgid "Plugins"
+msgstr "插件"
+
+#: includes/class-ash-csp-assistant.php
+msgid "Themes"
+msgstr "主题"
+
+#: includes/class-ash-csp-assistant.php
+msgid "Turn on at least one plugin or theme. With none selected, Deep file scan skips the disk pass."
+msgstr "请至少打开一个插件或主题。若未选择任何项，深度文件扫描会跳过磁盘阶段。"
+
+#: includes/class-ash-csp-assistant.php
+msgid "The scan scope cannot be changed while a file scan is running."
+msgstr "文件扫描进行中时无法更改扫描范围。"
+
+#: includes/class-ash-csp-assistant.php
+msgid "Disk"
+msgstr "磁盘"
 
 #: includes/class-ash-csp-assistant.php
 msgid "New CSP Source Detected"

@@ -4,7 +4,7 @@ Donate link: https://ebrasha.com/abdal-donation
 Tags: security, security-headers, x-frame-options, content-security-policy, hsts
 Requires at least: 6.7.2
 Tested up to: 7.1
-Stable tag: 5.3.0
+Stable tag: 5.4.2
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -17,8 +17,9 @@ Abdal Security Headers applies HTTP security headers from one dashboard. The Sma
 
 **Smart CSP Assistant:**
 
-* Hybrid discovery: WordPress-registered assets, CSP Report-Only, and a runtime observer
+* Hybrid discovery: WordPress-registered assets, CSP Report-Only, a runtime observer, and an optional deep file scan of plugins and themes
 * Timed learning (15 minutes to 24 hours) or manual stop, with optional continuous monitoring
+* Optional deep file scan with a cancellable progress bar; learning duration switches to Manual so a timer cannot stop the scan
 * Merge selected origins into existing CSP fields without replacing current values
 * Marks findings already present in CSP fields as Added
 * Dangerous values require explicit confirmation
@@ -75,6 +76,18 @@ No. Start a Smart Scan, browse the site, then apply the sources you accept. You 
 
 == Changelog ==
 
+= 5.4.2 =
+* Add a Scan selected items switch so Deep file scan can be limited to chosen plugins and themes
+
+= 5.4.1 =
+* Scroll the Smart CSP Assistant source table after 10 rows
+* Add an editable Deep file scan skip list, with defaults such as node_modules and .git
+
+= 5.4.0 =
+* Add a Deep file scan switch in Smart CSP Assistant to scan plugin and theme files on disk
+* Show a cancellable red-to-green progress bar after counting files
+* Lock learning duration to Manual while Deep file scan is on
+* Convert continuous monitoring into an iOS-style switch
 
 = 5.3.0 =
 * Add complete translations for Spanish, Japanese, German, French, Brazilian Portuguese, Russian, Italian, Turkish, Simplified Chinese, and Arabic
@@ -160,7 +173,15 @@ No. Start a Smart Scan, browse the site, then apply the sources you accept. You 
 
 == Upgrade Notice ==
 
- 
+= 5.4.2 =
+Adds a selected-items switch so Deep file scan can target specific plugins and themes.
+
+= 5.4.1 =
+Adds a scrollable source table and an editable skip list for Deep file scan.
+
+= 5.4.0 =
+Adds Deep file scan in Smart CSP Assistant so unused plugin and theme files on disk can be reviewed for CSP origins.
+
 = 5.3.0 =
 Adds complete translations for ten additional languages, including Arabic RTL.
 

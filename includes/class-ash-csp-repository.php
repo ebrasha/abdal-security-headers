@@ -94,7 +94,7 @@ class ASH_CSP_Repository {
         $origin = isset($item['origin']) ? $item['origin'] : '';
         $directive = isset($item['directive']) ? $item['directive'] : 'unknown';
         $method = isset($item['method']) ? $item['method'] : 'runtime';
-        if ($origin === '' || !in_array($method, array('static', 'report-only', 'runtime'), true)) {
+        if ($origin === '' || !in_array($method, array('static', 'report-only', 'runtime', 'disk'), true)) {
             return false;
         }
 

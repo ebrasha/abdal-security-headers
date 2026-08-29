@@ -1209,6 +1209,301 @@ body.admin_page_abdal-security-headers #wpcontent {
     font-size: 13px;
 }
 
+.ash-assistant__toggles {
+    border: 1px solid var(--ash-border);
+    border-radius: var(--ash-radius-sm);
+    overflow: hidden;
+    background: #fafbfc;
+}
+
+.ash-assistant__toggles .ash-toggle-row {
+    min-height: 48px;
+    padding: 10px 14px;
+    background: transparent;
+}
+
+.ash-assistant__toggles .ash-toggle-row:hover {
+    background: #f3f6fa;
+}
+
+.ash-assistant__toggles .ash-toggle-row[hidden] {
+    display: none !important;
+}
+
+.ash-disk-scope {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px 14px;
+    border: 1px solid var(--ash-border);
+    border-radius: var(--ash-radius-sm);
+    background: #fff;
+}
+
+.ash-disk-scope[hidden] {
+    display: none;
+}
+
+.ash-disk-scope__groups {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.ash-disk-scope__groups.has-scroll {
+    max-height: 22rem;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding-inline-end: 4px;
+}
+
+.ash-disk-scope__group-title {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    margin: 4px 0 0;
+    padding: 6px 2px;
+    background: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--ash-muted);
+}
+
+.ash-disk-scope .ash-toggle-row {
+    min-height: 44px;
+    padding: 6px 4px;
+    border-bottom: 1px solid var(--ash-border);
+}
+
+.ash-disk-scope .ash-toggle-row:last-child {
+    border-bottom: none;
+}
+
+.ash-disk-scope__slug {
+    display: block;
+    margin-top: 2px;
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--ash-muted);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    direction: ltr;
+    unicode-bidi: isolate;
+}
+
+.ash-disk-scope.is-locked .ash-switch,
+.ash-assistant__toggles .ash-toggle-row.is-locked .ash-switch {
+    pointer-events: none;
+    opacity: 0.55;
+}
+
+.ash-disk-scan {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 14px;
+    border: 1px solid var(--ash-border);
+    border-radius: var(--ash-radius-sm);
+    background: #fff;
+}
+
+.ash-disk-scan[hidden] {
+    display: none;
+}
+
+.ash-disk-scan__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.ash-disk-scan__meta {
+    margin: 0;
+    font-size: 13px;
+    color: var(--ash-muted);
+}
+
+.ash-disk-exclusions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px 14px;
+    border: 1px solid var(--ash-border);
+    border-radius: var(--ash-radius-sm);
+    background: #fff;
+}
+
+.ash-disk-exclusions[hidden] {
+    display: none;
+}
+
+.ash-disk-exclusions__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.ash-disk-exclusions__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.ash-disk-exclusion {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    max-width: 100%;
+    padding: 4px 6px 4px 10px;
+    border-radius: 999px;
+    background: var(--ash-accent-soft);
+    color: var(--ash-text);
+    font-size: 12px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    direction: ltr;
+    unicode-bidi: isolate;
+}
+
+.ash-disk-exclusion__label {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.ash-disk-exclusion__remove {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--ash-muted);
+    cursor: pointer;
+}
+
+.ash-disk-exclusion__remove:hover,
+.ash-disk-exclusion__remove:focus {
+    color: #b42318;
+    background: #fff;
+    outline: none;
+}
+
+.ash-disk-exclusions__empty,
+.ash-disk-exclusions__message {
+    margin: 0;
+    font-size: 12px;
+    color: var(--ash-muted);
+}
+
+.ash-disk-exclusions__message.is-error {
+    color: #b42318;
+}
+
+.ash-disk-exclusions__add {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.ash-wrap .ash-disk-exclusions__input {
+    flex: 1 1 auto;
+    min-width: 0;
+    max-width: none;
+    min-height: 36px;
+    margin: 0;
+    padding: 6px 10px;
+    border: 1px solid var(--ash-border-strong);
+    border-radius: var(--ash-radius-sm);
+    background: #fff;
+    color: var(--ash-text);
+    box-shadow: none;
+    font-size: 13px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    direction: ltr;
+    text-align: left;
+}
+
+.ash-wrap .ash-disk-exclusions__input:focus {
+    border-color: var(--ash-accent);
+    box-shadow: 0 0 0 3px var(--ash-accent-ring);
+    outline: none;
+}
+
+.ash-disk-exclusions.is-locked .ash-disk-exclusions__input,
+.ash-disk-exclusions.is-locked .ash-disk-exclusion__remove,
+.ash-disk-exclusions.is-locked [data-ash-disk-exclusion-add],
+.ash-disk-exclusions.is-locked [data-ash-disk-exclusion-reset] {
+    pointer-events: none;
+    opacity: 0.55;
+}
+
+.ash-progress {
+    height: 12px;
+    background: #e5e7eb;
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.ash-progress__bar {
+    height: 100%;
+    width: 0;
+    border-radius: 999px;
+    background: #dc2626;
+    transform-origin: left center;
+    transition: width 0.25s ease, background-color 0.35s ease;
+}
+
+.rtl .ash-progress__bar {
+    transform-origin: right center;
+}
+
+.ash-progress.is-counting .ash-progress__bar {
+    width: 32%;
+    animation: ash-progress-indeterminate 1.15s ease-in-out infinite;
+}
+
+@keyframes ash-progress-indeterminate {
+    0% {
+        transform: translateX(-110%);
+    }
+    100% {
+        transform: translateX(320%);
+    }
+}
+
+.rtl .ash-progress.is-counting .ash-progress__bar {
+    animation-name: ash-progress-indeterminate-rtl;
+}
+
+@keyframes ash-progress-indeterminate-rtl {
+    0% {
+        transform: translateX(110%);
+    }
+    100% {
+        transform: translateX(-320%);
+    }
+}
+
+.ash-segmented.is-locked-manual {
+    box-shadow: inset 0 0 0 1px rgba(37, 99, 235, 0.18);
+}
+
+.ash-segmented.is-locked-manual .ash-segmented__item input[type="radio"]:disabled + .ash-segmented__text {
+    opacity: 0.45;
+}
+
 .ash-assistant__banner {
     padding: 10px 12px;
     border: 1px solid var(--ash-warning, #9a6700);
@@ -1238,6 +1533,12 @@ body.admin_page_abdal-security-headers #wpcontent {
     border-radius: 12px;
 }
 
+.ash-assistant__table-wrap.has-scroll {
+    max-height: 36.5rem;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+}
+
 .ash-assistant-table {
     width: 100%;
     border-collapse: collapse;
@@ -1253,8 +1554,12 @@ body.admin_page_abdal-security-headers #wpcontent {
 }
 
 .ash-assistant-table th {
+    position: sticky;
+    top: 0;
+    z-index: 2;
     background: #f8fafc;
     font-weight: 600;
+    box-shadow: 0 1px 0 var(--ash-border);
 }
 
 .ash-assistant-origin {

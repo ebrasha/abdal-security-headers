@@ -15,6 +15,7 @@ Writing a working Content Security Policy by hand is slow and easy to get wrong.
 The assistant **observes** the site. It does **not** auto-whitelist anything.
 
 - 🔎 **Hybrid discovery:** WordPress-registered scripts/styles, CSP Report-Only, and a runtime observer
+- 🗂️ **Deep file scan:** optional scan of plugin and theme files on disk (even if they are not loaded yet), with a cancellable red-to-green progress bar, an editable skip list, and an optional allow-list of selected plugins and themes; learning duration switches to Manual
 - ⏱️ **Learning window:** 15 minutes, 1 hour, 6 hours, 24 hours, or manual stop
 - 📡 Optional continuous monitoring after learning ends
 - 🧩 Suggests origins per directive (`script-src`, `style-src`, `img-src`, …)

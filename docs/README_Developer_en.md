@@ -15,8 +15,9 @@ Hybrid discovery only. Findings are stored separately from `ash_options`. CSP fi
 | Static | WordPress-registered scripts, styles, media, REST/AJAX endpoints |
 | Report-Only | `Content-Security-Policy-Report-Only` while observing; blocking CSP is skipped during learning |
 | Runtime | Frontend observer for dynamic loads |
+| Disk | Optional chunked scan of plugin and theme files on disk; cancellable; editable skip list; optional allow-list of selected plugins/themes; does not auto-whitelist |
 
-Learning duration: `15min`, `1hour`, `6hours`, `24hours`, `manual`. Optional continuous monitoring after learning.
+Learning duration: `15min`, `1hour`, `6hours`, `24hours`, `manual`. Optional continuous monitoring after learning. Deep file scan forces `manual` so a timer cannot stop the disk pass.
 
 Display status **Added** means the origin is already covered by the matching CSP field (`'self'`, host, wildcard). Dangerous tokens require confirmation. Unknown types stay for review and are not auto-applied.
 
@@ -32,7 +33,8 @@ abdal-security-headers/
 │   ├── class-ash-csp-assistant.php
 │   ├── class-ash-csp-normalizer.php
 │   ├── class-ash-csp-repository.php
-│   └── class-ash-csp-static-detector.php
+│   ├── class-ash-csp-static-detector.php
+│   └── class-ash-csp-disk-scanner.php
 ├── assets/css/admin.css
 ├── assets/js/admin.js
 ├── assets/js/csp-assistant.js

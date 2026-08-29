@@ -23,6 +23,9 @@
     var pollTimer = null;
     var pendingIds = [];
     var lastPayload = null;
+    var diskLoop = false;
+    var diskWantCancel = false;
+    var diskTickCount = 0;
     var optionMap = config.optionMap || {
         "script-src": "csp_script_src",
         "style-src": "csp_style_src",
@@ -66,6 +69,45 @@
         return String(template || "").replace("%d", String(value));
     }
 
+    function formatPair(template, first, second) {
+        return String(template || "")
+            .replace("%1$d", String(first))
+            .replace("%2$d", String(second));
+    }
+
+    function mixChannel(from, to, t) {
+        return Math.round(from + (to - from) * t);
+    }
+
+    function progressColor(percent) {
+        var p = Math.max(0, Math.min(100, Number(percent) || 0)) / 100;
+        var red = [220, 38, 38];
+        var orange = [234, 88, 12];
+        var green = [22, 163, 74];
+        var from = red;
+        var to = orange;
+        var t = p / 0.5;
+        if (p >= 0.5) {
+            from = orange;
+            to = green;
+            t = (p - 0.5) / 0.5;
+        }
+        return "rgb(" + mixChannel(from[0], to[0], t) + ", " + mixChannel(from[1], to[1], t) + ", " + mixChannel(from[2], to[2], t) + ")";
+    }
+
+    function diskEnabled() {
+        var input = qs("[data-ash-assistant-disk]");
+        return !!(input && input.checked);
+    }
+
+    function diskSnapshot(payload) {
+        return payload && payload.disk_scan ? payload.disk_scan : {};
+    }
+
+    function isDiskActive(disk) {
+        return !!disk && (disk.status === "counting" || disk.status === "running");
+    }
+
     function methodLabel(method) {
         if (method === "static") {
             return strings.methodStatic || "Static";
@@ -75,6 +117,9 @@
         }
         if (method === "runtime") {
             return strings.methodRuntime || "Runtime";
+        }
+        if (method === "disk") {
+            return strings.methodDisk || "Disk";
         }
         return method;
     }
@@ -317,23 +362,445 @@
             return;
         }
 
-        var value = payload && payload.state && payload.state.duration ? payload.state.duration : "1hour";
-        var disabled = !!(payload && payload.learning);
+        var diskOn = !!(payload && payload.state && payload.state.disk_scan_enabled);
+        var value = diskOn
+            ? "manual"
+            : (payload && payload.state && payload.state.duration ? payload.state.duration : "1hour");
+        var learning = !!(payload && payload.learning);
         var group = qs(".ash-segmented");
 
         radios.forEach(function (radio) {
             radio.checked = radio.value === value;
-            radio.disabled = disabled;
+            radio.disabled = learning || (diskOn && radio.value !== "manual");
         });
 
         if (group) {
-            group.classList.toggle("is-disabled", disabled);
-            if (disabled) {
+            group.classList.toggle("is-disabled", learning);
+            group.classList.toggle("is-locked-manual", diskOn);
+            if (learning) {
                 group.setAttribute("aria-disabled", "true");
             } else {
                 group.removeAttribute("aria-disabled");
             }
+            if (diskOn) {
+                group.setAttribute("title", strings.diskManualLock || "");
+            } else {
+                group.removeAttribute("title");
+            }
         }
+    }
+
+    function diskLabel(disk) {
+        var status = disk && disk.status ? disk.status : "idle";
+        if (status === "counting") {
+            return strings.diskCounting || "";
+        }
+        if (status === "cancelled") {
+            return strings.diskCancelled || "";
+        }
+        if (status === "error") {
+            return strings.diskError || "";
+        }
+        if (status === "complete" && !(disk.total > 0)) {
+            return strings.diskEmpty || "";
+        }
+
+        var parts = [];
+        if (status === "running" || status === "complete") {
+            parts.push(formatPair(strings.diskScanning || "%1$d / %2$d", disk.processed || 0, disk.total || 0));
+        }
+        if (status === "complete") {
+            parts.unshift(strings.diskComplete || "");
+        }
+        if (disk && disk.found) {
+            parts.push(formatString(strings.diskFound || "%d", disk.found));
+        }
+        return parts.filter(Boolean).join(" · ");
+    }
+
+    function renderDiskProgress(payload) {
+        var wrap = qs("[data-ash-disk-scan]");
+        var bar = qs("[data-ash-disk-progress-bar]");
+        var track = qs("[data-ash-disk-progress]");
+        var label = qs("[data-ash-disk-scan-label]");
+        var title = qs("[data-ash-disk-scan-title]");
+        var cancelBtn = qs("[data-ash-disk-scan-cancel]");
+        if (!wrap) {
+            return;
+        }
+
+        var disk = diskSnapshot(payload);
+        var diskOn = !!(payload && payload.state && payload.state.disk_scan_enabled);
+        var show = diskOn && disk.status && disk.status !== "idle";
+        if (diskLoop && diskOn) {
+            show = true;
+        }
+        wrap.hidden = !show;
+
+        if (title) {
+            title.textContent = strings.diskScan || "";
+        }
+        if (label) {
+            label.textContent = disk.status ? diskLabel(disk) : (strings.diskCounting || "");
+        }
+
+        var counting = disk.status === "counting" || (diskLoop && (!disk.status || disk.status === "idle"));
+        var percent = counting ? 0 : (disk.percent || 0);
+        if (disk.status === "complete") {
+            percent = 100;
+        }
+        if (track) {
+            track.classList.toggle("is-counting", counting);
+            track.setAttribute("aria-valuenow", String(percent));
+        }
+        if (bar) {
+            bar.style.width = counting ? "" : percent + "%";
+            bar.style.backgroundColor = progressColor(counting ? 8 : percent);
+        }
+        if (cancelBtn) {
+            cancelBtn.hidden = !isDiskActive(disk) && !(diskLoop && diskOn);
+        }
+    }
+
+    function exclusionItems() {
+        return qsa("[data-ash-disk-exclusion-item]").map(function (item) {
+            return item.getAttribute("data-value") || "";
+        }).filter(Boolean);
+    }
+
+    function normalizeExclusion(value) {
+        return String(value || "")
+            .replace(/\\/g, "/")
+            .replace(/^\/+|\/+$/g, "")
+            .trim();
+    }
+
+    function showExclusionMessage(text, isError) {
+        var message = qs("[data-ash-disk-exclusion-message]");
+        if (!message) {
+            return;
+        }
+        message.hidden = !text;
+        message.textContent = text || "";
+        message.classList.toggle("is-error", !!isError && !!text);
+    }
+
+    function renderExclusions(payload) {
+        var wrap = qs("[data-ash-disk-exclusions]");
+        var list = qs("[data-ash-disk-exclusions-list]");
+        var empty = qs("[data-ash-disk-exclusions-empty]");
+        if (!wrap || !list) {
+            return;
+        }
+
+        var diskOn = !!(payload && payload.state && payload.state.disk_scan_enabled);
+        wrap.hidden = !diskOn;
+        wrap.classList.toggle("is-locked", isDiskActive(diskSnapshot(payload)) || diskLoop);
+
+        var items = payload && payload.disk_exclusions ? payload.disk_exclusions : [];
+        list.innerHTML = items.map(function (item) {
+            var value = String(item || "");
+            return (
+                '<li class="ash-disk-exclusion" data-ash-disk-exclusion-item data-value="' + escapeHtml(value) + '">' +
+                '<span class="ash-disk-exclusion__label">' + escapeHtml(value) + "</span>" +
+                '<button type="button" class="ash-disk-exclusion__remove" data-ash-disk-exclusion-remove="' + escapeHtml(value) + '" aria-label="' + escapeHtml(strings.diskExclusionRemove || "") + '">&times;</button>' +
+                "</li>"
+            );
+        }).join("");
+        if (empty) {
+            empty.hidden = items.length > 0;
+        }
+    }
+
+    function saveExclusions(items, reset, button) {
+        var data = reset ? { reset: "1" } : { exclusions: items };
+        var task = function () {
+            return request("ash_csp_assistant_disk_exclusions", data).then(function (result) {
+                if (result && result.success) {
+                    lastPayload = result.data;
+                    renderExclusions(result.data);
+                    showExclusionMessage("", false);
+                    return;
+                }
+                var message = result && result.data && result.data.message
+                    ? result.data.message
+                    : (strings.requestFailed || "");
+                showExclusionMessage(message, true);
+            });
+        };
+        if (button) {
+            return withBusy(button, task);
+        }
+        return task();
+    }
+
+    function addExclusion(button) {
+        var input = qs("[data-ash-disk-exclusion-input]");
+        var wrap = qs("[data-ash-disk-exclusions]");
+        if (!input || (wrap && wrap.classList.contains("is-locked"))) {
+            return;
+        }
+        var value = normalizeExclusion(input.value);
+        if (!value) {
+            return;
+        }
+        if (value.indexOf("..") !== -1) {
+            showExclusionMessage(strings.diskExclusionInvalid || "", true);
+            return;
+        }
+        var items = exclusionItems();
+        var exists = items.some(function (item) {
+            return item.toLowerCase() === value.toLowerCase();
+        });
+        if (exists) {
+            showExclusionMessage(strings.diskExclusionExists || "", true);
+            return;
+        }
+        items.push(value);
+        input.value = "";
+        saveExclusions(items, false, button);
+    }
+
+    function scopeLocked() {
+        var box = qs("[data-ash-disk-scope]");
+        var row = qs("[data-ash-disk-scope-row]");
+        return (box && box.classList.contains("is-locked")) || (row && row.classList.contains("is-locked"));
+    }
+
+    function renderScope(payload) {
+        var row = qs("[data-ash-disk-scope-row]");
+        var box = qs("[data-ash-disk-scope]");
+        var list = qs("[data-ash-disk-scope-list]");
+        var empty = qs("[data-ash-disk-scope-empty]");
+        var input = qs("[data-ash-assistant-disk-scope]");
+        var diskOn = !!(payload && payload.state && payload.state.disk_scan_enabled);
+        var scope = payload && payload.disk_scope ? payload.disk_scope : {};
+        var enabled = !!scope.enabled;
+        var locked = isDiskActive(diskSnapshot(payload)) || diskLoop;
+
+        if (row) {
+            row.hidden = !diskOn;
+            row.classList.toggle("is-locked", locked);
+        }
+        if (input) {
+            input.checked = enabled;
+        }
+        if (box) {
+            box.hidden = !diskOn || !enabled;
+            box.classList.toggle("is-locked", locked);
+        }
+        if (!list) {
+            return;
+        }
+
+        var plugins = scope.plugins || [];
+        var themes = scope.themes || [];
+        var html = "";
+        if (plugins.length) {
+            html += '<div class="ash-disk-scope__group-title">' + escapeHtml(strings.diskScopePlugins || "Plugins") + "</div>";
+            html += plugins.map(scopeItemMarkup).join("");
+        }
+        if (themes.length) {
+            html += '<div class="ash-disk-scope__group-title">' + escapeHtml(strings.diskScopeThemes || "Themes") + "</div>";
+            html += themes.map(scopeItemMarkup).join("");
+        }
+        list.innerHTML = html;
+        list.classList.toggle("has-scroll", plugins.length + themes.length > 8);
+        if (empty) {
+            empty.hidden = (scope.targets || []).length > 0;
+        }
+    }
+
+    function scopeItemMarkup(item) {
+        var rawId = String(item.id || "");
+        var htmlId = "ash-disk-scope-" + rawId.replace(/[^a-zA-Z0-9_-]/g, "-");
+        var checked = item.selected ? " checked" : "";
+        return (
+            '<div class="ash-toggle-row">' +
+            '<div class="ash-toggle-row__info">' +
+            '<label class="ash-toggle-row__label" for="' + escapeHtml(htmlId) + '">' + escapeHtml(item.name || item.slug || "") + "</label>" +
+            '<code class="ash-disk-scope__slug">' + escapeHtml(item.slug || "") + "</code>" +
+            "</div>" +
+            '<label class="ash-switch">' +
+            '<input type="checkbox" id="' + escapeHtml(htmlId) + '" data-ash-disk-scope-item value="' + escapeHtml(rawId) + '"' + checked + ">" +
+            '<span class="ash-switch__ui" aria-hidden="true"></span>' +
+            "</label>" +
+            "</div>"
+        );
+    }
+
+    function selectedScopeTargets() {
+        return qsa("[data-ash-disk-scope-item]:checked").map(function (input) {
+            return input.value;
+        });
+    }
+
+    function saveScope(enabled, replaceTargets) {
+        var data = {
+            enabled: enabled ? "1" : "0"
+        };
+        if (replaceTargets) {
+            data.replace_targets = "1";
+            data.targets = selectedScopeTargets();
+        }
+        return request("ash_csp_assistant_disk_scope", data).then(function (result) {
+            if (result && result.success) {
+                lastPayload = result.data;
+                renderScope(result.data);
+                return;
+            }
+            if (lastPayload) {
+                renderScope(lastPayload);
+            }
+        }).catch(function () {
+            if (lastPayload) {
+                renderScope(lastPayload);
+            }
+        });
+    }
+
+    function maybeResumeDiskScan(payload) {
+        var disk = diskSnapshot(payload);
+        if (!diskEnabled() || diskLoop) {
+            return;
+        }
+        if (disk.status === "running") {
+            diskLoop = true;
+            tickDisk();
+            return;
+        }
+        if (disk.status === "counting") {
+            diskLoop = true;
+            waitForDiskPrepare();
+        }
+    }
+
+    function waitForDiskPrepare() {
+        if (diskWantCancel) {
+            return cancelDiskScan();
+        }
+        return request("ash_csp_assistant_state", {}).then(function (result) {
+            if (!result || !result.success) {
+                diskLoop = false;
+                return;
+            }
+            var payload = result.data;
+            lastPayload = payload;
+            renderDiskProgress(payload);
+            var disk = diskSnapshot(payload);
+            if (diskWantCancel) {
+                return cancelDiskScan();
+            }
+            if (disk.status === "counting") {
+                return window.setTimeout(function () {
+                    waitForDiskPrepare();
+                }, 700);
+            }
+            if (disk.status === "running") {
+                return tickDisk();
+            }
+            diskLoop = false;
+            renderPayload(payload);
+        });
+    }
+
+    function startDiskScan() {
+        if (!diskEnabled() || diskLoop) {
+            return Promise.resolve();
+        }
+        diskLoop = true;
+        diskWantCancel = false;
+        diskTickCount = 0;
+        renderDiskProgress({
+            state: { disk_scan_enabled: 1 },
+            disk_scan: { status: "counting", percent: 0, processed: 0, total: 0, found: 0 }
+        });
+        if (lastPayload) {
+            renderExclusions(lastPayload);
+            renderScope(lastPayload);
+        }
+        return request("ash_csp_assistant_disk_prepare", {}).then(function (result) {
+            if (diskWantCancel) {
+                return cancelDiskScan();
+            }
+            if (!result || !result.success) {
+                diskLoop = false;
+                renderDiskProgress({
+                    state: { disk_scan_enabled: 1 },
+                    disk_scan: { status: "error", percent: 0, processed: 0, total: 0, found: 0 }
+                });
+                return;
+            }
+            lastPayload = result.data;
+            renderDiskProgress(result.data);
+            var disk = diskSnapshot(result.data);
+            if (disk.status === "running") {
+                return tickDisk();
+            }
+            diskLoop = false;
+            renderPayload(result.data);
+        }).catch(function () {
+            diskLoop = false;
+            return null;
+        });
+    }
+
+    function tickDisk() {
+        if (diskWantCancel) {
+            return cancelDiskScan();
+        }
+        return request("ash_csp_assistant_disk_tick", {}).then(function (result) {
+            if (diskWantCancel) {
+                return cancelDiskScan();
+            }
+            if (!result || !result.success) {
+                diskLoop = false;
+                renderDiskProgress({
+                    state: lastPayload && lastPayload.state ? lastPayload.state : { disk_scan_enabled: 1 },
+                    disk_scan: { status: "error", percent: 0, processed: 0, total: 0, found: 0 }
+                });
+                return;
+            }
+
+            var payload = result.data;
+            lastPayload = payload;
+            diskTickCount += 1;
+            renderDiskProgress(payload);
+
+            var countEl = qs("[data-ash-assistant-count]");
+            if (countEl) {
+                countEl.textContent = String(payload.count || 0);
+            }
+            if (diskTickCount % 4 === 0) {
+                renderSummary(payload);
+                renderRows(payload, true);
+            }
+
+            var disk = diskSnapshot(payload);
+            if (disk.status === "running") {
+                return tickDisk();
+            }
+            diskLoop = false;
+            renderPayload(payload);
+        }).catch(function () {
+            diskLoop = false;
+            return null;
+        });
+    }
+
+    function cancelDiskScan() {
+        diskWantCancel = true;
+        return request("ash_csp_assistant_disk_cancel", {}).then(function (result) {
+            diskLoop = false;
+            diskWantCancel = false;
+            if (result && result.success) {
+                renderPayload(result.data);
+            }
+        }).catch(function () {
+            diskLoop = false;
+            diskWantCancel = false;
+            return null;
+        });
     }
 
     function renderSummary(payload) {
@@ -369,6 +836,10 @@
             return;
         }
         var sources = payload.sources || [];
+        var wrap = qs(".ash-assistant__table-wrap");
+        if (wrap) {
+            wrap.classList.toggle("has-scroll", sources.length > 10);
+        }
         if (!sources.length) {
             body.innerHTML = '<tr><td colspan="8">' + escapeHtml(strings.empty || "") + "</td></tr>";
             return;
@@ -439,6 +910,9 @@
         var banner = qs("[data-ash-assistant-new]");
         var newCount = qs("[data-ash-assistant-new-count]");
         var continuous = qs("[data-ash-assistant-continuous]");
+        var diskInput = qs("[data-ash-assistant-disk]");
+        var disk = diskSnapshot(payload);
+        var diskActive = isDiskActive(disk) || diskLoop;
 
         if (statusEl) {
             statusEl.textContent = payload.status_label || "";
@@ -450,7 +924,7 @@
             learningEl.hidden = !payload.learning;
         }
         if (startBtn) {
-            startBtn.hidden = !!payload.learning;
+            startBtn.hidden = !!payload.learning || diskActive;
         }
         if (stopBtn) {
             stopBtn.hidden = !payload.learning;
@@ -458,6 +932,9 @@
         syncDuration(payload);
         if (continuous && payload.state) {
             continuous.checked = !!payload.state.continuous_monitoring;
+        }
+        if (diskInput && payload.state) {
+            diskInput.checked = !!payload.state.disk_scan_enabled;
         }
         if (banner && newCount) {
             var fresh = payload.summary && payload.summary.new ? payload.summary.new : 0;
@@ -467,7 +944,11 @@
 
         renderSummary(payload);
         renderRows(payload);
+        renderDiskProgress(payload);
+        renderExclusions(payload);
+        renderScope(payload);
         togglePolling(!!payload.learning);
+        maybeResumeDiskScan(payload);
     }
 
     function togglePolling(enabled) {
@@ -624,8 +1105,12 @@
         }
 
         root.addEventListener("keydown", function (event) {
-            if (event.key === "Enter") {
-                event.preventDefault();
+            if (event.key !== "Enter") {
+                return;
+            }
+            event.preventDefault();
+            if (closest(event.target, "[data-ash-disk-exclusion-input]")) {
+                addExclusion(qs("[data-ash-disk-exclusion-add]"));
             }
         });
 
@@ -633,13 +1118,15 @@
             var button = event.currentTarget;
             withBusy(button, function () {
                 return request("ash_csp_assistant_start", {
-                    duration: selectedDuration()
+                    duration: selectedDuration(),
+                    disk_scan: diskEnabled() ? "1" : "0"
                 }).then(function (result) {
                     if (result && result.success) {
                         renderPayload(result.data);
-                    } else {
-                        openModal(strings.title, "<p>" + escapeHtml(strings.requestFailed || "") + "</p>", false);
+                        startDiskScan();
+                        return;
                     }
+                    openModal(strings.title, "<p>" + escapeHtml(strings.requestFailed || "") + "</p>", false);
                 });
             });
         });
@@ -687,6 +1174,93 @@
             });
         });
 
+        qs("[data-ash-assistant-disk]").addEventListener("change", function () {
+            var checkbox = this;
+            var enabled = checkbox.checked;
+            checkbox.disabled = true;
+            if (!enabled) {
+                diskWantCancel = true;
+            }
+            request("ash_csp_assistant_disk_toggle", {
+                enabled: enabled ? "1" : "0"
+            }).then(function (result) {
+                if (result && result.success) {
+                    renderPayload(result.data);
+                    if (enabled && result.data.learning) {
+                        startDiskScan();
+                    }
+                }
+            }).catch(function () {
+                return null;
+            }).then(function () {
+                checkbox.disabled = false;
+            });
+        });
+
+        qs("[data-ash-assistant-disk-scope]").addEventListener("change", function () {
+            var checkbox = this;
+            if (scopeLocked()) {
+                checkbox.checked = !checkbox.checked;
+                return;
+            }
+            checkbox.disabled = true;
+            saveScope(checkbox.checked, false).catch(function () {
+                return null;
+            }).then(function () {
+                checkbox.disabled = false;
+            });
+        });
+
+        qs("[data-ash-disk-scope-list]").addEventListener("change", function (event) {
+            var item = closest(event.target, "[data-ash-disk-scope-item]");
+            if (!item) {
+                return;
+            }
+            if (scopeLocked()) {
+                item.checked = !item.checked;
+                return;
+            }
+            saveScope(true, true);
+        });
+
+        qs("[data-ash-disk-scan-cancel]").addEventListener("click", function (event) {
+            var button = event.currentTarget;
+            diskWantCancel = true;
+            withBusy(button, function () {
+                return cancelDiskScan();
+            });
+        });
+
+        qs("[data-ash-disk-exclusion-add]").addEventListener("click", function (event) {
+            addExclusion(event.currentTarget);
+        });
+
+        qs("[data-ash-disk-exclusion-reset]").addEventListener("click", function (event) {
+            var wrap = qs("[data-ash-disk-exclusions]");
+            if (wrap && wrap.classList.contains("is-locked")) {
+                showExclusionMessage(strings.diskExclusionLocked || "", true);
+                return;
+            }
+            saveExclusions([], true, event.currentTarget);
+        });
+
+        qs("[data-ash-disk-exclusions-list]").addEventListener("click", function (event) {
+            var remove = closest(event.target, "[data-ash-disk-exclusion-remove]");
+            var wrap = qs("[data-ash-disk-exclusions]");
+            if (!remove) {
+                return;
+            }
+            if (wrap && wrap.classList.contains("is-locked")) {
+                showExclusionMessage(strings.diskExclusionLocked || "", true);
+                return;
+            }
+            var value = remove.getAttribute("data-ash-disk-exclusion-remove") || "";
+            var items = exclusionItems().filter(function (item) {
+                return item.toLowerCase() !== value.toLowerCase();
+            });
+            saveExclusions(items, false);
+        });
+
         qs("[data-ash-assistant-check-all]").addEventListener("change", function () {
             var checked = this.checked;
             qsa("[data-ash-source-id]", root).forEach(function (input) {
@@ -726,6 +1300,8 @@
             if (pendingIds[0] === "__clear__") {
                 withBusy(button, function () {
                     return request("ash_csp_assistant_clear", {}).then(function (result) {
+                        diskWantCancel = true;
+                        diskLoop = false;
                         closeModal();
                         if (result && result.success) {
                             renderPayload(result.data);

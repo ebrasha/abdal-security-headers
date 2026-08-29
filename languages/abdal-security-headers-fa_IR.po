@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Abdal Security Headers 5.1.5\n"
+"Project-Id-Version: Abdal Security Headers 5.4.2\n"
 "POT-Creation-Date: 2026-08-29 04:51+0330\n"
 "PO-Revision-Date: 2026-08-29 04:51+0330\n"
 "Last-Translator: Ebrahim Shafiei (EbraSha) <Prof.Shafiei@Gmail.com>\n"
@@ -623,6 +623,134 @@ msgstr "منبع مشاهده شد"
 #: includes/class-ash-csp-assistant.php
 msgid "Keep watching for new sources after learning completes."
 msgstr "پس از پایان یادگیری، منابع جدید را هم پایش کن."
+
+#: includes/class-ash-csp-assistant.php
+msgid "Watch for new sources"
+msgstr "پایش منابع جدید"
+
+#: includes/class-ash-csp-assistant.php
+msgid "Deep file scan"
+msgstr "اسکن عمیق فایل‌ها"
+
+#: includes/class-ash-csp-assistant.php
+msgid "Also scan plugin and theme files on disk for CSP origins that are not loaded yet. Learning duration switches to Manual so a timer cannot stop this scan."
+msgstr "فایل‌های افزونه و پوسته روی دیسک را هم برای منابع CSP می‌خواند؛ حتی اگر الان بارگذاری نشوند. مدت یادگیری روی حالت دستی می‌رود تا زمان‌سنج این اسکن را قطع نکند."
+
+#: includes/class-ash-csp-assistant.php
+msgid "Counting plugin and theme files…"
+msgstr "در حال شمارش فایل‌های افزونه و پوسته…"
+
+#. translators: 1: files processed, 2: total files
+#: includes/class-ash-csp-assistant.php
+#, php-format
+msgid "Scanning files: %1$d of %2$d"
+msgstr "در حال اسکن فایل‌ها: %1$d از %2$d"
+
+#. translators: %d: number of sources found on disk
+#: includes/class-ash-csp-assistant.php
+#, php-format
+msgid "%d sources found on disk"
+msgstr "%d منبع روی دیسک پیدا شد"
+
+#: includes/class-ash-csp-assistant.php
+msgid "File scan complete"
+msgstr "اسکن فایل‌ها تمام شد"
+
+#: includes/class-ash-csp-assistant.php
+msgid "File scan cancelled"
+msgstr "اسکن فایل‌ها لغو شد"
+
+#: includes/class-ash-csp-assistant.php
+msgid "Cancel file scan"
+msgstr "لغو اسکن فایل‌ها"
+
+#: includes/class-ash-csp-assistant.php
+msgid "File scan failed. Please try again."
+msgstr "اسکن فایل‌ها ناموفق بود. لطفاً دوباره تلاش کنید."
+
+#: includes/class-ash-csp-assistant.php
+msgid "No plugin or theme files were found to scan."
+msgstr "فایلی از افزونه یا پوسته برای اسکن پیدا نشد."
+
+#: includes/class-ash-csp-assistant.php
+msgid "Learning duration is locked to Manual while Deep file scan is on."
+msgstr "وقتی اسکن عمیق فایل‌ها روشن است، مدت یادگیری روی حالت دستی قفل می‌شود."
+
+#: includes/class-ash-csp-assistant.php
+msgid "Deep file scan is turned off."
+msgstr "اسکن عمیق فایل‌ها خاموش است."
+
+#: includes/class-ash-csp-assistant.php
+msgid "Excluded paths"
+msgstr "مسیرهای استثنا"
+
+#: includes/class-ash-csp-assistant.php
+msgid "Folder or file names skipped during Deep file scan. Use a name such as node_modules or a relative path such as vendor/cache."
+msgstr "نام پوشه یا فایلی که در اسکن عمیق رد می‌شود. مثلاً node_modules یا مسیر نسبی مثل vendor/cache."
+
+#: includes/class-ash-csp-assistant.php
+msgid "Restore defaults"
+msgstr "بازگردانی پیش‌فرض‌ها"
+
+#: includes/class-ash-csp-assistant.php
+msgid "No exclusions. Every plugin and theme file will be scanned."
+msgstr "استثنایی نیست. همهٔ فایل‌های افزونه و پوسته اسکن می‌شوند."
+
+#: includes/class-ash-csp-assistant.php
+msgid "Folder or path to skip"
+msgstr "پوشه یا مسیر برای رد شدن"
+
+#: includes/class-ash-csp-assistant.php
+msgid "That path is already in the list."
+msgstr "این مسیر از قبل در فهرست است."
+
+#: includes/class-ash-csp-assistant.php
+msgid "Enter a folder name or relative path. Do not use .."
+msgstr "نام پوشه یا مسیر نسبی وارد کنید. از .. استفاده نکنید."
+
+#: includes/class-ash-csp-assistant.php
+msgid "Remove excluded path"
+msgstr "حذف مسیر استثنا"
+
+#: includes/class-ash-csp-assistant.php
+msgid "Excluded paths cannot be changed while a file scan is running."
+msgstr "تا وقتی اسکن فایل‌ها در جریان است نمی‌توان مسیرهای استثنا را عوض کرد."
+
+#: includes/class-ash-csp-assistant.php
+msgid "Scan selected items"
+msgstr "اسکن موارد انتخاب‌شده"
+
+#: includes/class-ash-csp-assistant.php
+msgid "When this is on, Deep file scan only covers the plugins and themes you turn on below. Leave it off to scan all installed items."
+msgstr "اگر روشن باشد، اسکن عمیق فقط افزونه و پوسته‌هایی را می‌خواند که پایین روشن کرده‌اید. اگر خاموش بماند، همهٔ موارد نصب‌شده اسکن می‌شوند."
+
+#: includes/class-ash-csp-assistant.php
+msgid "Plugins and themes"
+msgstr "افزونه‌ها و پوسته‌ها"
+
+#: includes/class-ash-csp-assistant.php
+msgid "Turn on a plugin or theme to include its files in the disk scan. All switches start off."
+msgstr "برای اینکه فایل‌های یک افزونه یا پوسته در اسکن دیسک بیاید، سوئیچش را روشن کنید. همهٔ سوئیچ‌ها در شروع خاموش‌اند."
+
+#: includes/class-ash-csp-assistant.php
+msgid "Plugins"
+msgstr "افزونه‌ها"
+
+#: includes/class-ash-csp-assistant.php
+msgid "Themes"
+msgstr "پوسته‌ها"
+
+#: includes/class-ash-csp-assistant.php
+msgid "Turn on at least one plugin or theme. With none selected, Deep file scan skips the disk pass."
+msgstr "حداقل یک افزونه یا پوسته را روشن کنید. اگر هیچ‌کدام انتخاب نشود، اسکن عمیق مرحلهٔ دیسک را رد می‌کند."
+
+#: includes/class-ash-csp-assistant.php
+msgid "The scan scope cannot be changed while a file scan is running."
+msgstr "تا وقتی اسکن فایل‌ها در جریان است نمی‌توان محدودهٔ اسکن را عوض کرد."
+
+#: includes/class-ash-csp-assistant.php
+msgid "Disk"
+msgstr "دیسک"
 
 #: includes/class-ash-csp-assistant.php
 msgid "New CSP Source Detected"

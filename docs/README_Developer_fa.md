@@ -17,8 +17,9 @@
 | ایستا | اسکریپت، استایل، رسانه و endpointهای REST/AJAX ثبت‌شده در وردپرس |
 | Report-Only | ارسال `Content-Security-Policy-Report-Only` هنگام مشاهده؛ CSP مسدودکننده در یادگیری ارسال نمی‌شود |
 | زمان اجرا | مشاهده‌گر فرانت برای بارگذاری‌های پویا |
+| دیسک | اسکن اختیاری تکه‌تکهٔ فایل‌های افزونه و پوسته روی دیسک؛ قابل‌لغو؛ فهرست استثناهای قابل‌ویرایش؛ امکان محدود کردن به افزونه و پوستهٔ انتخاب‌شده؛ لیست سفید خودکار نمی‌شود |
 
-مدت یادگیری: `15min`، `1hour`، `6hours`، `24hours`، `manual`. پایش پیوسته پس از یادگیری اختیاری است.
+مدت یادگیری: `15min`، `1hour`، `6hours`، `24hours`، `manual`. پایش پیوسته پس از یادگیری اختیاری است. اسکن عمیق فایل‌ها مدت را روی `manual` می‌گذارد تا زمان‌سنج اسکن دیسک را قطع نکند.
 
 وضعیت **افزوده شده** یعنی مبدأ از قبل در فیلد همان دستور پوشش داده شده (`'self'`، میزبان، wildcard). مقادیر خطرناک تأیید می‌خواهند. نوع ناشناخته فقط برای بررسی نگه داشته می‌شود و خودکار اعمال نمی‌شود.
 
@@ -34,7 +35,8 @@ abdal-security-headers/
 │   ├── class-ash-csp-assistant.php
 │   ├── class-ash-csp-normalizer.php
 │   ├── class-ash-csp-repository.php
-│   └── class-ash-csp-static-detector.php
+│   ├── class-ash-csp-static-detector.php
+│   └── class-ash-csp-disk-scanner.php
 ├── assets/css/admin.css
 ├── assets/js/admin.js
 ├── assets/js/csp-assistant.js
