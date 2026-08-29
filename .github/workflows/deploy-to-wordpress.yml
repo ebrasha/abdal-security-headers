@@ -3,62 +3,137 @@ name: Deploy to WordPress.org
 on:
   release:
     types: [published]
+
   workflow_dispatch:
     inputs:
+      deployment_type:
+        description: 'Deployment Type'
+        required: true
+        type: choice
+        default: 'assets-only'
+        options:
+          - assets-only
+          - full
       plugin_version:
         description: 'Plugin Version (Optional, leave empty to auto-detect)'
         required: false
         default: ''
 
+permissions:
+  contents: read
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
+    env:
+      SVN_URL: https://plugins.svn.wordpress.org/abdal-security-headers
+      SVN_USERNAME: ${{ secrets.WP_SVN_USERNAME }}
+      SVN_PASSWORD: ${{ secrets.WP_SVN_PASSWORD }}
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Setup SVN
-        run: sudo apt-get install subversion
-
-      - name: Export WordPress plugin files
-        run: |
-          rm -rf .git .github
-          mkdir -p wordpress-plugin
-          rsync -r --exclude=.git --exclude=.github --exclude=.gitignore --exclude=README.md ./ wordpress-plugin/
+        run: sudo apt-get update && sudo apt-get install -y subversion
 
       - name: Checkout WordPress.org SVN
         run: |
-          svn co --depth immediates "https://plugins.svn.wordpress.org/abdal-security-headers/" svn-wordpress
-          cd svn-wordpress
+          svn checkout --depth immediates "$SVN_URL/" "$RUNNER_TEMP/svn-wordpress"
+
+          cd "$RUNNER_TEMP/svn-wordpress"
+
+          if [ -d assets ]; then
+            svn update --set-depth infinity assets
+          else
+            mkdir -p assets
+          fi
+
+      - name: Deploy WordPress.org assets
+        run: |
+          if [ ! -d ".wordpress-org" ]; then
+            echo "Error: .wordpress-org directory was not found."
+            exit 1
+          fi
+
+          rsync -a --delete .wordpress-org/ "$RUNNER_TEMP/svn-wordpress/assets/"
+
+          cd "$RUNNER_TEMP/svn-wordpress"
+
+          svn add --force assets
+
+          svn status assets | awk '/^!/ {print substr($0, 9)}' | while IFS= read -r path; do
+            [ -n "$path" ] && svn rm --force "$path"
+          done
+
+          if [ -n "$(svn status assets)" ]; then
+            svn commit               -m "Update WordPress.org plugin assets"               --username "$SVN_USERNAME"               --password "$SVN_PASSWORD"               --non-interactive               --no-auth-cache
+          else
+            echo "No WordPress.org asset changes detected."
+          fi
+
+      - name: Export WordPress plugin files
+        if: github.event_name == 'release' || (github.event_name == 'workflow_dispatch' && inputs.deployment_type == 'full')
+        run: |
+          rm -rf "$RUNNER_TEMP/wordpress-plugin"
+          mkdir -p "$RUNNER_TEMP/wordpress-plugin"
+
+          rsync -a             --exclude='.git/'             --exclude='.github/'             --exclude='.wordpress-org/'             --exclude='.gitignore'             --exclude='README.md'             ./ "$RUNNER_TEMP/wordpress-plugin/"
+
+      - name: Update SVN trunk and tags
+        if: github.event_name == 'release' || (github.event_name == 'workflow_dispatch' && inputs.deployment_type == 'full')
+        run: |
+          cd "$RUNNER_TEMP/svn-wordpress"
           svn update --set-depth infinity trunk
           svn update --set-depth infinity tags
 
       - name: Determine Plugin Version
-        id: get_version
+        if: github.event_name == 'release' || (github.event_name == 'workflow_dispatch' && inputs.deployment_type == 'full')
         run: |
-          if [[ -n "${{ github.event.inputs.plugin_version }}" ]]; then
-            PLUGIN_VERSION="${{ github.event.inputs.plugin_version }}"
+          if [[ -n "${{ inputs.plugin_version }}" ]]; then
+            PLUGIN_VERSION="${{ inputs.plugin_version }}"
           else
-            PLUGIN_VERSION=$(grep -Eo "Version: [0-9]+\.[0-9]+\.[0-9]+" wordpress-plugin/abdal-security-headers.php | cut -d " " -f2)
+            PLUGIN_VERSION=$(grep -Eo "Version:[[:space:]]*[0-9]+\.[0-9]+\.[0-9]+" "$RUNNER_TEMP/wordpress-plugin/abdal-security-headers.php" | head -n 1 | sed -E 's/Version:[[:space:]]*//')
           fi
-          echo "PLUGIN_VERSION=$PLUGIN_VERSION" >> $GITHUB_ENV
+
+          if [[ -z "$PLUGIN_VERSION" ]]; then
+            echo "Error: Could not determine plugin version."
+            exit 1
+          fi
+
+          echo "PLUGIN_VERSION=$PLUGIN_VERSION" >> "$GITHUB_ENV"
           echo "Detected Plugin Version: $PLUGIN_VERSION"
 
-      - name: Copy new version to trunk
+      - name: Deploy plugin to trunk
+        if: github.event_name == 'release' || (github.event_name == 'workflow_dispatch' && inputs.deployment_type == 'full')
         run: |
-          rsync -r --delete wordpress-plugin/ svn-wordpress/trunk/
-          cd svn-wordpress
+          rsync -a --delete "$RUNNER_TEMP/wordpress-plugin/" "$RUNNER_TEMP/svn-wordpress/trunk/"
+
+          cd "$RUNNER_TEMP/svn-wordpress"
+
           svn add --force trunk
-          svn commit -m "Updating to latest release ($PLUGIN_VERSION)" --username "$SVN_USERNAME" --password "$SVN_PASSWORD"
+
+          svn status trunk | awk '/^!/ {print substr($0, 9)}' | while IFS= read -r path; do
+            [ -n "$path" ] && svn rm --force "$path"
+          done
+
+          if [ -n "$(svn status trunk)" ]; then
+            svn commit               -m "Update plugin to version $PLUGIN_VERSION"               --username "$SVN_USERNAME"               --password "$SVN_PASSWORD"               --non-interactive               --no-auth-cache
+          else
+            echo "No trunk changes detected."
+          fi
 
       - name: Tag the new release
+        if: github.event_name == 'release' || (github.event_name == 'workflow_dispatch' && inputs.deployment_type == 'full')
         run: |
-          cd svn-wordpress
-          svn cp trunk tags/$PLUGIN_VERSION
-          svn commit -m "Tagging version $PLUGIN_VERSION" --username "$SVN_USERNAME" --password "$SVN_PASSWORD"
-          svn update
+          cd "$RUNNER_TEMP/svn-wordpress"
 
-    env:
-      SVN_USERNAME: ${{ secrets.WP_SVN_USERNAME }}
-      SVN_PASSWORD: ${{ secrets.WP_SVN_PASSWORD }}
+          if svn info "$SVN_URL/tags/$PLUGIN_VERSION"             --username "$SVN_USERNAME"             --password "$SVN_PASSWORD"             --non-interactive             --no-auth-cache >/dev/null 2>&1; then
+            echo "Error: SVN tag $PLUGIN_VERSION already exists."
+            exit 1
+          fi
+
+          svn copy trunk "tags/$PLUGIN_VERSION"
+
+          svn commit             -m "Tag version $PLUGIN_VERSION"             --username "$SVN_USERNAME"             --password "$SVN_PASSWORD"             --non-interactive             --no-auth-cache
