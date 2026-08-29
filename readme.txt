@@ -4,9 +4,9 @@ Donate link: https://ebrasha.com/abdal-donation
 Tags: security, security-headers, x-frame-options, content-security-policy, hsts
 Requires at least: 6.7.2
 Tested up to: 7.1
-Stable tag: 5.4.2
+Stable tag: 5.5.2
 Requires PHP: 7.2
-License: GPLv2 or later
+License: AGPLv3
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Enhance WordPress security with HTTP security headers and a Smart CSP Assistant that discovers real site resources for review.
@@ -31,6 +31,7 @@ Abdal Security Headers applies HTTP security headers from one dashboard. The Sma
 * Live CSP header preview and a full-size CSP directive editor
 * WordPress hardening: hide version, strip extra headers, XML-RPC, REST API, generic login errors
 * Top-level Security Headers menu, RTL, and mobile layout
+* Standard WordPress dashboard widget for security status, headers, CSP, and recent activity
 
 **Security Headers Managed:**
 
@@ -75,6 +76,15 @@ No. Start a Smart Scan, browse the site, then apply the sources you accept. You 
 4. securityheaders.com score before and after enabling the plugin
 
 == Changelog ==
+
+= 5.5.2 =
+* Tighten dashboard widget status cards by removing hints, using a smaller status font, and a solid Open Settings button
+
+= 5.5.1 =
+* Match the dashboard widget layout to the native status cards, activity list, stats bar, and footer actions
+
+= 5.5.0 =
+* Add a standard WordPress dashboard widget for security status, active headers, CSP, and recent activity
 
 = 5.4.2 =
 * Add a Scan selected items switch so Deep file scan can be limited to chosen plugins and themes
@@ -172,6 +182,15 @@ No. Start a Smart Scan, browse the site, then apply the sources you accept. You 
 * Basic security headers implementation
 
 == Upgrade Notice ==
+
+= 5.5.2 =
+Makes the dashboard widget status row more compact and turns Open Settings into a solid blue button.
+
+= 5.5.1 =
+Updates the dashboard widget layout to the compact status, activity, and stats design.
+
+= 5.5.0 =
+Adds a standard WordPress dashboard widget so you can review security headers and CSP activity without leaving the dashboard.
 
 = 5.4.2 =
 Adds a selected-items switch so Deep file scan can target specific plugins and themes.

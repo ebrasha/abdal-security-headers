@@ -29,6 +29,7 @@ abdal-security-headers/
 ├── includes/
 │   ├── class-ash-admin.php
 │   ├── class-ash-admin-ui.php
+│   ├── class-ash-dashboard-widget.php
 │   ├── class-ash-headers.php
 │   ├── class-ash-csp-assistant.php
 │   ├── class-ash-csp-normalizer.php
@@ -36,6 +37,7 @@ abdal-security-headers/
 │   ├── class-ash-csp-static-detector.php
 │   └── class-ash-csp-disk-scanner.php
 ├── assets/css/admin.css
+├── assets/css/dashboard-widget.css
 ├── assets/js/admin.js
 ├── assets/js/csp-assistant.js
 ├── assets/js/csp-runtime-observer.js
@@ -48,6 +50,7 @@ Discovery table: `{prefix}ash_csp_sources`. Assistant state option: `ash_csp_ass
 
 - `ASH_Headers` — sends headers; skips blocking CSP while the assistant is learning
 - `ASH_Admin` / `ASH_Admin_UI` — top-level menu, settings UI, CSP editor modal
+- `ASH_Dashboard_Widget` — standard `wp_add_dashboard_widget()` overview on the WordPress dashboard
 - `ASH_CSP_Assistant` — learning, Report-Only, AJAX apply/diff/ignore
 - `ASH_CSP_Normalizer` — origin extraction, classification, policy coverage
 - `ASH_CSP_Repository` — persist and merge detections
@@ -80,4 +83,4 @@ Handcrafted with Passion by **Ebrahim Shafiei (EbraSha)**
 
 ## 📜 License
 
-This project is licensed under the GPLv2 or later License.
+This project is licensed under the AGPLv3 License.

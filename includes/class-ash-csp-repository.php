@@ -249,8 +249,70 @@ class ASH_CSP_Repository {
      */
     public static function count_sources() {
         global $wpdb;
+        if (!self::table_exists()) {
+            return 0;
+        }
         $table = self::table_name();
         return (int) $wpdb->get_var("SELECT COUNT(*) FROM {$table}");
+    }
+
+    /**
+     * @return bool
+     */
+    public static function table_exists() {
+        global $wpdb;
+        $table = self::table_name();
+        $found = $wpdb->get_var($wpdb->prepare('SHOW TABLES LIKE %s', $wpdb->esc_like($table)));
+        return $found === $table;
+    }
+
+    /**
+     * Count sources observed through CSP Report-Only or marked as warnings.
+     *
+     * @return int
+     */
+    public static function count_violations() {
+        global $wpdb;
+        if (!self::table_exists()) {
+            return 0;
+        }
+        $table = self::table_name();
+        return (int) $wpdb->get_var(
+            "SELECT COUNT(*) FROM {$table} WHERE FIND_IN_SET('report-only', detection_methods) OR status = 'warning'"
+        );
+    }
+
+    /**
+     * Most recently observed source, if any.
+     *
+     * @return array|null
+     */
+    public static function latest_source() {
+        global $wpdb;
+        if (!self::table_exists()) {
+            return null;
+        }
+        $table = self::table_name();
+        $row = $wpdb->get_row("SELECT * FROM {$table} ORDER BY last_seen DESC LIMIT 1", ARRAY_A);
+        return is_array($row) ? $row : null;
+    }
+
+    /**
+     * Most recent Report-Only or warning source, if any.
+     *
+     * @return array|null
+     */
+    public static function latest_violation() {
+        global $wpdb;
+        if (!self::table_exists()) {
+            return null;
+        }
+        $table = self::table_name();
+        $row = $wpdb->get_row(
+            "SELECT * FROM {$table} WHERE FIND_IN_SET('report-only', detection_methods) OR status = 'warning' ORDER BY last_seen DESC LIMIT 1",
+            ARRAY_A
+        );
+        return is_array($row) ? $row : null;
     }
 
     /**

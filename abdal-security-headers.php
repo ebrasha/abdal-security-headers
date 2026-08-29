@@ -20,12 +20,12 @@
  * Plugin Name: Abdal Security Headers
  * Plugin URI: https://github.com/ebrasha/abdal-security-headers
  * Description:  WordPress Security Headers Manager plugin, featuring full security headers control, advanced security features, and Content Security Policy (CSP).
- * Version: 5.4.2
+ * Version: 5.5.2
  * Author: Ebrahim Shafiei (EbraSha)
  * Author URI: https://github.com/ebrasha
  * Text Domain: abdal-security-headers
  * Domain Path: /languages
- * License: GPLv2 or later
+ * License: AGPLv3
  */
 
 
@@ -35,7 +35,7 @@ if (!defined('ABSPATH')) {
 }
 
 // Define plugin constants
-define('ASH_VERSION', '5.4.2');
+define('ASH_VERSION', '5.5.2');
 define('ASH_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('ASH_PLUGIN_URL', plugin_dir_url(__FILE__));
 
@@ -51,6 +51,7 @@ add_action('plugins_loaded', 'ash_load_textdomain');
 
 // Include required files
 require_once ASH_PLUGIN_DIR . 'includes/class-ash-admin.php';
+require_once ASH_PLUGIN_DIR . 'includes/class-ash-dashboard-widget.php';
 require_once ASH_PLUGIN_DIR . 'includes/class-ash-headers.php';
 require_once ASH_PLUGIN_DIR . 'includes/class-ash-csp-normalizer.php';
 require_once ASH_PLUGIN_DIR . 'includes/class-ash-csp-repository.php';
@@ -63,6 +64,7 @@ function ash_init() {
     // Initialize admin
     if (is_admin()) {
         new ASH_Admin();
+        new ASH_Dashboard_Widget();
     }
 
     ASH_CSP_Assistant::instance();

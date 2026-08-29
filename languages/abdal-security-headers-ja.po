@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Abdal Security Headers 5.4.2\n"
+"Project-Id-Version: Abdal Security Headers 5.5.1\n"
 "Report-Msgid-Bugs-To: Prof.Shafiei@Gmail.com\n"
 "POT-Creation-Date: 2026-08-29 10:30+0330\n"
 "PO-Revision-Date: 2026-08-29 10:30+0330\n"
@@ -1006,3 +1006,89 @@ msgstr "不明なソース %d 件"
 #: includes/class-ash-admin-ui.php
 msgid "Handcrafted with ❤️ Passion by Ebrahim Shafiei (EbraSha)"
 msgstr "Ebrahim Shafiei (EbraSha) が ❤️ を込めて制作"
+
+#: includes/class-ash-dashboard-widget.php
+msgid "Abdal Security Headers mascot"
+msgstr "Abdal Security Headers のマスコット"
+
+#: includes/class-ash-dashboard-widget.php
+msgid "Recent Activity"
+msgstr "最近のアクティビティ"
+
+#: includes/class-ash-dashboard-widget.php
+msgid "No recent activity yet."
+msgstr "最近のアクティビティはまだありません。"
+
+#: includes/class-ash-dashboard-widget.php
+msgid "Learning Started"
+msgstr "学習を開始しました"
+
+#: includes/class-ash-dashboard-widget.php
+msgid "CSP Scan Completed"
+msgstr "CSPスキャンが完了しました"
+
+#: includes/class-ash-dashboard-widget.php
+msgid "Learning Completed"
+msgstr "学習が完了しました"
+
+#: includes/class-ash-dashboard-widget.php
+msgid "Deep File Scan Completed"
+msgstr "詳細ファイルスキャンが完了しました"
+
+#: includes/class-ash-dashboard-widget.php
+msgid "CSP Source Detected"
+msgstr "CSPソースを検出"
+
+#: includes/class-ash-dashboard-widget.php
+msgid "CSP Violation Detected"
+msgstr "CSP違反を検出"
+
+#: includes/class-ash-dashboard-widget.php
+msgid "Statistics"
+msgstr "統計"
+
+#: includes/class-ash-dashboard-widget.php
+msgid "Detected CSP Sources"
+msgstr "検出されたCSPソース"
+
+#: includes/class-ash-dashboard-widget.php
+msgid "CSP Violations"
+msgstr "CSP違反"
+
+#: includes/class-ash-dashboard-widget.php
+msgid "Active Security Headers"
+msgstr "有効なセキュリティヘッダー"
+
+#: includes/class-ash-dashboard-widget.php
+msgid "Last CSP Scan"
+msgstr "前回のCSPスキャン"
+
+#: includes/class-ash-dashboard-widget.php
+msgid "Deep Scan Results"
+msgstr "詳細スキャンの結果"
+
+#: includes/class-ash-dashboard-widget.php
+msgid "Open Settings"
+msgstr "設定を開く"
+
+#: includes/class-ash-dashboard-widget.php
+msgid "View Full Report"
+msgstr "詳細レポートを表示"
+
+#. translators: %s: human-readable time difference
+#: includes/class-ash-dashboard-widget.php
+#, php-format
+msgid "%s ago"
+msgstr "%s前"
+
+#: includes/class-ash-dashboard-widget.php
+msgid "Your site is well protected."
+msgstr "サイトは十分に保護されています。"
+
+#: includes/class-ash-dashboard-widget.php
+msgid "All security headers are enabled."
+msgstr "すべてのセキュリティヘッダーが有効です。"
+
+#: includes/class-ash-dashboard-widget.php
+msgid "Content Security Policy is active."
+msgstr "Content Security Policy は有効です。"

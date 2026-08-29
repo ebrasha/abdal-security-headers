@@ -1065,6 +1065,7 @@ body.admin_page_abdal-security-headers #wpcontent {
 
 .ash-card--assistant {
     margin-bottom: 16px;
+    scroll-margin-top: 24px;
 }
 
 .ash-assistant__body {

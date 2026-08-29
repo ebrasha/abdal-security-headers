@@ -708,7 +708,7 @@ class ASH_CSP_Assistant {
             'manual' => $strings['durationManual'],
         );
         ?>
-        <section class="ash-card ash-card--assistant" data-ash-assistant>
+        <section id="ash-csp-assistant" class="ash-card ash-card--assistant" data-ash-assistant>
             <header class="ash-card__header">
                 <span class="ash-card__icon dashicons dashicons-visibility" aria-hidden="true"></span>
                 <div>

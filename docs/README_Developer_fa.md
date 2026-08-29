@@ -31,6 +31,7 @@ abdal-security-headers/
 ├── includes/
 │   ├── class-ash-admin.php
 │   ├── class-ash-admin-ui.php
+│   ├── class-ash-dashboard-widget.php
 │   ├── class-ash-headers.php
 │   ├── class-ash-csp-assistant.php
 │   ├── class-ash-csp-normalizer.php
@@ -38,6 +39,7 @@ abdal-security-headers/
 │   ├── class-ash-csp-static-detector.php
 │   └── class-ash-csp-disk-scanner.php
 ├── assets/css/admin.css
+├── assets/css/dashboard-widget.css
 ├── assets/js/admin.js
 ├── assets/js/csp-assistant.js
 ├── assets/js/csp-runtime-observer.js
@@ -50,6 +52,7 @@ abdal-security-headers/
 
 - `ASH_Headers` — ارسال هدرها؛ در یادگیری CSP مسدودکننده را رد می‌کند
 - `ASH_Admin` / `ASH_Admin_UI` — منوی سطح‌بالا، رابط تنظیمات، مودال ویرایش CSP
+- `ASH_Dashboard_Widget` — ویجت استاندارد داشبورد وردپرس با `wp_add_dashboard_widget()`
 - `ASH_CSP_Assistant` — یادگیری، Report-Only، AJAX اعمال/تفاوت/نادیده‌گرفتن
 - `ASH_CSP_Normalizer` — استخراج مبدأ، طبقه‌بندی، پوشش سیاست
 - `ASH_CSP_Repository` — ذخیره و ادغام کشفیات
@@ -82,6 +85,6 @@ AJAX ادمین: `ash_csp_assistant_*`. جمع‌کننده‌های عمومی:
 
 ## 📜 مجوز
 
-این پروژه تحت مجوز GPLv2 or later منتشر شده است.
+این پروژه تحت مجوز AGPLv3   منتشر شده است.
 
 </div>
