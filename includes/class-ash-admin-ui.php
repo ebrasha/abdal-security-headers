@@ -276,7 +276,21 @@ class ASH_Admin_UI {
                 <?php echo esc_html__('Handcrafted with ❤️ Passion by Ebrahim Shafiei (EbraSha)', 'abdal-security-headers'); ?>
             </footer>
 
-            <div id="ash-wp-modal-root"></div>
+            <div class="ash-modal" id="ash-confirm-modal" hidden>
+                <div class="ash-modal__backdrop" data-ash-confirm-dismiss></div>
+                <div class="ash-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="ash-confirm-modal-title">
+                    <h2 id="ash-confirm-modal-title"></h2>
+                    <div id="ash-confirm-modal-body"></div>
+                    <div class="ash-modal__actions">
+                        <button type="button" class="ash-btn ash-btn--secondary" data-ash-confirm-cancel>
+                            <?php echo esc_html__('Cancel', 'abdal-security-headers'); ?>
+                        </button>
+                        <button type="button" class="ash-btn ash-btn--primary" data-ash-confirm-ok>
+                            <?php echo esc_html__('Yes', 'abdal-security-headers'); ?>
+                        </button>
+                    </div>
+                </div>
+            </div>
 
             <div class="ash-modal ash-modal--editor" id="ash-csp-editor-modal" hidden>
                 <div class="ash-modal__backdrop" data-ash-csp-editor-dismiss></div>

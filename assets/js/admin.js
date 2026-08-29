@@ -59,107 +59,68 @@
     }
 
     /**
-     * Confirm/alert dialogs use the WordPress Modal component from wp.components.
+     * Confirm/alert dialogs use the same custom ash-modal as Smart CSP Assistant.
      */
     function createModal() {
-        var elementApi = window.wp && wp.element;
-        var componentsApi = window.wp && wp.components;
+        var modal = qs("#ash-confirm-modal");
+        var titleEl = qs("#ash-confirm-modal-title");
+        var bodyEl = qs("#ash-confirm-modal-body");
+        var cancelBtn = qs("[data-ash-confirm-cancel]");
+        var okBtn = qs("[data-ash-confirm-ok]");
+        var backdrop = qs("[data-ash-confirm-dismiss]");
 
-        if (!elementApi || !componentsApi || !componentsApi.Modal) {
+        if (!modal || !titleEl || !bodyEl || !cancelBtn || !okBtn) {
             return createFallbackModal();
         }
 
-        var el = elementApi.createElement;
-        var Modal = componentsApi.Modal;
-        var reactRoot = null;
+        var pending = null;
 
-        function getContainer() {
-            var node = document.getElementById("ash-wp-modal-root");
-            if (!node) {
-                node = document.createElement("div");
-                node.id = "ash-wp-modal-root";
-                document.body.appendChild(node);
-            }
-            return node;
-        }
-
-        function unmount() {
-            if (reactRoot && typeof reactRoot.render === "function") {
-                reactRoot.render(null);
+        function finish(result) {
+            if (!pending) {
                 return;
             }
-            if (typeof elementApi.unmountComponentAtNode === "function") {
-                elementApi.unmountComponentAtNode(getContainer());
-            }
-        }
-
-        function mount(node) {
-            var container = getContainer();
-            if (typeof elementApi.createRoot === "function") {
-                if (!reactRoot) {
-                    reactRoot = elementApi.createRoot(container);
-                }
-                reactRoot.render(node);
-                return;
-            }
-            elementApi.render(node, container);
+            var resolve = pending;
+            pending = null;
+            modal.hidden = true;
+            document.body.classList.remove("ash-modal-open");
+            resolve(!!result);
         }
 
         function open(options) {
             return new Promise(function (resolve) {
-                var settled = false;
-
-                function finish(result) {
-                    if (settled) {
-                        return;
-                    }
-                    settled = true;
-                    unmount();
-                    resolve(!!result);
+                if (pending) {
+                    pending(false);
+                    pending = null;
                 }
-
-                var actionChildren = [];
-                if (!options.alert) {
-                    actionChildren.push(el("button", {
-                        type: "button",
-                        key: "cancel",
-                        className: "button",
-                        onClick: function () {
-                            finish(false);
-                        }
-                    }, options.cancelText || strings.no || "No"));
-                }
-
-                actionChildren.push(el("button", {
-                    type: "button",
-                    key: "confirm",
-                    className: "button button-primary",
-                    onClick: function () {
-                        finish(true);
-                    }
-                }, options.confirmText || strings.ok || "OK"));
-
-                var modalChildren = [];
+                pending = resolve;
+                titleEl.textContent = options.title || "";
+                bodyEl.textContent = "";
                 if (options.message) {
-                    modalChildren.push(el("p", {
-                        key: "message",
-                        className: "ash-wp-modal__message"
-                    }, options.message));
+                    var paragraph = document.createElement("p");
+                    paragraph.textContent = options.message;
+                    bodyEl.appendChild(paragraph);
                 }
-                modalChildren.push(el("div", {
-                    key: "actions",
-                    className: "ash-wp-modal__actions"
-                }, actionChildren));
-
-                mount(el(Modal, {
-                    title: options.title || "",
-                    className: "ash-wp-modal",
-                    onRequestClose: function () {
-                        finish(false);
-                    }
-                }, modalChildren));
+                cancelBtn.hidden = !!options.alert;
+                okBtn.textContent = options.confirmText || strings.yes || "Yes";
+                modal.hidden = false;
+                document.body.classList.add("ash-modal-open");
             });
         }
+
+        cancelBtn.addEventListener("click", function () {
+            finish(false);
+        });
+        backdrop.addEventListener("click", function () {
+            finish(false);
+        });
+        okBtn.addEventListener("click", function () {
+            finish(true);
+        });
+        document.addEventListener("keydown", function (event) {
+            if (event.key === "Escape" && modal && !modal.hidden) {
+                finish(false);
+            }
+        });
 
         return {
             confirm: function (title, message) {
@@ -167,7 +128,6 @@
                     title: title,
                     message: message,
                     confirmText: strings.yes,
-                    cancelText: strings.no,
                     alert: false
                 });
             },
@@ -511,7 +471,7 @@
 
         form.addEventListener("submit", function (event) {
             event.preventDefault();
-            modal.confirm(strings.confirmSave, "").then(function (confirmed) {
+            modal.confirm(strings.saveChanges || "", strings.confirmSave).then(function (confirmed) {
                 if (!confirmed) {
                     return;
                 }
@@ -547,7 +507,7 @@
 
         if (resetButton) {
             resetButton.addEventListener("click", function () {
-                modal.confirm(strings.confirmReset, "").then(function (confirmed) {
+                modal.confirm(strings.reset || "", strings.confirmReset).then(function (confirmed) {
                     if (!confirmed) {
                         return;
                     }

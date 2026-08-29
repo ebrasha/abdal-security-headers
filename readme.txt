@@ -4,7 +4,7 @@ Donate link: https://ebrasha.com/abdal-donation
 Tags: security, security-headers, x-frame-options, content-security-policy, hsts
 Requires at least: 6.7.2
 Tested up to: 7.1
-Stable tag: 5.5.2
+Stable tag: 5.5.3
 Requires PHP: 7.2
 License: AGPLv3
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -76,6 +76,9 @@ No. Start a Smart Scan, browse the site, then apply the sources you accept. You 
 4. securityheaders.com score before and after enabling the plugin
 
 == Changelog ==
+
+= 5.5.3 =
+* Use the same custom plugin modal for Save Changes and Reset as Clear Learning Data
 
 = 5.5.2 =
 * Tighten dashboard widget status cards by removing hints, using a smaller status font, and a solid Open Settings button
@@ -182,6 +185,9 @@ No. Start a Smart Scan, browse the site, then apply the sources you accept. You 
 * Basic security headers implementation
 
 == Upgrade Notice ==
+
+= 5.5.3 =
+Uses the plugin confirmation modal for Save Changes and Reset, matching Clear Learning Data.
 
 = 5.5.2 =
 Makes the dashboard widget status row more compact and turns Open Settings into a solid blue button.

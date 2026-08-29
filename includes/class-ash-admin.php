@@ -44,19 +44,17 @@ class ASH_Admin {
         $css_version = file_exists($css_path) ? (string) filemtime($css_path) : ASH_VERSION;
         $js_version = file_exists($js_path) ? (string) filemtime($js_path) : ASH_VERSION;
 
-        wp_enqueue_style('wp-components');
-
         wp_enqueue_style(
             'ash-admin-styles',
             ASH_PLUGIN_URL . 'assets/css/admin.css',
-            array('dashicons', 'wp-components'),
+            array('dashicons'),
             $css_version
         );
 
         wp_enqueue_script(
             'ash-admin-scripts',
             ASH_PLUGIN_URL . 'assets/js/admin.js',
-            array('wp-element', 'wp-components'),
+            array(),
             $js_version,
             true
         );
@@ -100,6 +98,8 @@ class ASH_Admin {
             'strings' => array(
                 'confirmSave' => __('Are you sure you want to save these settings?', 'abdal-security-headers'),
                 'confirmReset' => __('Reset unsaved changes and restore the last saved values?', 'abdal-security-headers'),
+                'saveChanges' => __('Save Changes', 'abdal-security-headers'),
+                'reset' => __('Reset', 'abdal-security-headers'),
                 'yes' => __('Yes', 'abdal-security-headers'),
                 'no' => __('No', 'abdal-security-headers'),
                 'success' => __('Settings saved successfully', 'abdal-security-headers'),
