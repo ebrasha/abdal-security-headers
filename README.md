@@ -1,95 +1,102 @@
-# 🛡️ Abdal Security Headers - User Guide
+# 🛡️ Abdal Security Headers
 
 <div align="center">
-  <img src="abdal-security-headers.png" alt="Abdal Security Headers Plugin Screenshot">
+  <img src="abdal-security-headers.png" alt="Abdal Security Headers">
 </div>
 
- 
+[راهنمای فارسی](README_fa.md) · [English Developer Guide](docs/README_Developer_en.md) · [راهنمای توسعه‌دهنده](docs/README_Developer_fa.md)
 
-[Persian User Guide](README_fa.md) | [English Developer Guide](docs/README_Developer_en.md) | [Persian Developer Guide](docs/README_Developer_fa.md)
+## 🎯 Why it exists
 
-## 📝 Introduction
-Welcome to Abdal Security Headers! This WordPress plugin helps protect your website by adding essential security headers. This guide will help you get started with the plugin and make the most of its features.
+Writing a working Content Security Policy by hand is slow and easy to get wrong. This plugin applies HTTP security headers from one dashboard, and uses a **Smart CSP Assistant** to discover what the site actually loads so you can tighten CSP without guessing.
 
-## ✨ What This Plugin Does
+## 🧠 Smart CSP Assistant
 
-### Security Protection
-- 🔒 Protects against cross-site scripting (XSS) attacks
-- 🛡️ Prevents clickjacking attempts
-- 🔐 Stops MIME-type sniffing attacks
-- 🌐 Forces secure HTTPS connections
-- 🚫 Controls sensitive information sharing
-- 🛑 Manages which resources can load on your site
+The assistant **observes** the site. It does **not** auto-whitelist anything.
 
-### Easy-to-Use Features
-- 📝 Simple switches to enable/disable security features
-- 👁️ Real-time preview of security settings
-- 🎨 User-friendly interface with clear options
-- ✅ Automatic validation of security settings
-- 📊 Security status monitoring
+- 🔎 **Hybrid discovery:** WordPress-registered scripts/styles, CSP Report-Only, and a runtime observer
+- ⏱️ **Learning window:** 15 minutes, 1 hour, 6 hours, 24 hours, or manual stop
+- 📡 Optional continuous monitoring after learning ends
+- 🧩 Suggests origins per directive (`script-src`, `style-src`, `img-src`, …)
+- 🏷️ Confidence labels (trusted, likely safe, unknown, risky)
+- ✅ You review, then merge selected sources into existing CSP fields — current values are never replaced
+- 🟢 If a finding is already in a CSP field, status shows **Added**
+- ⚠️ Dangerous tokens (`*`, `unsafe-inline`, `unsafe-eval`, …) need explicit confirmation
+- 🛡️ While learning, blocking CSP is paused and Report-Only is sent so the site keeps working
 
-### WordPress Integration
-- 🎭 Option to hide WordPress version
-- ⚡ Cleanup of unnecessary headers
-- 🔌 Protection for WordPress APIs
-- 🔑 Control over site access
-- 📢 Enhanced privacy features
+## ✨ Capabilities
 
-### User Experience
-- 💫 Modern, clean interface design
-- 🎛️ Organized settings in clear sections
-- 🌐 Support for right-to-left languages
-- 💡 Helpful tips and explanations
-- 🎯 Easy-to-understand options
+- 🔒 XSS, clickjacking, MIME sniffing, HSTS, Referrer-Policy, Permissions-Policy
+- 🧱 Full CSP directive editor with a large modal and live header preview
+- 🛡️ WordPress hardening: hide version, strip `X-Powered-By` / pingback, XML-RPC, REST API, generic login errors
+- 🎛️ Top-level **Security Headers** menu, iOS-style switches, RTL, mobile layout
 
-### Additional Benefits
-- 📱 Works perfectly on mobile devices
-- 🔄 Backup and restore settings
-- 📝 Clear error messages and warnings
-- ⚙️ Flexible configuration options
-- 🛠️ Compatible with other security plugins
+## 🚀 How to use
 
-## 🚀 Getting Started
-1. Install the plugin from your WordPress dashboard
-2. Go to `Settings -> Security Headers`
-3. Enable the security features you want to use
-4. Save your settings
-
-## ⚙️ Basic Settings
-- **X-XSS-Protection**: Prevents cross-site scripting attacks
-- **X-Frame-Options**: Prevents clickjacking attempts
-- **X-Content-Type-Options**: Prevents MIME-type sniffing
-- **Strict-Transport-Security**: Forces HTTPS connections
-- **Content Security Policy**: Controls which resources can be loaded
-
-## 🔰 Recommended Settings
-For basic protection, we recommend enabling:
-1. All basic security headers
-2. WordPress version hiding
-3. Remove unnecessary headers
-4. Basic Content Security Policy
-
-## ❓ Frequently Asked Questions
-1. **Is this plugin compatible with caching?**
-   - Yes, works with all major caching plugins
-
-2. **Will this break my website?**
-   - No, the default settings are safe for most websites
-
-3. **Do I need technical knowledge?**
-   - No, the interface is user-friendly with helpful tooltips
+1. Install and activate the plugin.
+2. Open **Security Headers** in the WordPress admin menu.
+3. Turn on the headers you need and enable Content Security Policy.
+4. Start a Smart Scan, browse the site, then review detections and apply selected sources.
+5. Save changes.
 
 ## 🐛 Reporting Issues
+
 If you encounter any issues or have configuration problems, please reach out via email at Prof.Shafiei@Gmail.com. You can also report issues on GitLab or GitHub.
 
 ## ❤️ Donation
+
 If you find this project helpful and would like to support further development, please consider making a donation:
-- [Donate Here](https://ebrasha.com/abdal-donation)
+- [Donate Here](https://t.me/AbdalDonationBot)
 
 ## 🤵 Programmer
+
 Handcrafted with Passion by **Ebrahim Shafiei (EbraSha)**
 - **E-Mail**: Prof.Shafiei@Gmail.com
 - **Telegram**: [@ProfShafiei](https://t.me/ProfShafiei)
+ 
 
-## 📜 License
-This project is licensed under the GPLv2 or later License. 
+ ## License
+
+This project is licensed under the **GNU AGPLv3** with additional terms
+as permitted by Section 7 of the AGPLv3. See [LICENSE](./LICENSE) for the
+complete text including additional terms.
+
+### Summary of Your Rights and Obligations
+
+- ✅ You **may** use, study, modify, and redistribute this software under
+  the terms of AGPLv3.
+- ✅ You **may** create derivative works, provided you comply with the
+  attribution and renaming requirements below.
+- ⚠️ **Network use** triggers source disclosure obligations (AGPLv3 §13).
+  If you run a modified version of this software as a network service,
+  you must offer the modified source code to its users.
+- ⚠️ The names **"Abdal Security Headers"**, **"Abdal"**, **"EbraSha"**, **"Abdal Security Group"**, **"Nahaanbin CyberSecurity Company"** and associated logos are **trademarks** of
+  Ebrahim Shafiei (EbraSha) and are **NOT** covered by the AGPLv3 license.
+- ⚠️ Forks and modified versions **MUST be renamed** to a name that is
+  not confusingly similar to the Project Brand, and may NOT reuse the
+  original branding, logos, or visual identity.
+- ⚠️ **All author attributions, copyright notices, "About" screens,
+  credit lines, and identifying information MUST be preserved** in any
+  modified version. Removal or obfuscation is a material violation of
+  the License.
+- ⚠️ Modified versions must clearly indicate they are modified and must
+  not be represented as the official version.
+
+For details, see the **Additional Terms** section in the [LICENSE](./LICENSE) file.
+
+### Commercial / Trademark Licensing
+
+For commercial licensing, trademark licensing, or permissions beyond
+the scope of AGPLv3, please contact:
+
+- **Author:** Ebrahim Shafiei (EbraSha)
+- **Team:** Abdal Security Group
+- **Company:** Nahaanbin CyberSecurity Company
+- **Email:** Prof.Shafiei@Gmail.com
+- **Repository:** https://github.com/ebrasha/abdal-security-headers
+
+### Reporting License Violations
+
+If you discover a fork, distribution, or commercial use that violates
+these terms (such as removed attribution, reused branding, or unauthorized
+trademark use), please report it via the contact above.

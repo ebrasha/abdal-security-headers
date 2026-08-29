@@ -22,113 +22,133 @@ if (!defined('ABSPATH')) {
 
 class ASH_Admin {
     private $options;
+    private $page_hook = '';
 
     public function __construct() {
         add_action('admin_menu', array($this, 'add_plugin_page'));
         add_action('admin_init', array($this, 'page_init'));
         add_action('admin_enqueue_scripts', array($this, 'enqueue_admin_assets'));
-        $this->options = get_option('ash_options');
+        $this->options = get_option('ash_options', array());
+        if (!is_array($this->options)) {
+            $this->options = array();
+        }
     }
 
     public function enqueue_admin_assets($hook) {
-        if ($hook != 'settings_page_abdal-security-headers') {
+        if (empty($this->page_hook) || $hook !== $this->page_hook) {
             return;
         }
-        
-        // Enqueue Bootstrap
-        wp_enqueue_style('bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css');
-        wp_enqueue_script('bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js', array('jquery'), null, true);
-        
-        // Enqueue SweetAlert2
-        wp_enqueue_style('sweetalert2', 'https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css');
-        wp_enqueue_script('sweetalert2', 'https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js', array(), null, true);
-        
-        // Enqueue our custom styles
-        wp_enqueue_style('ash-admin-styles', ASH_PLUGIN_URL . 'assets/css/admin.css', array('bootstrap', 'sweetalert2'), ASH_VERSION);
-        
-        // Enqueue our custom scripts
-        wp_enqueue_script('ash-admin-scripts', ASH_PLUGIN_URL . 'assets/js/admin.js', array('jquery', 'bootstrap', 'sweetalert2'), ASH_VERSION, true);
 
-        // Add translation strings for JavaScript
-        wp_localize_script('ash-admin-scripts', 'ashStrings', array(
-            'confirmSave' => esc_html__('Are you sure you want to save these settings?', 'abdal-security-headers'),
-            'yes' => esc_html__('Yes', 'abdal-security-headers'),
-            'no' => esc_html__('No', 'abdal-security-headers'),
-            'success' => esc_html__('Settings saved successfully', 'abdal-security-headers'),
-            'ok' => esc_html__('OK', 'abdal-security-headers'),
-            'error' => esc_html__('Error', 'abdal-security-headers'),
-            'errorMessage' => esc_html__('An error occurred while saving the settings. Please try again.', 'abdal-security-headers')
+        $css_path = ASH_PLUGIN_DIR . 'assets/css/admin.css';
+        $js_path = ASH_PLUGIN_DIR . 'assets/js/admin.js';
+        $css_version = file_exists($css_path) ? (string) filemtime($css_path) : ASH_VERSION;
+        $js_version = file_exists($js_path) ? (string) filemtime($js_path) : ASH_VERSION;
+
+        wp_enqueue_style('wp-components');
+
+        wp_enqueue_style(
+            'ash-admin-styles',
+            ASH_PLUGIN_URL . 'assets/css/admin.css',
+            array('dashicons', 'wp-components'),
+            $css_version
+        );
+
+        wp_enqueue_script(
+            'ash-admin-scripts',
+            ASH_PLUGIN_URL . 'assets/js/admin.js',
+            array('wp-element', 'wp-components'),
+            $js_version,
+            true
+        );
+
+        $assistant_js_path = ASH_PLUGIN_DIR . 'assets/js/csp-assistant.js';
+        $assistant_js_version = file_exists($assistant_js_path) ? (string) filemtime($assistant_js_path) : ASH_VERSION;
+        wp_enqueue_script(
+            'ash-csp-assistant',
+            ASH_PLUGIN_URL . 'assets/js/csp-assistant.js',
+            array('ash-admin-scripts'),
+            $assistant_js_version,
+            true
+        );
+
+        wp_localize_script('ash-csp-assistant', 'ashCspAssistant', array(
+            'ajaxUrl' => admin_url('admin-ajax.php'),
+            'nonce' => wp_create_nonce('ash_csp_assistant'),
+            'siteHost' => strtolower((string) wp_parse_url(home_url(), PHP_URL_HOST)),
+            'optionMap' => class_exists('ASH_CSP_Assistant') ? ASH_CSP_Assistant::OPTION_MAP : array(),
+            'strings' => class_exists('ASH_CSP_Assistant') ? ASH_CSP_Assistant::ui_strings() : array(),
+            'initial' => class_exists('ASH_CSP_Assistant') ? ASH_CSP_Assistant::instance()->payload() : array(),
+        ));
+
+        wp_localize_script('ash-admin-scripts', 'ashAdmin', array(
+            'headerFields' => array(
+                'x_xss_protection',
+                'x_content_type_options',
+                'strict_transport_security',
+                'permissions_policy',
+                'x_frame_options',
+                'referrer_policy',
+            ),
+            'featureFields' => array(
+                'remove_x_powered_by',
+                'hide_wp_version',
+                'remove_login_errors',
+                'disable_xmlrpc',
+                'remove_x_pingback',
+                'restrict_rest_api',
+            ),
+            'strings' => array(
+                'confirmSave' => __('Are you sure you want to save these settings?', 'abdal-security-headers'),
+                'confirmReset' => __('Reset unsaved changes and restore the last saved values?', 'abdal-security-headers'),
+                'yes' => __('Yes', 'abdal-security-headers'),
+                'no' => __('No', 'abdal-security-headers'),
+                'success' => __('Settings saved successfully', 'abdal-security-headers'),
+                'ok' => __('OK', 'abdal-security-headers'),
+                'cancel' => __('Cancel', 'abdal-security-headers'),
+                'editorOk' => _x('OK', 'csp editor confirm', 'abdal-security-headers'),
+                /* translators: %s: CSP directive name such as script-src */
+                'editDirective' => __('Edit %s', 'abdal-security-headers'),
+                'error' => __('Error', 'abdal-security-headers'),
+                'errorMessage' => __('An error occurred while saving the settings. Please try again.', 'abdal-security-headers'),
+                'copied' => __('Copied', 'abdal-security-headers'),
+                'copyCsp' => __('Copy CSP header', 'abdal-security-headers'),
+                'copyFailed' => __('Unable to copy the CSP header.', 'abdal-security-headers'),
+                'cspEmpty' => __('Content-Security-Policy header is enabled but no directives are set.', 'abdal-security-headers'),
+                'cspDisabled' => __('Content Security Policy is disabled. Enable it to send this header.', 'abdal-security-headers'),
+                'statusGood' => _x('Good', 'security status', 'abdal-security-headers'),
+                'statusFair' => _x('Fair', 'security status', 'abdal-security-headers'),
+                'statusNeedsAttention' => _x('Needs attention', 'security status', 'abdal-security-headers'),
+                'statusGoodHint' => __('Most security controls are enabled.', 'abdal-security-headers'),
+                'statusFairHint' => __('Some recommended security controls are still disabled.', 'abdal-security-headers'),
+                'statusNeedsHint' => __('Enable more security headers and hardening options.', 'abdal-security-headers'),
+                'cspOn' => _x('Enabled', 'CSP status', 'abdal-security-headers'),
+                'cspOff' => _x('Disabled', 'CSP status', 'abdal-security-headers'),
+                'cspOnHint' => __('Content Security Policy is being sent with responses.', 'abdal-security-headers'),
+                'cspOffHint' => __('Content Security Policy is currently turned off.', 'abdal-security-headers'),
+                /* translators: 1: number of enabled headers, 2: total headers */
+                'headersHint' => __('%1$d of %2$d security headers are enabled', 'abdal-security-headers'),
+                /* translators: 1: number of enabled features, 2: total features */
+                'featuresHint' => __('%1$d of %2$d additional features are enabled', 'abdal-security-headers'),
+            ),
         ));
     }
 
     public function add_plugin_page() {
-        add_options_page(
+        $this->page_hook = add_menu_page(
             esc_html__('Abdal Security Headers', 'abdal-security-headers'),
             esc_html__('Security Headers', 'abdal-security-headers'),
             'manage_options',
             'abdal-security-headers',
-            array($this, 'create_admin_page')
+            array($this, 'create_admin_page'),
+            'dashicons-shield',
+            58
         );
     }
 
     public function create_admin_page() {
-        ?>
-        <div class="wrap">
-            <h1><?php echo esc_html__('Abdal Security Headers', 'abdal-security-headers'); ?></h1>
-            <div class="ash-container">
-                <form method="post" action="options.php" id="ash-settings-form">
-                    <?php settings_fields('ash_options_group'); ?>
-                    
-                    <div class="ash-section">
-                        <h2><?php echo esc_html__('Basic Security Headers', 'abdal-security-headers'); ?></h2>
-                        <p class="ash-description"><?php echo esc_html__('Configure basic security headers for your website.', 'abdal-security-headers'); ?></p>
-                        <?php do_settings_fields('abdal-security-headers', 'ash_basic_headers'); ?>
-                    </div>
-
-                    <div class="ash-section">
-                        <h2><?php echo esc_html__('Additional Security Features', 'abdal-security-headers'); ?></h2>
-                        <p class="ash-description"><?php echo esc_html__('Enable additional security features to enhance your website protection.', 'abdal-security-headers'); ?></p>
-                        <?php do_settings_fields('abdal-security-headers', 'ash_additional_security'); ?>
-                    </div>
-
-                    <div class="ash-section">
-                        <h2><?php echo esc_html__('Content Security Policy', 'abdal-security-headers'); ?></h2>
-                        <div class="ash-field">
-                            <span class="ash-field-label"><?php echo esc_html__('Enable Content Security Policy', 'abdal-security-headers'); ?></span>
-                            <div class="ash-field-control">
-                                <label class="ios-switch">
-                                    <input type="checkbox" id="content_security_policy" 
-                                           name="ash_options[content_security_policy]" value="1" 
-                                           <?php checked('1', isset($this->options['content_security_policy']) ? $this->options['content_security_policy'] : '0'); ?>>
-                                    <span class="ios-slider"></span>
-                                </label>
-                            </div>
-                        </div>
-                        
-                        <div class="csp-directives" id="csp-directives" style="display: <?php echo isset($this->options['content_security_policy']) && $this->options['content_security_policy'] === '1' ? 'block' : 'none'; ?>;">
-                            <p class="ash-description"><?php echo esc_html__('Configure Content Security Policy (CSP) directives', 'abdal-security-headers'); ?></p>
-                            <?php do_settings_fields('abdal-security-headers', 'ash_csp_section'); ?>
-                            
-                            <div class="csp-accordion">
-                                <div class="csp-accordion-header" id="csp-preview-header">
-                                    <span><?php echo esc_html__('CSP Header Preview', 'abdal-security-headers'); ?></span>
-                                    <div class="accordion-arrow"></div>
-                                </div>
-                                <div class="csp-accordion-content">
-                                    <pre id="csp-preview-content"></pre>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="ash-submit-container">
-                        <?php submit_button(null, 'primary', 'submit', true, array('id' => 'ash-submit-button')); ?>
-                        <div class="ash-spinner"></div>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <?php
+        require_once ASH_PLUGIN_DIR . 'includes/class-ash-admin-ui.php';
+        $ui = new ASH_Admin_UI($this->options);
+        $ui->render();
     }
 
     public function page_init() {
@@ -209,7 +229,11 @@ class ASH_Admin {
             array($this, 'checkbox_callback'),
             'abdal-security-headers',
             $section,
-            array('id' => $id)
+            array(
+                'id' => $id,
+                'label' => $title,
+                'class' => 'ash-settings-row'
+            )
         );
     }
 
@@ -220,39 +244,37 @@ class ASH_Admin {
             array($this, 'text_callback'),
             'abdal-security-headers',
             $section,
-            array('id' => $id)
+            array(
+                'id' => $id,
+                'label' => $title,
+                'class' => 'ash-settings-row'
+            )
         );
     }
 
     public function checkbox_callback($args) {
-        $id = $args['id'];
+        $id = isset($args['id']) ? $args['id'] : '';
+        $label = isset($args['label']) ? $args['label'] : '';
         $checked = isset($this->options[$id]) ? $this->options[$id] : '0';
         ?>
-        <div class="ash-field">
-            <span class="ash-field-label"><?php echo esc_html($args['label']); ?></span>
-            <div class="ash-field-control">
-                <label class="ios-switch">
-                    <input type="checkbox" id="<?php echo esc_attr($id); ?>" 
-                           name="ash_options[<?php echo esc_attr($id); ?>]" value="1" 
-                           <?php checked('1', $checked); ?>>
-                    <span class="ios-slider"></span>
-                </label>
-            </div>
-        </div>
+        <label>
+            <input type="checkbox" id="<?php echo esc_attr($id); ?>"
+                   name="ash_options[<?php echo esc_attr($id); ?>]" value="1"
+                   <?php checked('1', $checked); ?>>
+            <?php echo esc_html($label); ?>
+        </label>
         <?php
     }
 
     public function text_callback($args) {
-        $id = $args['id'];
+        $id = isset($args['id']) ? $args['id'] : '';
+        $label = isset($args['label']) ? $args['label'] : '';
         $value = isset($this->options[$id]) ? $this->options[$id] : '';
         ?>
-        <div class="csp-field">
-            <label for="<?php echo esc_attr($id); ?>"><?php echo esc_html($args['label']); ?></label>
-            <input type="text" class="form-control" id="<?php echo esc_attr($id); ?>" 
-                   name="ash_options[<?php echo esc_attr($id); ?>]" 
-                   value="<?php echo esc_attr($value); ?>" 
-                   data-csp-directive="<?php echo esc_attr(str_replace('csp_', '', $id)); ?>">
-        </div>
+        <label for="<?php echo esc_attr($id); ?>"><?php echo esc_html($label); ?></label>
+        <input type="text" id="<?php echo esc_attr($id); ?>"
+               name="ash_options[<?php echo esc_attr($id); ?>]"
+               value="<?php echo esc_attr($value); ?>">
         <?php
     }
 
@@ -270,10 +292,10 @@ class ASH_Admin {
 
     public function sanitize($input) {
         $new_input = array();
-        
+
         // Get existing options
         $existing_options = get_option('ash_options', array());
-        
+
         // Sanitize checkboxes
         $checkbox_fields = array(
             'x_xss_protection', 'x_content_type_options', 'strict_transport_security',
@@ -307,4 +329,4 @@ class ASH_Admin {
 
         return $new_input;
     }
-} 
+}

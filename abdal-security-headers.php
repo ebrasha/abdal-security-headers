@@ -20,7 +20,7 @@
  * Plugin Name: Abdal Security Headers
  * Plugin URI: https://github.com/ebrasha/abdal-security-headers
  * Description:  WordPress Security Headers Manager plugin, featuring full security headers control, advanced security features, and Content Security Policy (CSP).
- * Version: 5.1.3
+ * Version: 5.2.5
  * Author: Ebrahim Shafiei (EbraSha)
  * Author URI: https://github.com/ebrasha
  * Text Domain: abdal-security-headers
@@ -35,7 +35,7 @@ if (!defined('ABSPATH')) {
 }
 
 // Define plugin constants
-define('ASH_VERSION', '5.1.3');
+define('ASH_VERSION', '5.2.5');
 define('ASH_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('ASH_PLUGIN_URL', plugin_dir_url(__FILE__));
 
@@ -52,6 +52,10 @@ add_action('plugins_loaded', 'ash_load_textdomain');
 // Include required files
 require_once ASH_PLUGIN_DIR . 'includes/class-ash-admin.php';
 require_once ASH_PLUGIN_DIR . 'includes/class-ash-headers.php';
+require_once ASH_PLUGIN_DIR . 'includes/class-ash-csp-normalizer.php';
+require_once ASH_PLUGIN_DIR . 'includes/class-ash-csp-repository.php';
+require_once ASH_PLUGIN_DIR . 'includes/class-ash-csp-static-detector.php';
+require_once ASH_PLUGIN_DIR . 'includes/class-ash-csp-assistant.php';
 
 // Initialize the plugin
 function ash_init() {
@@ -59,7 +63,9 @@ function ash_init() {
     if (is_admin()) {
         new ASH_Admin();
     }
-    
+
+    ASH_CSP_Assistant::instance();
+
     // Initialize headers
     new ASH_Headers();
 }
@@ -111,26 +117,29 @@ function ash_activate() {
     
     // Update options in database
     update_option('ash_options', $final_options);
+
+    require_once ASH_PLUGIN_DIR . 'includes/class-ash-csp-repository.php';
+    ASH_CSP_Repository::install();
+    if (!wp_next_scheduled('ash_csp_assistant_cron')) {
+        wp_schedule_event(time() + 60, 'hourly', 'ash_csp_assistant_cron');
+    }
 }
 
 // Deactivation hook
 register_deactivation_hook(__FILE__, 'ash_deactivate');
 function ash_deactivate() {
-    // No need to do anything here
-    // Remove all plugin options and any other plugin-related data
-    //delete_option('ash_options');   
-    
+    wp_clear_scheduled_hook('ash_csp_assistant_cron');
 }
 
 // Uninstall hook for complete cleanup
 register_uninstall_hook(__FILE__, 'ash_uninstall');
 function ash_uninstall() {
-    // Remove all plugin options and any other plugin-related data
     delete_option('ash_options');
-    
-    // Clean up any additional plugin data if needed
-    // For example, delete custom post types, taxonomies, etc.
-    
-    // Clear any scheduled cron jobs if they exist
+    delete_option('ash_csp_assistant_state');
+    delete_option('ash_csp_db_version');
     wp_clear_scheduled_hook('ash_scheduled_tasks');
+    wp_clear_scheduled_hook('ash_csp_assistant_cron');
+
+    global $wpdb;
+    $wpdb->query('DROP TABLE IF EXISTS ' . $wpdb->prefix . 'ash_csp_sources');
 } 

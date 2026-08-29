@@ -2,11 +2,11 @@
  **********************************************************************
  * -------------------------------------------------------------------
  * Project Name : Abdal Security Headers
- * File Name    : admin.js
- * Author       : Ebrahim Shafiei (EbraSha)
- * Email        : Prof.Shafiei@Gmail.com
- * Created On   : 2024-03-19 12:00:00
- * Description  : Admin interface JavaScript for security headers plugin
+ * File Name : admin.js
+ * Programmer : Ebrahim Shafiei (EbraSha)
+ * Email : Prof.Shafiei@Gmail.com
+ * Created On : 2024-03-19 12:00:00
+ * Description : Vanilla JavaScript interactions for the security headers dashboard
  * -------------------------------------------------------------------
  *
  * "Coding is an engaging and beloved hobby for me. I passionately and insatiably pursue knowledge in cybersecurity and programming."
@@ -15,217 +15,558 @@
  **********************************************************************
  */
 
-jQuery(document).ready(function($) {
-    // Handle form submission with SweetAlert2
-    $('#ash-settings-form').on('submit', function(e) {
-        e.preventDefault();
-        const $spinner = $('.ash-spinner');
-        const $submitButton = $('#ash-submit-button');
+(function () {
+    "use strict";
 
-        Swal.fire({
-            title: ashStrings.confirmSave,
-            icon: 'question',
-            showCancelButton: true,
-            confirmButtonText: ashStrings.yes,
-            cancelButtonText: ashStrings.no,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            customClass: {
-                popup: 'rtl-alert'
+    var config = window.ashAdmin || {};
+    var strings = config.strings || {};
+    var headerFields = config.headerFields || [];
+    var featureFields = config.featureFields || [];
+
+    function ready(callback) {
+        if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", callback);
+        } else {
+            callback();
+        }
+    }
+
+    function qs(selector, root) {
+        return (root || document).querySelector(selector);
+    }
+
+    function qsa(selector, root) {
+        return Array.prototype.slice.call((root || document).querySelectorAll(selector));
+    }
+
+    function formatString(template, first, second) {
+        return String(template || "")
+            .replace("%1$d", String(first))
+            .replace("%2$d", String(second));
+    }
+
+    function createFallbackModal() {
+        return {
+            confirm: function (title, message) {
+                var text = [title, message].filter(Boolean).join("\n\n");
+                return Promise.resolve(window.confirm(text));
+            },
+            alert: function (title, message) {
+                window.alert([title, message].filter(Boolean).join("\n\n"));
+                return Promise.resolve(true);
             }
-        }).then((result) => {
-            if (result.isConfirmed) {
-                var form = $(this);
-                
-                // Show spinner and disable submit button
-                $spinner.show();
-                $submitButton.prop('disabled', true);
+        };
+    }
 
-                $.ajax({
-                    url: form.attr('action'),
-                    type: 'POST',
-                    data: form.serialize(),
-                    success: function(response) {
-                        // Hide spinner and enable submit button
-                        $spinner.hide();
-                        $submitButton.prop('disabled', false);
+    /**
+     * Confirm/alert dialogs use the WordPress Modal component from wp.components.
+     */
+    function createModal() {
+        var elementApi = window.wp && wp.element;
+        var componentsApi = window.wp && wp.components;
 
-                        Swal.fire({
-                            title: ashStrings.success,
-                            icon: 'success',
-                            confirmButtonText: ashStrings.ok,
-                            customClass: {
-                                popup: 'rtl-alert'
-                            }
-                        });
-                    },
-                    error: function() {
-                        // Hide spinner and enable submit button on error
-                        $spinner.hide();
-                        $submitButton.prop('disabled', false);
+        if (!elementApi || !componentsApi || !componentsApi.Modal) {
+            return createFallbackModal();
+        }
 
-                        Swal.fire({
-                            title: ashStrings.error,
-                            text: ashStrings.errorMessage,
-                            icon: 'error',
-                            confirmButtonText: ashStrings.ok,
-                            customClass: {
-                                popup: 'rtl-alert'
-                            }
-                        });
+        var el = elementApi.createElement;
+        var Modal = componentsApi.Modal;
+        var reactRoot = null;
+
+        function getContainer() {
+            var node = document.getElementById("ash-wp-modal-root");
+            if (!node) {
+                node = document.createElement("div");
+                node.id = "ash-wp-modal-root";
+                document.body.appendChild(node);
+            }
+            return node;
+        }
+
+        function unmount() {
+            if (reactRoot && typeof reactRoot.render === "function") {
+                reactRoot.render(null);
+                return;
+            }
+            if (typeof elementApi.unmountComponentAtNode === "function") {
+                elementApi.unmountComponentAtNode(getContainer());
+            }
+        }
+
+        function mount(node) {
+            var container = getContainer();
+            if (typeof elementApi.createRoot === "function") {
+                if (!reactRoot) {
+                    reactRoot = elementApi.createRoot(container);
+                }
+                reactRoot.render(node);
+                return;
+            }
+            elementApi.render(node, container);
+        }
+
+        function open(options) {
+            return new Promise(function (resolve) {
+                var settled = false;
+
+                function finish(result) {
+                    if (settled) {
+                        return;
                     }
+                    settled = true;
+                    unmount();
+                    resolve(!!result);
+                }
+
+                var actionChildren = [];
+                if (!options.alert) {
+                    actionChildren.push(el("button", {
+                        type: "button",
+                        key: "cancel",
+                        className: "button",
+                        onClick: function () {
+                            finish(false);
+                        }
+                    }, options.cancelText || strings.no || "No"));
+                }
+
+                actionChildren.push(el("button", {
+                    type: "button",
+                    key: "confirm",
+                    className: "button button-primary",
+                    onClick: function () {
+                        finish(true);
+                    }
+                }, options.confirmText || strings.ok || "OK"));
+
+                var modalChildren = [];
+                if (options.message) {
+                    modalChildren.push(el("p", {
+                        key: "message",
+                        className: "ash-wp-modal__message"
+                    }, options.message));
+                }
+                modalChildren.push(el("div", {
+                    key: "actions",
+                    className: "ash-wp-modal__actions"
+                }, actionChildren));
+
+                mount(el(Modal, {
+                    title: options.title || "",
+                    className: "ash-wp-modal",
+                    onRequestClose: function () {
+                        finish(false);
+                    }
+                }, modalChildren));
+            });
+        }
+
+        return {
+            confirm: function (title, message) {
+                return open({
+                    title: title,
+                    message: message,
+                    confirmText: strings.yes,
+                    cancelText: strings.no,
+                    alert: false
+                });
+            },
+            alert: function (title, message) {
+                return open({
+                    title: title,
+                    message: message,
+                    confirmText: strings.ok,
+                    alert: true
                 });
             }
-        });
-    });
+        };
+    }
 
-    // Handle CSP toggle
-    $('#content_security_policy').on('change', function() {
-        $('#csp-directives').toggle(this.checked);
-        if (this.checked) {
-            updateCSPPreview();
+    function countChecked(ids) {
+        return ids.filter(function (id) {
+            var field = document.getElementById(id);
+            return field && field.checked;
+        }).length;
+    }
+
+    function updateSummaries() {
+        var headerTotal = headerFields.length;
+        var featureTotal = featureFields.length;
+        var headerActive = countChecked(headerFields);
+        var featureActive = countChecked(featureFields);
+        var total = headerTotal + featureTotal;
+        var active = headerActive + featureActive;
+        var ratio = total > 0 ? active / total : 0;
+
+        var statusCard = qs('[data-ash-summary="status"]');
+        var headersCard = qs('[data-ash-summary="headers"]');
+        var featuresCard = qs('[data-ash-summary="features"]');
+        var cspCard = qs('[data-ash-summary="csp"]');
+        var cspToggle = document.getElementById("content_security_policy");
+        var cspEnabled = !!(cspToggle && cspToggle.checked);
+
+        if (statusCard) {
+            var tone = "muted";
+            var label = strings.statusNeedsAttention;
+            var hint = strings.statusNeedsHint;
+            if (ratio >= 0.75) {
+                tone = "green";
+                label = strings.statusGood;
+                hint = strings.statusGoodHint;
+            } else if (ratio >= 0.4) {
+                tone = "warning";
+                label = strings.statusFair;
+                hint = strings.statusFairHint;
+            }
+            statusCard.className = "ash-summary-card ash-summary-card--" + tone;
+            qs("[data-ash-summary-value]", statusCard).textContent = label;
+            qs("[data-ash-summary-hint]", statusCard).textContent = hint;
         }
-    });
 
-    // Handle CSP directive changes
-    $('input[data-csp-directive]').on('input', function() {
-        if ($('#content_security_policy').is(':checked')) {
-            updateCSPPreview();
+        if (headersCard) {
+            qs("[data-ash-summary-value]", headersCard).textContent = headerActive + " / " + headerTotal;
+            qs("[data-ash-summary-hint]", headersCard).textContent = formatString(strings.headersHint, headerActive, headerTotal);
         }
-    });
 
-    // Handle accordion toggle
-    $('.csp-accordion-header').on('click', function() {
-        var $content = $(this).next('.csp-accordion-content');
-        var $arrow = $(this).find('.accordion-arrow');
-        
-        $content.slideToggle(300);
-        $arrow.toggleClass('active');
-        
-        if ($content.is(':visible')) {
-            updateCSPPreview();
+        if (featuresCard) {
+            qs("[data-ash-summary-value]", featuresCard).textContent = featureActive + " / " + featureTotal;
+            qs("[data-ash-summary-hint]", featuresCard).textContent = formatString(strings.featuresHint, featureActive, featureTotal);
         }
-    });
 
-    // Handle show preview button
-    $('#show-csp-preview').on('click', function() {
-        var $preview = $('.csp-preview');
-        var $button = $(this);
-        
-        if ($preview.is(':visible')) {
-            $preview.slideUp();
-            $button.text(wp.i18n.__('Show CSP Preview', 'abdal-security-headers'));
-        } else {
-            updateCSPPreview();
-            $preview.slideDown();
-            $button.text(wp.i18n.__('Hide CSP Preview', 'abdal-security-headers'));
+        if (cspCard) {
+            cspCard.className = "ash-summary-card " + (cspEnabled ? "ash-summary-card--green" : "ash-summary-card--muted");
+            qs("[data-ash-summary-value]", cspCard).textContent = cspEnabled ? strings.cspOn : strings.cspOff;
+            qs("[data-ash-summary-hint]", cspCard).textContent = cspEnabled ? strings.cspOnHint : strings.cspOffHint;
         }
-    });
+    }
 
-    // Update CSP preview
-    function updateCSPPreview() {
-        if (!$('#content_security_policy').is(':checked')) {
+    function updateCspPreview(form) {
+        var preview = qs("#csp-preview-content");
+        var cspToggle = document.getElementById("content_security_policy");
+        if (!preview) {
             return;
         }
 
         var directives = [];
-        
-        // Collect all non-empty directives
-        $('input[data-csp-directive]').each(function() {
-            var directive = $(this).data('csp-directive').replace(/_/g, '-');
-            var value = $(this).val().trim();
-            
-            if (value) {
+        qsa("input[data-csp-directive]").forEach(function (input) {
+            var directive = (input.getAttribute("data-csp-directive") || "").replace(/_/g, "-");
+            var value = (input.value || "").trim();
+            if (directive && value) {
                 directives.push(directive + " " + value);
             }
         });
 
-        // Build the preview
-        var preview = '';
+        var headerValue = "";
         if (directives.length > 0) {
-            preview = "Content-Security-Policy: " + directives.join('; ');
-        } else {
-            preview = "Content-Security-Policy header is enabled but no directives are set.";
+            headerValue = "Content-Security-Policy: " + directives.join("; ");
         }
 
-        $('#csp-preview-content').text(preview);
+        if (cspToggle && !cspToggle.checked) {
+            preview.textContent = headerValue ? headerValue + "\n\n" + (strings.cspDisabled || "") : (strings.cspDisabled || "");
+            preview.setAttribute("data-ash-copy-text", headerValue);
+        } else if (!headerValue) {
+            preview.textContent = strings.cspEmpty || "";
+            preview.setAttribute("data-ash-copy-text", "");
+        } else {
+            preview.textContent = headerValue;
+            preview.setAttribute("data-ash-copy-text", headerValue);
+        }
+
+        if (form) {
+            form.classList.toggle("is-csp-off", !(cspToggle && cspToggle.checked));
+        }
     }
 
-    // Initial preview update
-    updateCSPPreview();
-
-    // Add tooltips to CSP directives
-    var tooltips = {
-        'default-src': 'Default fallback for other resource types',
-        'script-src': 'Valid sources for JavaScript files',
-        'style-src': 'Valid sources for CSS files',
-        'img-src': 'Valid sources for images',
-        'connect-src': 'Valid sources for AJAX, WebSocket, or EventSource connections',
-        'font-src': 'Valid sources for fonts',
-        'object-src': 'Valid sources for plugins',
-        'media-src': 'Valid sources for audio and video elements',
-        'frame-src': 'Valid sources for iframes',
-        'worker-src': 'Valid sources for web workers',
-        'form-action': 'Valid targets for form submissions',
-        'base-uri': 'Valid values for the base element',
-        'sandbox': 'Enables sandbox for the requested resource',
-        'report-uri': 'URI to send violation reports to',
-        'report-to': 'Group name for violation reports'
-    };
-
-    // Add tooltips to labels
-    $('.csp-directives label').each(function() {
-        var directive = $(this).text().toLowerCase().replace(/\s+/g, '-');
-        if (tooltips[directive]) {
-            $(this).attr('title', tooltips[directive]);
+    function copyPreview() {
+        var preview = qs("#csp-preview-content");
+        var button = qs("[data-ash-copy]");
+        if (!preview || !button) {
+            return Promise.resolve(false);
         }
-    });
 
-    // Add common values quick-select buttons
-    var commonValues = {
-        'default-src': ["'self'", "'self' 'unsafe-inline' 'unsafe-eval'"],
-        'script-src': ["'self'", "'self' 'unsafe-inline' 'unsafe-eval'"],
-        'style-src': ["'self'", "'self' 'unsafe-inline'"],
-        'img-src': ["'self'", "'self' data: https:"],
-        'connect-src': ["'self'", "'self' https:"],
-        'font-src': ["'self'", "'self' data:"],
-        'object-src': ["'none'", "'self'"],
-        'media-src': ["'self'", "'self' https:"],
-        'frame-src': ["'none'", "'self'"],
-        'worker-src': ["'self'", "'self' blob:"],
-        'form-action': ["'self'", "'self' https:"],
-        'base-uri': ["'self'", "'self' https:"]
-    };
+        var text = (preview.getAttribute("data-ash-copy-text") || preview.textContent || "").trim();
+        if (!text) {
+            return Promise.resolve(false);
+        }
 
-    // Add quick-select buttons
-    $('.csp-directives .ash-field').each(function() {
-        var input = $(this).find('input[type="text"]');
-        var directive = input.attr('name').match(/\[(.*?)\]/)[1];
-        
-        if (commonValues[directive]) {
-            var buttonGroup = $('<div class="quick-select-buttons"></div>');
-            commonValues[directive].forEach(function(value) {
-                var button = $('<button type="button" class="button button-small"></button>')
-                    .text(value)
-                    .click(function() {
-                        input.val(value);
-                    });
-                buttonGroup.append(button);
+        var done = function () {
+            button.classList.add("is-copied");
+            button.setAttribute("aria-label", strings.copied || "Copied");
+            button.title = strings.copied || "Copied";
+            window.setTimeout(function () {
+                button.classList.remove("is-copied");
+                button.setAttribute("aria-label", strings.copyCsp || "Copy");
+                button.title = strings.copyCsp || "Copy";
+            }, 1600);
+            return true;
+        };
+
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            return navigator.clipboard.writeText(text).then(done).catch(function () {
+                return false;
             });
-            $(this).append(buttonGroup);
         }
-    });
 
-    // Add validation for CSP directives
-    $('.csp-directives input[type="text"]').on('input', function() {
-        var value = $(this).val();
-        var directive = $(this).attr('name').match(/\[(.*?)\]/)[1];
-        
-        // Basic validation for common directives
-        if (directive === 'default-src' && !value.includes("'self'")) {
-            $(this).addClass('error');
-        } else {
-            $(this).removeClass('error');
+        var area = document.createElement("textarea");
+        area.value = text;
+        document.body.appendChild(area);
+        area.select();
+        var ok = false;
+        try {
+            ok = document.execCommand("copy");
+        } catch (error) {
+            ok = false;
+        }
+        document.body.removeChild(area);
+        return Promise.resolve(ok ? done() : false);
+    }
+
+    function commitFormDefaults(form) {
+        qsa("input", form).forEach(function (input) {
+            if (input.type === "checkbox") {
+                input.defaultChecked = input.checked;
+            } else {
+                input.defaultValue = input.value;
+            }
+        });
+    }
+
+    function serializeForm(form) {
+        var data = new FormData(form);
+        if (!data.has("submit")) {
+            data.append("submit", "1");
+        }
+        var params = new URLSearchParams();
+        data.forEach(function (value, key) {
+            params.append(key, value);
+        });
+        return params.toString();
+    }
+
+    function bindCspEditor(form) {
+        var editorModal = qs("#ash-csp-editor-modal");
+        if (!editorModal) {
+            return;
+        }
+
+        var titleEl = qs("#ash-csp-editor-title", editorModal);
+        var textarea = qs("#ash-csp-editor-text", editorModal);
+        var okBtn = qs("[data-ash-csp-editor-ok]", editorModal);
+        var cancelBtn = qs("[data-ash-csp-editor-cancel]", editorModal);
+        var backdrop = qs("[data-ash-csp-editor-dismiss]", editorModal);
+        var activeInput = null;
+        var ignoreFocus = false;
+
+        function setIgnoreFocus() {
+            ignoreFocus = true;
+            window.setTimeout(function () {
+                ignoreFocus = false;
+            }, 50);
+        }
+
+        function closeEditor(apply) {
+            if (editorModal.hidden) {
+                return;
+            }
+
+            if (apply && activeInput) {
+                activeInput.value = textarea.value;
+                activeInput.dispatchEvent(new Event("input", { bubbles: true }));
+            }
+
+            editorModal.hidden = true;
+            document.body.classList.remove("ash-modal-open");
+            setIgnoreFocus();
+            activeInput = null;
+        }
+
+        function openEditor(input) {
+            if (!input) {
+                return;
+            }
+
+            if (!editorModal.hidden && activeInput === input) {
+                return;
+            }
+
+            activeInput = input;
+            var directive = input.getAttribute("data-csp-directive") || "";
+            var template = strings.editDirective || "Edit %s";
+            titleEl.textContent = template.replace("%s", directive);
+            textarea.value = input.value || "";
+            textarea.setAttribute("aria-label", directive);
+            editorModal.hidden = false;
+            document.body.classList.add("ash-modal-open");
+
+            window.setTimeout(function () {
+                textarea.focus();
+                var length = textarea.value.length;
+                try {
+                    textarea.setSelectionRange(length, length);
+                } catch (error) {
+                    // Ignore selection errors in older browsers.
+                }
+            }, 0);
+        }
+
+        qsa("[data-ash-csp-editor]", form).forEach(function (input) {
+            input.addEventListener("mousedown", function (event) {
+                if (event.button !== 0) {
+                    return;
+                }
+                event.preventDefault();
+                openEditor(input);
+            });
+
+            input.addEventListener("focus", function () {
+                if (ignoreFocus) {
+                    return;
+                }
+                openEditor(input);
+            });
+
+            input.addEventListener("keydown", function (event) {
+                if (event.key === "Enter" || event.key === " ") {
+                    event.preventDefault();
+                    openEditor(input);
+                }
+            });
+        });
+
+        if (okBtn) {
+            okBtn.addEventListener("click", function () {
+                closeEditor(true);
+            });
+        }
+
+        if (cancelBtn) {
+            cancelBtn.addEventListener("click", function () {
+                closeEditor(false);
+            });
+        }
+
+        if (backdrop) {
+            backdrop.addEventListener("click", function () {
+                closeEditor(false);
+            });
+        }
+
+        document.addEventListener("keydown", function (event) {
+            if (editorModal.hidden || event.key !== "Escape") {
+                return;
+            }
+            event.preventDefault();
+            closeEditor(false);
+        });
+    }
+
+    function bindHelp() {
+        var help = qs("[data-ash-help]");
+        if (!help) {
+            return;
+        }
+
+        var toggle = qs("[data-ash-help-toggle]", help);
+        var menu = qs(".ash-help__menu", help);
+
+        toggle.addEventListener("click", function () {
+            var isOpen = !menu.hidden;
+            menu.hidden = isOpen;
+            toggle.setAttribute("aria-expanded", isOpen ? "false" : "true");
+        });
+
+        document.addEventListener("click", function (event) {
+            if (!help.contains(event.target)) {
+                menu.hidden = true;
+                toggle.setAttribute("aria-expanded", "false");
+            }
+        });
+    }
+
+    ready(function () {
+        var form = qs("#ash-settings-form");
+        if (!form) {
+            return;
+        }
+
+        var modal = createModal();
+        var submitButton = qs("#ash-submit-button", form);
+        var resetButton = qs("#ash-reset-button", form);
+
+        bindHelp();
+        bindCspEditor(form);
+        updateSummaries();
+        updateCspPreview(form);
+
+        form.addEventListener("change", function () {
+            updateSummaries();
+            updateCspPreview(form);
+        });
+
+        form.addEventListener("input", function (event) {
+            if (event.target && event.target.getAttribute("data-csp-directive") !== null) {
+                updateCspPreview(form);
+            }
+        });
+
+        form.addEventListener("submit", function (event) {
+            event.preventDefault();
+            modal.confirm(strings.confirmSave, "").then(function (confirmed) {
+                if (!confirmed) {
+                    return;
+                }
+
+                form.classList.add("is-saving");
+                if (submitButton) {
+                    submitButton.disabled = true;
+                }
+
+                fetch(form.getAttribute("action") || "options.php", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
+                    },
+                    credentials: "same-origin",
+                    body: serializeForm(form)
+                }).then(function (response) {
+                    if (!response.ok) {
+                        throw new Error("save-failed");
+                    }
+                    commitFormDefaults(form);
+                    return modal.alert(strings.success, "");
+                }).catch(function () {
+                    return modal.alert(strings.error, strings.errorMessage);
+                }).then(function () {
+                    form.classList.remove("is-saving");
+                    if (submitButton) {
+                        submitButton.disabled = false;
+                    }
+                });
+            });
+        });
+
+        if (resetButton) {
+            resetButton.addEventListener("click", function () {
+                modal.confirm(strings.confirmReset, "").then(function (confirmed) {
+                    if (!confirmed) {
+                        return;
+                    }
+                    form.reset();
+                    updateSummaries();
+                    updateCspPreview(form);
+                });
+            });
+        }
+
+        var copyButton = qs("[data-ash-copy]");
+        if (copyButton) {
+            copyButton.addEventListener("click", function () {
+                copyPreview().then(function (ok) {
+                    if (!ok) {
+                        modal.alert(strings.error, strings.copyFailed);
+                    }
+                });
+            });
         }
     });
-}); 
+})();

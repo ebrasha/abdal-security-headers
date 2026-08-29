@@ -130,8 +130,10 @@ class ASH_Headers {
             header_remove('X-Powered-By');
         }
 
-        // Content-Security-Policy
-        if (!empty($this->options['content_security_policy'])) {
+        // Content-Security-Policy is frontend-only so wp-admin assets are never blocked.
+        // Learning/monitoring uses Report-Only instead of a blocking policy.
+        $assistant_learning = class_exists('ASH_CSP_Assistant') && ASH_CSP_Assistant::is_learning();
+        if (!$this->is_wordpress_admin_request() && !empty($this->options['content_security_policy']) && !$assistant_learning) {
             $csp_directives = array();
             
             // Define all CSP directives to check
@@ -164,6 +166,28 @@ class ASH_Headers {
         }
     }
 
+    /**
+     * Detect wp-admin requests even if send_headers runs before the main query.
+     *
+     * @return bool
+     */
+    private function is_wordpress_admin_request() {
+        if (is_admin()) {
+            return true;
+        }
+
+        if (defined('WP_ADMIN') && WP_ADMIN) {
+            return true;
+        }
+
+        $request_uri = isset($_SERVER['REQUEST_URI']) ? (string) $_SERVER['REQUEST_URI'] : '';
+        if ($request_uri !== '' && strpos($request_uri, '/wp-admin/') !== false) {
+            return true;
+        }
+
+        return false;
+    }
+
     public function remove_x_powered_by() {
         @ini_set('expose_php', 'Off');
         if (function_exists('header_remove')) {
@@ -177,14 +201,23 @@ class ASH_Headers {
         
         // Remove version from RSS
         add_filter('the_generator', '__return_empty_string');
-        
-        // Remove version from scripts and styles
-        add_filter('style_loader_src', array($this, 'remove_version_from_source'));
-        add_filter('script_loader_src', array($this, 'remove_version_from_source'));
+
+        if (!is_admin()) {
+            add_filter('style_loader_src', array($this, 'remove_version_from_source'));
+            add_filter('script_loader_src', array($this, 'remove_version_from_source'));
+        }
     }
 
     public function remove_version_from_source($src) {
-        if (strpos($src, 'ver=')) {
+        if (is_admin()) {
+            return $src;
+        }
+
+        if (strpos($src, 'abdal-security-headers/assets/') !== false) {
+            return $src;
+        }
+
+        if (strpos($src, 'ver=') !== false) {
             $src = remove_query_arg('ver', $src);
         }
         return $src;
