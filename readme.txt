@@ -250,5 +250,5 @@ This plugin is available in the following languages:
 - Arabic (ar)
 
 == License ==
-This plugin is released under the **GPLv2 or later** License.
-License details: [http://www.gnu.org/licenses/gpl-2.0.html](http://www.gnu.org/licenses/gpl-2.0.html)
+This plugin is released under the **AGPLv3 or later** License.
+License details: [https://www.gnu.org/licenses/agpl-3.0.html](https://www.gnu.org/licenses/agpl-3.0.html)
