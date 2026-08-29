@@ -4,7 +4,7 @@ Donate link: https://ebrasha.com/abdal-donation
 Tags: security, security-headers, x-frame-options, content-security-policy, hsts
 Requires at least: 5.0
 Tested up to: 6.7.2
-Stable tag: 5.2.5
+Stable tag: 5.3.0
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -75,6 +75,9 @@ No. Start a Smart Scan, browse the site, then apply the sources you accept. You 
 
 == Changelog ==
 
+
+= 5.3.0 =
+* Add complete translations for Spanish, Japanese, German, French, Brazilian Portuguese, Russian, Italian, Turkish, Simplified Chinese, and Arabic
 
 = 5.2.5 =
 * Show a programmer credit line at the bottom of the settings dashboard
@@ -158,6 +161,9 @@ No. Start a Smart Scan, browse the site, then apply the sources you accept. You 
 == Upgrade Notice ==
 
  
+= 5.3.0 =
+Adds complete translations for ten additional languages, including Arabic RTL.
+
 = 5.2.5 =
 Adds a programmer credit line at the bottom of the Security Headers settings page.
 
@@ -211,6 +217,16 @@ Major update with new interface and enhanced security features. Backup your sett
 This plugin is available in the following languages:
 - English (en_US)
 - Persian (fa_IR)
+- Spanish (es_ES)
+- Japanese (ja)
+- German (de_DE)
+- French (fr_FR)
+- Portuguese - Brazil (pt_BR)
+- Russian (ru_RU)
+- Italian (it_IT)
+- Turkish (tr_TR)
+- Chinese Simplified (zh_CN)
+- Arabic (ar)
 
 == License ==
 This plugin is released under the **GPLv2 or later** License.

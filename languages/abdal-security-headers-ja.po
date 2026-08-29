@@ -1,884 +1,880 @@
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Abdal Security Headers 5.3.0\n"
+"Report-Msgid-Bugs-To: Prof.Shafiei@Gmail.com\n"
 "POT-Creation-Date: 2026-08-29 06:30+0330\n"
 "PO-Revision-Date: 2026-08-29 06:30+0330\n"
 "Last-Translator: Ebrahim Shafiei (EbraSha) <Prof.Shafiei@Gmail.com>\n"
-"Language-Team: \n"
-"Language: en_US\n"
+"Language-Team: Japanese\n"
+"Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Cursor\n"
 "X-Poedit-Basepath: ..\n"
-"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: abdal-security-headers.php\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
-"X-Poedit-SearchPath-0: .\n"
-"X-Poedit-SearchPathExcluded-0: *.js\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
 #: includes/class-ash-admin.php
 msgid "Are you sure you want to save these settings?"
-msgstr ""
+msgstr "これらの設定を保存しますか？"
 
 #: includes/class-ash-admin.php
 msgid "Reset unsaved changes and restore the last saved values?"
-msgstr ""
+msgstr "未保存の変更を破棄し、最後に保存した値に戻しますか？"
 
 #: includes/class-ash-admin.php
 msgid "Yes"
-msgstr ""
+msgstr "はい"
 
 #: includes/class-ash-admin.php
 msgid "No"
-msgstr ""
+msgstr "いいえ"
 
 #: includes/class-ash-admin.php
 msgid "Settings saved successfully"
-msgstr ""
+msgstr "設定を保存しました"
 
 #: includes/class-ash-admin.php
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Cancel"
-msgstr ""
+msgstr "キャンセル"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgctxt "csp editor confirm"
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 #. translators: %s: CSP directive name such as script-src
 #: includes/class-ash-admin.php
 #, php-format
 msgid "Edit %s"
-msgstr ""
+msgstr "%s を編集"
 
 #: includes/class-ash-admin.php
 msgid "Error"
-msgstr ""
+msgstr "エラー"
 
 #: includes/class-ash-admin.php
 msgid "An error occurred while saving the settings. Please try again."
-msgstr ""
+msgstr "設定の保存中にエラーが発生しました。もう一度お試しください。"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Copied"
-msgstr ""
+msgstr "コピーしました"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Copy CSP header"
-msgstr ""
+msgstr "CSP ヘッダーをコピー"
 
 #: includes/class-ash-admin.php
 msgid "Unable to copy the CSP header."
-msgstr ""
+msgstr "CSP ヘッダーをコピーできません。"
 
 #: includes/class-ash-admin.php
 msgid "Content-Security-Policy header is enabled but no directives are set."
-msgstr ""
+msgstr "Content-Security-Policy ヘッダーは有効ですが、ディレクティブが設定されていません。"
 
 #: includes/class-ash-admin.php
 msgid "Content Security Policy is disabled. Enable it to send this header."
-msgstr ""
+msgstr "Content Security Policy は無効です。このヘッダーを送信するには有効にしてください。"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgctxt "security status"
 msgid "Good"
-msgstr ""
+msgstr "良好"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgctxt "security status"
 msgid "Fair"
-msgstr ""
+msgstr "普通"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgctxt "security status"
 msgid "Needs attention"
-msgstr ""
+msgstr "要対応"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Most security controls are enabled."
-msgstr ""
+msgstr "ほとんどのセキュリティ対策が有効です。"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Some recommended security controls are still disabled."
-msgstr ""
+msgstr "推奨されるセキュリティ対策の一部がまだ無効です。"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Enable more security headers and hardening options."
-msgstr ""
+msgstr "セキュリティヘッダーと強化オプションをもっと有効にしてください。"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgctxt "CSP status"
 msgid "Enabled"
-msgstr ""
+msgstr "有効"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgctxt "CSP status"
 msgid "Disabled"
-msgstr ""
+msgstr "無効"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Content Security Policy is being sent with responses."
-msgstr ""
+msgstr "Content Security Policy はレスポンスとともに送信されています。"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Content Security Policy is currently turned off."
-msgstr ""
+msgstr "Content Security Policy は現在オフです。"
 
 #. translators: 1: number of enabled headers, 2: total headers
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "%1$d of %2$d security headers are enabled"
-msgstr ""
+msgstr "セキュリティヘッダー %2$d 件中 %1$d 件が有効"
 
 #. translators: 1: number of enabled features, 2: total features
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "%1$d of %2$d additional features are enabled"
-msgstr ""
+msgstr "追加機能 %2$d 件中 %1$d 件が有効"
 
 #. Plugin Name of the plugin/theme
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Abdal Security Headers"
-msgstr ""
+msgstr "Abdal Security Headers"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Security Headers"
-msgstr ""
+msgstr "セキュリティヘッダー"
 
 #: includes/class-ash-admin.php
 msgid "Basic Security Headers"
-msgstr ""
+msgstr "基本セキュリティヘッダー"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Configure basic security headers for your website."
-msgstr ""
+msgstr "サイトの基本セキュリティヘッダーを設定します。"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Additional Security Features"
-msgstr ""
+msgstr "追加のセキュリティ機能"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Enable additional security features to enhance your website protection."
-msgstr ""
+msgstr "サイト保護を強化する追加機能を有効にします。"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Content Security Policy"
-msgstr ""
+msgstr "Content Security Policy"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Enable Content Security Policy"
-msgstr ""
+msgstr "Content Security Policy を有効化"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Configure Content Security Policy (CSP) directives"
-msgstr ""
+msgstr "Content Security Policy（CSP）ディレクティブを設定"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "CSP Header Preview"
-msgstr ""
+msgstr "CSP ヘッダーのプレビュー"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "X-XSS-Protection"
-msgstr ""
+msgstr "X-XSS-Protection"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "X-Content-Type-Options"
-msgstr ""
+msgstr "X-Content-Type-Options"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Strict-Transport-Security"
-msgstr ""
+msgstr "Strict-Transport-Security"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Permissions-Policy"
-msgstr ""
+msgstr "Permissions-Policy"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "X-Frame-Options"
-msgstr ""
+msgstr "X-Frame-Options"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Referrer-Policy"
-msgstr ""
+msgstr "Referrer-Policy"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Remove X-Powered-By Header"
-msgstr ""
+msgstr "X-Powered-By ヘッダーを削除"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Hide WordPress Version"
-msgstr ""
+msgstr "WordPress のバージョンを非表示"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Remove Login Error Messages"
-msgstr ""
+msgstr "ログインエラーの詳細を非表示"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Disable XML-RPC"
-msgstr ""
+msgstr "XML-RPC を無効化"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Remove X-Pingback Header"
-msgstr ""
+msgstr "X-Pingback ヘッダーを削除"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Restrict REST API Access"
-msgstr ""
+msgstr "REST API へのアクセスを制限"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Default Source"
-msgstr ""
+msgstr "デフォルトソース"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Script Source"
-msgstr ""
+msgstr "スクリプトソース"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Style Source"
-msgstr ""
+msgstr "スタイルソース"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Image Source"
-msgstr ""
+msgstr "画像ソース"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Connect Source"
-msgstr ""
+msgstr "接続ソース"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Font Source"
-msgstr ""
+msgstr "フォントソース"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Object Source"
-msgstr ""
+msgstr "オブジェクトソース"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Media Source"
-msgstr ""
+msgstr "メディアソース"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Frame Source"
-msgstr ""
+msgstr "フレームソース"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Worker Source"
-msgstr ""
+msgstr "Worker ソース"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Form Action"
-msgstr ""
+msgstr "フォームアクション"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Base URI"
-msgstr ""
+msgstr "Base URI"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Sandbox"
-msgstr ""
+msgstr "Sandbox"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Report URI"
-msgstr ""
+msgstr "Report URI"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Report To"
-msgstr ""
+msgstr "Report To"
 
 #. translators: %s: plugin version number
 #: includes/class-ash-admin-ui.php
 msgid "Version %s"
-msgstr ""
+msgstr "バージョン %s"
 
 #: includes/class-ash-admin-ui.php
 msgctxt "plugin status badge"
 msgid "Active"
-msgstr ""
+msgstr "有効"
 
 #: includes/class-ash-admin-ui.php
 msgid "Configure HTTP security headers, hardening options, and Content Security Policy from one dashboard."
-msgstr ""
+msgstr "HTTP セキュリティヘッダー、強化オプション、Content Security Policy を 1 つのダッシュボードで設定します。"
 
 #: includes/class-ash-admin-ui.php
 msgid "Help"
-msgstr ""
+msgstr "ヘルプ"
 
 #: includes/class-ash-admin-ui.php
 msgid "Documentation"
-msgstr ""
+msgstr "ドキュメント"
 
 #: includes/class-ash-admin-ui.php
 msgid "Report an issue"
-msgstr ""
+msgstr "問題を報告"
 
 #: includes/class-ash-admin-ui.php
 msgid "Contact support"
-msgstr ""
+msgstr "サポートに連絡"
 
 #: includes/class-ash-admin-ui.php
 msgid "Security overview"
-msgstr ""
+msgstr "セキュリティ概要"
 
 #: includes/class-ash-admin-ui.php
 msgid "Security status"
-msgstr ""
+msgstr "セキュリティ状態"
 
 #: includes/class-ash-admin-ui.php
 msgid "Active headers"
-msgstr ""
+msgstr "有効なヘッダー"
 
 #: includes/class-ash-admin-ui.php
 msgid "Additional features"
-msgstr ""
+msgstr "追加機能"
 
 #: includes/class-ash-admin-ui.php
 msgid "CSP status"
-msgstr ""
+msgstr "CSP の状態"
 
 #: includes/class-ash-admin-ui.php
 msgid "Enable the core HTTP security headers for the site."
-msgstr ""
+msgstr "サイトの主要な HTTP セキュリティヘッダーを有効にします。"
 
 #: includes/class-ash-admin-ui.php
 msgid "Harden WordPress by reducing information disclosure and attack surface."
-msgstr ""
+msgstr "情報露出と攻撃面を減らして WordPress を強化します。"
 
 #: includes/class-ash-admin-ui.php
 msgid "CSP Directives"
-msgstr ""
+msgstr "CSP ディレクティブ"
 
 #: includes/class-ash-admin-ui.php
 msgid "General settings"
-msgstr ""
+msgstr "一般設定"
 
 #: includes/class-ash-admin-ui.php
 msgid "When enabled, the generated Content-Security-Policy header is sent with HTTP responses."
-msgstr ""
+msgstr "有効にすると、生成された Content-Security-Policy ヘッダーが HTTP レスポンスとともに送信されます。"
 
 #: includes/class-ash-admin-ui.php
 msgid "Your changes are not saved automatically."
-msgstr ""
+msgstr "変更は自動保存されません。"
 
 #: includes/class-ash-admin-ui.php
 msgid "Reset"
-msgstr ""
+msgstr "リセット"
 
 #: includes/class-ash-admin-ui.php
 msgid "Save Changes"
-msgstr ""
+msgstr "変更を保存"
 
 #: includes/class-ash-admin-ui.php
 msgid "Enables the legacy browser XSS filter for older clients."
-msgstr ""
+msgstr "古いクライアント向けのレガシー XSS フィルタを有効にします。"
 
 #: includes/class-ash-admin-ui.php
 msgid "Prevents browsers from MIME-sniffing a response away from the declared content type."
-msgstr ""
+msgstr "宣言された Content-Type 以外への MIME スニッフィングを防ぎます。"
 
 #: includes/class-ash-admin-ui.php
 msgid "Forces browsers to use HTTPS for future requests to this host."
-msgstr ""
+msgstr "今後このホストへのリクエストで HTTPS の使用を強制します。"
 
 #: includes/class-ash-admin-ui.php
 msgid "Restricts access to powerful browser features such as camera and geolocation."
-msgstr ""
+msgstr "カメラや位置情報など、強力なブラウザ機能へのアクセスを制限します。"
 
 #: includes/class-ash-admin-ui.php
 msgid "Controls whether the site can be embedded in frames to reduce clickjacking risk."
-msgstr ""
+msgstr "クリックジャッキング対策として、フレームへの埋め込み可否を制御します。"
 
 #: includes/class-ash-admin-ui.php
 msgid "Limits referrer information sent with navigations and resource requests."
-msgstr ""
+msgstr "ナビゲーションやリソース要求で送る Referrer 情報を制限します。"
 
 #: includes/class-ash-admin-ui.php
 msgid "Hides server technology details exposed by the X-Powered-By header."
-msgstr ""
+msgstr "X-Powered-By ヘッダーで露出するサーバー技術情報を隠します。"
 
 #: includes/class-ash-admin-ui.php
 msgid "Removes the public WordPress version from markup, feeds, scripts, and styles."
-msgstr ""
+msgstr "マークアップ、フィード、スクリプト、スタイルから公開されている WordPress バージョンを削除します。"
 
 #: includes/class-ash-admin-ui.php
 msgid "Replaces detailed login errors with a generic message to reduce user enumeration."
-msgstr ""
+msgstr "詳細なログインエラーを一般的なメッセージに置き換え、ユーザー列挙を難しくします。"
 
 #: includes/class-ash-admin-ui.php
 msgid "Disables XML-RPC methods and blocks direct access to xmlrpc.php."
-msgstr ""
+msgstr "XML-RPC メソッドを無効化し、xmlrpc.php への直接アクセスを遮断します。"
 
 #: includes/class-ash-admin-ui.php
 msgid "Removes the X-Pingback response header from WordPress output."
-msgstr ""
+msgstr "WordPress の出力から X-Pingback レスポンスヘッダーを削除します。"
 
 #: includes/class-ash-admin-ui.php
 msgid "Blocks REST API access and removes REST discovery links from the front end."
-msgstr ""
+msgstr "REST API へのアクセスを遮断し、フロントエンドの REST 検出リンクを削除します。"
 
 #: includes/class-ash-admin-ui.php
 msgid "Default fallback for other resource types"
-msgstr ""
+msgstr "他のリソースタイプのデフォルトフォールバック"
 
 #: includes/class-ash-admin-ui.php
 msgid "Valid sources for JavaScript files"
-msgstr ""
+msgstr "JavaScript ファイルの許可オリジン"
 
 #: includes/class-ash-admin-ui.php
 msgid "Valid sources for CSS files"
-msgstr ""
+msgstr "CSS ファイルの許可オリジン"
 
 #: includes/class-ash-admin-ui.php
 msgid "Valid sources for images"
-msgstr ""
+msgstr "画像の許可オリジン"
 
 #: includes/class-ash-admin-ui.php
 msgid "Valid sources for AJAX, WebSocket, or EventSource connections"
-msgstr ""
+msgstr "AJAX、WebSocket、EventSource 接続の許可オリジン"
 
 #: includes/class-ash-admin-ui.php
 msgid "Valid sources for fonts"
-msgstr ""
+msgstr "フォントの許可オリジン"
 
 #: includes/class-ash-admin-ui.php
 msgid "Valid sources for plugins"
-msgstr ""
+msgstr "プラグインの許可オリジン"
 
 #: includes/class-ash-admin-ui.php
 msgid "Valid sources for audio and video elements"
-msgstr ""
+msgstr "音声・動画要素の許可オリジン"
 
 #: includes/class-ash-admin-ui.php
 msgid "Valid sources for iframes"
-msgstr ""
+msgstr "iframe の許可オリジン"
 
 #: includes/class-ash-admin-ui.php
 msgid "Valid sources for web workers"
-msgstr ""
+msgstr "Web Worker の許可オリジン"
 
 #: includes/class-ash-admin-ui.php
 msgid "Valid targets for form submissions"
-msgstr ""
+msgstr "フォーム送信先として許可するオリジン"
 
 #: includes/class-ash-admin-ui.php
 msgid "Valid values for the base element"
-msgstr ""
+msgstr "base 要素に許可する値"
 
 #: includes/class-ash-admin-ui.php
 msgid "Enables sandbox for the requested resource"
-msgstr ""
+msgstr "要求されたリソースに sandbox を適用します"
 
 #: includes/class-ash-admin-ui.php
 msgid "URI to send violation reports to"
-msgstr ""
+msgstr "違反レポートの送信先 URI"
 
 #: includes/class-ash-admin-ui.php
 msgid "Group name for violation reports"
-msgstr ""
+msgstr "違反レポートのグループ名"
 
 #: includes/class-ash-headers.php
 msgid "Invalid login credentials."
-msgstr ""
+msgstr "ログイン情報が正しくありません。"
 
 #: includes/class-ash-headers.php
 msgid "REST API is disabled."
-msgstr ""
+msgstr "REST API は無効です。"
 
 #. Plugin URI of the plugin/theme
 msgid "https://github.com/ebrasha/abdal-security-headers"
-msgstr ""
+msgstr "https://github.com/ebrasha/abdal-security-headers"
 
 #. Description of the plugin/theme
 msgid "WordPress Security Headers Manager plugin, featuring full security headers control, advanced security features, and Content Security Policy (CSP)."
-msgstr ""
+msgstr "セキュリティヘッダーの管理、高度な防御、Content Security Policy（CSP）に対応した WordPress プラグインです。"
 
 #. Author of the plugin/theme
 msgid "Ebrahim Shafiei (EbraSha)"
-msgstr ""
+msgstr "Ebrahim Shafiei (EbraSha)"
 
 #. Author URI of the plugin/theme
 msgid "https://github.com/ebrasha"
-msgstr ""
+msgstr "https://github.com/ebrasha"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Unable to ignore this source."
-msgstr ""
+msgstr "このソースを無視できません。"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Source not found."
-msgstr ""
+msgstr "ソースが見つかりません。"
 
 #: includes/class-ash-csp-assistant.php
 msgid "No eligible sources were selected."
-msgstr ""
+msgstr "適用できるソースが選択されていません。"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Dangerous CSP values require explicit confirmation."
-msgstr ""
+msgstr "危険な CSP 値には明示的な確認が必要です。"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Selected sources were merged into your current CSP directives."
-msgstr ""
+msgstr "選択したソースを現在の CSP ディレクティブにマージしました。"
 
 #: includes/class-ash-csp-assistant.php
 msgid "You are not allowed to manage these settings."
-msgstr ""
+msgstr "これらの設定を管理する権限がありません。"
 
 #: includes/class-ash-csp-static-detector.php
 msgid "Plugin script enqueue"
-msgstr ""
+msgstr "プラグインのスクリプト登録"
 
 #: includes/class-ash-csp-static-detector.php
 msgid "WordPress REST API"
-msgstr ""
+msgstr "WordPress REST API"
 
 #: includes/class-ash-csp-static-detector.php
 msgid "WordPress AJAX"
-msgstr ""
+msgstr "WordPress AJAX"
 
 #: includes/class-ash-csp-static-detector.php
 msgid "WordPress site URL"
-msgstr ""
+msgstr "WordPress サイト URL"
 
 #: includes/class-ash-csp-static-detector.php
 msgid "WordPress core"
-msgstr ""
+msgstr "WordPress コア"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Smart CSP Assistant"
-msgstr ""
+msgstr "スマート CSP アシスタント"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Automatically discover the resources used by your site and generate CSP recommendations."
-msgstr ""
+msgstr "サイトが使うリソースを自動検出して CSP の推奨を生成します。"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Hybrid Detection"
-msgstr ""
+msgstr "ハイブリッド検出"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Current Status"
-msgstr ""
+msgstr "現在の状態"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Not scanned"
-msgstr ""
+msgstr "未スキャン"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Learning"
-msgstr ""
+msgstr "学習中"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Analysis complete"
-msgstr ""
+msgstr "分析完了"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Monitoring"
-msgstr ""
+msgstr "監視中"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Start Smart Scan"
-msgstr ""
+msgstr "スマートスキャンを開始"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Learning Mode Active"
-msgstr ""
+msgstr "学習モードが有効"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Stop Learning"
-msgstr ""
+msgstr "学習を停止"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Learning duration"
-msgstr ""
+msgstr "学習時間"
 
 #: includes/class-ash-csp-assistant.php
 msgid "15 Minutes"
-msgstr ""
+msgstr "15 分"
 
 #: includes/class-ash-csp-assistant.php
 msgid "1 Hour"
-msgstr ""
+msgstr "1 時間"
 
 #: includes/class-ash-csp-assistant.php
 msgid "6 Hours"
-msgstr ""
+msgstr "6 時間"
 
 #: includes/class-ash-csp-assistant.php
 msgid "24 Hours"
-msgstr ""
+msgstr "24 時間"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Manual"
-msgstr ""
+msgstr "手動"
 
 #: includes/class-ash-csp-assistant.php
 msgid "sources observed"
-msgstr ""
+msgstr "件のソースを検出"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Keep watching for new sources after learning completes."
-msgstr ""
+msgstr "学習完了後も新しいソースを監視し続けます。"
 
 #: includes/class-ash-csp-assistant.php
 msgid "New CSP Source Detected"
-msgstr ""
+msgstr "新しい CSP ソースを検出"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Review Suggestions"
-msgstr ""
+msgstr "提案を確認"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Apply Selected Sources"
-msgstr ""
+msgstr "選択したソースを適用"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Clear Learning Data"
-msgstr ""
+msgstr "学習データを消去"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Source"
-msgstr ""
+msgstr "ソース"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Directive"
-msgstr ""
+msgstr "ディレクティブ"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Detection Method"
-msgstr ""
+msgstr "検出方法"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Detected On"
-msgstr ""
+msgstr "検出ページ"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Confidence"
-msgstr ""
+msgstr "信頼度"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Status"
-msgstr ""
+msgstr "状態"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Action"
-msgstr ""
+msgstr "操作"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Add"
-msgstr ""
+msgstr "追加"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Ignore"
-msgstr ""
+msgstr "無視"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Details"
-msgstr ""
+msgstr "詳細"
 
 #: includes/class-ash-csp-assistant.php
 msgid "No sources detected yet. Start a Smart Scan to begin discovery."
-msgstr ""
+msgstr "まだソースは検出されていません。スマートスキャンを開始してください。"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Select all sources"
-msgstr ""
+msgstr "すべてのソースを選択"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Static"
-msgstr ""
+msgstr "静的"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Report-Only"
-msgstr ""
+msgstr "Report-Only"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Runtime"
-msgstr ""
+msgstr "実行時"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Trusted"
-msgstr ""
+msgstr "信頼できる"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Likely Safe"
-msgstr ""
+msgstr "安全の可能性が高い"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Unknown"
-msgstr ""
+msgstr "不明"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Potentially Risky"
-msgstr ""
+msgstr "潜在的に危険"
 
 #: includes/class-ash-csp-assistant.php
 msgid "New"
-msgstr ""
+msgstr "新規"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Ignored"
-msgstr ""
+msgstr "無視済み"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Applied"
-msgstr ""
+msgstr "適用済み"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Added"
-msgstr ""
+msgstr "追加済み"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Warning"
-msgstr ""
+msgstr "警告"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Origin"
-msgstr ""
+msgstr "オリジン"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Resource Type"
-msgstr ""
+msgstr "リソースタイプ"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Detection Methods"
-msgstr ""
+msgstr "検出方法"
 
 #: includes/class-ash-csp-assistant.php
 msgid "First Seen"
-msgstr ""
+msgstr "初回検出"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Last Seen"
-msgstr ""
+msgstr "最終検出"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Detection Count"
-msgstr ""
+msgstr "検出回数"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Pages Detected"
-msgstr ""
+msgstr "検出ページ"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Detected from"
-msgstr ""
+msgstr "検出元"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Required Directive"
-msgstr ""
+msgstr "必要なディレクティブ"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Policy Diff"
-msgstr ""
+msgstr "ポリシーの差分"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Current"
-msgstr ""
+msgstr "現在"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Proposed"
-msgstr ""
+msgstr "提案"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Apply"
-msgstr ""
+msgstr "適用"
 
 #: includes/class-ash-csp-assistant.php
 msgid "This value can weaken your Content Security Policy. Confirm only if your site requires it."
-msgstr ""
+msgstr "この値は Content Security Policy を弱める可能性があります。サイトで必要な場合のみ確認してください。"
 
 #: includes/class-ash-csp-assistant.php
 msgid "I understand this weakens CSP and I want to add it anyway."
-msgstr ""
+msgstr "CSP が弱まることを理解したうえで追加します。"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Clear all Smart CSP discovery data? This cannot be undone."
-msgstr ""
+msgstr "スマート CSP の検出データをすべて消去しますか？この操作は元に戻せません。"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Select at least one source to apply."
-msgstr ""
+msgstr "適用するソースを 1 つ以上選択してください。"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Unknown resource types are kept for review and are not applied automatically."
-msgstr ""
+msgstr "不明なリソースタイプは確認用に残し、自動適用しません。"
 
 #: includes/class-ash-csp-assistant.php
 msgid "The Smart CSP Assistant request failed. Please try again."
-msgstr ""
+msgstr "スマート CSP アシスタントのリクエストに失敗しました。もう一度お試しください。"
 
 #. translators: %d: number of detected sources
 #: includes/class-ash-csp-assistant.php
 #, php-format
 msgid "%d Sources Detected"
-msgstr ""
+msgstr "%d 件のソースを検出"
 
 #. translators: %d: number of script sources
 #: includes/class-ash-csp-assistant.php
 #, php-format
 msgid "%d Script Sources"
-msgstr ""
+msgstr "スクリプトソース %d 件"
 
 #. translators: %d: number of style sources
 #: includes/class-ash-csp-assistant.php
 #, php-format
 msgid "%d Style Sources"
-msgstr ""
+msgstr "スタイルソース %d 件"
 
 #. translators: %d: number of image sources
 #: includes/class-ash-csp-assistant.php
 #, php-format
 msgid "%d Image Sources"
-msgstr ""
+msgstr "画像ソース %d 件"
 
 #. translators: %d: number of font sources
 #: includes/class-ash-csp-assistant.php
 #, php-format
 msgid "%d Font Sources"
-msgstr ""
+msgstr "フォントソース %d 件"
 
 #. translators: %d: number of connect sources
 #: includes/class-ash-csp-assistant.php
 #, php-format
 msgid "%d Connect Sources"
-msgstr ""
+msgstr "接続ソース %d 件"
 
 #. translators: %d: number of frame sources
 #: includes/class-ash-csp-assistant.php
 #, php-format
 msgid "%d Frame Sources"
-msgstr ""
+msgstr "フレームソース %d 件"
 
 #. translators: %d: number of media sources
 #: includes/class-ash-csp-assistant.php
 #, php-format
 msgid "%d Media Sources"
-msgstr ""
+msgstr "メディアソース %d 件"
 
 #. translators: %d: number of worker sources
 #: includes/class-ash-csp-assistant.php
 #, php-format
 msgid "%d Worker Sources"
-msgstr ""
+msgstr "Worker ソース %d 件"
 
 #. translators: %d: number of form destinations
 #: includes/class-ash-csp-assistant.php
 #, php-format
 msgid "%d Form Destinations"
-msgstr ""
+msgstr "フォーム送信先 %d 件"
 
 #. translators: %d: number of unknown sources
 #: includes/class-ash-csp-assistant.php
 #, php-format
 msgid "%d Unknown Sources"
-msgstr ""
+msgstr "不明なソース %d 件"
 
 #: includes/class-ash-admin-ui.php
 msgid "Handcrafted with ❤️ Passion by Ebrahim Shafiei (EbraSha)"
-msgstr ""
+msgstr "Ebrahim Shafiei (EbraSha) が ❤️ を込めて制作"

@@ -1,884 +1,880 @@
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Abdal Security Headers 5.3.0\n"
+"Report-Msgid-Bugs-To: Prof.Shafiei@Gmail.com\n"
 "POT-Creation-Date: 2026-08-29 06:30+0330\n"
 "PO-Revision-Date: 2026-08-29 06:30+0330\n"
 "Last-Translator: Ebrahim Shafiei (EbraSha) <Prof.Shafiei@Gmail.com>\n"
-"Language-Team: \n"
-"Language: en_US\n"
+"Language-Team: Turkish\n"
+"Language: tr_TR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Cursor\n"
 "X-Poedit-Basepath: ..\n"
-"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: abdal-security-headers.php\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
-"X-Poedit-SearchPath-0: .\n"
-"X-Poedit-SearchPathExcluded-0: *.js\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: includes/class-ash-admin.php
 msgid "Are you sure you want to save these settings?"
-msgstr ""
+msgstr "Bu ayarları kaydetmek istediğinizden emin misiniz?"
 
 #: includes/class-ash-admin.php
 msgid "Reset unsaved changes and restore the last saved values?"
-msgstr ""
+msgstr "Kaydedilmemiş değişiklikler silinip son kaydedilen değerlere dönülsün mü?"
 
 #: includes/class-ash-admin.php
 msgid "Yes"
-msgstr ""
+msgstr "Evet"
 
 #: includes/class-ash-admin.php
 msgid "No"
-msgstr ""
+msgstr "Hayır"
 
 #: includes/class-ash-admin.php
 msgid "Settings saved successfully"
-msgstr ""
+msgstr "Ayarlar başarıyla kaydedildi"
 
 #: includes/class-ash-admin.php
 msgid "OK"
-msgstr ""
+msgstr "Tamam"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Cancel"
-msgstr ""
+msgstr "İptal"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgctxt "csp editor confirm"
 msgid "OK"
-msgstr ""
+msgstr "Tamam"
 
 #. translators: %s: CSP directive name such as script-src
 #: includes/class-ash-admin.php
 #, php-format
 msgid "Edit %s"
-msgstr ""
+msgstr "%s öğesini düzenle"
 
 #: includes/class-ash-admin.php
 msgid "Error"
-msgstr ""
+msgstr "Hata"
 
 #: includes/class-ash-admin.php
 msgid "An error occurred while saving the settings. Please try again."
-msgstr ""
+msgstr "Ayarlar kaydedilirken bir hata oluştu. Lütfen tekrar deneyin."
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Copied"
-msgstr ""
+msgstr "Kopyalandı"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Copy CSP header"
-msgstr ""
+msgstr "CSP başlığını kopyala"
 
 #: includes/class-ash-admin.php
 msgid "Unable to copy the CSP header."
-msgstr ""
+msgstr "CSP başlığı kopyalanamadı."
 
 #: includes/class-ash-admin.php
 msgid "Content-Security-Policy header is enabled but no directives are set."
-msgstr ""
+msgstr "Content-Security-Policy başlığı açık, ancak hiçbir yönerge tanımlanmamış."
 
 #: includes/class-ash-admin.php
 msgid "Content Security Policy is disabled. Enable it to send this header."
-msgstr ""
+msgstr "Content Security Policy kapalı. Bu başlığı göndermek için etkinleştirin."
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgctxt "security status"
 msgid "Good"
-msgstr ""
+msgstr "İyi"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgctxt "security status"
 msgid "Fair"
-msgstr ""
+msgstr "Orta"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgctxt "security status"
 msgid "Needs attention"
-msgstr ""
+msgstr "Dikkat gerekli"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Most security controls are enabled."
-msgstr ""
+msgstr "Güvenlik kontrollerinin çoğu açık."
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Some recommended security controls are still disabled."
-msgstr ""
+msgstr "Önerilen bazı güvenlik kontrolleri hâlâ kapalı."
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Enable more security headers and hardening options."
-msgstr ""
+msgstr "Daha fazla güvenlik başlığı ve sıkılaştırma seçeneği açın."
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgctxt "CSP status"
 msgid "Enabled"
-msgstr ""
+msgstr "Açık"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgctxt "CSP status"
 msgid "Disabled"
-msgstr ""
+msgstr "Kapalı"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Content Security Policy is being sent with responses."
-msgstr ""
+msgstr "Content Security Policy yanıtlarda gönderiliyor."
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Content Security Policy is currently turned off."
-msgstr ""
+msgstr "Content Security Policy şu anda kapalı."
 
 #. translators: 1: number of enabled headers, 2: total headers
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "%1$d of %2$d security headers are enabled"
-msgstr ""
+msgstr "%2$d güvenlik başlığının %1$d tanesi açık"
 
 #. translators: 1: number of enabled features, 2: total features
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "%1$d of %2$d additional features are enabled"
-msgstr ""
+msgstr "%2$d ek özelliğin %1$d tanesi açık"
 
 #. Plugin Name of the plugin/theme
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Abdal Security Headers"
-msgstr ""
+msgstr "Abdal Security Headers"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Security Headers"
-msgstr ""
+msgstr "Güvenlik Başlıkları"
 
 #: includes/class-ash-admin.php
 msgid "Basic Security Headers"
-msgstr ""
+msgstr "Temel Güvenlik Başlıkları"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Configure basic security headers for your website."
-msgstr ""
+msgstr "Siteniz için temel güvenlik başlıklarını yapılandırın."
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Additional Security Features"
-msgstr ""
+msgstr "Ek Güvenlik Özellikleri"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Enable additional security features to enhance your website protection."
-msgstr ""
+msgstr "Site korumasını artırmak için ek özellikleri açın."
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Content Security Policy"
-msgstr ""
+msgstr "Content Security Policy"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Enable Content Security Policy"
-msgstr ""
+msgstr "Content Security Policy’yi etkinleştir"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Configure Content Security Policy (CSP) directives"
-msgstr ""
+msgstr "Content Security Policy (CSP) yönergelerini yapılandır"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "CSP Header Preview"
-msgstr ""
+msgstr "CSP başlığı önizlemesi"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "X-XSS-Protection"
-msgstr ""
+msgstr "X-XSS-Protection"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "X-Content-Type-Options"
-msgstr ""
+msgstr "X-Content-Type-Options"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Strict-Transport-Security"
-msgstr ""
+msgstr "Strict-Transport-Security"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Permissions-Policy"
-msgstr ""
+msgstr "Permissions-Policy"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "X-Frame-Options"
-msgstr ""
+msgstr "X-Frame-Options"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Referrer-Policy"
-msgstr ""
+msgstr "Referrer-Policy"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Remove X-Powered-By Header"
-msgstr ""
+msgstr "X-Powered-By başlığını kaldır"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Hide WordPress Version"
-msgstr ""
+msgstr "WordPress sürümünü gizle"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Remove Login Error Messages"
-msgstr ""
+msgstr "Giriş hata ayrıntılarını kaldır"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Disable XML-RPC"
-msgstr ""
+msgstr "XML-RPC’yi kapat"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Remove X-Pingback Header"
-msgstr ""
+msgstr "X-Pingback başlığını kaldır"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Restrict REST API Access"
-msgstr ""
+msgstr "REST API erişimini kısıtla"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Default Source"
-msgstr ""
+msgstr "Varsayılan kaynak"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Script Source"
-msgstr ""
+msgstr "Betik kaynağı"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Style Source"
-msgstr ""
+msgstr "Stil kaynağı"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Image Source"
-msgstr ""
+msgstr "Görsel kaynağı"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Connect Source"
-msgstr ""
+msgstr "Bağlantı kaynağı"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Font Source"
-msgstr ""
+msgstr "Yazı tipi kaynağı"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Object Source"
-msgstr ""
+msgstr "Nesne kaynağı"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Media Source"
-msgstr ""
+msgstr "Medya kaynağı"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Frame Source"
-msgstr ""
+msgstr "Çerçeve kaynağı"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Worker Source"
-msgstr ""
+msgstr "Worker kaynağı"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Form Action"
-msgstr ""
+msgstr "Form eylemi"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Base URI"
-msgstr ""
+msgstr "Base URI"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Sandbox"
-msgstr ""
+msgstr "Sandbox"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Report URI"
-msgstr ""
+msgstr "Report URI"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgid "Report To"
-msgstr ""
+msgstr "Report To"
 
 #. translators: %s: plugin version number
 #: includes/class-ash-admin-ui.php
 msgid "Version %s"
-msgstr ""
+msgstr "Sürüm %s"
 
 #: includes/class-ash-admin-ui.php
 msgctxt "plugin status badge"
 msgid "Active"
-msgstr ""
+msgstr "Etkin"
 
 #: includes/class-ash-admin-ui.php
 msgid "Configure HTTP security headers, hardening options, and Content Security Policy from one dashboard."
-msgstr ""
+msgstr "HTTP güvenlik başlıklarını, sıkılaştırmayı ve Content Security Policy’yi tek panelden yönetin."
 
 #: includes/class-ash-admin-ui.php
 msgid "Help"
-msgstr ""
+msgstr "Yardım"
 
 #: includes/class-ash-admin-ui.php
 msgid "Documentation"
-msgstr ""
+msgstr "Belgeler"
 
 #: includes/class-ash-admin-ui.php
 msgid "Report an issue"
-msgstr ""
+msgstr "Sorun bildir"
 
 #: includes/class-ash-admin-ui.php
 msgid "Contact support"
-msgstr ""
+msgstr "Destekle iletişim"
 
 #: includes/class-ash-admin-ui.php
 msgid "Security overview"
-msgstr ""
+msgstr "Güvenlik özeti"
 
 #: includes/class-ash-admin-ui.php
 msgid "Security status"
-msgstr ""
+msgstr "Güvenlik durumu"
 
 #: includes/class-ash-admin-ui.php
 msgid "Active headers"
-msgstr ""
+msgstr "Aktif başlıklar"
 
 #: includes/class-ash-admin-ui.php
 msgid "Additional features"
-msgstr ""
+msgstr "Ek özellikler"
 
 #: includes/class-ash-admin-ui.php
 msgid "CSP status"
-msgstr ""
+msgstr "CSP durumu"
 
 #: includes/class-ash-admin-ui.php
 msgid "Enable the core HTTP security headers for the site."
-msgstr ""
+msgstr "Sitenin temel HTTP güvenlik başlıklarını açın."
 
 #: includes/class-ash-admin-ui.php
 msgid "Harden WordPress by reducing information disclosure and attack surface."
-msgstr ""
+msgstr "Bilgi sızıntısını ve saldırı yüzeyini azaltarak WordPress’i sıkılaştırın."
 
 #: includes/class-ash-admin-ui.php
 msgid "CSP Directives"
-msgstr ""
+msgstr "CSP yönergeleri"
 
 #: includes/class-ash-admin-ui.php
 msgid "General settings"
-msgstr ""
+msgstr "Genel ayarlar"
 
 #: includes/class-ash-admin-ui.php
 msgid "When enabled, the generated Content-Security-Policy header is sent with HTTP responses."
-msgstr ""
+msgstr "Açıkken üretilen Content-Security-Policy başlığı HTTP yanıtlarıyla gönderilir."
 
 #: includes/class-ash-admin-ui.php
 msgid "Your changes are not saved automatically."
-msgstr ""
+msgstr "Değişiklikler otomatik kaydedilmez."
 
 #: includes/class-ash-admin-ui.php
 msgid "Reset"
-msgstr ""
+msgstr "Sıfırla"
 
 #: includes/class-ash-admin-ui.php
 msgid "Save Changes"
-msgstr ""
+msgstr "Değişiklikleri kaydet"
 
 #: includes/class-ash-admin-ui.php
 msgid "Enables the legacy browser XSS filter for older clients."
-msgstr ""
+msgstr "Eski tarayıcılar için eski XSS süzgecini açar."
 
 #: includes/class-ash-admin-ui.php
 msgid "Prevents browsers from MIME-sniffing a response away from the declared content type."
-msgstr ""
+msgstr "Tarayıcının bildirilen içerik türünden farklı MIME tahmini yapmasını engeller."
 
 #: includes/class-ash-admin-ui.php
 msgid "Forces browsers to use HTTPS for future requests to this host."
-msgstr ""
+msgstr "Tarayıcıları bu ana bilgisayara sonraki isteklerde HTTPS kullanmaya zorlar."
 
 #: includes/class-ash-admin-ui.php
 msgid "Restricts access to powerful browser features such as camera and geolocation."
-msgstr ""
+msgstr "Kamera ve konum gibi güçlü tarayıcı özelliklerine erişimi kısıtlar."
 
 #: includes/class-ash-admin-ui.php
 msgid "Controls whether the site can be embedded in frames to reduce clickjacking risk."
-msgstr ""
+msgstr "Clickjacking riskini azaltmak için sitenin frame içinde gösterilip gösterilemeyeceğini denetler."
 
 #: includes/class-ash-admin-ui.php
 msgid "Limits referrer information sent with navigations and resource requests."
-msgstr ""
+msgstr "Gezinme ve kaynak isteklerinde gönderilen referrer bilgisini sınırlar."
 
 #: includes/class-ash-admin-ui.php
 msgid "Hides server technology details exposed by the X-Powered-By header."
-msgstr ""
+msgstr "X-Powered-By başlığının açığa çıkardığı sunucu teknolojisi ayrıntılarını gizler."
 
 #: includes/class-ash-admin-ui.php
 msgid "Removes the public WordPress version from markup, feeds, scripts, and styles."
-msgstr ""
+msgstr "WordPress’in herkese açık sürümünü işaretlemeden, akışlardan, betiklerden ve stillerden kaldırır."
 
 #: includes/class-ash-admin-ui.php
 msgid "Replaces detailed login errors with a generic message to reduce user enumeration."
-msgstr ""
+msgstr "Ayrıntılı giriş hatalarını genel bir iletiyle değiştirerek kullanıcı keşfini zorlaştırır."
 
 #: includes/class-ash-admin-ui.php
 msgid "Disables XML-RPC methods and blocks direct access to xmlrpc.php."
-msgstr ""
+msgstr "XML-RPC yöntemlerini kapatır ve xmlrpc.php dosyasına doğrudan erişimi engeller."
 
 #: includes/class-ash-admin-ui.php
 msgid "Removes the X-Pingback response header from WordPress output."
-msgstr ""
+msgstr "WordPress çıktısından X-Pingback yanıt başlığını kaldırır."
 
 #: includes/class-ash-admin-ui.php
 msgid "Blocks REST API access and removes REST discovery links from the front end."
-msgstr ""
+msgstr "REST API erişimini engeller ve ön yüzdeki REST keşif bağlantılarını kaldırır."
 
 #: includes/class-ash-admin-ui.php
 msgid "Default fallback for other resource types"
-msgstr ""
+msgstr "Diğer kaynak türleri için varsayılan yedek"
 
 #: includes/class-ash-admin-ui.php
 msgid "Valid sources for JavaScript files"
-msgstr ""
+msgstr "JavaScript dosyaları için geçerli kaynaklar"
 
 #: includes/class-ash-admin-ui.php
 msgid "Valid sources for CSS files"
-msgstr ""
+msgstr "CSS dosyaları için geçerli kaynaklar"
 
 #: includes/class-ash-admin-ui.php
 msgid "Valid sources for images"
-msgstr ""
+msgstr "Görseller için geçerli kaynaklar"
 
 #: includes/class-ash-admin-ui.php
 msgid "Valid sources for AJAX, WebSocket, or EventSource connections"
-msgstr ""
+msgstr "AJAX, WebSocket veya EventSource bağlantıları için geçerli kaynaklar"
 
 #: includes/class-ash-admin-ui.php
 msgid "Valid sources for fonts"
-msgstr ""
+msgstr "Yazı tipleri için geçerli kaynaklar"
 
 #: includes/class-ash-admin-ui.php
 msgid "Valid sources for plugins"
-msgstr ""
+msgstr "Eklentiler için geçerli kaynaklar"
 
 #: includes/class-ash-admin-ui.php
 msgid "Valid sources for audio and video elements"
-msgstr ""
+msgstr "Ses ve video öğeleri için geçerli kaynaklar"
 
 #: includes/class-ash-admin-ui.php
 msgid "Valid sources for iframes"
-msgstr ""
+msgstr "iframe’ler için geçerli kaynaklar"
 
 #: includes/class-ash-admin-ui.php
 msgid "Valid sources for web workers"
-msgstr ""
+msgstr "Web worker’lar için geçerli kaynaklar"
 
 #: includes/class-ash-admin-ui.php
 msgid "Valid targets for form submissions"
-msgstr ""
+msgstr "Form gönderimleri için geçerli hedefler"
 
 #: includes/class-ash-admin-ui.php
 msgid "Valid values for the base element"
-msgstr ""
+msgstr "base öğesi için geçerli değerler"
 
 #: includes/class-ash-admin-ui.php
 msgid "Enables sandbox for the requested resource"
-msgstr ""
+msgstr "İstenen kaynak için sandbox’ı açar"
 
 #: includes/class-ash-admin-ui.php
 msgid "URI to send violation reports to"
-msgstr ""
+msgstr "İhlal raporlarının gönderileceği URI"
 
 #: includes/class-ash-admin-ui.php
 msgid "Group name for violation reports"
-msgstr ""
+msgstr "İhlal raporları için grup adı"
 
 #: includes/class-ash-headers.php
 msgid "Invalid login credentials."
-msgstr ""
+msgstr "Geçersiz giriş bilgileri."
 
 #: includes/class-ash-headers.php
 msgid "REST API is disabled."
-msgstr ""
+msgstr "REST API kapalı."
 
 #. Plugin URI of the plugin/theme
 msgid "https://github.com/ebrasha/abdal-security-headers"
-msgstr ""
+msgstr "https://github.com/ebrasha/abdal-security-headers"
 
 #. Description of the plugin/theme
 msgid "WordPress Security Headers Manager plugin, featuring full security headers control, advanced security features, and Content Security Policy (CSP)."
-msgstr ""
+msgstr "Güvenlik başlıklarını yöneten WordPress eklentisi: tam denetim, gelişmiş koruma ve Content Security Policy (CSP)."
 
 #. Author of the plugin/theme
 msgid "Ebrahim Shafiei (EbraSha)"
-msgstr ""
+msgstr "Ebrahim Shafiei (EbraSha)"
 
 #. Author URI of the plugin/theme
 msgid "https://github.com/ebrasha"
-msgstr ""
+msgstr "https://github.com/ebrasha"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Unable to ignore this source."
-msgstr ""
+msgstr "Bu kaynak yok sayılamadı."
 
 #: includes/class-ash-csp-assistant.php
 msgid "Source not found."
-msgstr ""
+msgstr "Kaynak bulunamadı."
 
 #: includes/class-ash-csp-assistant.php
 msgid "No eligible sources were selected."
-msgstr ""
+msgstr "Uygulanabilir kaynak seçilmedi."
 
 #: includes/class-ash-csp-assistant.php
 msgid "Dangerous CSP values require explicit confirmation."
-msgstr ""
+msgstr "Tehlikeli CSP değerleri açık onay ister."
 
 #: includes/class-ash-csp-assistant.php
 msgid "Selected sources were merged into your current CSP directives."
-msgstr ""
+msgstr "Seçilen kaynaklar mevcut CSP yönergelerine birleştirildi."
 
 #: includes/class-ash-csp-assistant.php
 msgid "You are not allowed to manage these settings."
-msgstr ""
+msgstr "Bu ayarları yönetme izniniz yok."
 
 #: includes/class-ash-csp-static-detector.php
 msgid "Plugin script enqueue"
-msgstr ""
+msgstr "Eklenti betiği kuyruğa alma"
 
 #: includes/class-ash-csp-static-detector.php
 msgid "WordPress REST API"
-msgstr ""
+msgstr "WordPress REST API"
 
 #: includes/class-ash-csp-static-detector.php
 msgid "WordPress AJAX"
-msgstr ""
+msgstr "WordPress AJAX"
 
 #: includes/class-ash-csp-static-detector.php
 msgid "WordPress site URL"
-msgstr ""
+msgstr "WordPress site URL’si"
 
 #: includes/class-ash-csp-static-detector.php
 msgid "WordPress core"
-msgstr ""
+msgstr "WordPress çekirdeği"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Smart CSP Assistant"
-msgstr ""
+msgstr "Akıllı CSP Asistanı"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Automatically discover the resources used by your site and generate CSP recommendations."
-msgstr ""
+msgstr "Sitenin kullandığı kaynakları otomatik keşfeder ve CSP önerileri üretir."
 
 #: includes/class-ash-csp-assistant.php
 msgid "Hybrid Detection"
-msgstr ""
+msgstr "Hibrit algılama"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Current Status"
-msgstr ""
+msgstr "Geçerli durum"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Not scanned"
-msgstr ""
+msgstr "Taranmadı"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Learning"
-msgstr ""
+msgstr "Öğrenme"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Analysis complete"
-msgstr ""
+msgstr "Analiz tamamlandı"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Monitoring"
-msgstr ""
+msgstr "İzleme"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Start Smart Scan"
-msgstr ""
+msgstr "Akıllı taramayı başlat"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Learning Mode Active"
-msgstr ""
+msgstr "Öğrenme modu açık"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Stop Learning"
-msgstr ""
+msgstr "Öğrenmeyi durdur"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Learning duration"
-msgstr ""
+msgstr "Öğrenme süresi"
 
 #: includes/class-ash-csp-assistant.php
 msgid "15 Minutes"
-msgstr ""
+msgstr "15 dakika"
 
 #: includes/class-ash-csp-assistant.php
 msgid "1 Hour"
-msgstr ""
+msgstr "1 saat"
 
 #: includes/class-ash-csp-assistant.php
 msgid "6 Hours"
-msgstr ""
+msgstr "6 saat"
 
 #: includes/class-ash-csp-assistant.php
 msgid "24 Hours"
-msgstr ""
+msgstr "24 saat"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Manual"
-msgstr ""
+msgstr "Manuel"
 
 #: includes/class-ash-csp-assistant.php
 msgid "sources observed"
-msgstr ""
+msgstr "kaynak gözlemlendi"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Keep watching for new sources after learning completes."
-msgstr ""
+msgstr "Öğrenme bittikten sonra yeni kaynakları izlemeye devam et."
 
 #: includes/class-ash-csp-assistant.php
 msgid "New CSP Source Detected"
-msgstr ""
+msgstr "Yeni CSP kaynağı algılandı"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Review Suggestions"
-msgstr ""
+msgstr "Önerileri incele"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Apply Selected Sources"
-msgstr ""
+msgstr "Seçilen kaynakları uygula"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Clear Learning Data"
-msgstr ""
+msgstr "Öğrenme verilerini temizle"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Source"
-msgstr ""
+msgstr "Kaynak"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Directive"
-msgstr ""
+msgstr "Yönerge"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Detection Method"
-msgstr ""
+msgstr "Algılama yöntemi"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Detected On"
-msgstr ""
+msgstr "Algılandığı yer"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Confidence"
-msgstr ""
+msgstr "Güven"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Status"
-msgstr ""
+msgstr "Durum"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Action"
-msgstr ""
+msgstr "Eylem"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Add"
-msgstr ""
+msgstr "Ekle"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Ignore"
-msgstr ""
+msgstr "Yoksay"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Details"
-msgstr ""
+msgstr "Ayrıntılar"
 
 #: includes/class-ash-csp-assistant.php
 msgid "No sources detected yet. Start a Smart Scan to begin discovery."
-msgstr ""
+msgstr "Henüz kaynak algılanmadı. Keşfe başlamak için akıllı taramayı başlatın."
 
 #: includes/class-ash-csp-assistant.php
 msgid "Select all sources"
-msgstr ""
+msgstr "Tüm kaynakları seç"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Static"
-msgstr ""
+msgstr "Statik"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Report-Only"
-msgstr ""
+msgstr "Report-Only"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Runtime"
-msgstr ""
+msgstr "Çalışma zamanı"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Trusted"
-msgstr ""
+msgstr "Güvenilir"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Likely Safe"
-msgstr ""
+msgstr "Muhtemelen güvenli"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Unknown"
-msgstr ""
+msgstr "Bilinmiyor"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Potentially Risky"
-msgstr ""
+msgstr "Potansiyel olarak riskli"
 
 #: includes/class-ash-csp-assistant.php
 msgid "New"
-msgstr ""
+msgstr "Yeni"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Ignored"
-msgstr ""
+msgstr "Yok sayıldı"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Applied"
-msgstr ""
+msgstr "Uygulandı"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Added"
-msgstr ""
+msgstr "Eklendi"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Warning"
-msgstr ""
+msgstr "Uyarı"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Origin"
-msgstr ""
+msgstr "Origin"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Resource Type"
-msgstr ""
+msgstr "Kaynak türü"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Detection Methods"
-msgstr ""
+msgstr "Algılama yöntemleri"
 
 #: includes/class-ash-csp-assistant.php
 msgid "First Seen"
-msgstr ""
+msgstr "İlk görülme"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Last Seen"
-msgstr ""
+msgstr "Son görülme"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Detection Count"
-msgstr ""
+msgstr "Algılama sayısı"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Pages Detected"
-msgstr ""
+msgstr "Algılanan sayfalar"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Detected from"
-msgstr ""
+msgstr "Algılandığı yer"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Required Directive"
-msgstr ""
+msgstr "Gerekli yönerge"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Policy Diff"
-msgstr ""
+msgstr "Politika farkı"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Current"
-msgstr ""
+msgstr "Mevcut"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Proposed"
-msgstr ""
+msgstr "Önerilen"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Apply"
-msgstr ""
+msgstr "Uygula"
 
 #: includes/class-ash-csp-assistant.php
 msgid "This value can weaken your Content Security Policy. Confirm only if your site requires it."
-msgstr ""
+msgstr "Bu değer Content Security Policy’yi zayıflatabilir. Yalnızca siteniz gerçekten gerektiriyorsa onaylayın."
 
 #: includes/class-ash-csp-assistant.php
 msgid "I understand this weakens CSP and I want to add it anyway."
-msgstr ""
+msgstr "Bunun CSP’yi zayıflattığını anlıyorum ve yine de eklemek istiyorum."
 
 #: includes/class-ash-csp-assistant.php
 msgid "Clear all Smart CSP discovery data? This cannot be undone."
-msgstr ""
+msgstr "Tüm Akıllı CSP keşif verileri silinsin mi? Bu işlem geri alınamaz."
 
 #: includes/class-ash-csp-assistant.php
 msgid "Select at least one source to apply."
-msgstr ""
+msgstr "Uygulamak için en az bir kaynak seçin."
 
 #: includes/class-ash-csp-assistant.php
 msgid "Unknown resource types are kept for review and are not applied automatically."
-msgstr ""
+msgstr "Bilinmeyen kaynak türleri inceleme için saklanır ve otomatik uygulanmaz."
 
 #: includes/class-ash-csp-assistant.php
 msgid "The Smart CSP Assistant request failed. Please try again."
-msgstr ""
+msgstr "Akıllı CSP Asistanı isteği başarısız oldu. Lütfen tekrar deneyin."
 
 #. translators: %d: number of detected sources
 #: includes/class-ash-csp-assistant.php
 #, php-format
 msgid "%d Sources Detected"
-msgstr ""
+msgstr "%d kaynak algılandı"
 
 #. translators: %d: number of script sources
 #: includes/class-ash-csp-assistant.php
 #, php-format
 msgid "%d Script Sources"
-msgstr ""
+msgstr "%d betik kaynağı"
 
 #. translators: %d: number of style sources
 #: includes/class-ash-csp-assistant.php
 #, php-format
 msgid "%d Style Sources"
-msgstr ""
+msgstr "%d stil kaynağı"
 
 #. translators: %d: number of image sources
 #: includes/class-ash-csp-assistant.php
 #, php-format
 msgid "%d Image Sources"
-msgstr ""
+msgstr "%d görsel kaynağı"
 
 #. translators: %d: number of font sources
 #: includes/class-ash-csp-assistant.php
 #, php-format
 msgid "%d Font Sources"
-msgstr ""
+msgstr "%d yazı tipi kaynağı"
 
 #. translators: %d: number of connect sources
 #: includes/class-ash-csp-assistant.php
 #, php-format
 msgid "%d Connect Sources"
-msgstr ""
+msgstr "%d bağlantı kaynağı"
 
 #. translators: %d: number of frame sources
 #: includes/class-ash-csp-assistant.php
 #, php-format
 msgid "%d Frame Sources"
-msgstr ""
+msgstr "%d çerçeve kaynağı"
 
 #. translators: %d: number of media sources
 #: includes/class-ash-csp-assistant.php
 #, php-format
 msgid "%d Media Sources"
-msgstr ""
+msgstr "%d medya kaynağı"
 
 #. translators: %d: number of worker sources
 #: includes/class-ash-csp-assistant.php
 #, php-format
 msgid "%d Worker Sources"
-msgstr ""
+msgstr "%d worker kaynağı"
 
 #. translators: %d: number of form destinations
 #: includes/class-ash-csp-assistant.php
 #, php-format
 msgid "%d Form Destinations"
-msgstr ""
+msgstr "%d form hedefi"
 
 #. translators: %d: number of unknown sources
 #: includes/class-ash-csp-assistant.php
 #, php-format
 msgid "%d Unknown Sources"
-msgstr ""
+msgstr "%d bilinmeyen kaynak"
 
 #: includes/class-ash-admin-ui.php
 msgid "Handcrafted with ❤️ Passion by Ebrahim Shafiei (EbraSha)"
-msgstr ""
+msgstr "❤️ tutkuyla Ebrahim Shafiei (EbraSha) tarafından hazırlandı"
