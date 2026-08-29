@@ -1,13 +1,13 @@
 === Abdal Security Headers ===
 Contributors: profshafiei
-Donate link: https://ebrasha.com/abdal-donation
-Tags: security, security-headers, x-frame-options, content-security-policy, hsts
+Donate link: https://t.me/AbdalDonationBot
+Tags: security, wordpress-security, security-headers, content-security-policy, csp, ebrasha, abdal
 Requires at least: 6.7.2
 Tested up to: 7.1
 Stable tag: 5.5.3
 Requires PHP: 7.2
 License: AGPLv3
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+License URI: https://www.gnu.org/licenses/agpl-3.0.html
 
 Enhance WordPress security with HTTP security headers and a Smart CSP Assistant that discovers real site resources for review.
 
