@@ -24,43 +24,16 @@ class ASH_Headers {
     private $options;
 
     public function __construct() {
-        $this->options = get_option('ash_options');
+        $this->options = get_option('ash_options', array());
+        if (!is_array($this->options)) {
+            $this->options = array();
+        }
+        if (class_exists('ASH_Header_Settings')) {
+            $this->options = ASH_Header_Settings::hydrate($this->options);
+        }
         
         // Add headers
         add_action('send_headers', array($this, 'set_security_headers'), 1);
-        
-        // Additional security features
-        if (!empty($this->options['remove_x_powered_by'])) {
-            add_action('init', array($this, 'remove_x_powered_by'));
-        }
-        
-        if (!empty($this->options['hide_wp_version'])) {
-            add_action('init', array($this, 'hide_wp_version'));
-        }
-        
-        if (!empty($this->options['remove_login_errors'])) {
-            add_filter('login_errors', array($this, 'remove_login_errors'));
-        }
-        
-        // Enhanced XML-RPC Protection
-        if (!empty($this->options['disable_xmlrpc'])) {
-            // Disable XML-RPC functionality
-            add_filter('xmlrpc_enabled', '__return_false');
-            // Remove all XML-RPC methods
-            add_filter('xmlrpc_methods', array($this, 'ash_disable_xmlrpc_methods'));
-            // Block direct access to xmlrpc.php
-            add_action('init', array($this, 'ash_block_xmlrpc_access'));
-            // Remove X-Pingback header
-            add_filter('wp_headers', array($this, 'remove_x_pingback'));
-        }
-        
-        // Enhanced REST API Protection
-        if (!empty($this->options['restrict_rest_api'])) {
-            // Disable REST API completely
-            add_filter('rest_authentication_errors', array($this, 'ash_disable_rest_api'));
-            // Remove REST API links and headers
-            add_action('after_setup_theme', array($this, 'ash_disable_rest_api_access'));
-        }
     }
 
     /**
@@ -101,33 +74,43 @@ class ASH_Headers {
             return;
         }
 
-        if (!empty($this->options['x_xss_protection'])) {
-            @header('X-XSS-Protection: 1; mode=block');
+        if (!empty($this->options['x_xss_protection']) && (string) $this->options['x_xss_protection'] === '1') {
+            $xss_value = class_exists('ASH_Header_Settings')
+                ? ASH_Header_Settings::build_xss_protection($this->options)
+                : '1; mode=block';
+            $this->send_security_header('X-XSS-Protection', $xss_value);
         }
-        
-        if (!empty($this->options['x_content_type_options'])) {
-            @header('X-Content-Type-Options: nosniff');
+
+        if (!empty($this->options['x_content_type_options']) && (string) $this->options['x_content_type_options'] === '1') {
+            $this->send_security_header('X-Content-Type-Options', 'nosniff');
         }
-        
-        if (!empty($this->options['strict_transport_security'])) {
-            @header('Strict-Transport-Security: max-age=31536000; includeSubDomains; preload');
+
+        if (!empty($this->options['strict_transport_security']) && (string) $this->options['strict_transport_security'] === '1' && is_ssl()) {
+            $hsts_value = class_exists('ASH_Header_Settings')
+                ? ASH_Header_Settings::build_hsts($this->options)
+                : 'max-age=31536000; includeSubDomains; preload';
+            $this->send_security_header('Strict-Transport-Security', $hsts_value);
         }
-        
-        if (!empty($this->options['permissions_policy'])) {
-            @header("Permissions-Policy: accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()");
+
+        if (!empty($this->options['permissions_policy']) && (string) $this->options['permissions_policy'] === '1') {
+            $pp_value = class_exists('ASH_Header_Settings')
+                ? ASH_Header_Settings::build_permissions_policy($this->options)
+                : 'accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()';
+            $this->send_security_header('Permissions-Policy', $pp_value);
         }
-        
-        if (!empty($this->options['x_frame_options'])) {
-            @header('X-Frame-Options: SAMEORIGIN');
+
+        if (!empty($this->options['x_frame_options']) && (string) $this->options['x_frame_options'] === '1') {
+            $xfo_value = class_exists('ASH_Header_Settings')
+                ? ASH_Header_Settings::build_x_frame_options($this->options)
+                : 'SAMEORIGIN';
+            $this->send_security_header('X-Frame-Options', $xfo_value);
         }
-        
-        if (!empty($this->options['referrer_policy'])) {
-            @header('Referrer-Policy: strict-origin-when-cross-origin');
-        }
-        
-        // Remove X-Powered-By if enabled
-        if (!empty($this->options['remove_x_powered_by'])) {
-            header_remove('X-Powered-By');
+
+        if (!empty($this->options['referrer_policy']) && (string) $this->options['referrer_policy'] === '1') {
+            $referrer_value = class_exists('ASH_Header_Settings')
+                ? ASH_Header_Settings::build_referrer_policy($this->options)
+                : 'strict-origin-when-cross-origin';
+            $this->send_security_header('Referrer-Policy', $referrer_value);
         }
 
         // Content-Security-Policy is frontend-only so wp-admin assets are never blocked.
@@ -188,87 +171,18 @@ class ASH_Headers {
         return false;
     }
 
-    public function remove_x_powered_by() {
-        @ini_set('expose_php', 'Off');
-        if (function_exists('header_remove')) {
-            header_remove('X-Powered-By');
-        }
-    }
-
-    public function hide_wp_version() {
-        // Remove version from head
-        remove_action('wp_head', 'wp_generator');
-        
-        // Remove version from RSS
-        add_filter('the_generator', '__return_empty_string');
-
-        if (!is_admin()) {
-            add_filter('style_loader_src', array($this, 'remove_version_from_source'));
-            add_filter('script_loader_src', array($this, 'remove_version_from_source'));
-        }
-    }
-
-    public function remove_version_from_source($src) {
-        if (is_admin()) {
-            return $src;
-        }
-
-        if (strpos($src, 'abdal-security-headers/assets/') !== false) {
-            return $src;
-        }
-
-        if (strpos($src, 'ver=') !== false) {
-            $src = remove_query_arg('ver', $src);
-        }
-        return $src;
-    }
-
-    public function remove_login_errors() {
-        return esc_html__('Invalid login credentials.', 'abdal-security-headers');
-    }
-
-    public function remove_x_pingback($headers) {
-        unset($headers['X-Pingback']);
-        return $headers;
-    }
-
     /**
-     * Disable all XML-RPC methods
+     * Send a security header after stripping CR/LF from the value.
+     *
+     * @param string $name Header name.
+     * @param string $value Header value.
+     * @return void
      */
-    public function ash_disable_xmlrpc_methods($methods) {
-        return array();
-    }
-
-    /**
-     * Block direct access to xmlrpc.php with 403 Forbidden
-     */
-    public function ash_block_xmlrpc_access() {
-        if (strpos($_SERVER['REQUEST_URI'], 'xmlrpc.php') !== false) {
-            header('HTTP/1.1 403 Forbidden');
-            exit;
+    private function send_security_header($name, $value) {
+        $value = str_replace(array("\r", "\n"), '', (string) $value);
+        if ($value === '') {
+            return;
         }
-    }
-
-    /**
-     * Disable REST API completely with error message
-     */
-    public function ash_disable_rest_api($access) {
-        return new WP_Error(
-            'rest_disabled',
-            esc_html__('REST API is disabled.', 'abdal-security-headers'),
-            array('status' => 403)
-        );
-    }
-
-    /**
-     * Remove REST API links and discovery
-     */
-    public function ash_disable_rest_api_access() {
-        // Remove REST API info from head
-        remove_action('wp_head', 'rest_output_link_wp_head');
-        // Remove oEmbed discovery links
-        remove_action('wp_head', 'wp_oembed_add_discovery_links');
-        // Remove REST API from HTTP headers
-        remove_action('template_redirect', 'rest_output_link_header', 11);
+        header($name . ': ' . $value);
     }
 } 

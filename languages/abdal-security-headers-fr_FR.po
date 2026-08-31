@@ -1,10 +1,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Abdal Security Headers 5.6.0\n"
+"Project-Id-Version: Abdal Security Headers 6.11.0\n"
 "Report-Msgid-Bugs-To: Prof.Shafiei@Gmail.com\n"
-"POT-Creation-Date: 2026-08-29 10:30+0330\n"
-"PO-Revision-Date: 2026-08-29 10:30+0330\n"
+"POT-Creation-Date: 2026-08-31 22:28+0330\n"
+"PO-Revision-Date: 2026-08-31 22:28+0330\n"
 "Last-Translator: Ebrahim Shafiei (EbraSha) <Prof.Shafiei@Gmail.com>\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
@@ -17,288 +17,238 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-WPHeader: abdal-security-headers.php\n"
 
+#: Dev/abdal-security-headers/includes/class-ash-admin.php
 #: includes/class-ash-admin.php
 msgid "Are you sure you want to save these settings?"
 msgstr "Voulez-vous vraiment enregistrer ces réglages ?"
 
-#: includes/class-ash-admin.php
-msgid "Reset unsaved changes and restore the last saved values?"
-msgstr ""
-"Annuler les modifications non enregistrées et restaurer les dernières "
-"valeurs enregistrées ?"
-
-#: includes/class-ash-admin.php
+#: Dev/abdal-security-headers/includes/class-ash-admin.php
+#: includes/class-ash-admin-ui.php includes/class-ash-admin.php
 msgid "Yes"
 msgstr "Oui"
 
+#: Dev/abdal-security-headers/includes/class-ash-admin.php
 #: includes/class-ash-admin.php
 msgid "No"
 msgstr "Non"
 
+#: Dev/abdal-security-headers/includes/class-ash-admin.php
 #: includes/class-ash-admin.php
 msgid "Settings saved successfully"
 msgstr "Réglages enregistrés"
 
+#: Dev/abdal-security-headers/includes/class-ash-admin.php
 #: includes/class-ash-admin.php
 msgid "OK"
 msgstr "OK"
 
-#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
-msgid "Cancel"
-msgstr "Annuler"
-
-#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
-msgctxt "csp editor confirm"
-msgid "OK"
-msgstr "OK"
-
-#. translators: %s: CSP directive name such as script-src
-#: includes/class-ash-admin.php
-#, php-format
-msgid "Edit %s"
-msgstr "Modifier %s"
-
+#: Dev/abdal-security-headers/includes/class-ash-admin.php
 #: includes/class-ash-admin.php
 msgid "Error"
 msgstr "Erreur"
 
+#: Dev/abdal-security-headers/includes/class-ash-admin.php
 #: includes/class-ash-admin.php
 msgid "An error occurred while saving the settings. Please try again."
 msgstr ""
 "Une erreur s’est produite lors de l’enregistrement. Veuillez réessayer."
 
-#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
-msgid "Copied"
-msgstr "Copié"
-
-#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
-msgid "Copy CSP header"
-msgstr "Copier l’en-tête CSP"
-
-#: includes/class-ash-admin.php
-msgid "Unable to copy the CSP header."
-msgstr "Impossible de copier l’en-tête CSP."
-
-#: includes/class-ash-admin.php
-msgid "Content-Security-Policy header is enabled but no directives are set."
-msgstr ""
-"L’en-tête Content-Security-Policy est activé, mais aucune directive n’est "
-"définie."
-
-#: includes/class-ash-admin.php
-msgid "Content Security Policy is disabled. Enable it to send this header."
-msgstr ""
-"La Content Security Policy est désactivée. Activez-la pour envoyer cet en-"
-"tête."
-
-#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
-msgctxt "security status"
-msgid "Good"
-msgstr "Bon"
-
-#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
-msgctxt "security status"
-msgid "Fair"
-msgstr "Moyen"
-
-#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
-msgctxt "security status"
-msgid "Needs attention"
-msgstr "À améliorer"
-
-#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
-msgid "Most security controls are enabled."
-msgstr "La plupart des contrôles de sécurité sont activés."
-
-#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
-msgid "Some recommended security controls are still disabled."
-msgstr "Certains contrôles de sécurité recommandés sont encore désactivés."
-
-#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
-msgid "Enable more security headers and hardening options."
-msgstr ""
-"Activez davantage d’en-têtes de sécurité et d’options de durcissement."
-
-#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
-msgctxt "CSP status"
-msgid "Enabled"
-msgstr "Activée"
-
-#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
-msgctxt "CSP status"
-msgid "Disabled"
-msgstr "Désactivée"
-
-#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
-msgid "Content Security Policy is being sent with responses."
-msgstr "La Content Security Policy est envoyée avec les réponses."
-
-#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
-msgid "Content Security Policy is currently turned off."
-msgstr "La Content Security Policy est actuellement désactivée."
-
-#. translators: 1: number of enabled headers, 2: total headers
-#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
-msgid "%1$d of %2$d security headers are enabled"
-msgstr "%1$d en-tête(s) de sécurité sur %2$d sont activés"
-
-#. translators: 1: number of enabled features, 2: total features
-#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
-msgid "%1$d of %2$d additional features are enabled"
-msgstr "%1$d fonction(s) supplémentaire(s) sur %2$d sont activées"
-
-#. Plugin Name of the plugin/theme
-#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
+#: Dev/abdal-security-headers/includes/class-ash-admin.php
+#: includes/class-ash-admin-ui.php includes/class-ash-admin.php
+#: includes/class-ash-dashboard-widget.php
 msgid "Abdal Security Headers"
 msgstr "Abdal Security Headers"
 
-#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
+#: Dev/abdal-security-headers/includes/class-ash-admin.php
+#: includes/class-ash-admin-ui.php includes/class-ash-admin.php
 msgid "Security Headers"
 msgstr "En-têtes de sécurité"
 
+#: Dev/abdal-security-headers/includes/class-ash-admin.php
 #: includes/class-ash-admin.php
 msgid "Basic Security Headers"
 msgstr "En-têtes de sécurité de base"
 
-#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
+#: Dev/abdal-security-headers/includes/class-ash-admin.php
+#: includes/class-ash-admin.php
 msgid "Configure basic security headers for your website."
 msgstr "Configurez les en-têtes de sécurité de base de votre site."
 
-#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
+#: Dev/abdal-security-headers/includes/class-ash-admin.php
+#: includes/class-ash-admin.php
 msgid "Additional Security Features"
 msgstr "Fonctions de sécurité supplémentaires"
 
-#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
+#: Dev/abdal-security-headers/includes/class-ash-admin.php
+#: includes/class-ash-admin.php
 msgid ""
 "Enable additional security features to enhance your website protection."
 msgstr ""
 "Activez des fonctions supplémentaires pour renforcer la protection du site."
 
-#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
+#: Dev/abdal-security-headers/includes/class-ash-admin.php
+#: includes/class-ash-admin-ui.php includes/class-ash-admin.php
 msgid "Content Security Policy"
 msgstr "Content Security Policy"
 
-#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
+#: Dev/abdal-security-headers/includes/class-ash-admin.php
+#: includes/class-ash-admin-ui.php
 msgid "Enable Content Security Policy"
 msgstr "Activer la Content Security Policy"
 
-#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
+#: Dev/abdal-security-headers/includes/class-ash-admin.php
+#: includes/class-ash-admin-ui.php includes/class-ash-admin.php
 msgid "Configure Content Security Policy (CSP) directives"
 msgstr "Configurer les directives Content Security Policy (CSP)"
 
-#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
+#: Dev/abdal-security-headers/includes/class-ash-admin.php
+#: includes/class-ash-admin-ui.php
 msgid "CSP Header Preview"
 msgstr "Aperçu de l’en-tête CSP"
 
-#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
+#: Dev/abdal-security-headers/includes/class-ash-admin.php
+#: includes/class-ash-admin-ui.php includes/class-ash-admin.php
 msgid "X-XSS-Protection"
 msgstr "X-XSS-Protection"
 
-#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
+#: Dev/abdal-security-headers/includes/class-ash-admin.php
+#: includes/class-ash-admin-ui.php includes/class-ash-admin.php
 msgid "X-Content-Type-Options"
 msgstr "X-Content-Type-Options"
 
-#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
+#: Dev/abdal-security-headers/includes/class-ash-admin.php
+#: includes/class-ash-admin-ui.php includes/class-ash-admin.php
 msgid "Strict-Transport-Security"
 msgstr "Strict-Transport-Security"
 
-#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
+#: Dev/abdal-security-headers/includes/class-ash-admin.php
+#: includes/class-ash-admin-ui.php includes/class-ash-admin.php
 msgid "Permissions-Policy"
 msgstr "Permissions-Policy"
 
-#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
+#: Dev/abdal-security-headers/includes/class-ash-admin.php
+#: includes/class-ash-admin-ui.php includes/class-ash-admin.php
 msgid "X-Frame-Options"
 msgstr "X-Frame-Options"
 
-#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
+#: Dev/abdal-security-headers/includes/class-ash-admin.php
+#: includes/class-ash-admin-ui.php includes/class-ash-admin.php
 msgid "Referrer-Policy"
 msgstr "Referrer-Policy"
 
-#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
+#: Dev/abdal-security-headers/includes/class-ash-admin.php
+#: includes/class-ash-admin-ui.php includes/class-ash-admin.php
 msgid "Remove X-Powered-By Header"
 msgstr "Supprimer l’en-tête X-Powered-By"
 
-#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
+#: Dev/abdal-security-headers/includes/class-ash-admin.php
+#: includes/class-ash-admin-ui.php includes/class-ash-admin.php
 msgid "Hide WordPress Version"
 msgstr "Masquer la version de WordPress"
 
-#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
+#: Dev/abdal-security-headers/includes/class-ash-admin.php
+#: includes/class-ash-admin-ui.php includes/class-ash-admin.php
 msgid "Remove Login Error Messages"
 msgstr "Masquer les messages d’erreur de connexion"
 
-#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
+#: Dev/abdal-security-headers/includes/class-ash-admin.php
+#: includes/class-ash-admin-ui.php includes/class-ash-admin.php
 msgid "Disable XML-RPC"
 msgstr "Désactiver XML-RPC"
 
-#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
+#: Dev/abdal-security-headers/includes/class-ash-admin.php
+#: includes/class-ash-admin-ui.php includes/class-ash-admin.php
 msgid "Remove X-Pingback Header"
 msgstr "Supprimer l’en-tête X-Pingback"
 
-#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
+#: Dev/abdal-security-headers/includes/class-ash-admin.php
+#: includes/class-ash-admin-ui.php includes/class-ash-admin.php
 msgid "Restrict REST API Access"
 msgstr "Restreindre l’accès à l’API REST"
 
-#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
+#: Dev/abdal-security-headers/includes/class-ash-admin.php
+#: includes/class-ash-admin-ui.php includes/class-ash-admin.php
 msgid "Default Source"
 msgstr "Source par défaut"
 
-#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
+#: Dev/abdal-security-headers/includes/class-ash-admin.php
+#: includes/class-ash-admin-ui.php includes/class-ash-admin.php
 msgid "Script Source"
 msgstr "Source des scripts"
 
-#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
+#: Dev/abdal-security-headers/includes/class-ash-admin.php
+#: includes/class-ash-admin-ui.php includes/class-ash-admin.php
 msgid "Style Source"
 msgstr "Source des styles"
 
-#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
+#: Dev/abdal-security-headers/includes/class-ash-admin.php
+#: includes/class-ash-admin-ui.php includes/class-ash-admin.php
 msgid "Image Source"
 msgstr "Source des images"
 
-#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
+#: Dev/abdal-security-headers/includes/class-ash-admin.php
+#: includes/class-ash-admin-ui.php includes/class-ash-admin.php
 msgid "Connect Source"
 msgstr "Source des connexions"
 
-#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
+#: Dev/abdal-security-headers/includes/class-ash-admin.php
+#: includes/class-ash-admin-ui.php includes/class-ash-admin.php
 msgid "Font Source"
 msgstr "Source des polices"
 
-#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
+#: Dev/abdal-security-headers/includes/class-ash-admin.php
+#: includes/class-ash-admin-ui.php includes/class-ash-admin.php
 msgid "Object Source"
 msgstr "Source des objets"
 
-#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
+#: Dev/abdal-security-headers/includes/class-ash-admin.php
+#: includes/class-ash-admin-ui.php includes/class-ash-admin.php
 msgid "Media Source"
 msgstr "Source des médias"
 
-#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
+#: Dev/abdal-security-headers/includes/class-ash-admin.php
+#: includes/class-ash-admin-ui.php includes/class-ash-admin.php
 msgid "Frame Source"
 msgstr "Source des frames"
 
-#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
+#: Dev/abdal-security-headers/includes/class-ash-admin.php
+#: includes/class-ash-admin-ui.php includes/class-ash-admin.php
 msgid "Worker Source"
 msgstr "Source des workers"
 
-#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
+#: Dev/abdal-security-headers/includes/class-ash-admin.php
+#: includes/class-ash-admin-ui.php includes/class-ash-admin.php
 msgid "Form Action"
 msgstr "Action de formulaire"
 
-#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
+#: Dev/abdal-security-headers/includes/class-ash-admin.php
+#: includes/class-ash-admin-ui.php includes/class-ash-admin.php
 msgid "Base URI"
 msgstr "Base URI"
 
-#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
+#: Dev/abdal-security-headers/includes/class-ash-admin.php
+#: includes/class-ash-admin-ui.php includes/class-ash-admin.php
 msgid "Sandbox"
 msgstr "Sandbox"
 
-#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
+#: Dev/abdal-security-headers/includes/class-ash-admin.php
+#: includes/class-ash-admin-ui.php includes/class-ash-admin.php
 msgid "Report URI"
 msgstr "Report URI"
 
-#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
+#: Dev/abdal-security-headers/includes/class-ash-admin.php
+#: includes/class-ash-admin-ui.php includes/class-ash-admin.php
 msgid "Report To"
 msgstr "Report To"
 
-#. translators: %s: plugin version number
+#: Dev/abdal-security-headers/includes/class-ash-headers.php
+msgid "Invalid login credentials."
+msgstr "Identifiants de connexion incorrects."
+
+#: Dev/abdal-security-headers/includes/class-ash-headers.php
+msgid "REST API is disabled."
+msgstr "L’API REST est désactivée."
+
 #: includes/class-ash-admin-ui.php
 msgid "Version %s"
 msgstr "Version %s"
@@ -310,11 +260,861 @@ msgstr "Actif"
 
 #: includes/class-ash-admin-ui.php
 msgid ""
-"Configure HTTP security headers, hardening options, and Content Security "
-"Policy from one dashboard."
+"Review security status, active headers, hardening features, and Content "
+"Security Policy."
 msgstr ""
-"Configurez les en-têtes HTTP de sécurité, le durcissement et la Content "
-"Security Policy depuis un seul tableau de bord."
+"Consultez l’état de sécurité, les en-têtes actifs, les fonctions de "
+"durcissement et la Content Security Policy."
+
+#: includes/class-ash-admin-ui.php includes/class-ash-dashboard-widget.php
+msgid "Security overview"
+msgstr "Aperçu de la sécurité"
+
+#: includes/class-ash-admin-ui.php includes/class-ash-dashboard-widget.php
+msgid "Security status"
+msgstr "État de la sécurité"
+
+#: includes/class-ash-admin-ui.php includes/class-ash-dashboard-widget.php
+msgid "Active headers"
+msgstr "En-têtes actifs"
+
+#: includes/class-ash-admin-ui.php includes/class-ash-admin.php
+msgid "%1$d of %2$d security headers are enabled"
+msgstr "%1$d en-tête(s) de sécurité sur %2$d sont activés"
+
+#: includes/class-ash-admin-ui.php
+msgid "Additional features"
+msgstr "Fonctions supplémentaires"
+
+#: includes/class-ash-admin-ui.php includes/class-ash-admin.php
+msgid "%1$d of %2$d additional features are enabled"
+msgstr "%1$d fonction(s) supplémentaire(s) sur %2$d sont activées"
+
+#: includes/class-ash-admin-ui.php includes/class-ash-dashboard-widget.php
+msgid "CSP status"
+msgstr "État CSP"
+
+#: includes/class-ash-admin-ui.php includes/class-ash-admin.php
+#: includes/class-ash-dashboard-widget.php
+msgctxt "CSP status"
+msgid "Enabled"
+msgstr "Activée"
+
+#: includes/class-ash-admin-ui.php includes/class-ash-admin.php
+#: includes/class-ash-dashboard-widget.php
+msgctxt "CSP status"
+msgid "Disabled"
+msgstr "Désactivée"
+
+#: includes/class-ash-admin-ui.php includes/class-ash-admin.php
+msgid "Content Security Policy is being sent with responses."
+msgstr "La Content Security Policy est envoyée avec les réponses."
+
+#: includes/class-ash-admin-ui.php includes/class-ash-admin.php
+msgid "Content Security Policy is currently turned off."
+msgstr "La Content Security Policy est actuellement désactivée."
+
+#: includes/class-ash-admin-ui.php
+msgid ""
+"Configure each HTTP security header and the values sent with responses."
+msgstr ""
+"Configurez chaque en-tête de sécurité HTTP et les valeurs envoyées avec les "
+"réponses."
+
+#: includes/class-ash-admin-ui.php
+msgid "Deprecated / Legacy"
+msgstr "Obsolète / héritage"
+
+#: includes/class-ash-admin-ui.php
+msgid ""
+"Legacy browser XSS filter. Modern browsers ignore this header; prefer "
+"Content-Security-Policy."
+msgstr ""
+"Filtre XSS des anciens navigateurs. Les navigateurs modernes ignorent cet "
+"en-tête ; préférez Content-Security-Policy."
+
+#: includes/class-ash-admin-ui.php
+msgid "Enable X-XSS-Protection"
+msgstr "Activer X-XSS-Protection"
+
+#: includes/class-ash-admin-ui.php
+msgid "Send the X-XSS-Protection header with the selected policy."
+msgstr "Envoie l’en-tête X-XSS-Protection avec la politique sélectionnée."
+
+#: includes/class-ash-admin-ui.php
+msgid "Policy"
+msgstr "Politique"
+
+#: includes/class-ash-admin-ui.php
+msgid "Choose the legacy XSS filter policy sent to older browsers."
+msgstr ""
+"Choisissez la politique du filtre XSS héritée envoyée aux anciens "
+"navigateurs."
+
+#: includes/class-ash-admin-ui.php
+msgid "Reporting URL"
+msgstr "URL de rapport"
+
+#: includes/class-ash-admin-ui.php
+msgid ""
+"Endpoint that receives XSS filter reports when the report policy is "
+"selected."
+msgstr ""
+"Point de terminaison qui reçoit les rapports du filtre XSS lorsque la "
+"politique report est choisie."
+
+#: includes/class-ash-admin-ui.php
+msgid ""
+"The default policy is 0, which turns the legacy filter off when the header "
+"is sent."
+msgstr ""
+"La politique par défaut est 0 et désactive le filtre hérité lorsque l’en-"
+"tête est envoyé."
+
+#: includes/class-ash-admin-ui.php
+msgid ""
+"Prevents browsers from MIME-sniffing a response away from the declared "
+"content type."
+msgstr ""
+"Empêche le navigateur d’inférer un type MIME différent de celui déclaré."
+
+#: includes/class-ash-admin-ui.php
+msgid "Enable X-Content-Type-Options"
+msgstr "Activer X-Content-Type-Options"
+
+#: includes/class-ash-admin-ui.php
+msgid ""
+"When enabled, the plugin always sends nosniff. There are no additional "
+"options."
+msgstr ""
+"Une fois activé, le plugin envoie toujours nosniff. Il n’y a pas d’autres "
+"options."
+
+#: includes/class-ash-admin-ui.php
+msgid "When enabled, always send X-Content-Type-Options: nosniff."
+msgstr "Une fois activé, X-Content-Type-Options: nosniff est toujours envoyé."
+
+#: includes/class-ash-admin-ui.php
+msgid "1 Day"
+msgstr "1 jour"
+
+#: includes/class-ash-admin-ui.php
+msgid "1 Week"
+msgstr "1 semaine"
+
+#: includes/class-ash-admin-ui.php
+msgid "1 Month"
+msgstr "1 mois"
+
+#: includes/class-ash-admin-ui.php
+msgid "6 Months"
+msgstr "6 mois"
+
+#: includes/class-ash-admin-ui.php
+msgid "1 Year"
+msgstr "1 an"
+
+#: includes/class-ash-admin-ui.php
+msgid "2 Years"
+msgstr "2 ans"
+
+#: includes/class-ash-admin-ui.php
+msgid "Custom value"
+msgstr "Valeur personnalisée"
+
+#: includes/class-ash-admin-ui.php
+msgid "Forces browsers to use HTTPS for future requests to this host."
+msgstr ""
+"Force les navigateurs à utiliser HTTPS pour les futures requêtes vers cet "
+"hôte."
+
+#: includes/class-ash-admin-ui.php
+msgid "Enable Strict-Transport-Security"
+msgstr "Activer Strict-Transport-Security"
+
+#: includes/class-ash-admin-ui.php
+msgid ""
+"Instruct browsers to use HTTPS for this host for the configured lifetime."
+msgstr ""
+"Indique aux navigateurs d’utiliser HTTPS pour cet hôte pendant la durée "
+"configurée."
+
+#: includes/class-ash-admin-ui.php
+msgid "How long browsers should remember to use HTTPS only."
+msgstr "Durée pendant laquelle les navigateurs doivent n’utiliser que HTTPS."
+
+#: includes/class-ash-admin-ui.php
+msgid "Custom max-age (seconds)"
+msgstr "max-age personnalisé (secondes)"
+
+#: includes/class-ash-admin-ui.php
+msgid "Enter max-age in seconds."
+msgstr "Saisissez max-age en secondes."
+
+#: includes/class-ash-admin-ui.php
+msgid "Include Subdomains"
+msgstr "Inclure les sous-domaines"
+
+#: includes/class-ash-admin-ui.php
+msgid "Adds includeSubDomains so the policy also applies to subdomains."
+msgstr ""
+"Ajoute includeSubDomains pour appliquer aussi la politique aux sous-"
+"domaines."
+
+#: includes/class-ash-admin-ui.php
+msgid "Preload"
+msgstr "Preload"
+
+#: includes/class-ash-admin-ui.php
+msgid ""
+"Adds preload. Requires includeSubDomains and a max-age of at least one year."
+msgstr ""
+"Ajoute preload. Nécessite includeSubDomains et un max-age d’au moins un an."
+
+#: includes/class-ash-admin-ui.php
+msgid ""
+"This header is sent only over HTTPS. Preload requires includeSubDomains and "
+"max-age of at least 31536000."
+msgstr ""
+"Cet en-tête n’est envoyé qu’en HTTPS. Preload exige includeSubDomains et un "
+"max-age d’au moins 31536000."
+
+#: includes/class-ash-admin-ui.php
+msgid ""
+"Restricts access to powerful browser features such as camera and "
+"geolocation."
+msgstr ""
+"Restreint l’accès aux fonctions sensibles du navigateur, comme la caméra et "
+"la géolocalisation."
+
+#: includes/class-ash-admin-ui.php
+msgid "Enable Permissions-Policy"
+msgstr "Activer Permissions-Policy"
+
+#: includes/class-ash-admin-ui.php
+msgid "Control which origins may use powerful browser features."
+msgstr ""
+"Contrôle les origines autorisées à utiliser des fonctions sensibles du "
+"navigateur."
+
+#: includes/class-ash-admin-ui.php
+msgid "Directives"
+msgstr "Directives"
+
+#: includes/class-ash-admin-ui.php
+msgid "Custom Directives"
+msgstr "Directives personnalisées"
+
+#: includes/class-ash-admin-ui.php
+msgid ""
+"Add feature names that are not listed above. Directives set to Not Set are "
+"omitted from the header."
+msgstr ""
+"Ajoutez des noms de fonctions absents ci-dessus. Les directives « Non "
+"défini » sont omises de l’en-tête."
+
+#: includes/class-ash-admin-ui.php
+msgid "Directive name"
+msgstr "Nom de la directive"
+
+#: includes/class-ash-admin-ui.php
+msgid "Add directive"
+msgstr "Ajouter une directive"
+
+#: includes/class-ash-admin-ui.php
+msgid ""
+"Directives configured as Not Set, or with Enable Directive turned off, are "
+"not included in the generated header."
+msgstr ""
+"Les directives « Non défini » ou dont l’activation est désactivée ne "
+"figurent pas dans l’en-tête généré."
+
+#: includes/class-ash-admin-ui.php
+msgid ""
+"Controls whether the site can be embedded in frames to reduce clickjacking "
+"risk."
+msgstr ""
+"Contrôle l’intégration du site dans des frames afin de réduire le "
+"clickjacking."
+
+#: includes/class-ash-admin-ui.php
+msgid "Enable X-Frame-Options"
+msgstr "Activer X-Frame-Options"
+
+#: includes/class-ash-admin-ui.php
+msgid "Control whether the site may be embedded in frames."
+msgstr "Contrôle si le site peut être intégré dans des frames."
+
+#: includes/class-ash-admin-ui.php
+msgid ""
+"DENY blocks all framing. SAMEORIGIN allows framing by this origin only. "
+"ALLOW-FROM is obsolete and is not offered."
+msgstr ""
+"DENY bloque tout framing. SAMEORIGIN n’autorise que cette origine. ALLOW-"
+"FROM est obsolète et n’est pas proposé."
+
+#: includes/class-ash-admin-ui.php
+msgid "The default policy is SAMEORIGIN."
+msgstr "La politique par défaut est SAMEORIGIN."
+
+#: includes/class-ash-admin-ui.php
+msgid "privacy/security sensitive"
+msgstr "sensible pour la confidentialité/sécurité"
+
+#: includes/class-ash-admin-ui.php
+msgid ""
+"Limits referrer information sent with navigations and resource requests."
+msgstr ""
+"Limite les informations de referrer envoyées lors des navigations et des "
+"requêtes de ressources."
+
+#: includes/class-ash-admin-ui.php
+msgid "Enable Referrer-Policy"
+msgstr "Activer Referrer-Policy"
+
+#: includes/class-ash-admin-ui.php
+msgid "Control how much referrer information is sent with requests."
+msgstr ""
+"Contrôle la quantité d’informations de referrer envoyée avec les requêtes."
+
+#: includes/class-ash-admin-ui.php
+msgid "Choose the Referrer-Policy value sent with responses."
+msgstr "Choisissez la valeur Referrer-Policy envoyée avec les réponses."
+
+#: includes/class-ash-admin-ui.php
+msgid "unsafe-url sends the full URL across origins and is privacy-sensitive."
+msgstr ""
+"unsafe-url envoie l’URL complète entre origines et est sensible pour la "
+"confidentialité."
+
+#: includes/class-ash-admin-ui.php
+msgid "The default policy is strict-origin-when-cross-origin."
+msgstr "La politique par défaut est strict-origin-when-cross-origin."
+
+#: includes/class-ash-admin-ui.php
+msgid "Enable Directive"
+msgstr "Activer la directive"
+
+#: includes/class-ash-admin-ui.php
+msgid "Include this directive in the generated Permissions-Policy header."
+msgstr "Inclure cette directive dans l’en-tête Permissions-Policy généré."
+
+#: includes/class-ash-admin-ui.php
+msgid "Remove"
+msgstr "Supprimer"
+
+#: includes/class-ash-admin-ui.php
+msgid "Choose how this feature may be used."
+msgstr "Choisissez comment cette fonction peut être utilisée."
+
+#: includes/class-ash-admin-ui.php
+msgid "Custom Origins"
+msgstr "Origines personnalisées"
+
+#: includes/class-ash-admin-ui.php
+msgid ""
+"One origin per line. Use self or full origins such as https://example.com."
+msgstr ""
+"Une origine par ligne. Utilisez self ou des origines complètes comme "
+"https://example.com."
+
+#: includes/class-ash-admin-ui.php
+msgid "Not Set"
+msgstr "Non défini"
+
+#: includes/class-ash-admin-ui.php
+msgid "Deny All"
+msgstr "Tout refuser"
+
+#: includes/class-ash-admin-ui.php
+msgid "Self"
+msgstr "Self"
+
+#: includes/class-ash-admin-ui.php
+msgid "Allow All"
+msgstr "Tout autoriser"
+
+#: includes/class-ash-admin-ui.php includes/class-ash-admin.php
+msgid "Security Features"
+msgstr "Fonctionnalités de sécurité"
+
+#: includes/class-ash-admin-ui.php
+msgid ""
+"Configure WordPress hardening without turning off legitimate site features "
+"by default."
+msgstr ""
+"Configurez le durcissement WordPress sans désactivér par défaut des "
+"fonctionnalites legitimes du site."
+
+#: includes/class-ash-admin-ui.php
+msgid "Hides server technology details exposed by the X-Powered-By header."
+msgstr "Masque les détails techniques du serveur exposés par X-Powered-By."
+
+#: includes/class-ash-admin-ui.php
+msgid "Enable Remove X-Powered-By Header"
+msgstr "Activer la suppression de l'en-tete X-Powered-By"
+
+#: includes/class-ash-admin-ui.php
+msgid ""
+"When enabled, the plugin removes the X-Powered-By response header. There are"
+" no additional options."
+msgstr ""
+"Lorsqu'il est active, le plugin supprime l'en-tete de reponse X-Powered-By. "
+"Il n'y a pas d'options supplémentaires."
+
+#: includes/class-ash-admin-ui.php
+msgid ""
+"WordPress exposes generator information in HTML, RSS, Atom, and RDF output."
+msgstr ""
+"WordPress expose des informations generator dans les sorties HTML, RSS, Atom"
+" et RDF."
+
+#: includes/class-ash-admin-ui.php
+msgid "Enable Hide WordPress Version"
+msgstr "Activer le masquage de la version WordPress"
+
+#: includes/class-ash-admin-ui.php
+msgid ""
+"Turn on WordPress version hiding, then choose which generator outputs to "
+"remove."
+msgstr ""
+"Activez le masquage de la version WordPress, puis choisissez quelles sorties"
+" generator supprimer."
+
+#: includes/class-ash-admin-ui.php
+msgid "Hide Generator Meta Version"
+msgstr "Masquer la version meta generator"
+
+#: includes/class-ash-admin-ui.php
+msgid "Removes the generator meta tag from HTML output."
+msgstr "Supprime la balise meta generator de la sortie HTML."
+
+#: includes/class-ash-admin-ui.php
+msgid "Hide Version from RSS / Atom / RDF Feeds"
+msgstr "Masquer la version des flux RSS / Atom / RDF"
+
+#: includes/class-ash-admin-ui.php
+msgid "Removes generator version strings from RSS, Atom, and RDF feeds."
+msgstr "Supprime les chaînes de version generator des flux RSS, Atom et RDF."
+
+#: includes/class-ash-admin-ui.php
+msgid ""
+"Version query parameters are not removed from CSS or JavaScript assets, so "
+"cache busting keeps working."
+msgstr ""
+"Les parametres de version ne sont pas retires des fichiers CSS ou "
+"JavaScript, afin que l'invalidation du cache continue de fonctionner."
+
+#: includes/class-ash-admin-ui.php
+msgid "Generic Error"
+msgstr "Erreur générique"
+
+#: includes/class-ash-admin-ui.php
+msgid "Hide Error Completely"
+msgstr "Masquer complètement l'erreur"
+
+#: includes/class-ash-admin-ui.php
+msgid "Custom Error Message"
+msgstr "Message d'erreur personnalisé"
+
+#: includes/class-ash-admin-ui.php
+msgid ""
+"Stop login failure responses from revealing whether a username or email "
+"address exists."
+msgstr ""
+"Empechez les reponses d'échec de connexion de reveler si un identifiant ou "
+"une adresse e-mail existe."
+
+#: includes/class-ash-admin-ui.php
+msgid "Enable Login Error Protection"
+msgstr "Activer la protection des erreurs de connexion"
+
+#: includes/class-ash-admin-ui.php
+msgid ""
+"Only authentication failure messages are changed. Informational and "
+"successful login messages are left alone."
+msgstr ""
+"Seuls les messages d'échec d'authentification sont modifies. Les messages "
+"d'information et de connexion réussie restent inchanges."
+
+#: includes/class-ash-admin-ui.php
+msgid "Error Mode"
+msgstr "Mode d'erreur"
+
+#: includes/class-ash-admin-ui.php
+msgid "Choose how authentication failure messages are shown."
+msgstr ""
+"Choisissez comment les messages d'échec d'authentification sont affiches."
+
+#: includes/class-ash-admin-ui.php
+msgid "This plain-text message replaces authentication failure errors."
+msgstr ""
+"Ce message en texte brut remplace les erreurs d'échec d'authentification."
+
+#: includes/class-ash-admin-ui.php
+msgid ""
+"Recommended mode is Generic Error. The default message is Invalid username "
+"or password."
+msgstr ""
+"Le mode recommande est Erreur generique. Le message par défaut est : Nom "
+"d'utilisateur ou mot de passe non valide."
+
+#: includes/class-ash-admin-ui.php
+msgid "Disable Authenticated XML-RPC Methods"
+msgstr "Désactiver les méthodes XML-RPC authentifiees"
+
+#: includes/class-ash-admin-ui.php
+msgid "Disable Pingback Methods Only"
+msgstr "Désactiver uniquement les méthodes Pingback"
+
+#: includes/class-ash-admin-ui.php
+msgid "Disable All XML-RPC Methods"
+msgstr "Désactiver toutes les méthodes XML-RPC"
+
+#: includes/class-ash-admin-ui.php
+msgid "Custom Method Policy"
+msgstr "Politique de méthodes personnalisée"
+
+#: includes/class-ash-admin-ui.php
+msgid "High impact"
+msgstr "Impact élevé"
+
+#: includes/class-ash-admin-ui.php
+msgid ""
+"The WordPress xmlrpc_enabled filter only disables methods that require "
+"authentication. Pingbacks and some other methods can remain available."
+msgstr ""
+"Le filtre WordPress xmlrpc_enabled ne désactivé que les méthodes qui exigent"
+" une authentification. Les pingbacks et d'autres méthodes peuvent rester "
+"disponibles."
+
+#: includes/class-ash-admin-ui.php
+msgid "Enable XML-RPC Protection"
+msgstr "Activer la protection XML-RPC"
+
+#: includes/class-ash-admin-ui.php
+msgid "Apply a selected XML-RPC policy instead of a single on/off switch."
+msgstr ""
+"Appliquez une politique XML-RPC sélectionnée au lieu d'un simple "
+"interrupteur."
+
+#: includes/class-ash-admin-ui.php
+msgid "Protection Mode"
+msgstr "Mode de protection"
+
+#: includes/class-ash-admin-ui.php
+msgid "Choose which XML-RPC methods remain available."
+msgstr "Choisissez quelles méthodes XML-RPC restent disponibles."
+
+#: includes/class-ash-admin-ui.php
+msgid ""
+"Disable All XML-RPC Methods is the strongest restriction. Some applications "
+"and integrations depend on XML-RPC."
+msgstr ""
+"Désactiver toutes les méthodes XML-RPC est la restriction la plus forte. "
+"Certaines applications et integrations dependent de XML-RPC."
+
+#: includes/class-ash-admin-ui.php
+msgid "Allowed XML-RPC Methods"
+msgstr "Méthodes XML-RPC autorisées"
+
+#: includes/class-ash-admin-ui.php
+msgid ""
+"One method name per line. If this list is not empty, only these methods "
+"remain."
+msgstr ""
+"Un nom de méthode par ligne. Si cette liste n'est pas vide, seules ces "
+"méthodes restent."
+
+#: includes/class-ash-admin-ui.php
+msgid "Blocked XML-RPC Methods"
+msgstr "Méthodes XML-RPC bloquées"
+
+#: includes/class-ash-admin-ui.php
+msgid ""
+"One method name per line. These methods are removed even if they appear in "
+"the allow list."
+msgstr ""
+"Un nom de méthode par ligne. Ces méthodes sont retirees meme si elles "
+"figurent dans la liste autorisée."
+
+#: includes/class-ash-admin-ui.php
+msgid ""
+"Pingback mode blocks pingback.ping and pingback.extensions.getPingbacks. "
+"Removing the X-Pingback header is recommended when pingbacks or all XML-RPC "
+"methods are blocked."
+msgstr ""
+"Le mode Pingback bloque pingback.ping et pingback.extensions.getPingbacks. "
+"La suppression de l'en-tete X-Pingback est recommandee lorsque les pingbacks"
+" ou toutes les méthodes XML-RPC sont bloques."
+
+#: includes/class-ash-admin-ui.php
+msgid "Removes the X-Pingback response header from WordPress output."
+msgstr "Retire l’en-tête de réponse X-Pingback de la sortie WordPress."
+
+#: includes/class-ash-admin-ui.php
+msgid "Enable Remove X-Pingback Header"
+msgstr "Activer la suppression de l'en-tete X-Pingback"
+
+#: includes/class-ash-admin-ui.php
+msgid ""
+"When enabled, the plugin removes the X-Pingback header. There are no "
+"additional options."
+msgstr ""
+"Lorsqu'il est active, le plugin supprime l'en-tete X-Pingback. Il n'y a pas "
+"d'options supplémentaires."
+
+#: includes/class-ash-admin-ui.php
+msgid ""
+"XML-RPC pingback protection or complete XML-RPC blocking is enabled. "
+"Removing the X-Pingback header is recommended."
+msgstr ""
+"La protection Pingback XML-RPC ou le blocage complet de XML-RPC est active. "
+"La suppression de l'en-tete X-Pingback est recommandee."
+
+#: includes/class-ash-admin-ui.php
+msgid "WordPress Default"
+msgstr "Valeur par défaut de WordPress"
+
+#: includes/class-ash-admin-ui.php
+msgid "Authenticated Users Only"
+msgstr "Utilisateurs authentifiés uniquement"
+
+#: includes/class-ash-admin-ui.php
+msgid "Selected Roles"
+msgstr "Rôles sélectionnés"
+
+#: includes/class-ash-admin-ui.php
+msgid "Required Capability"
+msgstr "Capacité requise"
+
+#: includes/class-ash-admin-ui.php
+msgid "Administrators Only"
+msgstr "Administrateurs uniquement"
+
+#: includes/class-ash-admin-ui.php
+msgid "Block All REST Access"
+msgstr "Bloquer tout accès REST"
+
+#: includes/class-ash-admin-ui.php
+msgid ""
+"Apply a REST access policy. Gutenberg and other dashboard tools need REST "
+"access for authenticated users."
+msgstr ""
+"Appliquez une politique d'accès REST. Gutenberg et d'autres outils du "
+"tableau de bord ont besoin de REST pour les utilisateurs authentifies."
+
+#: includes/class-ash-admin-ui.php
+msgid "Enable REST API Access Control"
+msgstr "Activer le contrôle d'accès REST API"
+
+#: includes/class-ash-admin-ui.php
+msgid ""
+"When this is off, WordPress REST behavior is unchanged except for optional "
+"user-endpoint protection below."
+msgstr ""
+"Lorsque c'est désactivé, le comportement REST de WordPress reste inchange, "
+"sauf la protection facultative des points de terminaison utilisateur ci-"
+"dessous."
+
+#: includes/class-ash-admin-ui.php
+msgid "Access Policy"
+msgstr "Politique d'accès"
+
+#: includes/class-ash-admin-ui.php
+msgid ""
+"WordPress Default applies no extra restriction. Administrators Only uses the"
+" manage_options capability."
+msgstr ""
+"Valeur par défaut de WordPress n'applique aucune restriction supplémentaire."
+" Administrateurs uniquement utilise la capacite manage_options."
+
+#: includes/class-ash-admin-ui.php
+msgid ""
+"Block All REST Access is not recommended as a default. Gutenberg, Site "
+"Health, plugins, themes, and integrations may stop working."
+msgstr ""
+"Bloquer tout accès REST n'est pas recommande par défaut. Gutenberg, Sante du"
+" site, extensions, themes et integrations peuvent cesser de fonctionner."
+
+#: includes/class-ash-admin-ui.php
+msgid ""
+"Roles are loaded from WordPress, including custom roles. Super Admins on "
+"Multisite are allowed."
+msgstr ""
+"Les rôles sont charges depuis WordPress, y compris les rôles personnalisés. "
+"Les Super Admins en multisite sont autorisés."
+
+#: includes/class-ash-admin-ui.php
+msgid ""
+"Access is allowed when the current user has this WordPress capability. "
+"Examples: read, edit_posts, edit_pages, manage_options."
+msgstr ""
+"L'accès est autorisé lorsque l'utilisateur actuel possede cette capacite "
+"WordPress. Exemples : read, edit_posts, edit_pages, manage_options."
+
+#: includes/class-ash-admin-ui.php
+msgid "REST API Exceptions"
+msgstr "Exceptions REST API"
+
+#: includes/class-ash-admin-ui.php
+msgid ""
+"Allow lists bypass the access policy. Restricted lists always block matching"
+" namespaces or routes."
+msgstr ""
+"Les listes autorisées contournent la politique d'accès. Les listes "
+"restreintes bloquent toujours les espaces de noms ou les routes "
+"correspondants."
+
+#: includes/class-ash-admin-ui.php
+msgid "Allowed Namespaces"
+msgstr "Espaces de noms autorisés"
+
+#: includes/class-ash-admin-ui.php
+msgid ""
+"One namespace per line, such as wp/v2 or wc/v3. Custom plugin namespaces are"
+" allowed."
+msgstr ""
+"Un espace de noms par ligne, par exemple wp/v2 ou wc/v3. Les espaces de noms"
+" d'extensions personnalisés sont autorisés."
+
+#: includes/class-ash-admin-ui.php
+msgid "Allowed Routes"
+msgstr "Routes autorisées"
+
+#: includes/class-ash-admin-ui.php
+msgid ""
+"One route per line, such as /wp/v2/posts. Matching prefixes are included."
+msgstr ""
+"Une route par ligne, par exemple /wp/v2/posts. Les prefixes correspondants "
+"sont inclus."
+
+#: includes/class-ash-admin-ui.php
+msgid "Restricted Namespaces"
+msgstr "Espaces de noms restreints"
+
+#: includes/class-ash-admin-ui.php
+msgid ""
+"These namespaces are blocked even if the access policy would allow them."
+msgstr ""
+"Ces espaces de noms sont bloques meme si la politique d'accès les "
+"autorisait."
+
+#: includes/class-ash-admin-ui.php
+msgid "Restricted Routes"
+msgstr "Routes restreintes"
+
+#: includes/class-ash-admin-ui.php
+msgid "These routes are blocked even if the access policy would allow them."
+msgstr "Ces routes sont bloquees meme si la politique d'accès les autorisait."
+
+#: includes/class-ash-admin-ui.php
+msgid "REST User Endpoint Protection"
+msgstr "Protection des points de terminaison REST utilisateur"
+
+#: includes/class-ash-admin-ui.php
+msgid ""
+"Protect /wp/v2/users without disabling the rest of the REST API. This option"
+" can run even when Access Control is off."
+msgstr ""
+"Protegez /wp/v2/users sans désactivér le reste de la REST API. Cette option "
+"peut fonctionner meme si le contrôle d'accès est désactivé."
+
+#: includes/class-ash-admin-ui.php
+msgid "Restrict REST User Endpoints"
+msgstr "Restreindre les points de terminaison REST utilisateur"
+
+#: includes/class-ash-admin-ui.php
+msgid ""
+"Applies an extra policy to user-related REST routes such as /wp/v2/users."
+msgstr ""
+"Applique une politique supplémentaire aux routes REST utilisateur telles que"
+" /wp/v2/users."
+
+#: includes/class-ash-admin-ui.php
+msgid "Choose who may access WordPress user REST endpoints."
+msgstr ""
+"Choisissez qui peut acceder aux points de terminaison REST des utilisateurs "
+"WordPress."
+
+#: includes/class-ash-admin-ui.php
+msgid "User endpoints are allowed when the current user has this capability."
+msgstr ""
+"Les points de terminaison utilisateur sont autorisés lorsque l'utilisateur "
+"actuel possede cette capacite."
+
+#: includes/class-ash-admin-ui.php
+msgid ""
+"REST API Access Control is off for new installations. If you enable it, "
+"Authenticated Users Only is the default policy. Block All REST Access is "
+"never the default."
+msgstr ""
+"Le contrôle d'accès REST API est désactivé pour les nouvelles installations."
+" Si vous l'activez, Utilisateurs authentifies uniquement est la politique "
+"par défaut. Bloquer tout accès REST n'est jamais la valeur par défaut."
+
+#: includes/class-ash-admin-ui.php
+msgid "General settings"
+msgstr "Réglages généraux"
+
+#: includes/class-ash-admin-ui.php
+msgid ""
+"When enabled, the generated Content-Security-Policy header is sent with HTTP"
+" responses."
+msgstr ""
+"Une fois activé, l’en-tête Content-Security-Policy généré est envoyé avec "
+"les réponses HTTP."
+
+#: includes/class-ash-admin-ui.php
+msgid "CSP Directives"
+msgstr "Directives CSP"
+
+#: includes/class-ash-admin-ui.php includes/class-ash-admin.php
+msgid "Copy CSP header"
+msgstr "Copier l’en-tête CSP"
+
+#: includes/class-ash-admin-ui.php includes/class-ash-admin.php
+msgid "Settings"
+msgstr "Réglages"
+
+#: includes/class-ash-admin-ui.php
+msgid "Configure how this plugin stores and removes its own data."
+msgstr ""
+"Configurez la façon dont cette extension stocke et supprime ses propres "
+"données."
+
+#: includes/class-ash-admin-ui.php
+msgid "Uninstall"
+msgstr "Désinstallation"
+
+#: includes/class-ash-admin-ui.php
+msgid ""
+"Control what happens to stored plugin data when this plugin is deleted."
+msgstr ""
+"Définissez le sort des données enregistrées lorsque l’extension est "
+"supprimée."
+
+#: includes/class-ash-admin-ui.php
+msgid "Delete all plugin data on uninstall"
+msgstr ""
+"Supprimer toutes les données de l’extension lors de la désinstallation"
+
+#: includes/class-ash-admin-ui.php
+msgid ""
+"When enabled, deleting this plugin also removes its settings, CSP assistant "
+"data, custom tables, and related stored files. This cannot be undone."
+msgstr ""
+"Si cette option est activée, la suppression de l’extension efface aussi ses "
+"réglages, les données de l’assistant CSP, les tables personnalisées et les "
+"fichiers associés. Cette action est irréversible."
+
+#: includes/class-ash-admin-ui.php
+msgid ""
+"Leave this off if you want to keep your configuration after the plugin is "
+"deleted."
+msgstr ""
+"Laissez cette option désactivée si vous souhaitez conserver votre "
+"configuration après la suppression de l’extension."
 
 #: includes/class-ash-admin-ui.php
 msgid "Help"
@@ -333,115 +1133,39 @@ msgid "Contact support"
 msgstr "Contacter l’assistance"
 
 #: includes/class-ash-admin-ui.php
-msgid "Security overview"
-msgstr "Aperçu de la sécurité"
-
-#: includes/class-ash-admin-ui.php
-msgid "Security status"
-msgstr "État de la sécurité"
-
-#: includes/class-ash-admin-ui.php
-msgid "Active headers"
-msgstr "En-têtes actifs"
-
-#: includes/class-ash-admin-ui.php
-msgid "Additional features"
-msgstr "Fonctions supplémentaires"
-
-#: includes/class-ash-admin-ui.php
-msgid "CSP status"
-msgstr "État CSP"
-
-#: includes/class-ash-admin-ui.php
-msgid "Enable the core HTTP security headers for the site."
-msgstr "Activez les en-têtes HTTP de sécurité essentiels du site."
-
-#: includes/class-ash-admin-ui.php
-msgid ""
-"Harden WordPress by reducing information disclosure and attack surface."
-msgstr ""
-"Renforcez WordPress en réduisant la divulgation d’informations et la surface"
-" d’attaque."
-
-#: includes/class-ash-admin-ui.php
-msgid "CSP Directives"
-msgstr "Directives CSP"
-
-#: includes/class-ash-admin-ui.php
-msgid "General settings"
-msgstr "Réglages généraux"
-
-#: includes/class-ash-admin-ui.php
-msgid ""
-"When enabled, the generated Content-Security-Policy header is sent with HTTP"
-" responses."
-msgstr ""
-"Une fois activé, l’en-tête Content-Security-Policy généré est envoyé avec "
-"les réponses HTTP."
+msgid "Handcrafted with ❤️ Passion by Ebrahim Shafiei (EbraSha)"
+msgstr "Fait avec ❤️ passion par Ebrahim Shafiei (EbraSha)"
 
 #: includes/class-ash-admin-ui.php
 msgid "Your changes are not saved automatically."
 msgstr "Vos modifications ne sont pas enregistrées automatiquement."
 
-#: includes/class-ash-admin-ui.php
+#: includes/class-ash-admin-ui.php includes/class-ash-admin.php
 msgid "Reset"
 msgstr "Réinitialiser"
 
-#: includes/class-ash-admin-ui.php
+#: includes/class-ash-admin-ui.php includes/class-ash-admin.php
 msgid "Save Changes"
 msgstr "Enregistrer les modifications"
+
+#: includes/class-ash-admin-ui.php includes/class-ash-admin.php
+#: includes/class-ash-csp-assistant.php
+msgid "Cancel"
+msgstr "Annuler"
+
+#: includes/class-ash-admin-ui.php includes/class-ash-admin.php
+msgctxt "csp editor confirm"
+msgid "OK"
+msgstr "OK"
 
 #: includes/class-ash-admin-ui.php
 msgid "Enables the legacy browser XSS filter for older clients."
 msgstr "Active le filtre XSS hérité pour les anciens clients."
 
 #: includes/class-ash-admin-ui.php
-msgid ""
-"Prevents browsers from MIME-sniffing a response away from the declared "
-"content type."
+msgid "Removes the public WordPress version from generator markup and feeds."
 msgstr ""
-"Empêche le navigateur d’inférer un type MIME différent de celui déclaré."
-
-#: includes/class-ash-admin-ui.php
-msgid "Forces browsers to use HTTPS for future requests to this host."
-msgstr ""
-"Force les navigateurs à utiliser HTTPS pour les futures requêtes vers cet "
-"hôte."
-
-#: includes/class-ash-admin-ui.php
-msgid ""
-"Restricts access to powerful browser features such as camera and "
-"geolocation."
-msgstr ""
-"Restreint l’accès aux fonctions sensibles du navigateur, comme la caméra et "
-"la géolocalisation."
-
-#: includes/class-ash-admin-ui.php
-msgid ""
-"Controls whether the site can be embedded in frames to reduce clickjacking "
-"risk."
-msgstr ""
-"Contrôle l’intégration du site dans des frames afin de réduire le "
-"clickjacking."
-
-#: includes/class-ash-admin-ui.php
-msgid ""
-"Limits referrer information sent with navigations and resource requests."
-msgstr ""
-"Limite les informations de referrer envoyées lors des navigations et des "
-"requêtes de ressources."
-
-#: includes/class-ash-admin-ui.php
-msgid "Hides server technology details exposed by the X-Powered-By header."
-msgstr "Masque les détails techniques du serveur exposés par X-Powered-By."
-
-#: includes/class-ash-admin-ui.php
-msgid ""
-"Removes the public WordPress version from markup, feeds, scripts, and "
-"styles."
-msgstr ""
-"Retire la version publique de WordPress du balisage, des flux, des scripts "
-"et des styles."
+"Supprime la version publique de WordPress du balisage generator et des flux."
 
 #: includes/class-ash-admin-ui.php
 msgid ""
@@ -452,19 +1176,20 @@ msgstr ""
 "limiter l’énumération des comptes."
 
 #: includes/class-ash-admin-ui.php
-msgid "Disables XML-RPC methods and blocks direct access to xmlrpc.php."
-msgstr "Désactive les méthodes XML-RPC et bloque l’accès direct à xmlrpc.php."
-
-#: includes/class-ash-admin-ui.php
-msgid "Removes the X-Pingback response header from WordPress output."
-msgstr "Retire l’en-tête de réponse X-Pingback de la sortie WordPress."
+msgid ""
+"Applies a selected XML-RPC method policy instead of a single complete "
+"shutdown."
+msgstr ""
+"Applique une politique de méthodes XML-RPC sélectionnée au lieu d'une "
+"desactivation complete."
 
 #: includes/class-ash-admin-ui.php
 msgid ""
-"Blocks REST API access and removes REST discovery links from the front end."
+"Applies a configurable REST API access policy instead of blocking every "
+"request."
 msgstr ""
-"Bloque l’accès à l’API REST et retire les liens de découverte REST du front-"
-"end."
+"Applique une politique d'accès REST API configurable au lieu de bloquer "
+"chaque requête."
 
 #: includes/class-ash-admin-ui.php
 msgid "Default fallback for other resource types"
@@ -527,33 +1252,91 @@ msgstr "URI de destination des rapports de violation"
 msgid "Group name for violation reports"
 msgstr "Nom du groupe pour les rapports de violation"
 
-#: includes/class-ash-headers.php
-msgid "Invalid login credentials."
-msgstr "Identifiants de connexion incorrects."
+#: includes/class-ash-admin-ui.php includes/class-ash-admin.php
+#: includes/class-ash-dashboard-widget.php
+msgctxt "security status"
+msgid "Good"
+msgstr "Bon"
 
-#: includes/class-ash-headers.php
-msgid "REST API is disabled."
-msgstr "L’API REST est désactivée."
+#: includes/class-ash-admin-ui.php includes/class-ash-admin.php
+msgid "Most security controls are enabled."
+msgstr "La plupart des contrôles de sécurité sont activés."
 
-#. Plugin URI of the plugin/theme
-msgid "https://github.com/ebrasha/abdal-security-headers"
-msgstr "https://github.com/ebrasha/abdal-security-headers"
+#: includes/class-ash-admin-ui.php includes/class-ash-admin.php
+msgctxt "security status"
+msgid "Fair"
+msgstr "Moyen"
 
-#. Description of the plugin/theme
-msgid ""
-"WordPress Security Headers Manager plugin, featuring full security headers "
-"control, advanced security features, and Content Security Policy (CSP)."
+#: includes/class-ash-admin-ui.php includes/class-ash-admin.php
+msgid "Some recommended security controls are still disabled."
+msgstr "Certains contrôles de sécurité recommandés sont encore désactivés."
+
+#: includes/class-ash-admin-ui.php includes/class-ash-admin.php
+#: includes/class-ash-dashboard-widget.php
+msgctxt "security status"
+msgid "Needs attention"
+msgstr "À améliorer"
+
+#: includes/class-ash-admin-ui.php includes/class-ash-admin.php
+msgid "Enable more security headers and hardening options."
 msgstr ""
-"Extension WordPress de gestion des en-têtes de sécurité, avec contrôle "
-"complet, protections avancées et Content Security Policy (CSP)."
+"Activez davantage d’en-têtes de sécurité et d’options de durcissement."
 
-#. Author of the plugin/theme
-msgid "Ebrahim Shafiei (EbraSha)"
-msgstr "Ebrahim Shafiei (EbraSha)"
+#: includes/class-ash-admin.php
+msgid "Reset unsaved changes and restore the last saved values?"
+msgstr ""
+"Annuler les modifications non enregistrées et restaurer les dernières "
+"valeurs enregistrées ?"
 
-#. Author URI of the plugin/theme
-msgid "https://github.com/ebrasha"
-msgstr "https://github.com/ebrasha"
+#: includes/class-ash-admin.php
+msgid "Edit %s"
+msgstr "Modifier %s"
+
+#: includes/class-ash-admin.php
+msgid "Copied"
+msgstr "Copié"
+
+#: includes/class-ash-admin.php
+msgid "Unable to copy the CSP header."
+msgstr "Impossible de copier l’en-tête CSP."
+
+#: includes/class-ash-admin.php
+msgid "Content-Security-Policy header is enabled but no directives are set."
+msgstr ""
+"L’en-tête Content-Security-Policy est activé, mais aucune directive n’est "
+"définie."
+
+#: includes/class-ash-admin.php
+msgid "Content Security Policy is disabled. Enable it to send this header."
+msgstr ""
+"La Content Security Policy est désactivée. Activez-la pour envoyer cet en-"
+"tête."
+
+#: includes/class-ash-admin.php
+msgid "Remove this custom Permissions-Policy directive?"
+msgstr "Supprimer cette directive Permissions-Policy personnalisée ?"
+
+#: includes/class-ash-admin.php
+msgid "Remove directive"
+msgstr "Supprimer la directive"
+
+#: includes/class-ash-admin.php
+msgid ""
+"Enter a valid directive name using lowercase letters, numbers, and hyphens."
+msgstr ""
+"Saisissez un nom de directive valide (minuscules, chiffres et tirets)."
+
+#: includes/class-ash-admin.php
+msgid "That directive name is already in the list."
+msgstr "Ce nom de directive figure déjà dans la liste."
+
+#: includes/class-ash-admin.php
+msgid "Dashboard"
+msgstr "Tableau de bord"
+
+#: includes/class-ash-admin.php includes/class-ash-csp-assistant.php
+msgid "You are not allowed to manage these settings."
+msgstr "Vous n’êtes pas autorisé à gérer ces réglages."
 
 #: includes/class-ash-csp-assistant.php
 msgid "Unable to ignore this source."
@@ -578,28 +1361,20 @@ msgstr ""
 "actuelles."
 
 #: includes/class-ash-csp-assistant.php
-msgid "You are not allowed to manage these settings."
-msgstr "Vous n’êtes pas autorisé à gérer ces réglages."
+msgid "Deep file scan is turned off."
+msgstr "L’analyse approfondie des fichiers est désactivée."
 
-#: includes/class-ash-csp-static-detector.php
-msgid "Plugin script enqueue"
-msgstr "Mise en file d’un script d’extension"
+#: includes/class-ash-csp-assistant.php
+msgid "Excluded paths cannot be changed while a file scan is running."
+msgstr ""
+"Les chemins exclus ne peuvent pas être modifiés pendant une analyse de "
+"fichiers."
 
-#: includes/class-ash-csp-static-detector.php
-msgid "WordPress REST API"
-msgstr "WordPress REST API"
-
-#: includes/class-ash-csp-static-detector.php
-msgid "WordPress AJAX"
-msgstr "WordPress AJAX"
-
-#: includes/class-ash-csp-static-detector.php
-msgid "WordPress site URL"
-msgstr "URL du site WordPress"
-
-#: includes/class-ash-csp-static-detector.php
-msgid "WordPress core"
-msgstr "Cœur de WordPress"
+#: includes/class-ash-csp-assistant.php
+msgid "The scan scope cannot be changed while a file scan is running."
+msgstr ""
+"La portée de l’analyse ne peut pas être modifiée pendant une analyse de "
+"fichiers."
 
 #: includes/class-ash-csp-assistant.php
 msgid "Smart CSP Assistant"
@@ -626,6 +1401,7 @@ msgid "Not scanned"
 msgstr "Non analysé"
 
 #: includes/class-ash-csp-assistant.php
+#: includes/class-ash-dashboard-widget.php
 msgid "Learning"
 msgstr "Apprentissage"
 
@@ -678,12 +1454,12 @@ msgid "sources observed"
 msgstr "origines observées"
 
 #: includes/class-ash-csp-assistant.php
-msgid "Keep watching for new sources after learning completes."
-msgstr "Continuer à surveiller les nouvelles origines après l’apprentissage."
-
-#: includes/class-ash-csp-assistant.php
 msgid "Watch for new sources"
 msgstr "Surveiller les nouvelles origines"
+
+#: includes/class-ash-csp-assistant.php
+msgid "Keep watching for new sources after learning completes."
+msgstr "Continuer à surveiller les nouvelles origines après l’apprentissage."
 
 #: includes/class-ash-csp-assistant.php
 msgid "Deep file scan"
@@ -702,15 +1478,11 @@ msgstr ""
 msgid "Counting plugin and theme files…"
 msgstr "Comptage des fichiers des extensions et thèmes…"
 
-#. translators: 1: files processed, 2: total files
 #: includes/class-ash-csp-assistant.php
-#, php-format
 msgid "Scanning files: %1$d of %2$d"
 msgstr "Analyse des fichiers : %1$d sur %2$d"
 
-#. translators: %d: number of sources found on disk
 #: includes/class-ash-csp-assistant.php
-#, php-format
 msgid "%d sources found on disk"
 msgstr "%d origines trouvées sur le disque"
 
@@ -739,10 +1511,6 @@ msgid "Learning duration is locked to Manual while Deep file scan is on."
 msgstr ""
 "La durée d’apprentissage est verrouillée sur Manuel tant que l’analyse "
 "approfondie est activée."
-
-#: includes/class-ash-csp-assistant.php
-msgid "Deep file scan is turned off."
-msgstr "L’analyse approfondie des fichiers est désactivée."
 
 #: includes/class-ash-csp-assistant.php
 msgid "Excluded paths"
@@ -784,12 +1552,6 @@ msgid "Remove excluded path"
 msgstr "Retirer le chemin exclu"
 
 #: includes/class-ash-csp-assistant.php
-msgid "Excluded paths cannot be changed while a file scan is running."
-msgstr ""
-"Les chemins exclus ne peuvent pas être modifiés pendant une analyse de "
-"fichiers."
-
-#: includes/class-ash-csp-assistant.php
 msgid "Scan selected items"
 msgstr "Analyser les éléments sélectionnés"
 
@@ -829,16 +1591,6 @@ msgid ""
 msgstr ""
 "Activez au moins une extension ou un thème. Sans sélection, l’analyse "
 "approfondie ignore le passage disque."
-
-#: includes/class-ash-csp-assistant.php
-msgid "The scan scope cannot be changed while a file scan is running."
-msgstr ""
-"La portée de l’analyse ne peut pas être modifiée pendant une analyse de "
-"fichiers."
-
-#: includes/class-ash-csp-assistant.php
-msgid "Disk"
-msgstr "Disque"
 
 #: includes/class-ash-csp-assistant.php
 msgid "New CSP Source Detected"
@@ -918,6 +1670,10 @@ msgid "Runtime"
 msgstr "Exécution"
 
 #: includes/class-ash-csp-assistant.php
+msgid "Disk"
+msgstr "Disque"
+
+#: includes/class-ash-csp-assistant.php
 msgid "Trusted"
 msgstr "Fiable"
 
@@ -950,6 +1706,7 @@ msgid "Added"
 msgstr "Ajouté"
 
 #: includes/class-ash-csp-assistant.php
+#: includes/class-ash-dashboard-widget.php
 msgid "Warning"
 msgstr "Avertissement"
 
@@ -1041,75 +1798,69 @@ msgid "The Smart CSP Assistant request failed. Please try again."
 msgstr ""
 "La requête de l’Assistant CSP intelligent a échoué. Veuillez réessayer."
 
-#. translators: %d: number of detected sources
 #: includes/class-ash-csp-assistant.php
-#, php-format
 msgid "%d Sources Detected"
 msgstr "%d origine(s) détectée(s)"
 
-#. translators: %d: number of script sources
 #: includes/class-ash-csp-assistant.php
-#, php-format
 msgid "%d Script Sources"
 msgstr "%d origine(s) de script"
 
-#. translators: %d: number of style sources
 #: includes/class-ash-csp-assistant.php
-#, php-format
 msgid "%d Style Sources"
 msgstr "%d origine(s) de style"
 
-#. translators: %d: number of image sources
 #: includes/class-ash-csp-assistant.php
-#, php-format
 msgid "%d Image Sources"
 msgstr "%d origine(s) d’image"
 
-#. translators: %d: number of font sources
 #: includes/class-ash-csp-assistant.php
-#, php-format
 msgid "%d Font Sources"
 msgstr "%d origine(s) de police"
 
-#. translators: %d: number of connect sources
 #: includes/class-ash-csp-assistant.php
-#, php-format
 msgid "%d Connect Sources"
 msgstr "%d origine(s) de connexion"
 
-#. translators: %d: number of frame sources
 #: includes/class-ash-csp-assistant.php
-#, php-format
 msgid "%d Frame Sources"
 msgstr "%d origine(s) de frame"
 
-#. translators: %d: number of media sources
 #: includes/class-ash-csp-assistant.php
-#, php-format
 msgid "%d Media Sources"
 msgstr "%d origine(s) média"
 
-#. translators: %d: number of worker sources
 #: includes/class-ash-csp-assistant.php
-#, php-format
 msgid "%d Worker Sources"
 msgstr "%d origine(s) de worker"
 
-#. translators: %d: number of form destinations
 #: includes/class-ash-csp-assistant.php
-#, php-format
 msgid "%d Form Destinations"
 msgstr "%d destination(s) de formulaire"
 
-#. translators: %d: number of unknown sources
 #: includes/class-ash-csp-assistant.php
-#, php-format
 msgid "%d Unknown Sources"
 msgstr "%d origine(s) inconnue(s)"
 
-#: includes/class-ash-admin-ui.php
-msgid "Handcrafted with ❤️ Passion by Ebrahim Shafiei (EbraSha)"
-msgstr "Fait avec ❤️ passion par Ebrahim Shafiei (EbraSha)"
+#: includes/class-ash-csp-static-detector.php
+msgid "Plugin script enqueue"
+msgstr "Mise en file d’un script d’extension"
+
+#: includes/class-ash-csp-static-detector.php
+msgid "WordPress REST API"
+msgstr "WordPress REST API"
+
+#: includes/class-ash-csp-static-detector.php
+msgid "WordPress AJAX"
+msgstr "WordPress AJAX"
+
+#: includes/class-ash-csp-static-detector.php
+msgid "WordPress site URL"
+msgstr "URL du site WordPress"
+
+#: includes/class-ash-csp-static-detector.php
+msgid "WordPress core"
+msgstr "Cœur de WordPress"
 
 #: includes/class-ash-dashboard-widget.php
 msgid "Abdal Security Headers mascot"
@@ -1122,6 +1873,18 @@ msgstr "Activité récente"
 #: includes/class-ash-dashboard-widget.php
 msgid "No recent activity yet."
 msgstr "Aucune activité récente pour le moment."
+
+#: includes/class-ash-dashboard-widget.php
+msgid "Statistics"
+msgstr "Statistiques"
+
+#: includes/class-ash-dashboard-widget.php
+msgid "Open Settings"
+msgstr "Ouvrir les réglages"
+
+#: includes/class-ash-dashboard-widget.php
+msgid "View Full Report"
+msgstr "Voir le rapport complet"
 
 #: includes/class-ash-dashboard-widget.php
 msgid "Learning Started"
@@ -1148,98 +1911,674 @@ msgid "CSP Violation Detected"
 msgstr "Violation CSP détectée"
 
 #: includes/class-ash-dashboard-widget.php
-msgid "Statistics"
-msgstr "Statistiques"
-
-#: includes/class-ash-dashboard-widget.php
 msgid "Detected CSP Sources"
 msgstr "Sources CSP détectées"
-
-#: includes/class-ash-dashboard-widget.php
-msgid "CSP Violations"
-msgstr "Violations CSP"
 
 #: includes/class-ash-dashboard-widget.php
 msgid "Active Security Headers"
 msgstr "En-têtes de sécurité actifs"
 
 #: includes/class-ash-dashboard-widget.php
-msgid "Last CSP Scan"
-msgstr "Dernière analyse CSP"
+msgid "CSP Violations"
+msgstr "Violations CSP"
 
 #: includes/class-ash-dashboard-widget.php
-msgid "Deep Scan Results"
-msgstr "Résultats de l’analyse approfondie"
-
-#: includes/class-ash-dashboard-widget.php
-msgid "Open Settings"
-msgstr "Ouvrir les réglages"
-
-#: includes/class-ash-dashboard-widget.php
-msgid "View Full Report"
-msgstr "Voir le rapport complet"
-
-#. translators: %s: human-readable time difference
-#: includes/class-ash-dashboard-widget.php
-#, php-format
 msgid "%s ago"
 msgstr "il y a %s"
 
-#: includes/class-ash-dashboard-widget.php
-msgid "Your site is well protected."
-msgstr "Votre site est bien protégé."
+#: includes/class-ash-feature-settings.php includes/class-ash-features.php
+msgid "Invalid username or password."
+msgstr "Nom d'utilisateur ou mot de passe non valide."
 
-#: includes/class-ash-dashboard-widget.php
-msgid "All security headers are enabled."
-msgstr "Tous les en-têtes de sécurité sont activés."
+#: includes/class-ash-features.php
+msgid "XML-RPC is disabled."
+msgstr "XML-RPC est désactivé."
 
-#: includes/class-ash-dashboard-widget.php
-msgid "Content Security Policy is active."
-msgstr "Content Security Policy est active."
+#: includes/class-ash-features.php
+msgid "REST API access is not allowed."
+msgstr "L'accès a la REST API n'est pas autorisé."
 
-#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
-msgid "Dashboard"
-msgstr "Tableau de bord"
+#: includes/class-ash-features.php
+msgid "Authentication is required to access the REST API."
+msgstr "Une authentification est requise pour acceder a la REST API."
 
-#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
-msgid "Settings"
-msgstr "Réglages"
-
-#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
-msgid "Configure how this plugin stores and removes its own data."
-msgstr ""
-"Configurez la façon dont cette extension stocke et supprime ses propres "
-"données."
-
-#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
-msgid "Uninstall"
-msgstr "Désinstallation"
-
-#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
+#: includes/class-ash-security-status.php:1
 msgid ""
-"Control what happens to stored plugin data when this plugin is deleted."
+"Review live security status, apply a Security Profile, and open headers, "
+"features, or Content Security Policy."
 msgstr ""
-"Définissez le sort des données enregistrées lorsque l’extension est "
-"supprimée."
+"Consultez l’état de sécurité en direct, appliquez un Security Profile et "
+"ouvrez les en-têtes, les fonctionnalités ou la Content Security Policy."
 
-#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
-msgid "Delete all plugin data on uninstall"
-msgstr ""
-"Supprimer toutes les données de l’extension lors de la désinstallation"
-
-#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
+#: includes/class-ash-security-status.php:1
 msgid ""
-"When enabled, deleting this plugin also removes its settings, CSP assistant "
-"data, custom tables, and related stored files. This cannot be undone."
+"Apply updates Security Headers and Security Features only. Content Security "
+"Policy is never changed by a profile."
 msgstr ""
-"Si cette option est activée, la suppression de l’extension efface aussi ses "
-"réglages, les données de l’assistant CSP, les tables personnalisées et les "
-"fichiers associés. Cette action est irréversible."
+"Appliquer met à jour uniquement Security Headers et Security Features. La "
+"Content Security Policy n’est jamais modifiée par un profil."
 
-#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
+#: includes/class-ash-security-status.php:1
+msgid "Recalculate Security Status"
+msgstr "Recalculer l’état de sécurité"
+
+#: includes/class-ash-security-status.php:1
+msgid "Reset Profile to Defaults"
+msgstr "Réinitialiser le profil aux valeurs par défaut"
+
+#: includes/class-ash-security-status.php:1
+msgid "Apply Security Profile"
+msgstr "Appliquer le Security Profile"
+
+#: includes/class-ash-security-status.php:1
+msgid "Security Score"
+msgstr "Score de sécurité"
+
+#: includes/class-ash-security-status.php:1
+msgid "Active Headers"
+msgstr "En-têtes actifs"
+
+#: includes/class-ash-security-status.php:1
+msgid "Active Features"
+msgstr "Fonctionnalités actives"
+
+#: includes/class-ash-security-status.php:1
+msgid "CSP Status"
+msgstr "État CSP"
+
+#: includes/class-ash-security-status.php:1
+msgid "Security Profile"
+msgstr "Security Profile"
+
+#: includes/class-ash-security-status.php:1
 msgid ""
-"Leave this off if you want to keep your configuration after the plugin is "
-"deleted."
+"Profiles change Security Headers and Security Features only. Content "
+"Security Policy stays independent."
 msgstr ""
-"Laissez cette option désactivée si vous souhaitez conserver votre "
-"configuration après la suppression de l’extension."
+"Les profils modifient uniquement Security Headers et Security Features. La "
+"Content Security Policy reste indépendante."
+
+#: includes/class-ash-security-status.php:1
+msgid "Recommended"
+msgstr "Recommandé"
+
+#: includes/class-ash-security-status.php:1
+msgid "Configuration Summary"
+msgstr "Résumé de la configuration"
+
+#: includes/class-ash-security-status.php:1
+msgid "Live values from the current plugin configuration."
+msgstr "Valeurs en direct issues de la configuration actuelle de l’extension."
+
+#: includes/class-ash-security-status.php:1
+msgid "Security Attention"
+msgstr "Points d’attention sécurité"
+
+#: includes/class-ash-security-status.php:1
+msgid "Only issues present in the current configuration are listed."
+msgstr ""
+"Seuls les problèmes présents dans la configuration actuelle sont listés."
+
+#: includes/class-ash-security-status.php:1
+msgid "No configuration issues detected."
+msgstr "Aucun problème de configuration détecté."
+
+#: includes/class-ash-security-status.php:1
+msgid "Quick Security Actions"
+msgstr "Actions de sécurité rapides"
+
+#: includes/class-ash-security-status.php:1
+msgid "Open a settings screen or refresh the live security status."
+msgstr ""
+"Ouvrez un écran de réglages ou actualisez l’état de sécurité en direct."
+
+#: includes/class-ash-security-status.php:1
+msgid ""
+"Apply this Security Profile? Security Headers and Security Features will be "
+"updated. Content Security Policy will not change."
+msgstr ""
+"Appliquer ce Security Profile ? Security Headers et Security Features seront"
+" mis à jour. La Content Security Policy ne changera pas."
+
+#: includes/class-ash-security-status.php:1
+msgid ""
+"Hardened can affect compatibility with themes, plugins, XML-RPC clients, and"
+" some WordPress tools. Apply anyway? Content Security Policy will not "
+"change."
+msgstr ""
+"Hardened peut affecter la compatibilité avec les thèmes, extensions, clients"
+" XML-RPC et certains outils WordPress. Appliquer quand même ? La Content "
+"Security Policy ne changera pas."
+
+#: includes/class-ash-security-status.php:1
+msgid ""
+"Switch to Manual? Current Security Headers and Security Features will stay "
+"as they are."
+msgstr ""
+"Passer en Manual ? Les Security Headers et Security Features actuels "
+"resteront inchangés."
+
+#: includes/class-ash-security-status.php:1
+msgid ""
+"Reset Security Headers and Security Features to the Recommended profile? "
+"Content Security Policy will not change."
+msgstr ""
+"Réinitialiser Security Headers et Security Features sur le profil "
+"Recommended ? La Content Security Policy ne changera pas."
+
+#: includes/class-ash-security-status.php:1
+msgid "Select a Security Profile before applying."
+msgstr "Sélectionnez un Security Profile avant d’appliquer."
+
+#: includes/class-ash-security-status.php:1
+msgid "Security Profile applied. Content Security Policy was not changed."
+msgstr ""
+"Security Profile appliqué. La Content Security Policy n’a pas été modifiée."
+
+#: includes/class-ash-security-status.php:1
+msgid ""
+"Security Headers and Security Features were reset to Recommended. Content "
+"Security Policy was not changed."
+msgstr ""
+"Security Headers et Security Features ont été réinitialisés sur Recommended."
+" La Content Security Policy n’a pas été modifiée."
+
+#: includes/class-ash-security-status.php:1
+msgid "Security status was recalculated from the current configuration."
+msgstr ""
+"L’état de sécurité a été recalculé à partir de la configuration actuelle."
+
+#: includes/class-ash-security-status.php:1
+msgid "The security center request could not be completed. Please try again."
+msgstr ""
+"La requête du centre de sécurité n’a pas pu aboutir. Veuillez réessayer."
+
+#: includes/class-ash-security-status.php:1
+msgid ""
+"Security Profile cannot be applied because required settings classes are "
+"missing."
+msgstr ""
+"Le Security Profile ne peut pas être appliqué car des classes de réglages "
+"requises sont absentes."
+
+#: includes/class-ash-security-status.php:1
+msgid "The requested security center action is not valid."
+msgstr "L’action demandée du centre de sécurité n’est pas valide."
+
+#: includes/class-ash-security-status.php:1
+msgid "Compatibility"
+msgstr "Compatibilité"
+
+#: includes/class-ash-security-status.php:1
+msgid ""
+"Conservative settings with the lowest risk of breaking WordPress, themes, "
+"and plugins."
+msgstr ""
+"Réglages conservateurs, avec le plus faible risque de casser WordPress, les "
+"thèmes et les extensions."
+
+#: includes/class-ash-security-status.php:1
+msgid ""
+"REST API and XML-RPC stay available. Strict headers such as HSTS Preload are"
+" left off."
+msgstr ""
+"REST API et XML-RPC restent disponibles. Les en-têtes stricts comme HSTS "
+"Preload restent désactivés."
+
+#: includes/class-ash-security-status.php:1
+msgid ""
+"Balanced security for most WordPress sites. Gutenberg and Site Health keep "
+"REST access for signed-in users."
+msgstr ""
+"Sécurité équilibrée pour la plupart des sites WordPress. Gutenberg et Santé "
+"du site conservent l’accès REST pour les utilisateurs connectés."
+
+#: includes/class-ash-security-status.php:1
+msgid "This is the suggested profile for typical WordPress sites."
+msgstr "Ceci est le profil suggéré pour les sites WordPress habituels."
+
+#: includes/class-ash-security-status.php:1
+msgid "Hardened"
+msgstr "Hardened"
+
+#: includes/class-ash-security-status.php:1
+msgid ""
+"Strict security settings. Some integrations, embeds, or WordPress tools may "
+"need extra review."
+msgstr ""
+"Réglages de sécurité stricts. Certaines intégrations, incorporations ou "
+"outils WordPress peuvent nécessiter une vérification supplémentaire."
+
+#: includes/class-ash-security-status.php:1
+msgid ""
+"Applying this profile can affect compatibility with themes, plugins, and "
+"XML-RPC clients."
+msgstr ""
+"L’application de ce profil peut affecter la compatibilité avec les thèmes, "
+"extensions et clients XML-RPC."
+
+#: includes/class-ash-security-status.php:1
+msgid ""
+"Do not change any Security Headers or Security Features automatically. You "
+"manage every setting."
+msgstr ""
+"Aucun Security Header ni Security Feature n’est modifié automatiquement. "
+"Vous gérez chaque réglage."
+
+#: includes/class-ash-security-status.php:1
+msgid ""
+"Manual never overwrites configuration. It is also used when saved settings "
+"no longer match a profile."
+msgstr ""
+"Manual n’écrase jamais la configuration. Il s’applique aussi lorsque les "
+"réglages enregistrés ne correspondent plus à un profil."
+
+#: includes/class-ash-security-status.php:1
+msgid "The selected Security Profile is not valid."
+msgstr "Le Security Profile sélectionné n’est pas valide."
+
+#: includes/class-ash-security-status.php:1
+msgid "The Security Profile could not be validated. No settings were saved."
+msgstr ""
+"Le Security Profile n’a pas pu être validé. Aucun réglage n’a été "
+"enregistré."
+
+#: includes/class-ash-security-status.php:1
+msgid ""
+"The Security Profile could not be saved completely. Previous settings were "
+"kept."
+msgstr ""
+"Le Security Profile n’a pas pu être enregistré entièrement. Les réglages "
+"précédents ont été conservés."
+
+#: includes/class-ash-security-status.php:1
+msgid "Current settings match the saved Security Profile."
+msgstr "Les réglages actuels correspondent au Security Profile enregistré."
+
+#: includes/class-ash-security-status.php:1
+msgid ""
+"Current settings do not match the saved profile, so the effective profile is"
+" Manual."
+msgstr ""
+"Les réglages actuels ne correspondent pas au profil enregistré ; le profil "
+"effectif est donc Manual."
+
+#: includes/class-ash-security-status.php:1
+msgid "Security Headers and Security Features are managed manually."
+msgstr "Security Headers et Security Features sont gérés manuellement."
+
+#: includes/class-ash-security-status.php:1
+msgid "Saved profile: %1$s. Effective profile: %2$s."
+msgstr "Profil enregistré : %1$s. Profil effectif : %2$s."
+
+#: includes/class-ash-security-status.php:1
+msgid "Current Security Profile"
+msgstr "Security Profile actuel"
+
+#: includes/class-ash-security-status.php:1
+msgid "Active Security Features"
+msgstr "Fonctionnalités de sécurité actives"
+
+#: includes/class-ash-security-status.php:1
+msgid "Configuration Warnings"
+msgstr "Avertissements de configuration"
+
+#: includes/class-ash-security-status.php:1
+msgid "Detected Conflicts"
+msgstr "Conflits détectés"
+
+#: includes/class-ash-security-status.php:1
+msgid "%1$d of %2$d headers are healthy. %3$d require attention."
+msgstr "%1$d en-têtes sur %2$d sont sains. %3$d nécessitent une attention."
+
+#: includes/class-ash-security-status.php:1
+msgid "%1$d of %2$d features are healthy. %3$d require attention."
+msgstr ""
+"%1$d fonctionnalités sur %2$d sont saines. %3$d nécessitent une attention."
+
+#: includes/class-ash-security-status.php:1
+msgid "Strong header and feature coverage for the current configuration."
+msgstr ""
+"Bonne couverture des en-têtes et des fonctionnalités pour la configuration "
+"actuelle."
+
+#: includes/class-ash-security-status.php:1
+msgid "Useful controls are on, but higher-impact settings still need review."
+msgstr ""
+"Des contrôles utiles sont activés, mais des réglages plus impactants restent"
+" à vérifier."
+
+#: includes/class-ash-security-status.php:1
+msgid "The current configuration leaves important protections off or invalid."
+msgstr ""
+"La configuration actuelle laisse d’importantes protections désactivées ou "
+"invalides."
+
+#: includes/class-ash-security-status.php:1
+msgid ""
+"Smart CSP Assistant is sending Content-Security-Policy-Report-Only while it "
+"learns."
+msgstr ""
+"Smart CSP Assistant envoie Content-Security-Policy-Report-Only pendant "
+"l’apprentissage."
+
+#: includes/class-ash-security-status.php:1
+msgid "Content Security Policy is enabled but no directives are set."
+msgstr ""
+"La Content Security Policy est activée, mais aucune directive n’est définie."
+
+#: includes/class-ash-security-status.php:1
+msgid "HSTS is enabled while the site URL is not HTTPS."
+msgstr "HSTS est activé alors que l’URL du site n’est pas en HTTPS."
+
+#: includes/class-ash-security-status.php:1
+msgid ""
+"Strict-Transport-Security is only sent over HTTPS. Serve the site over HTTPS"
+" before relying on HSTS."
+msgstr ""
+"Strict-Transport-Security n’est envoyé qu’en HTTPS. Servez le site en HTTPS "
+"avant de compter sur HSTS."
+
+#: includes/class-ash-security-status.php:1
+msgid "HSTS Preload is incomplete."
+msgstr "HSTS Preload est incomplet."
+
+#: includes/class-ash-security-status.php:1
+msgid "Preload requires includeSubDomains and a max-age of at least one year."
+msgstr "Preload exige includeSubDomains et un max-age d’au moins un an."
+
+#: includes/class-ash-security-status.php:1
+msgid "X-XSS-Protection is a deprecated header."
+msgstr "X-XSS-Protection est un en-tête obsolète."
+
+#: includes/class-ash-security-status.php:1
+msgid ""
+"Modern browsers ignore this header. Prefer Content-Security-Policy instead."
+msgstr ""
+"Les navigateurs modernes ignorent cet en-tête. Préférez Content-Security-"
+"Policy."
+
+#: includes/class-ash-security-status.php:1
+msgid "REST API is set to Block All REST Access."
+msgstr "L’API REST est définie sur Block All REST Access."
+
+#: includes/class-ash-security-status.php:1
+msgid ""
+"Gutenberg, Site Health, plugins, themes, and integrations may stop working."
+msgstr ""
+"Gutenberg, Santé du site, extensions, thèmes et intégrations peuvent cesser "
+"de fonctionner."
+
+#: includes/class-ash-security-status.php:1
+msgid "XML-RPC is fully disabled."
+msgstr "XML-RPC est entièrement désactivé."
+
+#: includes/class-ash-security-status.php:1
+msgid ""
+"Some applications and integrations that depend on XML-RPC may stop working."
+msgstr ""
+"Certaines applications et intégrations qui dépendent de XML-RPC peuvent "
+"cesser de fonctionner."
+
+#: includes/class-ash-security-status.php:1
+msgid "Permissions-Policy has an invalid or empty configuration."
+msgstr "Permissions-Policy a une configuration invalide ou vide."
+
+#: includes/class-ash-security-status.php:1
+msgid "The header is enabled but no valid directive is generated."
+msgstr "L’en-tête est activé, mais aucune directive valide n’est générée."
+
+#: includes/class-ash-security-status.php:1
+msgid "A security header conflict was detected."
+msgstr "Un conflit d’en-tête de sécurité a été détecté."
+
+#: includes/class-ash-security-status.php:1
+msgid ""
+"Another server, CDN, or plugin appears to send a security header that does "
+"not match this plugin."
+msgstr ""
+"Un autre serveur, CDN ou plugin semble envoyer un en-tête de sécurité qui ne"
+" correspond pas à cette extension."
+
+#: includes/class-ash-security-status.php:1
+msgid ""
+"CSP is independent of Security Profiles. Enable it from the Content Security"
+" Policy screen when you are ready."
+msgstr ""
+"La CSP est indépendante des Security Profiles. Activez-la depuis l’écran "
+"Content Security Policy lorsque vous êtes prêt."
+
+#: includes/class-ash-security-status.php:1
+msgid "Content Security Policy is in Report Only mode."
+msgstr "La Content Security Policy est en mode Report Only."
+
+#: includes/class-ash-security-status.php:1
+msgid ""
+"Learning uses Content-Security-Policy-Report-Only and does not block "
+"resources."
+msgstr ""
+"L’apprentissage utilise Content-Security-Policy-Report-Only et ne bloque pas"
+" les ressources."
+
+#: includes/class-ash-security-status.php:1
+msgid "Content Security Policy configuration is invalid."
+msgstr "La configuration de la Content Security Policy n’est pas valide."
+
+#: includes/class-ash-security-status.php:1
+msgid "Enable at least one CSP directive before sending the header."
+msgstr "Activez au moins une directive CSP avant d’envoyer l’en-tête."
+
+#: includes/class-ash-security-status.php:1
+msgid "WordPress version hiding is enabled without generator outputs."
+msgstr "Le masquage de version WordPress est activé sans sorties générateur."
+
+#: includes/class-ash-security-status.php:1
+msgid "Turn on Hide Generator Meta Version or Hide Version from Feeds."
+msgstr "Activez Hide Generator Meta Version ou Hide Version from Feeds."
+
+#: includes/class-ash-security-status.php:1
+msgid "Referrer-Policy is set to unsafe-url."
+msgstr "Referrer-Policy est défini sur unsafe-url."
+
+#: includes/class-ash-security-status.php:1
+msgid "XML-RPC custom policy has no methods configured."
+msgstr "La politique XML-RPC personnalisée n’a aucune méthode configurée."
+
+#: includes/class-ash-security-status.php:1
+msgid ""
+"Add allowed or blocked method names, or choose another protection mode."
+msgstr ""
+"Ajoutez des noms de méthodes autorisées ou bloquées, ou choisissez un autre "
+"mode de protection."
+
+#: includes/class-ash-security-status.php:1
+msgid "REST Selected Roles has no roles chosen."
+msgstr "REST Selected Roles n’a aucun rôle choisi."
+
+#: includes/class-ash-security-status.php:1
+msgid "Select at least one WordPress role or choose another access policy."
+msgstr ""
+"Sélectionnez au moins un rôle WordPress ou choisissez une autre politique "
+"d’accès."
+
+#: includes/class-ash-security-status.php:1
+msgid "X-XSS-Protection report policy is missing a reporting URL."
+msgstr "La politique de rapport X-XSS-Protection n’a pas d’URL de reporting."
+
+#: includes/class-ash-security-status.php:1
+msgid "Add a reporting URL or choose another X-XSS-Protection policy."
+msgstr ""
+"Ajoutez une URL de reporting ou choisissez une autre politique X-XSS-"
+"Protection."
+
+#: includes/class-ash-security-status.php:1
+msgid "Another layer sends %s while this plugin does not."
+msgstr "Une autre couche envoie %s alors que cette extension ne le fait pas."
+
+#: includes/class-ash-security-status.php:1
+msgid "The public %s value does not match this plugin."
+msgstr "La valeur publique de %s ne correspond pas à cette extension."
+
+#: includes/class-ash-security-status.php:1
+msgctxt "CSP status"
+msgid "Report Only"
+msgstr "Report Only"
+
+#: includes/class-ash-security-status.php:1
+msgctxt "CSP status"
+msgid "Invalid Configuration"
+msgstr "Configuration invalide"
+
+#: includes/class-ash-admin-ui.php:1931
+msgid ""
+"Export or import plugin configuration, and choose what happens to stored "
+"data on uninstall."
+msgstr ""
+"Exportez ou importez la configuration de l'extension, et choisissez le sort "
+"des données enregistrées lors de la désinstallation."
+
+#: includes/class-ash-admin-ui.php:1931
+msgid "Export and Import"
+msgstr "Export et import"
+
+#: includes/class-ash-admin-ui.php:1931
+msgid ""
+"Download a JSON file of all plugin settings, or restore them from a previous"
+" export."
+msgstr ""
+"Téléchargez un fichier JSON de tous les réglages de l'extension, ou "
+"restaurez-les depuis un export précédent."
+
+#: includes/class-ash-admin-ui.php:1931
+msgid ""
+"Export includes Security Headers, Security Features, Content Security "
+"Policy, Security Profile, uninstall settings, and CSP Assistant scan "
+"exclusions."
+msgstr ""
+"L'export inclut Security Headers, Security Features, Content Security "
+"Policy, Security Profile, les réglages de désinstallation et les exclusions "
+"d'analyse du CSP Assistant."
+
+#: includes/class-ash-admin-ui.php:1931
+msgid "Export"
+msgstr "Exporter"
+
+#: includes/class-ash-admin-ui.php:1931
+msgid ""
+"Import replaces the current plugin configuration on this site. Choose a JSON"
+" file exported from Abdal Security Headers."
+msgstr ""
+"L'import remplace la configuration actuelle de l'extension sur ce site. "
+"Choisissez un fichier JSON exporté depuis Abdal Security Headers."
+
+#: includes/class-ash-admin-ui.php:1931
+msgid "Import cannot be undone from this screen."
+msgstr "L'import ne peut pas être annulé depuis cet écran."
+
+#: includes/class-ash-admin-ui.php:1931
+msgid ""
+"Security Headers, Security Features, Content Security Policy, Security "
+"Profile, and Settings will be overwritten."
+msgstr ""
+"Security Headers, Security Features, Content Security Policy, Security "
+"Profile et Settings seront écrasés."
+
+#: includes/class-ash-admin-ui.php:1931
+msgid "Settings JSON file"
+msgstr "Fichier JSON des réglages"
+
+#: includes/class-ash-admin-ui.php:1931
+msgid "Choose file"
+msgstr "Choisir un fichier"
+
+#: includes/class-ash-admin-ui.php:1931
+msgid "No file selected"
+msgstr "Aucun fichier sélectionné"
+
+#: includes/class-ash-admin-ui.php:1931
+msgid "Import"
+msgstr "Importer"
+
+#: includes/class-ash-admin-ui.php:1931
+msgid "The export does not include CSP Assistant learning data or scan jobs."
+msgstr ""
+"L'export n'inclut ni les données d'apprentissage du CSP Assistant ni les "
+"tâches d'analyse."
+
+#: includes/class-ash-admin-ui.php:1931
+msgid "Import settings"
+msgstr "Importer les réglages"
+
+#: includes/class-ash-admin-ui.php:1931
+msgid ""
+"Import will replace current plugin settings, including Security Headers, "
+"Security Features, Content Security Policy, Security Profile, and Settings. "
+"This cannot be undone from this screen."
+msgstr ""
+"L'import remplacera les réglages actuels de l'extension, y compris Security "
+"Headers, Security Features, Content Security Policy, Security Profile et "
+"Settings. Cette action ne peut pas être annulée depuis cet écran."
+
+#: includes/class-ash-admin-ui.php:1931
+msgid "Settings file downloaded."
+msgstr "Le fichier de réglages a été téléchargé."
+
+#: includes/class-ash-admin-ui.php:1931
+msgid "Settings were imported. The page will reload."
+msgstr "Les réglages ont été importés. La page va se recharger."
+
+#: includes/class-ash-admin-ui.php:1931
+msgid "Choose a settings JSON file before importing."
+msgstr "Choisissez un fichier JSON de réglages avant d'importer."
+
+#: includes/class-ash-admin-ui.php:1931
+msgid "The settings transfer could not be completed. Please try again."
+msgstr "Le transfert des réglages n'a pas pu aboutir. Veuillez réessayer."
+
+#: includes/class-ash-admin-ui.php:1931
+msgid "The requested settings transfer action is not valid."
+msgstr "L'action de transfert des réglages demandée n'est pas valide."
+
+#: includes/class-ash-admin-ui.php:1931
+msgid "The settings file could not be uploaded. Please try again."
+msgstr "Le fichier de réglages n'a pas pu être téléversé. Veuillez réessayer."
+
+#: includes/class-ash-admin-ui.php:1931
+msgid "The settings file is empty or larger than the allowed size."
+msgstr "Le fichier de réglages est vide ou dépasse la taille autorisée."
+
+#: includes/class-ash-admin-ui.php:1931
+msgid "The settings file could not be read."
+msgstr "Le fichier de réglages n'a pas pu être lu."
+
+#: includes/class-ash-admin-ui.php:1931
+msgid "The settings file must be a JSON export from this plugin."
+msgstr "Le fichier de réglages doit être un export JSON de cette extension."
+
+#: includes/class-ash-admin-ui.php:1931
+msgid "The settings file is not valid JSON."
+msgstr "Le fichier de réglages n'est pas un JSON valide."
+
+#: includes/class-ash-admin-ui.php:1931
+msgid "The settings file is not a valid Abdal Security Headers export."
+msgstr ""
+"Le fichier de réglages n'est pas un export Abdal Security Headers valide."
+
+#: includes/class-ash-admin-ui.php:1931
+msgid "The settings file does not contain any configuration."
+msgstr "Le fichier de réglages ne contient aucune configuration."
+
+#: includes/class-ash-admin-ui.php:1931
+msgid "The exported Security Headers configuration is not valid."
+msgstr "La configuration Security Headers exportée n'est pas valide."
+
+#: includes/class-ash-admin-ui.php:1931
+msgid "The exported plugin settings are not valid."
+msgstr "Les réglages de l'extension exportés ne sont pas valides."
+
+#: includes/class-ash-admin-ui.php:1931
+msgid ""
+"The settings could not be imported completely. Previous settings were kept."
+msgstr ""
+"Les réglages n'ont pas pu être importés entièrement. Les réglages précédents"
+" ont été conservés."

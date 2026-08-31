@@ -107,7 +107,7 @@ class ASH_Dashboard_Widget {
 
         $data = $this->collect();
         $settings_url = admin_url('admin.php?page=abdal-security-headers');
-        $report_url = $settings_url . '#ash-csp-assistant';
+        $report_url = admin_url('admin.php?page=abdal-security-headers-csp') . '#ash-csp-assistant';
         $logo_url = ASH_PLUGIN_URL . 'assets/images/logo-200x200.png';
         $logo_path = ASH_PLUGIN_DIR . 'assets/images/logo-200x200.png';
         ?>
@@ -217,20 +217,84 @@ class ASH_Dashboard_Widget {
         $headers_active = $this->count_enabled($options, $this->header_keys);
         $features_active = $this->count_enabled($options, $this->feature_keys);
         $features_total = count($this->feature_keys);
+        $security = $this->security_status($headers_active, $headers_total, $features_active, $features_total);
+
+        if (class_exists('ASH_Security_Status')) {
+            $payload = ASH_Security_Status::payload($options, false, false);
+            if (isset($payload['headers']['active'])) {
+                $headers_active = (int) $payload['headers']['active'];
+            }
+            if (isset($payload['headers']['total'])) {
+                $headers_total = (int) $payload['headers']['total'];
+            }
+            $score = isset($payload['score']) ? (int) $payload['score'] : 0;
+            $security = $this->security_from_score($score);
+        }
 
         $state = class_exists('ASH_CSP_Assistant') ? ASH_CSP_Assistant::get_state() : array();
         $disk_job = class_exists('ASH_CSP_Disk_Scanner') ? ASH_CSP_Disk_Scanner::get_job() : array();
 
         $source_total = class_exists('ASH_CSP_Repository') ? ASH_CSP_Repository::count_sources() : 0;
         $violation_total = class_exists('ASH_CSP_Repository') ? ASH_CSP_Repository::count_violations() : 0;
+        $csp = $this->csp_status($options, $state);
+        if (class_exists('ASH_Security_Status') && isset($payload) && isset($payload['csp']) && is_array($payload['csp'])) {
+            $csp = $this->csp_from_payload($payload['csp']);
+        }
 
         return array(
-            'security' => $this->security_status($headers_active, $headers_total, $features_active, $features_total),
+            'security' => $security,
             'headers_active' => $headers_active,
             'headers_total' => $headers_total,
-            'csp' => $this->csp_status($options, $state),
+            'csp' => $csp,
             'activities' => $this->build_activities($state, $disk_job),
             'stats' => $this->build_stats($headers_active, $headers_total, $source_total, $violation_total),
+        );
+    }
+
+    /**
+     * Map the live 0-100 score onto the compact widget status labels.
+     *
+     * @param int $score Weighted score.
+     * @return array
+     */
+    private function security_from_score($score) {
+        $score = (int) $score;
+        if ($score >= 80) {
+            return array(
+                'tone' => 'good',
+                'label' => _x('Good', 'security status', 'abdal-security-headers'),
+            );
+        }
+        if ($score >= 50) {
+            return array(
+                'tone' => 'warning',
+                'label' => __('Warning', 'abdal-security-headers'),
+            );
+        }
+        return array(
+            'tone' => 'attention',
+            'label' => _x('Needs attention', 'security status', 'abdal-security-headers'),
+        );
+    }
+
+    /**
+     * @param array $csp Payload CSP status.
+     * @return array
+     */
+    private function csp_from_payload($csp) {
+        $status = isset($csp['status']) ? (string) $csp['status'] : '';
+        $label = isset($csp['label']) ? (string) $csp['label'] : '';
+        $tone = 'muted';
+        if ($status === 'enabled') {
+            $tone = 'good';
+        } elseif ($status === 'report_only') {
+            $tone = 'purple';
+        } elseif ($status === 'invalid') {
+            $tone = 'warning';
+        }
+        return array(
+            'tone' => $tone,
+            'label' => $label,
         );
     }
 

@@ -23,12 +23,17 @@ if (!defined('ABSPATH')) {
 class ASH_Admin {
     private $options;
     private $page_hook = '';
+    private $headers_hook = '';
+    private $csp_hook = '';
+    private $features_hook = '';
     private $settings_hook = '';
 
     public function __construct() {
         add_action('admin_menu', array($this, 'add_plugin_page'));
         add_action('admin_init', array($this, 'page_init'));
         add_action('admin_enqueue_scripts', array($this, 'enqueue_admin_assets'));
+        add_action('wp_ajax_ash_security_center', array($this, 'ajax_security_center'));
+        add_action('wp_ajax_ash_settings_transfer', array($this, 'ajax_settings_transfer'));
         add_filter('admin_body_class', array($this, 'filter_admin_body_class'));
         $this->options = get_option('ash_options', array());
         if (!is_array($this->options)) {
@@ -51,7 +56,7 @@ class ASH_Admin {
             }
         }
 
-        $hooks = array($this->page_hook, $this->settings_hook);
+        $hooks = $this->plugin_admin_hooks();
         if (!in_array($screen_id, $hooks, true)) {
             return $classes;
         }
@@ -59,9 +64,27 @@ class ASH_Admin {
         return $classes . ' ash-admin-screen';
     }
 
+    /**
+     * Hook suffixes for every plugin admin screen.
+     *
+     * @return array
+     */
+    private function plugin_admin_hooks() {
+        return array_values(
+            array_filter(
+                array(
+                    $this->page_hook,
+                    $this->headers_hook,
+                    $this->csp_hook,
+                    $this->features_hook,
+                    $this->settings_hook,
+                )
+            )
+        );
+    }
+
     public function enqueue_admin_assets($hook) {
-        $plugin_hooks = array($this->page_hook, $this->settings_hook);
-        if (!in_array($hook, $plugin_hooks, true)) {
+        if (!in_array($hook, $this->plugin_admin_hooks(), true)) {
             return;
         }
 
@@ -86,6 +109,9 @@ class ASH_Admin {
         );
 
         wp_localize_script('ash-admin-scripts', 'ashAdmin', array(
+            'ajaxUrl' => admin_url('admin-ajax.php'),
+            'nonce' => wp_create_nonce('ash_security_center'),
+            'settingsNonce' => wp_create_nonce('ash_settings_transfer'),
             'headerFields' => array(
                 'x_xss_protection',
                 'x_content_type_options',
@@ -136,10 +162,33 @@ class ASH_Admin {
                 'headersHint' => __('%1$d of %2$d security headers are enabled', 'abdal-security-headers'),
                 /* translators: 1: number of enabled features, 2: total features */
                 'featuresHint' => __('%1$d of %2$d additional features are enabled', 'abdal-security-headers'),
+                'confirmRemoveDirective' => __('Remove this custom Permissions-Policy directive?', 'abdal-security-headers'),
+                'removeDirective' => __('Remove directive', 'abdal-security-headers'),
+                'invalidDirectiveName' => __('Enter a valid directive name using lowercase letters, numbers, and hyphens.', 'abdal-security-headers'),
+                'duplicateDirectiveName' => __('That directive name is already in the list.', 'abdal-security-headers'),
+                'confirmApplyProfile' => __('Apply this Security Profile? Security Headers and Security Features will be updated. Content Security Policy will not change.', 'abdal-security-headers'),
+                'confirmApplyHardened' => __('Hardened can affect compatibility with themes, plugins, XML-RPC clients, and some WordPress tools. Apply anyway? Content Security Policy will not change.', 'abdal-security-headers'),
+                'confirmApplyManual' => __('Switch to Manual? Current Security Headers and Security Features will stay as they are.', 'abdal-security-headers'),
+                'confirmResetProfile' => __('Reset Security Headers and Security Features to the Recommended profile? Content Security Policy will not change.', 'abdal-security-headers'),
+                'confirmApplyTitle' => __('Apply Security Profile', 'abdal-security-headers'),
+                'resetProfileTitle' => __('Reset Profile to Defaults', 'abdal-security-headers'),
+                'selectProfile' => __('Select a Security Profile before applying.', 'abdal-security-headers'),
+                'successApply' => __('Security Profile applied. Content Security Policy was not changed.', 'abdal-security-headers'),
+                'successReset' => __('Security Headers and Security Features were reset to Recommended. Content Security Policy was not changed.', 'abdal-security-headers'),
+                'successRecalculate' => __('Security status was recalculated from the current configuration.', 'abdal-security-headers'),
+                'centerError' => __('The security center request could not be completed. Please try again.', 'abdal-security-headers'),
+                'confirmImportTitle' => __('Import settings', 'abdal-security-headers'),
+                'confirmImport' => __('Import will replace current plugin settings, including Security Headers, Security Features, Content Security Policy, Security Profile, and Settings. This cannot be undone from this screen.', 'abdal-security-headers'),
+                'successExport' => __('Settings file downloaded.', 'abdal-security-headers'),
+                'successImport' => __('Settings were imported. The page will reload.', 'abdal-security-headers'),
+                'importNoFile' => __('Choose a settings JSON file before importing.', 'abdal-security-headers'),
+                'chooseFile' => __('Choose file', 'abdal-security-headers'),
+                'noFileSelected' => __('No file selected', 'abdal-security-headers'),
+                'transferError' => __('The settings transfer could not be completed. Please try again.', 'abdal-security-headers'),
             ),
         ));
 
-        if ($hook !== $this->page_hook) {
+        if ($hook !== $this->csp_hook) {
             return;
         }
 
@@ -163,6 +212,106 @@ class ASH_Admin {
         ));
     }
 
+    /**
+     * Apply, reset, or recalculate Security Control Center state.
+     *
+     * @return void
+     */
+    public function ajax_security_center() {
+        if (!current_user_can('manage_options')) {
+            wp_send_json_error(
+                array(
+                    'message' => __('You are not allowed to manage these settings.', 'abdal-security-headers'),
+                ),
+                403
+            );
+        }
+
+        check_ajax_referer('ash_security_center', 'nonce');
+
+        if (!class_exists('ASH_Security_Profile') || !class_exists('ASH_Security_Status')) {
+            wp_send_json_error(
+                array(
+                    'message' => __('Security Profile cannot be applied because required settings classes are missing.', 'abdal-security-headers'),
+                ),
+                500
+            );
+        }
+
+        $task = isset($_POST['task']) ? sanitize_key(wp_unslash($_POST['task'])) : '';
+        $allowed = array('apply', 'reset', 'recalculate');
+        if (!in_array($task, $allowed, true)) {
+            wp_send_json_error(
+                array(
+                    'message' => __('The requested security center action is not valid.', 'abdal-security-headers'),
+                ),
+                400
+            );
+        }
+
+        if ($task === 'recalculate') {
+            delete_transient(ASH_Security_Status::PROBE_TRANSIENT);
+            $options = get_option('ash_options', array());
+            if (!is_array($options)) {
+                $options = array();
+            }
+            $options = ASH_Security_Status::persist_drift($options);
+            $payload = ASH_Security_Status::payload($options, true, true);
+            $payload['message'] = __('Security status was recalculated from the current configuration.', 'abdal-security-headers');
+            wp_send_json_success($payload);
+        }
+
+        $profile = 'recommended';
+        if ($task === 'apply') {
+            $raw_profile = isset($_POST['profile']) ? sanitize_key(wp_unslash($_POST['profile'])) : '';
+            if (!in_array($raw_profile, ASH_Security_Profile::ids(), true)) {
+                wp_send_json_error(
+                    array(
+                        'message' => __('Select a Security Profile before applying.', 'abdal-security-headers'),
+                    ),
+                    400
+                );
+            }
+            $profile = $raw_profile;
+        }
+
+        $result = ASH_Security_Profile::apply($profile);
+        if (is_wp_error($result)) {
+            wp_send_json_error(
+                array(
+                    'message' => $result->get_error_message(),
+                ),
+                400
+            );
+        }
+
+        $payload = ASH_Security_Status::payload($result, true, true);
+        if ($task === 'reset') {
+            $payload['message'] = __('Security Headers and Security Features were reset to Recommended. Content Security Policy was not changed.', 'abdal-security-headers');
+        } else {
+            $payload['message'] = __('Security Profile applied. Content Security Policy was not changed.', 'abdal-security-headers');
+        }
+        wp_send_json_success($payload);
+    }
+
+    /**
+     * Export or import plugin configuration from the Settings screen.
+     *
+     * @return void
+     */
+    public function ajax_settings_transfer() {
+        if (!class_exists('ASH_Settings_Transfer')) {
+            wp_send_json_error(
+                array(
+                    'message' => __('The settings transfer could not be completed. Please try again.', 'abdal-security-headers'),
+                ),
+                500
+            );
+        }
+
+        ASH_Settings_Transfer::handle_ajax();
+    }
+
     public function add_plugin_page() {
         $this->page_hook = add_menu_page(
             esc_html__('Abdal Security Headers', 'abdal-security-headers'),
@@ -180,6 +329,33 @@ class ASH_Admin {
             esc_html__('Dashboard', 'abdal-security-headers'),
             'manage_options',
             'abdal-security-headers'
+        );
+
+        $this->headers_hook = add_submenu_page(
+            'abdal-security-headers',
+            esc_html__('Security Headers', 'abdal-security-headers'),
+            esc_html__('Security Headers', 'abdal-security-headers'),
+            'manage_options',
+            'abdal-security-headers-headers',
+            array($this, 'create_headers_page')
+        );
+
+        $this->csp_hook = add_submenu_page(
+            'abdal-security-headers',
+            esc_html__('Content Security Policy', 'abdal-security-headers'),
+            esc_html__('Content Security Policy', 'abdal-security-headers'),
+            'manage_options',
+            'abdal-security-headers-csp',
+            array($this, 'create_csp_page')
+        );
+
+        $this->features_hook = add_submenu_page(
+            'abdal-security-headers',
+            esc_html__('Security Features', 'abdal-security-headers'),
+            esc_html__('Security Features', 'abdal-security-headers'),
+            'manage_options',
+            'abdal-security-headers-features',
+            array($this, 'create_features_page')
         );
 
         $this->settings_hook = add_submenu_page(
@@ -200,6 +376,51 @@ class ASH_Admin {
         require_once ASH_PLUGIN_DIR . 'includes/class-ash-admin-ui.php';
         $ui = new ASH_Admin_UI($this->options);
         $ui->render();
+    }
+
+    /**
+     * Render the Security Headers screen.
+     *
+     * @return void
+     */
+    public function create_headers_page() {
+        if (!current_user_can('manage_options')) {
+            wp_die(esc_html__('You are not allowed to manage these settings.', 'abdal-security-headers'));
+        }
+
+        require_once ASH_PLUGIN_DIR . 'includes/class-ash-admin-ui.php';
+        $ui = new ASH_Admin_UI($this->options);
+        $ui->render_security_headers();
+    }
+
+    /**
+     * Render the Content Security Policy screen.
+     *
+     * @return void
+     */
+    public function create_csp_page() {
+        if (!current_user_can('manage_options')) {
+            wp_die(esc_html__('You are not allowed to manage these settings.', 'abdal-security-headers'));
+        }
+
+        require_once ASH_PLUGIN_DIR . 'includes/class-ash-admin-ui.php';
+        $ui = new ASH_Admin_UI($this->options);
+        $ui->render_content_security_policy();
+    }
+
+    /**
+     * Render the Security Features screen.
+     *
+     * @return void
+     */
+    public function create_features_page() {
+        if (!current_user_can('manage_options')) {
+            wp_die(esc_html__('You are not allowed to manage these settings.', 'abdal-security-headers'));
+        }
+
+        require_once ASH_PLUGIN_DIR . 'includes/class-ash-admin-ui.php';
+        $ui = new ASH_Admin_UI($this->options);
+        $ui->render_security_features();
     }
 
     /**
@@ -376,43 +597,88 @@ class ASH_Admin {
     }
 
     public function sanitize($input) {
-        $new_input = array();
-
-        // Get existing options
         $existing_options = get_option('ash_options', array());
-
-        // Sanitize checkboxes
-        $checkbox_fields = array(
-            'x_xss_protection', 'x_content_type_options', 'strict_transport_security',
-            'permissions_policy', 'x_frame_options', 'referrer_policy', 'content_security_policy',
-            'remove_x_powered_by', 'hide_wp_version', 'remove_login_errors',
-            'disable_xmlrpc', 'remove_x_pingback', 'restrict_rest_api'
-        );
-
-        foreach ($checkbox_fields as $field) {
-            $new_input[$field] = isset($input[$field]) ? '1' : '0';
+        if (!is_array($existing_options)) {
+            $existing_options = array();
         }
 
-        // Preserve CSP fields even when CSP is disabled
+        if (!is_array($input)) {
+            return $existing_options;
+        }
+
+        $screen = isset($input['_ash_screen']) ? sanitize_key((string) $input['_ash_screen']) : '';
+        $allowed_screens = array('headers', 'features', 'csp');
+        if (!in_array($screen, $allowed_screens, true)) {
+            // Settings forms always send _ash_screen. Programmatic writes (Security Profile,
+            // CSP Assistant, drift sync) call update_option without that token; the registered
+            // sanitize_option filter must not replace them with the previous stored array.
+            $option_page = isset($_POST['option_page']) ? sanitize_key(wp_unslash($_POST['option_page'])) : '';
+            if ($option_page === 'ash_options_group') {
+                return $existing_options;
+            }
+            unset($input['_ash_screen']);
+            return $input;
+        }
+
+        $sanitized = $existing_options;
+
+        $header_fields = array(
+            'x_xss_protection',
+            'x_content_type_options',
+            'strict_transport_security',
+            'permissions_policy',
+            'x_frame_options',
+            'referrer_policy',
+        );
+        $feature_fields = array(
+            'remove_x_powered_by',
+            'hide_wp_version',
+            'remove_login_errors',
+            'disable_xmlrpc',
+            'remove_x_pingback',
+            'restrict_rest_api',
+        );
         $csp_fields = array(
             'csp_default_src', 'csp_script_src', 'csp_style_src', 'csp_img_src',
             'csp_connect_src', 'csp_font_src', 'csp_object_src', 'csp_media_src',
             'csp_frame_src', 'csp_worker_src', 'csp_form_action', 'csp_base_uri',
-            'csp_sandbox', 'csp_report_uri', 'csp_report_to'
+            'csp_sandbox', 'csp_report_uri', 'csp_report_to',
         );
 
-        foreach ($csp_fields as $field) {
-            // If the field exists in input, use it
-            if (isset($input[$field])) {
-                $new_input[$field] = sanitize_text_field($input[$field]);
+        if ($screen === 'headers') {
+            foreach ($header_fields as $field) {
+                $sanitized[$field] = (isset($input[$field]) && (string) $input[$field] === '1') ? '1' : '0';
             }
-            // If not in input but exists in current options, preserve it
-            elseif (isset($existing_options[$field])) {
-                $new_input[$field] = $existing_options[$field];
+            if (class_exists('ASH_Header_Settings')) {
+                $sanitized = ASH_Header_Settings::sanitize_headers_input($input, $sanitized);
             }
         }
 
-        return $new_input;
+        if ($screen === 'features') {
+            foreach ($feature_fields as $field) {
+                $sanitized[$field] = (isset($input[$field]) && (string) $input[$field] === '1') ? '1' : '0';
+            }
+            if (class_exists('ASH_Feature_Settings')) {
+                $sanitized = ASH_Feature_Settings::sanitize_features_input($input, $sanitized);
+            }
+        }
+
+        if ($screen === 'csp') {
+            $sanitized['content_security_policy'] = (isset($input['content_security_policy']) && (string) $input['content_security_policy'] === '1') ? '1' : '0';
+            foreach ($csp_fields as $field) {
+                if (isset($input[$field])) {
+                    $sanitized[$field] = sanitize_text_field($input[$field]);
+                }
+            }
+        }
+
+        unset($sanitized['_ash_screen']);
+
+        if (($screen === 'headers' || $screen === 'features') && class_exists('ASH_Security_Profile')) {
+            $sanitized = ASH_Security_Profile::sync_after_save($sanitized);
+        }
+
+        return $sanitized;
     }
 
     /**

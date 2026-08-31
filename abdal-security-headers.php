@@ -20,7 +20,7 @@
  * Plugin Name: Abdal Security Headers
  * Plugin URI: https://github.com/ebrasha/abdal-security-headers
  * Description:  WordPress Security Headers Manager plugin, featuring full security headers control, advanced security features, and Content Security Policy (CSP).
- * Version: 5.6.0
+ * Version: 6.11.0
  * Author: Ebrahim Shafiei (EbraSha)
  * Author URI: https://github.com/ebrasha
  * Text Domain: abdal-security-headers
@@ -35,7 +35,7 @@ if (!defined('ABSPATH')) {
 }
 
 // Define plugin constants
-define('ASH_VERSION', '5.6.0');
+define('ASH_VERSION', '6.11.0');
 define('ASH_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('ASH_PLUGIN_URL', plugin_dir_url(__FILE__));
 
@@ -50,9 +50,15 @@ function ash_load_textdomain() {
 add_action('plugins_loaded', 'ash_load_textdomain');
 
 // Include required files
+require_once ASH_PLUGIN_DIR . 'includes/class-ash-header-settings.php';
+require_once ASH_PLUGIN_DIR . 'includes/class-ash-feature-settings.php';
+require_once ASH_PLUGIN_DIR . 'includes/class-ash-security-profile.php';
+require_once ASH_PLUGIN_DIR . 'includes/class-ash-security-status.php';
+require_once ASH_PLUGIN_DIR . 'includes/class-ash-settings-transfer.php';
 require_once ASH_PLUGIN_DIR . 'includes/class-ash-admin.php';
 require_once ASH_PLUGIN_DIR . 'includes/class-ash-dashboard-widget.php';
 require_once ASH_PLUGIN_DIR . 'includes/class-ash-headers.php';
+require_once ASH_PLUGIN_DIR . 'includes/class-ash-features.php';
 require_once ASH_PLUGIN_DIR . 'includes/class-ash-csp-normalizer.php';
 require_once ASH_PLUGIN_DIR . 'includes/class-ash-csp-repository.php';
 require_once ASH_PLUGIN_DIR . 'includes/class-ash-csp-static-detector.php';
@@ -69,8 +75,9 @@ function ash_init() {
 
     ASH_CSP_Assistant::instance();
 
-    // Initialize headers
+    // Initialize headers and hardening features
     new ASH_Headers();
+    new ASH_Features();
 }
 add_action('plugins_loaded', 'ash_init');
 
@@ -96,7 +103,8 @@ function ash_activate() {
         'remove_login_errors' => '1',
         'disable_xmlrpc' => '1',
         'remove_x_pingback' => '1',
-        'restrict_rest_api' => '1',
+        'restrict_rest_api' => '0',
+        'security_profile' => 'manual',
         'csp_default_src' => "'self' ".$site_url,
         'csp_script_src' => "'self' blob:  'unsafe-inline' 'unsafe-eval'  *.google.com *.gstatic.com *.googletagmanager.com *.google-analytics.com *.facebook.net *.twitter.com *.youtube.com *.vimeo.com *.cloudflare.com *.bootstrapcdn.com *.jsdelivr.net *.fontawesome.com  ".$site_url,
         'csp_style_src' => "'self' 'unsafe-inline'   *.googleapis.com *.bootstrapcdn.com *.jsdelivr.net *.fontawesome.com  ".$site_url,
@@ -112,6 +120,12 @@ function ash_activate() {
         'csp_sandbox' => '',
         'csp_report_uri' => '',
         'csp_report_to' => ''
+    );
+
+    $default_options = array_merge(
+        $default_options,
+        ASH_Header_Settings::activation_defaults($existing_options),
+        ASH_Feature_Settings::activation_defaults($existing_options)
     );
     
     // Merge existing options with defaults

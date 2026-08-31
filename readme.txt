@@ -4,7 +4,7 @@ Donate link: https://t.me/AbdalDonationBot
 Tags: security, wordpress-security, security-headers, content-security-policy, csp
 Requires at least: 6.7.2
 Tested up to: 7.1
-Stable tag: 5.6.0
+Stable tag: 6.11.0
 Requires PHP: 7.2
 License: AGPLv3
 License URI: https://www.gnu.org/licenses/agpl-3.0.html
@@ -27,10 +27,12 @@ Abdal Security Headers applies HTTP security headers from one dashboard. The Sma
 
 **Also included:**
 
-* XSS, clickjacking, MIME sniffing, HSTS, Referrer-Policy, and Permissions-Policy
+* XSS, clickjacking, MIME sniffing, HSTS, Referrer-Policy, and Permissions-Policy, each with its own settings card
 * Live CSP header preview and a full-size CSP directive editor
-* WordPress hardening: hide version, strip extra headers, XML-RPC, REST API, generic login errors
-* Top-level Security Headers menu with Dashboard and Settings, RTL, and mobile layout
+* WordPress hardening cards for X-Powered-By, version hiding, login errors, XML-RPC method policies, X-Pingback, and REST API access control
+* Security Profiles for Compatibility, Recommended, Hardened, and Manual that update headers and features without changing CSP
+* Export and import all plugin settings as a JSON file from the Settings screen
+* Top-level Security Headers menu with a Security Control Center dashboard, Security Headers, Content Security Policy, Security Features, and Settings, RTL, and mobile layout
 * Standard WordPress dashboard widget for security status, headers, CSP, and recent activity
 
 **Security Headers Managed:**
@@ -68,14 +70,42 @@ Yes, it works with major caching plugins.
 
 No. Start a Smart Scan, browse the site, then apply the sources you accept. You can still edit directives manually.
 
+= Can I copy my settings to another WordPress site? =
+
+Yes. On the Settings screen, export a JSON file, then import that file on the other site. The export includes headers, features, CSP, Security Profile, and uninstall settings. It does not include CSP Assistant learning data.
+
 == Screenshots ==
 
-1. Dashboard with Security Headers and Additional Security Features
+1. Security Control Center dashboard with Security Profiles and live status
 2. Smart CSP Assistant
 3. Content Security Policy
 4. securityheaders.com score before and after enabling the plugin
 
 == Changelog ==
+
+= 6.11.0 =
+* Add Export and Import on the Settings screen for all plugin configuration
+* Keep CSP Assistant learning data and scan jobs out of the exported file
+
+= 6.10.1 =
+* Allow Security Profile apply to save Compatibility, Recommended, and Hardened settings
+
+= 6.10.0 =
+* Turn the plugin Dashboard into a Security Control Center with live score, attention items, and configuration summary
+* Add Compatibility, Recommended, Hardened, and Manual Security Profiles for headers and features only
+* Keep Content Security Policy independent of Security Profiles
+
+= 6.9.0 =
+* Rebuild Security Features as per-card policies for version hiding, login errors, XML-RPC methods, and REST API access
+* Keep existing XML-RPC and REST blocking behavior on sites that already had those switches enabled
+* Leave version query parameters on CSS and JavaScript assets so cache busting keeps working
+
+= 6.8.0 =
+* Add a settings card for each security header, with policy options, HSTS controls, and Permissions-Policy directives
+* Keep previously emitted header values on existing sites until those options are changed
+
+= 6.0.0 =
+* Split the admin UI into Dashboard, Security Headers, Content Security Policy, Security Features, and Settings screens
 
 = 5.6.0 =
 * Add Dashboard and Settings submenus under Security Headers
@@ -193,6 +223,24 @@ No. Start a Smart Scan, browse the site, then apply the sources you accept. You 
 * Basic security headers implementation
 
 == Upgrade Notice ==
+
+= 6.11.0 =
+Adds Export and Import on the Settings screen so you can back up or copy the full plugin configuration.
+
+= 6.10.1 =
+Fixes applying Compatibility, Recommended, and Hardened Security Profiles from the Dashboard.
+
+= 6.10.0 =
+Adds a Security Control Center dashboard and Security Profiles. Profiles change Security Headers and Security Features only. Content Security Policy is never changed by a profile. Existing sites stay on Manual until you apply a profile.
+
+= 6.9.0 =
+Adds Security Features policy cards. Existing sites keep their current XML-RPC and REST blocking behavior until those options are changed. New installs leave REST API Access Control off.
+
+= 6.8.0 =
+Adds per-header settings cards. Existing sites keep their current header values until you change them.
+
+= 6.0.0 =
+Moves headers, CSP, and hardening options into separate admin screens. The Dashboard keeps the overview cards.
 
 = 5.6.0 =
 Adds Dashboard and Settings menus. Plugin data is now kept on uninstall unless you enable deletion in Settings.
