@@ -1,7 +1,7 @@
 === Abdal Security Headers ===
 Contributors: profshafiei
 Donate link: https://t.me/AbdalDonationBot
-Tags: security, wordpress-security, security-headers, content-security-policy, csp, ebrasha, abdal
+Tags: security, wordpress-security, security-headers, content-security-policy, csp
 Requires at least: 6.7.2
 Tested up to: 7.1
 Stable tag: 5.6.0
