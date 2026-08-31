@@ -1,6 +1,7 @@
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: Abdal Security Headers 5.5.1\n"
+"Project-Id-Version: Abdal Security Headers 5.6.0\n"
 "Report-Msgid-Bugs-To: Prof.Shafiei@Gmail.com\n"
 "POT-Creation-Date: 2026-08-29 10:30+0330\n"
 "PO-Revision-Date: 2026-08-29 10:30+0330\n"
@@ -10,11 +11,11 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Cursor\n"
 "X-Poedit-Basepath: ..\n"
-"X-Poedit-WPHeader: abdal-security-headers.php\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-WPHeader: abdal-security-headers.php\n"
 
 #: includes/class-ash-admin.php
 msgid "Are you sure you want to save these settings?"
@@ -22,7 +23,9 @@ msgstr "¿Seguro que quieres guardar estos ajustes?"
 
 #: includes/class-ash-admin.php
 msgid "Reset unsaved changes and restore the last saved values?"
-msgstr "¿Descartar los cambios no guardados y restaurar los últimos valores guardados?"
+msgstr ""
+"¿Descartar los cambios no guardados y restaurar los últimos valores "
+"guardados?"
 
 #: includes/class-ash-admin.php
 msgid "Yes"
@@ -77,11 +80,15 @@ msgstr "No se pudo copiar la cabecera CSP."
 
 #: includes/class-ash-admin.php
 msgid "Content-Security-Policy header is enabled but no directives are set."
-msgstr "La cabecera Content-Security-Policy está activa, pero no hay directivas definidas."
+msgstr ""
+"La cabecera Content-Security-Policy está activa, pero no hay directivas "
+"definidas."
 
 #: includes/class-ash-admin.php
 msgid "Content Security Policy is disabled. Enable it to send this header."
-msgstr "La Content Security Policy está desactivada. Actívala para enviar esta cabecera."
+msgstr ""
+"La Content Security Policy está desactivada. Actívala para enviar esta "
+"cabecera."
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
 msgctxt "security status"
@@ -160,7 +167,8 @@ msgid "Additional Security Features"
 msgstr "Funciones de seguridad adicionales"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
-msgid "Enable additional security features to enhance your website protection."
+msgid ""
+"Enable additional security features to enhance your website protection."
 msgstr "Activa funciones extra para reforzar la protección del sitio."
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
@@ -298,8 +306,12 @@ msgid "Active"
 msgstr "Activo"
 
 #: includes/class-ash-admin-ui.php
-msgid "Configure HTTP security headers, hardening options, and Content Security Policy from one dashboard."
-msgstr "Configura cabeceras HTTP de seguridad, endurecimiento y Content Security Policy desde un solo panel."
+msgid ""
+"Configure HTTP security headers, hardening options, and Content Security "
+"Policy from one dashboard."
+msgstr ""
+"Configura cabeceras HTTP de seguridad, endurecimiento y Content Security "
+"Policy desde un solo panel."
 
 #: includes/class-ash-admin-ui.php
 msgid "Help"
@@ -342,8 +354,11 @@ msgid "Enable the core HTTP security headers for the site."
 msgstr "Activa las cabeceras HTTP de seguridad esenciales del sitio."
 
 #: includes/class-ash-admin-ui.php
-msgid "Harden WordPress by reducing information disclosure and attack surface."
-msgstr "Refuerza WordPress reduciendo la filtración de información y la superficie de ataque."
+msgid ""
+"Harden WordPress by reducing information disclosure and attack surface."
+msgstr ""
+"Refuerza WordPress reduciendo la filtración de información y la superficie "
+"de ataque."
 
 #: includes/class-ash-admin-ui.php
 msgid "CSP Directives"
@@ -354,8 +369,12 @@ msgid "General settings"
 msgstr "Ajustes generales"
 
 #: includes/class-ash-admin-ui.php
-msgid "When enabled, the generated Content-Security-Policy header is sent with HTTP responses."
-msgstr "Si está activa, la cabecera Content-Security-Policy generada se envía con las respuestas HTTP."
+msgid ""
+"When enabled, the generated Content-Security-Policy header is sent with HTTP"
+" responses."
+msgstr ""
+"Si está activa, la cabecera Content-Security-Policy generada se envía con "
+"las respuestas HTTP."
 
 #: includes/class-ash-admin-ui.php
 msgid "Your changes are not saved automatically."
@@ -374,48 +393,75 @@ msgid "Enables the legacy browser XSS filter for older clients."
 msgstr "Activa el filtro XSS heredado en clientes antiguos."
 
 #: includes/class-ash-admin-ui.php
-msgid "Prevents browsers from MIME-sniffing a response away from the declared content type."
+msgid ""
+"Prevents browsers from MIME-sniffing a response away from the declared "
+"content type."
 msgstr "Impide que el navegador adivine un tipo MIME distinto del declarado."
 
 #: includes/class-ash-admin-ui.php
 msgid "Forces browsers to use HTTPS for future requests to this host."
-msgstr "Obliga a los navegadores a usar HTTPS en futuras peticiones a este host."
+msgstr ""
+"Obliga a los navegadores a usar HTTPS en futuras peticiones a este host."
 
 #: includes/class-ash-admin-ui.php
-msgid "Restricts access to powerful browser features such as camera and geolocation."
-msgstr "Restringe el acceso a funciones sensibles del navegador, como cámara y geolocalización."
+msgid ""
+"Restricts access to powerful browser features such as camera and "
+"geolocation."
+msgstr ""
+"Restringe el acceso a funciones sensibles del navegador, como cámara y "
+"geolocalización."
 
 #: includes/class-ash-admin-ui.php
-msgid "Controls whether the site can be embedded in frames to reduce clickjacking risk."
-msgstr "Controla si el sitio puede incrustarse en frames para reducir el clickjacking."
+msgid ""
+"Controls whether the site can be embedded in frames to reduce clickjacking "
+"risk."
+msgstr ""
+"Controla si el sitio puede incrustarse en frames para reducir el "
+"clickjacking."
 
 #: includes/class-ash-admin-ui.php
-msgid "Limits referrer information sent with navigations and resource requests."
-msgstr "Limita la información de referrer enviada en navegaciones y peticiones de recursos."
+msgid ""
+"Limits referrer information sent with navigations and resource requests."
+msgstr ""
+"Limita la información de referrer enviada en navegaciones y peticiones de "
+"recursos."
 
 #: includes/class-ash-admin-ui.php
 msgid "Hides server technology details exposed by the X-Powered-By header."
-msgstr "Oculta los detalles de tecnología del servidor que expone X-Powered-By."
+msgstr ""
+"Oculta los detalles de tecnología del servidor que expone X-Powered-By."
 
 #: includes/class-ash-admin-ui.php
-msgid "Removes the public WordPress version from markup, feeds, scripts, and styles."
-msgstr "Quita la versión pública de WordPress del marcado, feeds, scripts y estilos."
+msgid ""
+"Removes the public WordPress version from markup, feeds, scripts, and "
+"styles."
+msgstr ""
+"Quita la versión pública de WordPress del marcado, feeds, scripts y estilos."
 
 #: includes/class-ash-admin-ui.php
-msgid "Replaces detailed login errors with a generic message to reduce user enumeration."
-msgstr "Sustituye los errores de acceso detallados por un mensaje genérico para dificultar la enumeración de usuarios."
+msgid ""
+"Replaces detailed login errors with a generic message to reduce user "
+"enumeration."
+msgstr ""
+"Sustituye los errores de acceso detallados por un mensaje genérico para "
+"dificultar la enumeración de usuarios."
 
 #: includes/class-ash-admin-ui.php
 msgid "Disables XML-RPC methods and blocks direct access to xmlrpc.php."
-msgstr "Desactiva los métodos XML-RPC y bloquea el acceso directo a xmlrpc.php."
+msgstr ""
+"Desactiva los métodos XML-RPC y bloquea el acceso directo a xmlrpc.php."
 
 #: includes/class-ash-admin-ui.php
 msgid "Removes the X-Pingback response header from WordPress output."
-msgstr "Elimina la cabecera de respuesta X-Pingback de la salida de WordPress."
+msgstr ""
+"Elimina la cabecera de respuesta X-Pingback de la salida de WordPress."
 
 #: includes/class-ash-admin-ui.php
-msgid "Blocks REST API access and removes REST discovery links from the front end."
-msgstr "Bloquea el acceso a la REST API y quita los enlaces de descubrimiento REST del front-end."
+msgid ""
+"Blocks REST API access and removes REST discovery links from the front end."
+msgstr ""
+"Bloquea el acceso a la REST API y quita los enlaces de descubrimiento REST "
+"del front-end."
 
 #: includes/class-ash-admin-ui.php
 msgid "Default fallback for other resource types"
@@ -490,8 +536,12 @@ msgid "https://github.com/ebrasha/abdal-security-headers"
 msgstr "https://github.com/ebrasha/abdal-security-headers"
 
 #. Description of the plugin/theme
-msgid "WordPress Security Headers Manager plugin, featuring full security headers control, advanced security features, and Content Security Policy (CSP)."
-msgstr "Plugin de WordPress para gestionar cabeceras de seguridad, con control completo, funciones avanzadas y Content Security Policy (CSP)."
+msgid ""
+"WordPress Security Headers Manager plugin, featuring full security headers "
+"control, advanced security features, and Content Security Policy (CSP)."
+msgstr ""
+"Plugin de WordPress para gestionar cabeceras de seguridad, con control "
+"completo, funciones avanzadas y Content Security Policy (CSP)."
 
 #. Author of the plugin/theme
 msgid "Ebrahim Shafiei (EbraSha)"
@@ -519,7 +569,8 @@ msgstr "Los valores CSP peligrosos requieren una confirmación explícita."
 
 #: includes/class-ash-csp-assistant.php
 msgid "Selected sources were merged into your current CSP directives."
-msgstr "Los orígenes seleccionados se fusionaron con las directivas CSP actuales."
+msgstr ""
+"Los orígenes seleccionados se fusionaron con las directivas CSP actuales."
 
 #: includes/class-ash-csp-assistant.php
 msgid "You are not allowed to manage these settings."
@@ -550,8 +601,12 @@ msgid "Smart CSP Assistant"
 msgstr "Asistente inteligente de CSP"
 
 #: includes/class-ash-csp-assistant.php
-msgid "Automatically discover the resources used by your site and generate CSP recommendations."
-msgstr "Descubre automáticamente los recursos que usa el sitio y genera recomendaciones CSP."
+msgid ""
+"Automatically discover the resources used by your site and generate CSP "
+"recommendations."
+msgstr ""
+"Descubre automáticamente los recursos que usa el sitio y genera "
+"recomendaciones CSP."
 
 #: includes/class-ash-csp-assistant.php
 msgid "Hybrid Detection"
@@ -630,8 +685,13 @@ msgid "Deep file scan"
 msgstr "Análisis profundo de archivos"
 
 #: includes/class-ash-csp-assistant.php
-msgid "Also scan plugin and theme files on disk for CSP origins that are not loaded yet. Learning duration switches to Manual so a timer cannot stop this scan."
-msgstr "También analiza los archivos de plugins y temas en disco para orígenes CSP que aún no se cargan. La duración de aprendizaje pasa a Manual para que un temporizador no detenga este análisis."
+msgid ""
+"Also scan plugin and theme files on disk for CSP origins that are not loaded"
+" yet. Learning duration switches to Manual so a timer cannot stop this scan."
+msgstr ""
+"También analiza los archivos de plugins y temas en disco para orígenes CSP "
+"que aún no se cargan. La duración de aprendizaje pasa a Manual para que un "
+"temporizador no detenga este análisis."
 
 #: includes/class-ash-csp-assistant.php
 msgid "Counting plugin and theme files…"
@@ -671,7 +731,9 @@ msgstr "No se encontraron archivos de plugins o temas para analizar."
 
 #: includes/class-ash-csp-assistant.php
 msgid "Learning duration is locked to Manual while Deep file scan is on."
-msgstr "La duración de aprendizaje queda en Manual mientras el análisis profundo está activo."
+msgstr ""
+"La duración de aprendizaje queda en Manual mientras el análisis profundo "
+"está activo."
 
 #: includes/class-ash-csp-assistant.php
 msgid "Deep file scan is turned off."
@@ -682,8 +744,12 @@ msgid "Excluded paths"
 msgstr "Rutas excluidas"
 
 #: includes/class-ash-csp-assistant.php
-msgid "Folder or file names skipped during Deep file scan. Use a name such as node_modules or a relative path such as vendor/cache."
-msgstr "Nombres de carpeta o archivo omitidos en el análisis profundo. Usa un nombre como node_modules o una ruta relativa como vendor/cache."
+msgid ""
+"Folder or file names skipped during Deep file scan. Use a name such as "
+"node_modules or a relative path such as vendor/cache."
+msgstr ""
+"Nombres de carpeta o archivo omitidos en el análisis profundo. Usa un nombre"
+" como node_modules o una ruta relativa como vendor/cache."
 
 #: includes/class-ash-csp-assistant.php
 msgid "Restore defaults"
@@ -691,7 +757,8 @@ msgstr "Restaurar valores predeterminados"
 
 #: includes/class-ash-csp-assistant.php
 msgid "No exclusions. Every plugin and theme file will be scanned."
-msgstr "No hay exclusiones. Se analizarán todos los archivos de plugins y temas."
+msgstr ""
+"No hay exclusiones. Se analizarán todos los archivos de plugins y temas."
 
 #: includes/class-ash-csp-assistant.php
 msgid "Folder or path to skip"
@@ -711,23 +778,33 @@ msgstr "Quitar ruta excluida"
 
 #: includes/class-ash-csp-assistant.php
 msgid "Excluded paths cannot be changed while a file scan is running."
-msgstr "No se pueden cambiar las rutas excluidas mientras se ejecuta un análisis de archivos."
+msgstr ""
+"No se pueden cambiar las rutas excluidas mientras se ejecuta un análisis de "
+"archivos."
 
 #: includes/class-ash-csp-assistant.php
 msgid "Scan selected items"
 msgstr "Analizar elementos seleccionados"
 
 #: includes/class-ash-csp-assistant.php
-msgid "When this is on, Deep file scan only covers the plugins and themes you turn on below. Leave it off to scan all installed items."
-msgstr "Si está activo, el análisis profundo solo cubre los plugins y temas que actives abajo. Déjalo apagado para analizar todos los instalados."
+msgid ""
+"When this is on, Deep file scan only covers the plugins and themes you turn "
+"on below. Leave it off to scan all installed items."
+msgstr ""
+"Si está activo, el análisis profundo solo cubre los plugins y temas que "
+"actives abajo. Déjalo apagado para analizar todos los instalados."
 
 #: includes/class-ash-csp-assistant.php
 msgid "Plugins and themes"
 msgstr "Plugins y temas"
 
 #: includes/class-ash-csp-assistant.php
-msgid "Turn on a plugin or theme to include its files in the disk scan. All switches start off."
-msgstr "Activa un plugin o tema para incluir sus archivos en el análisis de disco. Todos los interruptores empiezan apagados."
+msgid ""
+"Turn on a plugin or theme to include its files in the disk scan. All "
+"switches start off."
+msgstr ""
+"Activa un plugin o tema para incluir sus archivos en el análisis de disco. "
+"Todos los interruptores empiezan apagados."
 
 #: includes/class-ash-csp-assistant.php
 msgid "Plugins"
@@ -738,12 +815,18 @@ msgid "Themes"
 msgstr "Temas"
 
 #: includes/class-ash-csp-assistant.php
-msgid "Turn on at least one plugin or theme. With none selected, Deep file scan skips the disk pass."
-msgstr "Activa al menos un plugin o tema. Si no hay ninguno, el análisis profundo omite el paso de disco."
+msgid ""
+"Turn on at least one plugin or theme. With none selected, Deep file scan "
+"skips the disk pass."
+msgstr ""
+"Activa al menos un plugin o tema. Si no hay ninguno, el análisis profundo "
+"omite el paso de disco."
 
 #: includes/class-ash-csp-assistant.php
 msgid "The scan scope cannot be changed while a file scan is running."
-msgstr "No se puede cambiar el alcance del análisis mientras se ejecuta un análisis de archivos."
+msgstr ""
+"No se puede cambiar el alcance del análisis mientras se ejecuta un análisis "
+"de archivos."
 
 #: includes/class-ash-csp-assistant.php
 msgid "Disk"
@@ -807,7 +890,9 @@ msgstr "Detalles"
 
 #: includes/class-ash-csp-assistant.php
 msgid "No sources detected yet. Start a Smart Scan to begin discovery."
-msgstr "Aún no se han detectado orígenes. Inicia un análisis inteligente para comenzar."
+msgstr ""
+"Aún no se han detectado orígenes. Inicia un análisis inteligente para "
+"comenzar."
 
 #: includes/class-ash-csp-assistant.php
 msgid "Select all sources"
@@ -914,8 +999,12 @@ msgid "Apply"
 msgstr "Aplicar"
 
 #: includes/class-ash-csp-assistant.php
-msgid "This value can weaken your Content Security Policy. Confirm only if your site requires it."
-msgstr "Este valor puede debilitar la Content Security Policy. Confírmalo solo si el sitio lo necesita."
+msgid ""
+"This value can weaken your Content Security Policy. Confirm only if your "
+"site requires it."
+msgstr ""
+"Este valor puede debilitar la Content Security Policy. Confírmalo solo si el"
+" sitio lo necesita."
 
 #: includes/class-ash-csp-assistant.php
 msgid "I understand this weakens CSP and I want to add it anyway."
@@ -923,19 +1012,26 @@ msgstr "Entiendo que esto debilita CSP y quiero añadirlo de todos modos."
 
 #: includes/class-ash-csp-assistant.php
 msgid "Clear all Smart CSP discovery data? This cannot be undone."
-msgstr "¿Borrar todos los datos de descubrimiento de Smart CSP? Esta acción no se puede deshacer."
+msgstr ""
+"¿Borrar todos los datos de descubrimiento de Smart CSP? Esta acción no se "
+"puede deshacer."
 
 #: includes/class-ash-csp-assistant.php
 msgid "Select at least one source to apply."
 msgstr "Selecciona al menos un origen para aplicar."
 
 #: includes/class-ash-csp-assistant.php
-msgid "Unknown resource types are kept for review and are not applied automatically."
-msgstr "Los tipos de recurso desconocidos se conservan para revisión y no se aplican automáticamente."
+msgid ""
+"Unknown resource types are kept for review and are not applied "
+"automatically."
+msgstr ""
+"Los tipos de recurso desconocidos se conservan para revisión y no se aplican"
+" automáticamente."
 
 #: includes/class-ash-csp-assistant.php
 msgid "The Smart CSP Assistant request failed. Please try again."
-msgstr "Falló la solicitud del Asistente inteligente de CSP. Inténtalo de nuevo."
+msgstr ""
+"Falló la solicitud del Asistente inteligente de CSP. Inténtalo de nuevo."
 
 #. translators: %d: number of detected sources
 #: includes/class-ash-csp-assistant.php
@@ -1092,3 +1188,46 @@ msgstr "Todos los encabezados de seguridad están activados."
 #: includes/class-ash-dashboard-widget.php
 msgid "Content Security Policy is active."
 msgstr "Content Security Policy está activa."
+
+#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
+msgid "Dashboard"
+msgstr "Escritorio"
+
+#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
+msgid "Settings"
+msgstr "Ajustes"
+
+#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
+msgid "Configure how this plugin stores and removes its own data."
+msgstr "Configure cómo este plugin almacena y elimina sus propios datos."
+
+#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
+msgid "Uninstall"
+msgstr "Desinstalación"
+
+#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
+msgid ""
+"Control what happens to stored plugin data when this plugin is deleted."
+msgstr ""
+"Controle qué ocurre con los datos guardados del plugin cuando se elimina."
+
+#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
+msgid "Delete all plugin data on uninstall"
+msgstr "Eliminar todos los datos del plugin al desinstalar"
+
+#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
+msgid ""
+"When enabled, deleting this plugin also removes its settings, CSP assistant "
+"data, custom tables, and related stored files. This cannot be undone."
+msgstr ""
+"Si está activado, al eliminar el plugin también se borran sus ajustes, los "
+"datos del asistente CSP, las tablas personalizadas y los archivos "
+"relacionados. Esta acción no se puede deshacer."
+
+#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
+msgid ""
+"Leave this off if you want to keep your configuration after the plugin is "
+"deleted."
+msgstr ""
+"Déjelo desactivado si desea conservar la configuración después de eliminar "
+"el plugin."

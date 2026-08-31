@@ -20,7 +20,7 @@
  * Plugin Name: Abdal Security Headers
  * Plugin URI: https://github.com/ebrasha/abdal-security-headers
  * Description:  WordPress Security Headers Manager plugin, featuring full security headers control, advanced security features, and Content Security Policy (CSP).
- * Version: 5.5.3
+ * Version: 5.6.0
  * Author: Ebrahim Shafiei (EbraSha)
  * Author URI: https://github.com/ebrasha
  * Text Domain: abdal-security-headers
@@ -35,7 +35,7 @@ if (!defined('ABSPATH')) {
 }
 
 // Define plugin constants
-define('ASH_VERSION', '5.5.3');
+define('ASH_VERSION', '5.6.0');
 define('ASH_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('ASH_PLUGIN_URL', plugin_dir_url(__FILE__));
 
@@ -121,6 +121,17 @@ function ash_activate() {
     // Update options in database
     update_option('ash_options', $final_options);
 
+    if (false === get_option('ash_plugin_settings', false)) {
+        add_option(
+            'ash_plugin_settings',
+            array(
+                'remove_data_on_uninstall' => '0',
+            ),
+            '',
+            false
+        );
+    }
+
     require_once ASH_PLUGIN_DIR . 'includes/class-ash-csp-repository.php';
     ASH_CSP_Repository::install();
     if (!wp_next_scheduled('ash_csp_assistant_cron')) {
@@ -132,17 +143,4 @@ function ash_activate() {
 register_deactivation_hook(__FILE__, 'ash_deactivate');
 function ash_deactivate() {
     wp_clear_scheduled_hook('ash_csp_assistant_cron');
-}
-
-// Uninstall hook for complete cleanup
-register_uninstall_hook(__FILE__, 'ash_uninstall');
-function ash_uninstall() {
-    delete_option('ash_options');
-    delete_option('ash_csp_assistant_state');
-    delete_option('ash_csp_db_version');
-    wp_clear_scheduled_hook('ash_scheduled_tasks');
-    wp_clear_scheduled_hook('ash_csp_assistant_cron');
-
-    global $wpdb;
-    $wpdb->query('DROP TABLE IF EXISTS ' . $wpdb->prefix . 'ash_csp_sources');
 } 

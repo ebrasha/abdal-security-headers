@@ -1,6 +1,7 @@
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: Abdal Security Headers 5.5.1\n"
+"Project-Id-Version: Abdal Security Headers 5.6.0\n"
 "POT-Creation-Date: 2026-08-29 04:51+0330\n"
 "PO-Revision-Date: 2026-08-29 04:51+0330\n"
 "Last-Translator: Ebrahim Shafiei (EbraSha) <Prof.Shafiei@Gmail.com>\n"
@@ -9,15 +10,15 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n==0 || n==1);\n"
 "X-Generator: Cursor\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
-"X-Poedit-WPHeader: abdal-security-headers.php\n"
-"X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
-"Plural-Forms: nplurals=2; plural=(n==0 || n==1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-WPHeader: abdal-security-headers.php\n"
 
 #: includes/class-ash-admin.php
 msgid "Are you sure you want to save these settings?"
@@ -25,7 +26,8 @@ msgstr "آیا می خواهید این تنظیمات را ذخیره کنید 
 
 #: includes/class-ash-admin.php
 msgid "Reset unsaved changes and restore the last saved values?"
-msgstr "تغییرات ذخیره‌نشده بازنشانی شود و آخرین مقادیر ذخیره‌شده بازیابی گردد؟"
+msgstr ""
+"تغییرات ذخیره‌نشده بازنشانی شود و آخرین مقادیر ذخیره‌شده بازیابی گردد؟"
 
 #: includes/class-ash-admin.php
 msgid "Yes"
@@ -163,7 +165,8 @@ msgid "Additional Security Features"
 msgstr "ویژگی‌های امنیتی اضافی"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
-msgid "Enable additional security features to enhance your website protection."
+msgid ""
+"Enable additional security features to enhance your website protection."
 msgstr "فعال‌سازی ویژگی‌های امنیتی اضافی برای افزایش حفاظت از وب‌سایت شما."
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
@@ -301,8 +304,12 @@ msgid "Active"
 msgstr "فعال"
 
 #: includes/class-ash-admin-ui.php
-msgid "Configure HTTP security headers, hardening options, and Content Security Policy from one dashboard."
-msgstr "هدرهای امنیتی HTTP، گزینه‌های مقاوم‌سازی و سیاست امنیتی محتوا را از یک داشبورد پیکربندی کنید."
+msgid ""
+"Configure HTTP security headers, hardening options, and Content Security "
+"Policy from one dashboard."
+msgstr ""
+"هدرهای امنیتی HTTP، گزینه‌های مقاوم‌سازی و سیاست امنیتی محتوا را از یک "
+"داشبورد پیکربندی کنید."
 
 #: includes/class-ash-admin-ui.php
 msgid "Help"
@@ -345,7 +352,8 @@ msgid "Enable the core HTTP security headers for the site."
 msgstr "هدرهای امنیتی HTTP اصلی را برای سایت فعال کنید."
 
 #: includes/class-ash-admin-ui.php
-msgid "Harden WordPress by reducing information disclosure and attack surface."
+msgid ""
+"Harden WordPress by reducing information disclosure and attack surface."
 msgstr "با کاهش افشای اطلاعات و سطح حمله، وردپرس را مقاوم‌تر کنید."
 
 #: includes/class-ash-admin-ui.php
@@ -357,8 +365,12 @@ msgid "General settings"
 msgstr "تنظیمات عمومی"
 
 #: includes/class-ash-admin-ui.php
-msgid "When enabled, the generated Content-Security-Policy header is sent with HTTP responses."
-msgstr "در صورت فعال بودن، هدر Content-Security-Policy تولیدشده همراه با پاسخ‌های HTTP ارسال می‌شود."
+msgid ""
+"When enabled, the generated Content-Security-Policy header is sent with HTTP"
+" responses."
+msgstr ""
+"در صورت فعال بودن، هدر Content-Security-Policy تولیدشده همراه با پاسخ‌های "
+"HTTP ارسال می‌شود."
 
 #: includes/class-ash-admin-ui.php
 msgid "Your changes are not saved automatically."
@@ -377,48 +389,74 @@ msgid "Enables the legacy browser XSS filter for older clients."
 msgstr "فیلتر XSS مرورگرهای قدیمی را فعال می‌کند."
 
 #: includes/class-ash-admin-ui.php
-msgid "Prevents browsers from MIME-sniffing a response away from the declared content type."
+msgid ""
+"Prevents browsers from MIME-sniffing a response away from the declared "
+"content type."
 msgstr "از حدس زدن نوع محتوا توسط مرورگر جلوگیری می‌کند."
 
 #: includes/class-ash-admin-ui.php
 msgid "Forces browsers to use HTTPS for future requests to this host."
-msgstr "مرورگر را مجبور می‌کند درخواست‌های بعدی به این میزبان را با HTTPS انجام دهد."
+msgstr ""
+"مرورگر را مجبور می‌کند درخواست‌های بعدی به این میزبان را با HTTPS انجام دهد."
 
 #: includes/class-ash-admin-ui.php
-msgid "Restricts access to powerful browser features such as camera and geolocation."
-msgstr "دسترسی به قابلیت‌های حساس مرورگر مانند دوربین و موقعیت مکانی را محدود می‌کند."
+msgid ""
+"Restricts access to powerful browser features such as camera and "
+"geolocation."
+msgstr ""
+"دسترسی به قابلیت‌های حساس مرورگر مانند دوربین و موقعیت مکانی را محدود "
+"می‌کند."
 
 #: includes/class-ash-admin-ui.php
-msgid "Controls whether the site can be embedded in frames to reduce clickjacking risk."
-msgstr "امکان قرارگیری سایت در فریم را کنترل می‌کند تا خطر کلیک‌ربایی کاهش یابد."
+msgid ""
+"Controls whether the site can be embedded in frames to reduce clickjacking "
+"risk."
+msgstr ""
+"امکان قرارگیری سایت در فریم را کنترل می‌کند تا خطر کلیک‌ربایی کاهش یابد."
 
 #: includes/class-ash-admin-ui.php
-msgid "Limits referrer information sent with navigations and resource requests."
-msgstr "اطلاعات ارجاع ارسال‌شده همراه با پیمایش‌ها و درخواست منابع را محدود می‌کند."
+msgid ""
+"Limits referrer information sent with navigations and resource requests."
+msgstr ""
+"اطلاعات ارجاع ارسال‌شده همراه با پیمایش‌ها و درخواست منابع را محدود می‌کند."
 
 #: includes/class-ash-admin-ui.php
 msgid "Hides server technology details exposed by the X-Powered-By header."
-msgstr "جزئیات فناوری سرور که توسط هدر X-Powered-By افشا می‌شود را پنهان می‌کند."
+msgstr ""
+"جزئیات فناوری سرور که توسط هدر X-Powered-By افشا می‌شود را پنهان می‌کند."
 
 #: includes/class-ash-admin-ui.php
-msgid "Removes the public WordPress version from markup, feeds, scripts, and styles."
-msgstr "نسخه عمومی وردپرس را از نشانه‌گذاری، فیدها، اسکریپت‌ها و استایل‌ها حذف می‌کند."
+msgid ""
+"Removes the public WordPress version from markup, feeds, scripts, and "
+"styles."
+msgstr ""
+"نسخه عمومی وردپرس را از نشانه‌گذاری، فیدها، اسکریپت‌ها و استایل‌ها حذف "
+"می‌کند."
 
 #: includes/class-ash-admin-ui.php
-msgid "Replaces detailed login errors with a generic message to reduce user enumeration."
-msgstr "پیام‌های خطای ورود را با یک پیام عمومی جایگزین می‌کند تا شناسایی نام کاربری سخت‌تر شود."
+msgid ""
+"Replaces detailed login errors with a generic message to reduce user "
+"enumeration."
+msgstr ""
+"پیام‌های خطای ورود را با یک پیام عمومی جایگزین می‌کند تا شناسایی نام کاربری "
+"سخت‌تر شود."
 
 #: includes/class-ash-admin-ui.php
 msgid "Disables XML-RPC methods and blocks direct access to xmlrpc.php."
-msgstr "روش‌های XML-RPC را غیرفعال می‌کند و دسترسی مستقیم به xmlrpc.php را مسدود می‌کند."
+msgstr ""
+"روش‌های XML-RPC را غیرفعال می‌کند و دسترسی مستقیم به xmlrpc.php را مسدود "
+"می‌کند."
 
 #: includes/class-ash-admin-ui.php
 msgid "Removes the X-Pingback response header from WordPress output."
 msgstr "هدر پاسخ X-Pingback را از خروجی وردپرس حذف می‌کند."
 
 #: includes/class-ash-admin-ui.php
-msgid "Blocks REST API access and removes REST discovery links from the front end."
-msgstr "دسترسی REST API را مسدود می‌کند و لینک‌های کشف REST را از بخش عمومی حذف می‌کند."
+msgid ""
+"Blocks REST API access and removes REST discovery links from the front end."
+msgstr ""
+"دسترسی REST API را مسدود می‌کند و لینک‌های کشف REST را از بخش عمومی حذف "
+"می‌کند."
 
 #: includes/class-ash-admin-ui.php
 msgid "Default fallback for other resource types"
@@ -493,8 +531,12 @@ msgid "https://github.com/ebrasha/abdal-security-headers"
 msgstr "https://github.com/ebrasha/abdal-security-headers"
 
 #. Description of the plugin/theme
-msgid "WordPress Security Headers Manager plugin, featuring full security headers control, advanced security features, and Content Security Policy (CSP)."
-msgstr "افزونه مدیریت هدرهای امنیتی وردپرس، شامل کنترل کامل هدرهای امنیتی، ویژگی‌های امنیتی اضافی و سیاست امنیتی محتوا (CSP)."
+msgid ""
+"WordPress Security Headers Manager plugin, featuring full security headers "
+"control, advanced security features, and Content Security Policy (CSP)."
+msgstr ""
+"افزونه مدیریت هدرهای امنیتی وردپرس، شامل کنترل کامل هدرهای امنیتی، ویژگی‌های"
+" امنیتی اضافی و سیاست امنیتی محتوا (CSP)."
 
 #. Author of the plugin/theme
 msgid "Ebrahim Shafiei (EbraSha)"
@@ -553,8 +595,11 @@ msgid "Smart CSP Assistant"
 msgstr "دستیار هوشمند CSP"
 
 #: includes/class-ash-csp-assistant.php
-msgid "Automatically discover the resources used by your site and generate CSP recommendations."
-msgstr "منابع واقعی سایت را به‌صورت خودکار کشف کنید و پیشنهادهای CSP دریافت کنید."
+msgid ""
+"Automatically discover the resources used by your site and generate CSP "
+"recommendations."
+msgstr ""
+"منابع واقعی سایت را به‌صورت خودکار کشف کنید و پیشنهادهای CSP دریافت کنید."
 
 #: includes/class-ash-csp-assistant.php
 msgid "Hybrid Detection"
@@ -633,8 +678,13 @@ msgid "Deep file scan"
 msgstr "اسکن عمیق فایل‌ها"
 
 #: includes/class-ash-csp-assistant.php
-msgid "Also scan plugin and theme files on disk for CSP origins that are not loaded yet. Learning duration switches to Manual so a timer cannot stop this scan."
-msgstr "فایل‌های افزونه و پوسته روی دیسک را هم برای منابع CSP می‌خواند؛ حتی اگر الان بارگذاری نشوند. مدت یادگیری روی حالت دستی می‌رود تا زمان‌سنج این اسکن را قطع نکند."
+msgid ""
+"Also scan plugin and theme files on disk for CSP origins that are not loaded"
+" yet. Learning duration switches to Manual so a timer cannot stop this scan."
+msgstr ""
+"فایل‌های افزونه و پوسته روی دیسک را هم برای منابع CSP می‌خواند؛ حتی اگر الان"
+" بارگذاری نشوند. مدت یادگیری روی حالت دستی می‌رود تا زمان‌سنج این اسکن را "
+"قطع نکند."
 
 #: includes/class-ash-csp-assistant.php
 msgid "Counting plugin and theme files…"
@@ -674,7 +724,8 @@ msgstr "فایلی از افزونه یا پوسته برای اسکن پیدا 
 
 #: includes/class-ash-csp-assistant.php
 msgid "Learning duration is locked to Manual while Deep file scan is on."
-msgstr "وقتی اسکن عمیق فایل‌ها روشن است، مدت یادگیری روی حالت دستی قفل می‌شود."
+msgstr ""
+"وقتی اسکن عمیق فایل‌ها روشن است، مدت یادگیری روی حالت دستی قفل می‌شود."
 
 #: includes/class-ash-csp-assistant.php
 msgid "Deep file scan is turned off."
@@ -685,8 +736,12 @@ msgid "Excluded paths"
 msgstr "مسیرهای استثنا"
 
 #: includes/class-ash-csp-assistant.php
-msgid "Folder or file names skipped during Deep file scan. Use a name such as node_modules or a relative path such as vendor/cache."
-msgstr "نام پوشه یا فایلی که در اسکن عمیق رد می‌شود. مثلاً node_modules یا مسیر نسبی مثل vendor/cache."
+msgid ""
+"Folder or file names skipped during Deep file scan. Use a name such as "
+"node_modules or a relative path such as vendor/cache."
+msgstr ""
+"نام پوشه یا فایلی که در اسکن عمیق رد می‌شود. مثلاً node_modules یا مسیر نسبی"
+" مثل vendor/cache."
 
 #: includes/class-ash-csp-assistant.php
 msgid "Restore defaults"
@@ -721,16 +776,24 @@ msgid "Scan selected items"
 msgstr "اسکن موارد انتخاب‌شده"
 
 #: includes/class-ash-csp-assistant.php
-msgid "When this is on, Deep file scan only covers the plugins and themes you turn on below. Leave it off to scan all installed items."
-msgstr "اگر روشن باشد، اسکن عمیق فقط افزونه و پوسته‌هایی را می‌خواند که پایین روشن کرده‌اید. اگر خاموش بماند، همهٔ موارد نصب‌شده اسکن می‌شوند."
+msgid ""
+"When this is on, Deep file scan only covers the plugins and themes you turn "
+"on below. Leave it off to scan all installed items."
+msgstr ""
+"اگر روشن باشد، اسکن عمیق فقط افزونه و پوسته‌هایی را می‌خواند که پایین روشن "
+"کرده‌اید. اگر خاموش بماند، همهٔ موارد نصب‌شده اسکن می‌شوند."
 
 #: includes/class-ash-csp-assistant.php
 msgid "Plugins and themes"
 msgstr "افزونه‌ها و پوسته‌ها"
 
 #: includes/class-ash-csp-assistant.php
-msgid "Turn on a plugin or theme to include its files in the disk scan. All switches start off."
-msgstr "برای اینکه فایل‌های یک افزونه یا پوسته در اسکن دیسک بیاید، سوئیچش را روشن کنید. همهٔ سوئیچ‌ها در شروع خاموش‌اند."
+msgid ""
+"Turn on a plugin or theme to include its files in the disk scan. All "
+"switches start off."
+msgstr ""
+"برای اینکه فایل‌های یک افزونه یا پوسته در اسکن دیسک بیاید، سوئیچش را روشن "
+"کنید. همهٔ سوئیچ‌ها در شروع خاموش‌اند."
 
 #: includes/class-ash-csp-assistant.php
 msgid "Plugins"
@@ -741,8 +804,12 @@ msgid "Themes"
 msgstr "پوسته‌ها"
 
 #: includes/class-ash-csp-assistant.php
-msgid "Turn on at least one plugin or theme. With none selected, Deep file scan skips the disk pass."
-msgstr "حداقل یک افزونه یا پوسته را روشن کنید. اگر هیچ‌کدام انتخاب نشود، اسکن عمیق مرحلهٔ دیسک را رد می‌کند."
+msgid ""
+"Turn on at least one plugin or theme. With none selected, Deep file scan "
+"skips the disk pass."
+msgstr ""
+"حداقل یک افزونه یا پوسته را روشن کنید. اگر هیچ‌کدام انتخاب نشود، اسکن عمیق "
+"مرحلهٔ دیسک را رد می‌کند."
 
 #: includes/class-ash-csp-assistant.php
 msgid "The scan scope cannot be changed while a file scan is running."
@@ -917,8 +984,12 @@ msgid "Apply"
 msgstr "اعمال"
 
 #: includes/class-ash-csp-assistant.php
-msgid "This value can weaken your Content Security Policy. Confirm only if your site requires it."
-msgstr "این مقدار می‌تواند سیاست امنیتی محتوا را تضعیف کند. فقط در صورت نیاز واقعی سایت آن را تأیید کنید."
+msgid ""
+"This value can weaken your Content Security Policy. Confirm only if your "
+"site requires it."
+msgstr ""
+"این مقدار می‌تواند سیاست امنیتی محتوا را تضعیف کند. فقط در صورت نیاز واقعی "
+"سایت آن را تأیید کنید."
 
 #: includes/class-ash-csp-assistant.php
 msgid "I understand this weakens CSP and I want to add it anyway."
@@ -933,8 +1004,12 @@ msgid "Select at least one source to apply."
 msgstr "دست‌کم یک منبع را برای اعمال انتخاب کنید."
 
 #: includes/class-ash-csp-assistant.php
-msgid "Unknown resource types are kept for review and are not applied automatically."
-msgstr "انواع ناشناخته فقط برای بازبینی نگه داشته می‌شوند و به‌صورت خودکار اعمال نمی‌گردند."
+msgid ""
+"Unknown resource types are kept for review and are not applied "
+"automatically."
+msgstr ""
+"انواع ناشناخته فقط برای بازبینی نگه داشته می‌شوند و به‌صورت خودکار اعمال "
+"نمی‌گردند."
 
 #: includes/class-ash-csp-assistant.php
 msgid "The Smart CSP Assistant request failed. Please try again."
@@ -1095,3 +1170,45 @@ msgstr "همه هدرهای امنیتی فعال هستند."
 #: includes/class-ash-dashboard-widget.php
 msgid "Content Security Policy is active."
 msgstr "سیاست امنیت محتوا فعال است."
+
+#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
+msgid "Dashboard"
+msgstr "داشبورد"
+
+#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
+msgid "Settings"
+msgstr "تنظیمات"
+
+#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
+msgid "Configure how this plugin stores and removes its own data."
+msgstr "نحوهٔ ذخیره و حذف داده‌های خود افزونه را پیکربندی کنید."
+
+#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
+msgid "Uninstall"
+msgstr "حذف افزونه"
+
+#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
+msgid ""
+"Control what happens to stored plugin data when this plugin is deleted."
+msgstr ""
+"مشخص کنید هنگام حذف افزونه، داده‌های ذخیره‌شده چه سرنوشتی داشته باشند."
+
+#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
+msgid "Delete all plugin data on uninstall"
+msgstr "هنگام حذف افزونه، همهٔ داده‌های آن پاک شود"
+
+#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
+msgid ""
+"When enabled, deleting this plugin also removes its settings, CSP assistant "
+"data, custom tables, and related stored files. This cannot be undone."
+msgstr ""
+"در صورت فعال بودن، با حذف افزونه تنظیمات، داده‌های دستیار CSP، جدول‌های "
+"سفارشی و فایل‌های مرتبط نیز حذف می‌شوند. این کار قابل بازگشت نیست."
+
+#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
+msgid ""
+"Leave this off if you want to keep your configuration after the plugin is "
+"deleted."
+msgstr ""
+"اگر می‌خواهید پس از حذف افزونه پیکربندی‌تان باقی بماند، این گزینه را خاموش "
+"بگذارید."

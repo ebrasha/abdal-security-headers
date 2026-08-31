@@ -1,6 +1,7 @@
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: Abdal Security Headers 5.5.1\n"
+"Project-Id-Version: Abdal Security Headers 5.6.0\n"
 "Report-Msgid-Bugs-To: Prof.Shafiei@Gmail.com\n"
 "POT-Creation-Date: 2026-08-29 10:30+0330\n"
 "PO-Revision-Date: 2026-08-29 10:30+0330\n"
@@ -10,11 +11,11 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Cursor\n"
 "X-Poedit-Basepath: ..\n"
-"X-Poedit-WPHeader: abdal-security-headers.php\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Poedit-WPHeader: abdal-security-headers.php\n"
 
 #: includes/class-ash-admin.php
 msgid "Are you sure you want to save these settings?"
@@ -160,7 +161,8 @@ msgid "Additional Security Features"
 msgstr "附加安全功能"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
-msgid "Enable additional security features to enhance your website protection."
+msgid ""
+"Enable additional security features to enhance your website protection."
 msgstr "启用附加功能以加强网站防护。"
 
 #: includes/class-ash-admin.php includes/class-ash-admin-ui.php
@@ -298,7 +300,9 @@ msgid "Active"
 msgstr "已启用"
 
 #: includes/class-ash-admin-ui.php
-msgid "Configure HTTP security headers, hardening options, and Content Security Policy from one dashboard."
+msgid ""
+"Configure HTTP security headers, hardening options, and Content Security "
+"Policy from one dashboard."
 msgstr "在同一控制台中配置 HTTP 安全标头、加固选项和 Content Security Policy。"
 
 #: includes/class-ash-admin-ui.php
@@ -342,7 +346,8 @@ msgid "Enable the core HTTP security headers for the site."
 msgstr "为网站启用核心 HTTP 安全标头。"
 
 #: includes/class-ash-admin-ui.php
-msgid "Harden WordPress by reducing information disclosure and attack surface."
+msgid ""
+"Harden WordPress by reducing information disclosure and attack surface."
 msgstr "通过减少信息泄露和攻击面来加固 WordPress。"
 
 #: includes/class-ash-admin-ui.php
@@ -354,7 +359,9 @@ msgid "General settings"
 msgstr "常规设置"
 
 #: includes/class-ash-admin-ui.php
-msgid "When enabled, the generated Content-Security-Policy header is sent with HTTP responses."
+msgid ""
+"When enabled, the generated Content-Security-Policy header is sent with HTTP"
+" responses."
 msgstr "启用后，生成的 Content-Security-Policy 标头会随 HTTP 响应发送。"
 
 #: includes/class-ash-admin-ui.php
@@ -374,7 +381,9 @@ msgid "Enables the legacy browser XSS filter for older clients."
 msgstr "为旧客户端启用传统 XSS 过滤器。"
 
 #: includes/class-ash-admin-ui.php
-msgid "Prevents browsers from MIME-sniffing a response away from the declared content type."
+msgid ""
+"Prevents browsers from MIME-sniffing a response away from the declared "
+"content type."
 msgstr "阻止浏览器对已声明的内容类型进行 MIME 嗅探。"
 
 #: includes/class-ash-admin-ui.php
@@ -382,15 +391,20 @@ msgid "Forces browsers to use HTTPS for future requests to this host."
 msgstr "强制浏览器之后向该主机发起请求时使用 HTTPS。"
 
 #: includes/class-ash-admin-ui.php
-msgid "Restricts access to powerful browser features such as camera and geolocation."
+msgid ""
+"Restricts access to powerful browser features such as camera and "
+"geolocation."
 msgstr "限制对摄像头、地理位置等强大浏览器功能的访问。"
 
 #: includes/class-ash-admin-ui.php
-msgid "Controls whether the site can be embedded in frames to reduce clickjacking risk."
+msgid ""
+"Controls whether the site can be embedded in frames to reduce clickjacking "
+"risk."
 msgstr "控制站点是否可被嵌入框架，以降低点击劫持风险。"
 
 #: includes/class-ash-admin-ui.php
-msgid "Limits referrer information sent with navigations and resource requests."
+msgid ""
+"Limits referrer information sent with navigations and resource requests."
 msgstr "限制在导航和资源请求中发送的 Referrer 信息。"
 
 #: includes/class-ash-admin-ui.php
@@ -398,11 +412,15 @@ msgid "Hides server technology details exposed by the X-Powered-By header."
 msgstr "隐藏 X-Powered-By 标头暴露的服务器技术信息。"
 
 #: includes/class-ash-admin-ui.php
-msgid "Removes the public WordPress version from markup, feeds, scripts, and styles."
+msgid ""
+"Removes the public WordPress version from markup, feeds, scripts, and "
+"styles."
 msgstr "从标记、Feed、脚本和样式中移除公开的 WordPress 版本。"
 
 #: includes/class-ash-admin-ui.php
-msgid "Replaces detailed login errors with a generic message to reduce user enumeration."
+msgid ""
+"Replaces detailed login errors with a generic message to reduce user "
+"enumeration."
 msgstr "用通用提示替换详细登录错误，以降低用户枚举风险。"
 
 #: includes/class-ash-admin-ui.php
@@ -414,7 +432,8 @@ msgid "Removes the X-Pingback response header from WordPress output."
 msgstr "从 WordPress 输出中移除 X-Pingback 响应标头。"
 
 #: includes/class-ash-admin-ui.php
-msgid "Blocks REST API access and removes REST discovery links from the front end."
+msgid ""
+"Blocks REST API access and removes REST discovery links from the front end."
 msgstr "阻止 REST API 访问，并从前端移除 REST 发现链接。"
 
 #: includes/class-ash-admin-ui.php
@@ -490,7 +509,9 @@ msgid "https://github.com/ebrasha/abdal-security-headers"
 msgstr "https://github.com/ebrasha/abdal-security-headers"
 
 #. Description of the plugin/theme
-msgid "WordPress Security Headers Manager plugin, featuring full security headers control, advanced security features, and Content Security Policy (CSP)."
+msgid ""
+"WordPress Security Headers Manager plugin, featuring full security headers "
+"control, advanced security features, and Content Security Policy (CSP)."
 msgstr "用于管理安全标头的 WordPress 插件，提供完整标头控制、高级防护和 Content Security Policy (CSP)。"
 
 #. Author of the plugin/theme
@@ -550,7 +571,9 @@ msgid "Smart CSP Assistant"
 msgstr "智能 CSP 助手"
 
 #: includes/class-ash-csp-assistant.php
-msgid "Automatically discover the resources used by your site and generate CSP recommendations."
+msgid ""
+"Automatically discover the resources used by your site and generate CSP "
+"recommendations."
 msgstr "自动发现站点使用的资源并生成 CSP 建议。"
 
 #: includes/class-ash-csp-assistant.php
@@ -630,7 +653,9 @@ msgid "Deep file scan"
 msgstr "深度文件扫描"
 
 #: includes/class-ash-csp-assistant.php
-msgid "Also scan plugin and theme files on disk for CSP origins that are not loaded yet. Learning duration switches to Manual so a timer cannot stop this scan."
+msgid ""
+"Also scan plugin and theme files on disk for CSP origins that are not loaded"
+" yet. Learning duration switches to Manual so a timer cannot stop this scan."
 msgstr "还会扫描磁盘上的插件和主题文件，找出尚未加载的 CSP 来源。学习时长会切到手动，以免计时器中断此次扫描。"
 
 #: includes/class-ash-csp-assistant.php
@@ -682,7 +707,9 @@ msgid "Excluded paths"
 msgstr "排除路径"
 
 #: includes/class-ash-csp-assistant.php
-msgid "Folder or file names skipped during Deep file scan. Use a name such as node_modules or a relative path such as vendor/cache."
+msgid ""
+"Folder or file names skipped during Deep file scan. Use a name such as "
+"node_modules or a relative path such as vendor/cache."
 msgstr "深度文件扫描时跳过的文件夹或文件名。可使用 node_modules 这样的名称，或 vendor/cache 这样的相对路径。"
 
 #: includes/class-ash-csp-assistant.php
@@ -718,7 +745,9 @@ msgid "Scan selected items"
 msgstr "仅扫描所选项目"
 
 #: includes/class-ash-csp-assistant.php
-msgid "When this is on, Deep file scan only covers the plugins and themes you turn on below. Leave it off to scan all installed items."
+msgid ""
+"When this is on, Deep file scan only covers the plugins and themes you turn "
+"on below. Leave it off to scan all installed items."
 msgstr "开启后，深度文件扫描只覆盖你在下方打开的插件和主题。保持关闭则可扫描所有已安装项目。"
 
 #: includes/class-ash-csp-assistant.php
@@ -726,7 +755,9 @@ msgid "Plugins and themes"
 msgstr "插件和主题"
 
 #: includes/class-ash-csp-assistant.php
-msgid "Turn on a plugin or theme to include its files in the disk scan. All switches start off."
+msgid ""
+"Turn on a plugin or theme to include its files in the disk scan. All "
+"switches start off."
 msgstr "打开某个插件或主题，才会把它的文件纳入磁盘扫描。所有开关默认关闭。"
 
 #: includes/class-ash-csp-assistant.php
@@ -738,7 +769,9 @@ msgid "Themes"
 msgstr "主题"
 
 #: includes/class-ash-csp-assistant.php
-msgid "Turn on at least one plugin or theme. With none selected, Deep file scan skips the disk pass."
+msgid ""
+"Turn on at least one plugin or theme. With none selected, Deep file scan "
+"skips the disk pass."
 msgstr "请至少打开一个插件或主题。若未选择任何项，深度文件扫描会跳过磁盘阶段。"
 
 #: includes/class-ash-csp-assistant.php
@@ -914,7 +947,9 @@ msgid "Apply"
 msgstr "应用"
 
 #: includes/class-ash-csp-assistant.php
-msgid "This value can weaken your Content Security Policy. Confirm only if your site requires it."
+msgid ""
+"This value can weaken your Content Security Policy. Confirm only if your "
+"site requires it."
 msgstr "此值可能削弱 Content Security Policy。仅在站点确实需要时确认。"
 
 #: includes/class-ash-csp-assistant.php
@@ -930,7 +965,9 @@ msgid "Select at least one source to apply."
 msgstr "请至少选择一个要应用的来源。"
 
 #: includes/class-ash-csp-assistant.php
-msgid "Unknown resource types are kept for review and are not applied automatically."
+msgid ""
+"Unknown resource types are kept for review and are not applied "
+"automatically."
 msgstr "未知资源类型会保留供审核，不会自动应用。"
 
 #: includes/class-ash-csp-assistant.php
@@ -1092,3 +1129,40 @@ msgstr "所有安全标头均已启用。"
 #: includes/class-ash-dashboard-widget.php
 msgid "Content Security Policy is active."
 msgstr "Content Security Policy 已启用。"
+
+#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
+msgid "Dashboard"
+msgstr "仪表盘"
+
+#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
+msgid "Settings"
+msgstr "设置"
+
+#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
+msgid "Configure how this plugin stores and removes its own data."
+msgstr "配置本插件如何保存和删除其自身数据。"
+
+#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
+msgid "Uninstall"
+msgstr "卸载"
+
+#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
+msgid ""
+"Control what happens to stored plugin data when this plugin is deleted."
+msgstr "控制删除插件时已存储数据的处理方式。"
+
+#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
+msgid "Delete all plugin data on uninstall"
+msgstr "卸载时删除所有插件数据"
+
+#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
+msgid ""
+"When enabled, deleting this plugin also removes its settings, CSP assistant "
+"data, custom tables, and related stored files. This cannot be undone."
+msgstr "启用后，删除插件时会同时移除其设置、CSP 助手数据、自定义数据表及相关文件。此操作无法撤销。"
+
+#: includes/class-ash-admin.php includes/class-ash-admin-ui.php
+msgid ""
+"Leave this off if you want to keep your configuration after the plugin is "
+"deleted."
+msgstr "如果希望在删除插件后保留配置，请保持关闭。"

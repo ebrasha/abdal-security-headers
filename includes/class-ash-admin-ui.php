@@ -74,24 +74,7 @@ class ASH_Admin_UI {
                     </div>
                 </div>
                 <div class="ash-page-header__actions">
-                    <div class="ash-help" data-ash-help>
-                        <button type="button" class="ash-help__toggle" data-ash-help-toggle aria-expanded="false" aria-haspopup="true">
-                            <span class="dashicons dashicons-editor-help" aria-hidden="true"></span>
-                            <?php echo esc_html__('Help', 'abdal-security-headers'); ?>
-                            <span class="dashicons dashicons-arrow-down-alt2" aria-hidden="true"></span>
-                        </button>
-                        <div class="ash-help__menu" hidden>
-                            <a href="https://github.com/ebrasha/abdal-security-headers" target="_blank" rel="noopener noreferrer">
-                                <?php echo esc_html__('Documentation', 'abdal-security-headers'); ?>
-                            </a>
-                            <a href="https://github.com/ebrasha/abdal-security-headers/issues" target="_blank" rel="noopener noreferrer">
-                                <?php echo esc_html__('Report an issue', 'abdal-security-headers'); ?>
-                            </a>
-                            <a href="mailto:Prof.Shafiei@Gmail.com">
-                                <?php echo esc_html__('Contact support', 'abdal-security-headers'); ?>
-                            </a>
-                        </div>
-                    </div>
+                    <?php $this->render_help_menu(); ?>
                 </div>
             </header>
 
@@ -272,25 +255,7 @@ class ASH_Admin_UI {
                 </div>
             </form>
 
-            <footer class="ash-credit">
-                <?php echo esc_html__('Handcrafted with ❤️ Passion by Ebrahim Shafiei (EbraSha)', 'abdal-security-headers'); ?>
-            </footer>
-
-            <div class="ash-modal" id="ash-confirm-modal" hidden>
-                <div class="ash-modal__backdrop" data-ash-confirm-dismiss></div>
-                <div class="ash-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="ash-confirm-modal-title">
-                    <h2 id="ash-confirm-modal-title"></h2>
-                    <div id="ash-confirm-modal-body"></div>
-                    <div class="ash-modal__actions">
-                        <button type="button" class="ash-btn ash-btn--secondary" data-ash-confirm-cancel>
-                            <?php echo esc_html__('Cancel', 'abdal-security-headers'); ?>
-                        </button>
-                        <button type="button" class="ash-btn ash-btn--primary" data-ash-confirm-ok>
-                            <?php echo esc_html__('Yes', 'abdal-security-headers'); ?>
-                        </button>
-                    </div>
-                </div>
-            </div>
+            <?php $this->render_confirm_modal(); ?>
 
             <div class="ash-modal ash-modal--editor" id="ash-csp-editor-modal" hidden>
                 <div class="ash-modal__backdrop" data-ash-csp-editor-dismiss></div>
@@ -309,6 +274,171 @@ class ASH_Admin_UI {
                     </div>
                 </div>
             </div>
+
+            <?php $this->render_credit_footer(); ?>
+        </div>
+        <?php
+    }
+
+    /**
+     * Render the plugin Settings screen.
+     *
+     * @param array $plugin_settings Stored plugin-owned settings.
+     * @return void
+     */
+    public function render_plugin_settings($plugin_settings) {
+        if (!is_array($plugin_settings)) {
+            $plugin_settings = array();
+        }
+        ?>
+        <div class="wrap ash-wrap">
+            <header class="ash-page-header">
+                <div class="ash-page-header__main">
+                    <span class="ash-page-header__icon dashicons dashicons-admin-generic" aria-hidden="true"></span>
+                    <div class="ash-page-header__copy">
+                        <div class="ash-page-header__title-row">
+                            <h1><?php echo esc_html__('Settings', 'abdal-security-headers'); ?></h1>
+                            <span class="ash-badge ash-badge--neutral">
+                                <?php
+                                echo esc_html(
+                                    sprintf(
+                                        /* translators: %s: plugin version number */
+                                        __('Version %s', 'abdal-security-headers'),
+                                        ASH_VERSION
+                                    )
+                                );
+                                ?>
+                            </span>
+                        </div>
+                        <p class="ash-page-header__subtitle">
+                            <?php echo esc_html__('Configure how this plugin stores and removes its own data.', 'abdal-security-headers'); ?>
+                        </p>
+                    </div>
+                </div>
+                <div class="ash-page-header__actions">
+                    <?php $this->render_help_menu(); ?>
+                </div>
+            </header>
+
+            <?php settings_errors(); ?>
+
+            <form method="post" action="options.php" id="ash-settings-form" class="ash-form">
+                <?php settings_fields('ash_plugin_settings_group'); ?>
+                <input type="hidden" name="ash_plugin_settings[remove_data_on_uninstall]" value="0">
+
+                <section class="ash-card">
+                    <header class="ash-card__header">
+                        <span class="ash-card__icon ash-card__icon--warning dashicons dashicons-trash" aria-hidden="true"></span>
+                        <div>
+                            <h2><?php echo esc_html__('Uninstall', 'abdal-security-headers'); ?></h2>
+                            <p><?php echo esc_html__('Control what happens to stored plugin data when this plugin is deleted.', 'abdal-security-headers'); ?></p>
+                        </div>
+                    </header>
+                    <div class="ash-card__body ash-card__body--list">
+                        <?php
+                        $this->render_toggle_row(
+                            'remove_data_on_uninstall',
+                            __('Delete all plugin data on uninstall', 'abdal-security-headers'),
+                            __('When enabled, deleting this plugin also removes its settings, CSP assistant data, custom tables, and related stored files. This cannot be undone.', 'abdal-security-headers'),
+                            'plugin',
+                            'ash_plugin_settings',
+                            $plugin_settings
+                        );
+                        ?>
+                    </div>
+                    <footer class="ash-card__footer">
+                        <span class="dashicons dashicons-info" aria-hidden="true"></span>
+                        <?php echo esc_html__('Leave this off if you want to keep your configuration after the plugin is deleted.', 'abdal-security-headers'); ?>
+                    </footer>
+                </section>
+
+                <div class="ash-action-bar" data-ash-action-bar>
+                    <p class="ash-action-bar__note">
+                        <span class="dashicons dashicons-info" aria-hidden="true"></span>
+                        <?php echo esc_html__('Your changes are not saved automatically.', 'abdal-security-headers'); ?>
+                    </p>
+                    <div class="ash-action-bar__actions">
+                        <button type="button" class="ash-btn ash-btn--secondary" id="ash-reset-button">
+                            <span class="dashicons dashicons-image-rotate" aria-hidden="true"></span>
+                            <?php echo esc_html__('Reset', 'abdal-security-headers'); ?>
+                        </button>
+                        <button type="submit" class="ash-btn ash-btn--primary" id="ash-submit-button" name="submit" value="1">
+                            <span class="dashicons dashicons-lock" aria-hidden="true"></span>
+                            <span class="ash-btn__label"><?php echo esc_html__('Save Changes', 'abdal-security-headers'); ?></span>
+                            <span class="ash-spinner" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+            <?php $this->render_confirm_modal(); ?>
+            <?php $this->render_credit_footer(); ?>
+        </div>
+        <?php
+    }
+
+    /**
+     * Render the shared Help dropdown.
+     *
+     * @return void
+     */
+    private function render_help_menu() {
+        ?>
+        <div class="ash-help" data-ash-help>
+            <button type="button" class="ash-help__toggle" data-ash-help-toggle aria-expanded="false" aria-haspopup="true">
+                <span class="dashicons dashicons-editor-help" aria-hidden="true"></span>
+                <?php echo esc_html__('Help', 'abdal-security-headers'); ?>
+                <span class="dashicons dashicons-arrow-down-alt2" aria-hidden="true"></span>
+            </button>
+            <div class="ash-help__menu" hidden>
+                <a href="https://github.com/ebrasha/abdal-security-headers" target="_blank" rel="noopener noreferrer">
+                    <?php echo esc_html__('Documentation', 'abdal-security-headers'); ?>
+                </a>
+                <a href="https://github.com/ebrasha/abdal-security-headers/issues" target="_blank" rel="noopener noreferrer">
+                    <?php echo esc_html__('Report an issue', 'abdal-security-headers'); ?>
+                </a>
+                <a href="mailto:Prof.Shafiei@Gmail.com">
+                    <?php echo esc_html__('Contact support', 'abdal-security-headers'); ?>
+                </a>
+            </div>
+        </div>
+        <?php
+    }
+
+    /**
+     * Render the programmer credit as the last visible item on plugin admin screens.
+     *
+     * @return void
+     */
+    private function render_credit_footer() {
+        ?>
+        <footer class="ash-credit">
+            <?php echo esc_html__('Handcrafted with ❤️ Passion by Ebrahim Shafiei (EbraSha)', 'abdal-security-headers'); ?>
+        </footer>
+        <?php
+    }
+
+    /**
+     * Render the shared confirm/alert overlay used by Save and Reset.
+     *
+     * @return void
+     */
+    private function render_confirm_modal() {
+        ?>
+        <div class="ash-modal" id="ash-confirm-modal" hidden>
+            <div class="ash-modal__backdrop" data-ash-confirm-dismiss></div>
+            <div class="ash-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="ash-confirm-modal-title">
+                <h2 id="ash-confirm-modal-title"></h2>
+                <div id="ash-confirm-modal-body"></div>
+                <div class="ash-modal__actions">
+                    <button type="button" class="ash-btn ash-btn--secondary" data-ash-confirm-cancel>
+                        <?php echo esc_html__('Cancel', 'abdal-security-headers'); ?>
+                    </button>
+                    <button type="button" class="ash-btn ash-btn--primary" data-ash-confirm-ok>
+                        <?php echo esc_html__('Yes', 'abdal-security-headers'); ?>
+                    </button>
+                </div>
+            </div>
         </div>
         <?php
     }
@@ -316,14 +446,17 @@ class ASH_Admin_UI {
     /**
      * Render a compact toggle row used by settings cards.
      *
-     * @param string $id Field option key.
-     * @param string $label Translated field label.
-     * @param string $description Translated helper text.
-     * @param string $group Summary group identifier.
+     * @param string     $id Field option key.
+     * @param string     $label Translated field label.
+     * @param string     $description Translated helper text.
+     * @param string     $group Summary group identifier.
+     * @param string     $option_name Option array name in the form.
+     * @param array|null $values Option values for this row. Defaults to header options.
      * @return void
      */
-    private function render_toggle_row($id, $label, $description, $group) {
-        $checked = $this->is_enabled($id);
+    private function render_toggle_row($id, $label, $description, $group, $option_name = 'ash_options', $values = null) {
+        $source = is_array($values) ? $values : $this->options;
+        $checked = isset($source[$id]) && (string) $source[$id] === '1';
         ?>
         <div class="ash-toggle-row">
             <div class="ash-toggle-row__info">
@@ -333,7 +466,7 @@ class ASH_Admin_UI {
             <label class="ash-switch">
                 <input type="checkbox"
                        id="<?php echo esc_attr($id); ?>"
-                       name="ash_options[<?php echo esc_attr($id); ?>]"
+                       name="<?php echo esc_attr($option_name); ?>[<?php echo esc_attr($id); ?>]"
                        value="1"
                        data-ash-group="<?php echo esc_attr($group); ?>"
                        <?php checked(true, $checked); ?>>

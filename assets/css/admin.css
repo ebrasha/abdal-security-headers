@@ -15,21 +15,19 @@
  **********************************************************************
  */
 
-body.toplevel_page_abdal-security-headers #wpfooter,
-body.settings_page_abdal-security-headers #wpfooter,
-body.admin_page_abdal-security-headers #wpfooter {
+body.ash-admin-screen #wpfooter {
     display: none;
 }
 
-body.toplevel_page_abdal-security-headers.ash-modal-open,
-body.settings_page_abdal-security-headers.ash-modal-open,
-body.admin_page_abdal-security-headers.ash-modal-open {
+body.ash-admin-screen #wpbody-content {
+    padding-bottom: 0;
+}
+
+body.ash-admin-screen.ash-modal-open {
     overflow: hidden;
 }
 
-body.toplevel_page_abdal-security-headers #wpcontent,
-body.settings_page_abdal-security-headers #wpcontent,
-body.admin_page_abdal-security-headers #wpcontent {
+body.ash-admin-screen #wpcontent {
     padding-inline: 24px;
 }
 
@@ -70,6 +68,7 @@ body.admin_page_abdal-security-headers #wpcontent {
 .ash-settings-grid,
 .ash-card--csp,
 .ash-card--assistant,
+.ash-form > .ash-card,
 .ash-action-bar,
 .ash-credit {
     width: 100%;
@@ -399,6 +398,11 @@ body.admin_page_abdal-security-headers #wpcontent {
     justify-content: center;
     font-size: 18px;
     flex: 0 0 auto;
+}
+
+.ash-card__icon--warning {
+    background: var(--ash-warning-soft);
+    color: var(--ash-warning);
 }
 
 .ash-card__header > div {
@@ -770,7 +774,8 @@ body.admin_page_abdal-security-headers #wpcontent {
 }
 
 .ash-credit {
-    margin: 20px 0 88px;
+    margin-block: 24px 16px;
+    margin-inline: 0;
     padding: 0;
     text-align: center;
     color: var(--ash-muted);
@@ -997,9 +1002,7 @@ body.admin_page_abdal-security-headers #wpcontent {
 }
 
 @media screen and (max-width: 782px) {
-    body.toplevel_page_abdal-security-headers #wpcontent,
-    body.settings_page_abdal-security-headers #wpcontent,
-    body.admin_page_abdal-security-headers #wpcontent {
+    body.ash-admin-screen #wpcontent {
         padding-inline: 16px;
     }
 

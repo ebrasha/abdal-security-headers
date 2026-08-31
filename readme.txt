@@ -4,7 +4,7 @@ Donate link: https://t.me/AbdalDonationBot
 Tags: security, wordpress-security, security-headers, content-security-policy, csp, ebrasha, abdal
 Requires at least: 6.7.2
 Tested up to: 7.1
-Stable tag: 5.5.3
+Stable tag: 5.6.0
 Requires PHP: 7.2
 License: AGPLv3
 License URI: https://www.gnu.org/licenses/agpl-3.0.html
@@ -30,7 +30,7 @@ Abdal Security Headers applies HTTP security headers from one dashboard. The Sma
 * XSS, clickjacking, MIME sniffing, HSTS, Referrer-Policy, and Permissions-Policy
 * Live CSP header preview and a full-size CSP directive editor
 * WordPress hardening: hide version, strip extra headers, XML-RPC, REST API, generic login errors
-* Top-level Security Headers menu, RTL, and mobile layout
+* Top-level Security Headers menu with Dashboard and Settings, RTL, and mobile layout
 * Standard WordPress dashboard widget for security status, headers, CSP, and recent activity
 
 **Security Headers Managed:**
@@ -76,6 +76,14 @@ No. Start a Smart Scan, browse the site, then apply the sources you accept. You 
 4. securityheaders.com score before and after enabling the plugin
 
 == Changelog ==
+
+= 5.6.0 =
+* Add Dashboard and Settings submenus under Security Headers
+* Add a Settings switch to delete all plugin data when the plugin is uninstalled
+* Keep plugin data on uninstall unless that switch is turned on
+
+= 5.5.4 =
+* Keep the programmer credit as the last item on the settings page and remove the extra empty space below it
 
 = 5.5.3 =
 * Use the same custom plugin modal for Save Changes and Reset as Clear Learning Data
@@ -185,6 +193,12 @@ No. Start a Smart Scan, browse the site, then apply the sources you accept. You 
 * Basic security headers implementation
 
 == Upgrade Notice ==
+
+= 5.6.0 =
+Adds Dashboard and Settings menus. Plugin data is now kept on uninstall unless you enable deletion in Settings.
+
+= 5.5.4 =
+Removes extra empty space below the programmer credit so it stays the last item on the settings page.
 
 = 5.5.3 =
 Uses the plugin confirmation modal for Save Changes and Reset, matching Clear Learning Data.

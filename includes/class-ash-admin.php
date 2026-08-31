@@ -23,19 +23,45 @@ if (!defined('ABSPATH')) {
 class ASH_Admin {
     private $options;
     private $page_hook = '';
+    private $settings_hook = '';
 
     public function __construct() {
         add_action('admin_menu', array($this, 'add_plugin_page'));
         add_action('admin_init', array($this, 'page_init'));
         add_action('admin_enqueue_scripts', array($this, 'enqueue_admin_assets'));
+        add_filter('admin_body_class', array($this, 'filter_admin_body_class'));
         $this->options = get_option('ash_options', array());
         if (!is_array($this->options)) {
             $this->options = array();
         }
     }
 
+    /**
+     * Mark plugin admin screens so CSS can hide the WordPress footer and pad the canvas.
+     *
+     * @param string $classes Existing admin body classes.
+     * @return string
+     */
+    public function filter_admin_body_class($classes) {
+        $screen_id = '';
+        if (function_exists('get_current_screen')) {
+            $screen = get_current_screen();
+            if (is_object($screen) && isset($screen->id)) {
+                $screen_id = (string) $screen->id;
+            }
+        }
+
+        $hooks = array($this->page_hook, $this->settings_hook);
+        if (!in_array($screen_id, $hooks, true)) {
+            return $classes;
+        }
+
+        return $classes . ' ash-admin-screen';
+    }
+
     public function enqueue_admin_assets($hook) {
-        if (empty($this->page_hook) || $hook !== $this->page_hook) {
+        $plugin_hooks = array($this->page_hook, $this->settings_hook);
+        if (!in_array($hook, $plugin_hooks, true)) {
             return;
         }
 
@@ -58,25 +84,6 @@ class ASH_Admin {
             $js_version,
             true
         );
-
-        $assistant_js_path = ASH_PLUGIN_DIR . 'assets/js/csp-assistant.js';
-        $assistant_js_version = file_exists($assistant_js_path) ? (string) filemtime($assistant_js_path) : ASH_VERSION;
-        wp_enqueue_script(
-            'ash-csp-assistant',
-            ASH_PLUGIN_URL . 'assets/js/csp-assistant.js',
-            array('ash-admin-scripts'),
-            $assistant_js_version,
-            true
-        );
-
-        wp_localize_script('ash-csp-assistant', 'ashCspAssistant', array(
-            'ajaxUrl' => admin_url('admin-ajax.php'),
-            'nonce' => wp_create_nonce('ash_csp_assistant'),
-            'siteHost' => strtolower((string) wp_parse_url(home_url(), PHP_URL_HOST)),
-            'optionMap' => class_exists('ASH_CSP_Assistant') ? ASH_CSP_Assistant::OPTION_MAP : array(),
-            'strings' => class_exists('ASH_CSP_Assistant') ? ASH_CSP_Assistant::ui_strings() : array(),
-            'initial' => class_exists('ASH_CSP_Assistant') ? ASH_CSP_Assistant::instance()->payload() : array(),
-        ));
 
         wp_localize_script('ash-admin-scripts', 'ashAdmin', array(
             'headerFields' => array(
@@ -131,6 +138,29 @@ class ASH_Admin {
                 'featuresHint' => __('%1$d of %2$d additional features are enabled', 'abdal-security-headers'),
             ),
         ));
+
+        if ($hook !== $this->page_hook) {
+            return;
+        }
+
+        $assistant_js_path = ASH_PLUGIN_DIR . 'assets/js/csp-assistant.js';
+        $assistant_js_version = file_exists($assistant_js_path) ? (string) filemtime($assistant_js_path) : ASH_VERSION;
+        wp_enqueue_script(
+            'ash-csp-assistant',
+            ASH_PLUGIN_URL . 'assets/js/csp-assistant.js',
+            array('ash-admin-scripts'),
+            $assistant_js_version,
+            true
+        );
+
+        wp_localize_script('ash-csp-assistant', 'ashCspAssistant', array(
+            'ajaxUrl' => admin_url('admin-ajax.php'),
+            'nonce' => wp_create_nonce('ash_csp_assistant'),
+            'siteHost' => strtolower((string) wp_parse_url(home_url(), PHP_URL_HOST)),
+            'optionMap' => class_exists('ASH_CSP_Assistant') ? ASH_CSP_Assistant::OPTION_MAP : array(),
+            'strings' => class_exists('ASH_CSP_Assistant') ? ASH_CSP_Assistant::ui_strings() : array(),
+            'initial' => class_exists('ASH_CSP_Assistant') ? ASH_CSP_Assistant::instance()->payload() : array(),
+        ));
     }
 
     public function add_plugin_page() {
@@ -143,12 +173,53 @@ class ASH_Admin {
             'dashicons-shield',
             58
         );
+
+        add_submenu_page(
+            'abdal-security-headers',
+            esc_html__('Dashboard', 'abdal-security-headers'),
+            esc_html__('Dashboard', 'abdal-security-headers'),
+            'manage_options',
+            'abdal-security-headers'
+        );
+
+        $this->settings_hook = add_submenu_page(
+            'abdal-security-headers',
+            esc_html__('Settings', 'abdal-security-headers'),
+            esc_html__('Settings', 'abdal-security-headers'),
+            'manage_options',
+            'abdal-security-headers-settings',
+            array($this, 'create_plugin_settings_page')
+        );
     }
 
     public function create_admin_page() {
+        if (!current_user_can('manage_options')) {
+            wp_die(esc_html__('You are not allowed to manage these settings.', 'abdal-security-headers'));
+        }
+
         require_once ASH_PLUGIN_DIR . 'includes/class-ash-admin-ui.php';
         $ui = new ASH_Admin_UI($this->options);
         $ui->render();
+    }
+
+    /**
+     * Render the plugin Settings screen (plugin-owned options, not HTTP headers).
+     *
+     * @return void
+     */
+    public function create_plugin_settings_page() {
+        if (!current_user_can('manage_options')) {
+            wp_die(esc_html__('You are not allowed to manage these settings.', 'abdal-security-headers'));
+        }
+
+        $plugin_settings = get_option('ash_plugin_settings', array());
+        if (!is_array($plugin_settings)) {
+            $plugin_settings = array();
+        }
+
+        require_once ASH_PLUGIN_DIR . 'includes/class-ash-admin-ui.php';
+        $ui = new ASH_Admin_UI($this->options);
+        $ui->render_plugin_settings($plugin_settings);
     }
 
     public function page_init() {
@@ -156,6 +227,20 @@ class ASH_Admin {
             'ash_options_group',
             'ash_options',
             array($this, 'sanitize')
+        );
+
+        register_setting(
+            'ash_plugin_settings_group',
+            'ash_plugin_settings',
+            array(
+                'type' => 'array',
+                'sanitize_callback' => array($this, 'sanitize_plugin_settings'),
+                'default' => array(
+                    'remove_data_on_uninstall' => '0',
+                ),
+                'show_in_rest' => false,
+                'capability' => 'manage_options',
+            )
         );
 
         // Basic Security Headers Section
@@ -328,5 +413,27 @@ class ASH_Admin {
         }
 
         return $new_input;
+    }
+
+    /**
+     * Sanitize plugin-owned settings. Unknown keys are kept; invalid fields are repaired.
+     *
+     * @param mixed $input Raw submitted settings.
+     * @return array
+     */
+    public function sanitize_plugin_settings($input) {
+        $existing = get_option('ash_plugin_settings', array());
+        if (!is_array($existing)) {
+            $existing = array();
+        }
+
+        if (!is_array($input)) {
+            $input = array();
+        }
+
+        $sanitized = $existing;
+        $sanitized['remove_data_on_uninstall'] = (isset($input['remove_data_on_uninstall']) && (string) $input['remove_data_on_uninstall'] === '1') ? '1' : '0';
+
+        return $sanitized;
     }
 }
