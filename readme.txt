@@ -76,10 +76,13 @@ Yes. On the Settings screen, export a JSON file, then import that file on the ot
 
 == Screenshots ==
 
-1. Security Control Center dashboard with Security Profiles and live status
-2. Smart CSP Assistant
-3. Content Security Policy
-4. securityheaders.com score before and after enabling the plugin
+1. System dashboard
+2. Overview of the Security Headers page and security header settings
+3. Overview of the Content Security Policy settings page
+4. Overview of the Security Features page containing WordPress security settings
+5. Overview of the Settings page and its available configuration options
+6. Security test results demonstrating the plugin's impact on your website's security
+
 
 == Changelog ==
 
